@@ -8,7 +8,7 @@ export const authors = {
   choaib: {
     name: "Choaib Mouhrach",
     title: "Founder",
-    image: "/authors/choaib.png",
+    image: "/authors/choaib.jpg",
   },
 } satisfies Record<string, Author>;
 

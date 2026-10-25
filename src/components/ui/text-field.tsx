@@ -5,6 +5,7 @@ import {
   Input,
   Label,
   Text,
+  TextArea,
   TextField as AriaTextField,
   composeRenderProps,
   type TextFieldProps as AriaTextFieldProps,
@@ -16,16 +17,19 @@ const field = tv({ base: "flex flex-col gap-1.5" });
 
 const input = tv({
   extend: focusRing,
-  base: "h-10 rounded-ui border border-border bg-background px-3 text-sm placeholder:text-muted-foreground disabled:opacity-50",
+  base: "rounded-ui border border-border bg-background px-3 text-sm placeholder:text-muted-foreground disabled:opacity-50",
   variants: {
     isInvalid: { true: "border-danger" },
+    multiline: { false: "h-10", true: "min-h-28 resize-y py-2" },
   },
+  defaultVariants: { multiline: false },
 });
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   description?: string;
   placeholder?: string;
+  multiline?: boolean;
   errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
@@ -33,6 +37,7 @@ export function TextField({
   label,
   description,
   placeholder,
+  multiline,
   errorMessage,
   className,
   ...props
@@ -47,12 +52,21 @@ export function TextField({
       {({ isInvalid }) => (
         <>
           {label && <Label className="text-sm font-medium">{label}</Label>}
-          <Input
-            placeholder={placeholder}
-            className={({ isFocusVisible }) =>
-              input({ isFocusVisible, isInvalid })
-            }
-          />
+          {multiline ? (
+            <TextArea
+              placeholder={placeholder}
+              className={({ isFocusVisible }) =>
+                input({ isFocusVisible, isInvalid, multiline })
+              }
+            />
+          ) : (
+            <Input
+              placeholder={placeholder}
+              className={({ isFocusVisible }) =>
+                input({ isFocusVisible, isInvalid })
+              }
+            />
+          )}
           {description && (
             <Text slot="description" className="text-sm text-muted-foreground">
               {description}

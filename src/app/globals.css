@@ -1,10 +1,7 @@
 @import "tailwindcss";
 @plugin "tailwindcss-react-aria-components";
+@plugin "@tailwindcss/typography";
 
-/*
- * Design tokens. Components only reference the semantic names below,
- * so a rebrand means editing this block and nothing else.
- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -50,8 +47,34 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@utility page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-6xl);
+  padding-inline: 1.5rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.prose {
+  --tw-prose-body: var(--muted-foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--primary);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--muted-foreground);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--border);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-pre-bg: var(--muted);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
 }

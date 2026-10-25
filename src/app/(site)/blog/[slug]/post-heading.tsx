@@ -1,9 +1,9 @@
 "use client";
 
 import { Check, Hash } from "lucide-react";
-import { useEffect, useState } from "react";
 import { Button } from "react-aria-components";
 import { focusRing, tv } from "@/lib/ui";
+import { useCopyToClipboard } from "@/lib/use-copy-to-clipboard";
 
 const anchor = tv({
   extend: focusRing,
@@ -23,24 +23,13 @@ export function PostHeading({
   id: string;
   children: string;
 }) {
-  const [isCopied, setIsCopied] = useState(false);
+  const { isCopied, copy } = useCopyToClipboard();
 
-  useEffect(() => {
-    if (!isCopied) return;
-    const timeout = setTimeout(() => setIsCopied(false), 2000);
-    return () => clearTimeout(timeout);
-  }, [isCopied]);
-
-  async function copyLink() {
+  function copyLink() {
     const url = new URL(window.location.href);
     url.hash = id;
     window.history.replaceState(null, "", url);
-    try {
-      await navigator.clipboard.writeText(url.toString());
-      setIsCopied(true);
-    } catch {
-      // Clipboard unavailable (insecure context or permission denied).
-    }
+    copy(url.toString());
   }
 
   return (

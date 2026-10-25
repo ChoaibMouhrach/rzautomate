@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactCta } from "@/components/site/contact-cta";
 import { Page, PageContent } from "@/components/site/page";
 import { ServiceList } from "./service-list";
 import { ServicesHeader } from "./services-header";
@@ -15,6 +16,7 @@ export default function ServicesPage() {
       <ServicesHeader />
       <PageContent>
         <ServiceList />
+        <ContactCta className="mt-16" />
       </PageContent>
     </Page>
   );

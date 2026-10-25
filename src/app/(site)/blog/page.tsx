@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactCta } from "@/components/site/contact-cta";
 import { Page, PageContent } from "@/components/site/page";
 import { BlogHeader } from "./blog-header";
 import { PostList } from "./post-list";
@@ -15,6 +16,7 @@ export default function BlogPage() {
       <BlogHeader />
       <PageContent>
         <PostList />
+        <ContactCta className="mt-16" />
       </PageContent>
     </Page>
   );

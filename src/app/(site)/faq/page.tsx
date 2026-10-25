@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContactCta } from "@/components/site/contact-cta";
 import { Page, PageContent } from "@/components/site/page";
 import { FaqHeader } from "./faq-header";
 import { FaqList } from "./faq-list";
@@ -14,6 +15,7 @@ export default function FaqPage() {
       <FaqHeader />
       <PageContent>
         <FaqList />
+        <ContactCta className="mt-16" />
       </PageContent>
     </Page>
   );

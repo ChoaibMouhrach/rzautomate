@@ -9,7 +9,7 @@ import { focusRing, tv, type VariantProps } from "@/lib/ui";
 
 export const button = tv({
   extend: focusRing,
-  base: "inline-flex cursor-default items-center justify-center gap-2 rounded-ui font-medium transition-colors disabled:opacity-50",
+  base: "inline-flex cursor-pointer items-center justify-center gap-2 rounded-ui font-medium transition-colors disabled:cursor-default disabled:opacity-50",
   variants: {
     variant: {
       primary:
@@ -24,6 +24,7 @@ export const button = tv({
       sm: "h-8 px-3 text-sm",
       md: "h-10 px-4 text-sm",
       lg: "h-12 px-6 text-base",
+      icon: "size-10",
     },
   },
   defaultVariants: { variant: "primary", size: "md" },

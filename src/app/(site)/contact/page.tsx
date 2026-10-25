@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Page, PageContent } from "@/components/site/page";
-import { ContactAside } from "./contact-aside";
-import { ContactForm } from "./contact-form";
 import { ContactHeader } from "./contact-header";
+import { ContactOptions } from "./contact-options";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -13,9 +12,8 @@ export default function ContactPage() {
   return (
     <Page>
       <ContactHeader />
-      <PageContent className="grid gap-12 lg:grid-cols-[1fr_20rem]">
-        <ContactForm />
-        <ContactAside />
+      <PageContent>
+        <ContactOptions />
       </PageContent>
     </Page>
   );

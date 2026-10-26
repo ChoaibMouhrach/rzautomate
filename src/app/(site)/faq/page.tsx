@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactCta } from "@/components/site/contact-cta";
 import { Page, PageContent } from "@/components/site/page";
 import { FaqHeader } from "./faq-header";
+import { FaqJsonLd } from "./faq-json-ld";
 import { FaqList } from "./faq-list";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <Page>
+      <FaqJsonLd />
       <FaqHeader />
       <PageContent>
         <FaqList />

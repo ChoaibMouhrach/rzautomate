@@ -5,6 +5,7 @@ import { PostBody } from "./post-body";
 import { PostCover } from "./post-cover";
 import { PostCta } from "./post-cta";
 import { PostHeader } from "./post-header";
+import { PostJsonLd } from "./post-json-ld";
 import { PostSidebar } from "./post-sidebar";
 
 export function generateStaticParams() {
@@ -31,6 +32,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
 
   return (
     <article className="page-container pb-24 pt-10 sm:pt-16">
+      <PostJsonLd post={post} />
       <PostHeader post={post} />
       <PostCover post={post} />
       <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_14rem]">

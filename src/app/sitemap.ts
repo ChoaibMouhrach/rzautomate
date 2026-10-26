@@ -1,9 +1,7 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/lib/blog";
 import { services } from "@/lib/services";
-import { legalNav, nav, site } from "@/lib/site";
-
-const absolute = (path: string) => new URL(path, site.url).toString();
+import { absoluteUrl, legalNav, nav } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["/", ...nav, ...legalNav].map((page) =>
@@ -11,12 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   return [
-    ...pages.map((path) => ({ url: absolute(path) })),
+    ...pages.map((path) => ({ url: absoluteUrl(path) })),
     ...services.map((service) => ({
-      url: absolute(`/services/${service.slug}`),
+      url: absoluteUrl(`/services/${service.slug}`),
     })),
     ...posts.map((post) => ({
-      url: absolute(`/blog/${post.slug}`),
+      url: absoluteUrl(`/blog/${post.slug}`),
       lastModified: post.date,
     })),
   ];

@@ -4,6 +4,7 @@ import { CallToAction } from "@/components/site/call-to-action";
 import { getService, services } from "@/lib/services";
 import { ServiceFeatures } from "./service-features";
 import { ServiceHero } from "./service-hero";
+import { ServiceJsonLd } from "./service-json-ld";
 import { ServiceOutcomes } from "./service-outcomes";
 
 export function generateStaticParams() {
@@ -28,6 +29,7 @@ export default async function ServicePage(
 
   return (
     <>
+      <ServiceJsonLd service={service} />
       <ServiceHero service={service} />
       <ServiceFeatures service={service} />
       <ServiceOutcomes service={service} />

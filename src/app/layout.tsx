@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
+import { JsonLd } from "@/components/site/json-ld";
 import { Providers } from "@/components/providers";
+import { siteJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -31,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <JsonLd data={siteJsonLd()} />
         <NextTopLoader color="var(--primary)" height={3} showSpinner={false} shadow={false} />
         <Providers>{children}</Providers>
       </body>

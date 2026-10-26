@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/site/json-ld";
-import { faqPageJsonLd } from "@/lib/json-ld";
+import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/json-ld";
+import { pageMetadata } from "@/lib/pages";
 import { faqGroups } from "./content";
 
 export function FaqJsonLd() {
@@ -7,5 +8,15 @@ export function FaqJsonLd() {
     (group): { question: string; answer: string }[] => [...group.items],
   );
 
-  return <JsonLd data={faqPageJsonLd(items)} />;
+  return (
+    <JsonLd
+      data={[
+        faqPageJsonLd(items),
+        breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: pageMetadata.faq.title, path: "/faq" },
+        ]),
+      ]}
+    />
+  );
 }

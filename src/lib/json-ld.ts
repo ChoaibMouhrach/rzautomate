@@ -1,19 +1,24 @@
 import type {
+  Blog,
   BlogPosting,
   BreadcrumbList,
+  CollectionPage,
+  ContactPage,
   FAQPage,
   Graph,
   Service as ServiceSchema,
   WithContext,
 } from "schema-dts";
-import type { Post } from "@/lib/blog";
-import type { Service } from "@/lib/services";
+import { posts, type Post } from "@/lib/blog";
+import { pageMetadata } from "@/lib/pages";
+import { services, type Service } from "@/lib/services";
 import { absoluteUrl, company, founder, site } from "@/lib/site";
 
 const context = "https://schema.org" as const;
 
 const organizationRef = { "@id": absoluteUrl("/#organization") } as const;
 const founderRef = { "@id": absoluteUrl("/#choaib-mouhrach") } as const;
+const websiteRef = { "@id": absoluteUrl("/#website") } as const;
 
 export function siteJsonLd(): Graph {
   return {
@@ -99,11 +104,67 @@ export function faqPageJsonLd(
   return {
     "@context": context,
     "@type": "FAQPage",
+    name: pageMetadata.faq.title,
+    description: pageMetadata.faq.description,
+    url: absoluteUrl("/faq"),
+    isPartOf: websiteRef,
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
+  };
+}
+
+export function servicesPageJsonLd(): WithContext<CollectionPage> {
+  return {
+    "@context": context,
+    "@type": "CollectionPage",
+    name: pageMetadata.services.title,
+    description: pageMetadata.services.description,
+    url: absoluteUrl("/services"),
+    isPartOf: websiteRef,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: services.map((service, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: service.title,
+        url: absoluteUrl(`/services/${service.slug}`),
+      })),
+    },
+  };
+}
+
+export function blogJsonLd(): WithContext<Blog> {
+  return {
+    "@context": context,
+    "@type": "Blog",
+    name: pageMetadata.blog.title,
+    description: pageMetadata.blog.description,
+    url: absoluteUrl("/blog"),
+    isPartOf: websiteRef,
+    publisher: organizationRef,
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      image: absoluteUrl(post.image),
+      datePublished: post.date,
+    })),
+  };
+}
+
+export function contactPageJsonLd(): WithContext<ContactPage> {
+  return {
+    "@context": context,
+    "@type": "ContactPage",
+    name: pageMetadata.contact.title,
+    description: pageMetadata.contact.description,
+    url: absoluteUrl("/contact"),
+    isPartOf: websiteRef,
+    about: organizationRef,
   };
 }
 

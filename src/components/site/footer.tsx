@@ -1,4 +1,5 @@
 import { NewsletterForm } from "@/components/site/newsletter-form";
+import { Logo } from "@/components/site/logo";
 import { Link } from "@/components/ui/link";
 import { legalNav, nav, site } from "@/lib/site";
 
@@ -25,7 +26,7 @@ export async function Footer() {
       </div>
       <div className="page-container flex flex-col gap-8 py-12 sm:flex-row sm:justify-between">
         <div className="max-w-xs">
-          <p className="font-semibold tracking-tight">{site.name}</p>
+          <Logo className="h-7" />
           <p className="mt-2 text-sm text-muted-foreground">
             {site.description}
           </p>

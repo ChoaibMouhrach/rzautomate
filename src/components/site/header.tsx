@@ -1,12 +1,13 @@
+import { Logo } from "@/components/site/logo";
 import { Link, LinkButton } from "@/components/ui/link";
-import { nav, site } from "@/lib/site";
+import { nav } from "@/lib/site";
 
 export function Header() {
   return (
     <header className="border-b border-border">
       <div className="page-container flex h-16 items-center justify-between gap-6">
         <Link href="/" className="font-semibold tracking-tight no-underline">
-          {site.name}
+          <Logo />
         </Link>
         <nav aria-label="Main" className="flex items-center gap-6 text-sm">
           <ul className="hidden items-center gap-6 sm:flex">

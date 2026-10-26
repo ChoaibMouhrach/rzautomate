@@ -1,4 +1,4 @@
-import { CallToAction } from "./call-to-action";
+import { CallToAction } from "@/components/site/call-to-action";
 import { Hero } from "./hero";
 import { Process } from "./process";
 import { ServicesOverview } from "./services-overview";

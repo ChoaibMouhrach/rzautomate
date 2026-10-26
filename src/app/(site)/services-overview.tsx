@@ -1,24 +1,29 @@
-import { services } from "@/lib/site";
+import { ServiceCard } from "@/components/site/service-card";
+import {
+  Section,
+  SectionAction,
+  SectionContent,
+  SectionHeader,
+  SectionTitle,
+} from "@/components/site/section";
+import { services } from "@/lib/services";
 
 export function ServicesOverview() {
   return (
-    <section className="border-t border-border">
-      <div className="page-container pb-24 pt-16">
-        <h2 className="text-3xl font-semibold tracking-tight">What we build</h2>
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <Section>
+      <SectionHeader>
+        <SectionTitle>What we build</SectionTitle>
+        <SectionAction href="/services">All services</SectionAction>
+      </SectionHeader>
+      <SectionContent>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <li
-              key={service.title}
-              className="rounded-ui border border-border p-6"
-            >
-              <h3 className="font-medium">{service.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {service.description}
-              </p>
+            <li key={service.slug} className="flex">
+              <ServiceCard service={service} />
             </li>
           ))}
         </ul>
-      </div>
-    </section>
+      </SectionContent>
+    </Section>
   );
 }

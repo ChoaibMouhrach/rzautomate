@@ -30,11 +30,12 @@ export function CardEyebrow({
 }
 
 export function CardTitle({
+  as: Tag = "h3",
   className,
   ...props
-}: React.ComponentProps<"h3">) {
+}: React.ComponentProps<"h3"> & { as?: "h2" | "h3" }) {
   return (
-    <h3
+    <Tag
       className={`text-lg font-semibold tracking-tight ${className ?? ""}`}
       {...props}
     />

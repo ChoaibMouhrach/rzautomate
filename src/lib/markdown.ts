@@ -1,4 +1,5 @@
 import { NodeHtmlMarkdown } from "node-html-markdown";
+import { site } from "@/lib/site";
 
 const converter = new NodeHtmlMarkdown({
   ignore: ["script", "style", "svg", "template", "noscript"],
@@ -31,7 +32,7 @@ export function isNotFoundPage(html: string) {
   return /<meta[^>]*name="robots"[^>]*content="noindex/i.test(html);
 }
 
-export function htmlToMarkdown(html: string, pageUrl: URL) {
+export function pageToMarkdown(html: string, pageUrl: URL) {
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1];
   const description = metaContent(html, "description");
   const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? html;
@@ -51,9 +52,19 @@ export function htmlToMarkdown(html: string, pageUrl: URL) {
     .replace(/(\]\([^)]*\))(\[)/g, "$1\n$2")
     .replace(/!\[\]\([^)]*\)\n*/g, "");
 
+  return {
+    title: title ? decodeEntities(title) : undefined,
+    description,
+    body: body.trim(),
+  };
+}
+
+export function htmlToMarkdown(html: string, pageUrl: URL) {
+  const { title, description, body } = pageToMarkdown(html, pageUrl);
+
   const frontMatter = [
     "---",
-    title ? `title: ${JSON.stringify(decodeEntities(title))}` : undefined,
+    title ? `title: ${JSON.stringify(title)}` : undefined,
     description ? `description: ${JSON.stringify(description)}` : undefined,
     `url: ${pageUrl.toString()}`,
     "---",
@@ -61,5 +72,30 @@ export function htmlToMarkdown(html: string, pageUrl: URL) {
     .filter(Boolean)
     .join("\n");
 
-  return `${frontMatter}\n\n${body.trim()}\n`;
+  return `${frontMatter}\n\n${body}\n`;
+}
+
+export function trustedOrigin(requestUrl: URL) {
+  const trustedHosts = new Set(
+    [
+      "localhost",
+      "127.0.0.1",
+      new URL(site.url).hostname,
+      process.env.VERCEL_URL,
+      process.env.VERCEL_BRANCH_URL,
+    ].filter(Boolean),
+  );
+
+  return trustedHosts.has(requestUrl.hostname)
+    ? requestUrl.origin
+    : new URL(site.url).origin;
+}
+
+export async function fetchPageHtml(pageUrl: URL) {
+  const response = await fetch(pageUrl, {
+    headers: { Accept: "text/html", "x-markdown-source": "1" },
+  });
+  const html = await response.text();
+
+  return response.ok && !isNotFoundPage(html) ? html : undefined;
 }

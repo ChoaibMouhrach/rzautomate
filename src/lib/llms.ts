@@ -80,6 +80,7 @@ export function buildLlmsTxt() {
           link(title, path, description),
         ),
         `- [Sitemap](${absoluteUrl("/sitemap.xml")}): Every public page of the site.`,
+        `- [Full content](${absoluteUrl("/llms-full.txt")}): Every page of the site in a single Markdown file.`,
       ]),
     ].join("\n\n") + "\n"
   );

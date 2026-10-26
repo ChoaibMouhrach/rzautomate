@@ -1,3 +1,10 @@
+import {
+  Section,
+  SectionContent,
+  SectionHeader,
+  SectionTitle,
+} from "@/components/site/section";
+
 const steps = [
   {
     title: "Discover",
@@ -18,10 +25,12 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="border-t border-border">
-      <div className="page-container pb-24 pt-16">
-        <h2 className="text-3xl font-semibold tracking-tight">How we work</h2>
-        <ol className="mt-10 grid gap-8 sm:grid-cols-3">
+    <Section>
+      <SectionHeader>
+        <SectionTitle>How we work</SectionTitle>
+      </SectionHeader>
+      <SectionContent>
+        <ol className="grid gap-8 sm:grid-cols-3">
           {steps.map((step, index) => (
             <li key={step.title}>
               <p className="font-mono text-sm text-muted-foreground">
@@ -34,7 +43,7 @@ export function Process() {
             </li>
           ))}
         </ol>
-      </div>
-    </section>
+      </SectionContent>
+    </Section>
   );
 }

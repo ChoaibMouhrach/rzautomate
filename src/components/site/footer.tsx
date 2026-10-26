@@ -1,3 +1,4 @@
+import { NewsletterForm } from "@/components/site/newsletter-form";
 import { Link } from "@/components/ui/link";
 import { legalNav, nav, site } from "@/lib/site";
 
@@ -6,6 +7,22 @@ export async function Footer() {
 
   return (
     <footer className="mt-auto border-t border-border">
+      <div className="border-b border-border">
+        <div className="page-container flex flex-col gap-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <div className="max-w-md">
+            <h2 className="text-lg font-semibold tracking-tight">
+              Subscribe to our newsletter
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Practical AI automation ideas and case studies, delivered to your
+              inbox. No spam.
+            </p>
+          </div>
+          <div className="w-full lg:max-w-md">
+            <NewsletterForm />
+          </div>
+        </div>
+      </div>
       <div className="page-container flex flex-col gap-8 py-12 sm:flex-row sm:justify-between">
         <div className="max-w-xs">
           <p className="font-semibold tracking-tight">{site.name}</p>

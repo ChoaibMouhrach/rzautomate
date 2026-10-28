@@ -18,6 +18,7 @@ export interface Post {
   excerpt: string;
   category: string;
   date: string;
+  updated?: string;
   readingMinutes: number;
   author: Author;
   image: string;

@@ -35,6 +35,14 @@ export function siteJsonLd(): Graph {
         foundingDate: company.foundingDate,
         founder: founderRef,
         email: company.email,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          email: company.email,
+          url: absoluteUrl("/contact"),
+          availableLanguage: "English",
+        },
+        ...(company.sameAs.length > 0 && { sameAs: [...company.sameAs] }),
         address: { "@type": "PostalAddress", ...company.address },
         areaServed: company.areaServed,
       },
@@ -52,6 +60,7 @@ export function siteJsonLd(): Graph {
         "@id": absoluteUrl("/#website"),
         name: site.name,
         url: site.url,
+        inLanguage: "en",
         publisher: organizationRef,
       },
     ],
@@ -83,7 +92,7 @@ export function blogPostingJsonLd(post: Post): WithContext<BlogPosting> {
     mainEntityOfPage: url,
     image: absoluteUrl(post.image),
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     articleSection: post.category,
     author:
       post.author.name === founder.name

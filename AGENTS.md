@@ -19,3 +19,7 @@ A component used by only one page lives next to that page's `page.tsx` and is im
 ## Page files
 
 A `page.tsx` contains only the structure of the page: metadata, loading data from `params` (including `notFound()`), and composing components and layout wrappers. It must not contain body content: no copy, no data arrays, no list rendering, and no multi-element markup. Put that content in components next to the page, or in a `content.ts` file next to the page for plain data. This keeps each page readable as an outline of its sections, and keeps content and markup edits away from routing, metadata and data loading.
+
+## Canonical URLs
+
+Every indexable page must emit a self-referencing `<link rel="canonical">` for its own clean URL, without query parameters. Set `alternates.canonical` in the root layout metadata, or per page where a route needs a different value. Never set a canonical on a `noindex` page, and never point it at another page unless that page is a true duplicate. When adding a page or changing its URL, check that its rendered canonical is correct.

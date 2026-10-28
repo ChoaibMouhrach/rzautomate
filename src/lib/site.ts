@@ -2,8 +2,7 @@ export const site = {
   name: "RZ Automate",
   description:
     "We design and build AI automation systems that remove manual work from your business.",
-  // Placeholder: set to the real production domain.
-  url: "https://rzautomate.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://rzautomate.com",
   email: "choaib.m@rizon.agency",
   bookingUrl: "https://cal.com/rizon.agency-cvbkll/30min",
 };
@@ -15,6 +14,7 @@ export const company = {
   foundingDate: "2026-05",
   email: "contact@rizon.agency",
   logo: "/logo.png",
+  sameAs: [] as readonly string[],
   areaServed: "Worldwide",
   address: {
     streetAddress: "30 N Gould St Ste N",

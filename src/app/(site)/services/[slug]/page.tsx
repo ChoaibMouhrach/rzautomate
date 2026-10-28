@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CallToAction } from "@/components/site/call-to-action";
+import { pageSocial } from "@/lib/metadata";
 import { getService, services } from "@/lib/services";
 import { ServiceFeatures } from "./service-features";
 import { ServiceHero } from "./service-hero";
@@ -17,7 +18,12 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const service = getService(slug);
   if (!service) return {};
-  return { title: service.title, description: service.description };
+  return pageSocial({
+    title: service.title,
+    description: service.description,
+    path: `/services/${service.slug}`,
+    routeImage: true,
+  });
 }
 
 export default async function ServicePage(

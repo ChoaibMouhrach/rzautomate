@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPost, posts } from "@/lib/blog";
+import { pageSocial } from "@/lib/metadata";
 import { PostBody } from "./post-body";
 import { PostCover } from "./post-cover";
 import { PostCta } from "./post-cta";
@@ -18,11 +19,17 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const post = getPost(slug);
   if (!post) return {};
-  return {
+  return pageSocial({
     title: post.title,
     description: post.excerpt,
-    openGraph: { images: [post.image] },
-  };
+    path: `/blog/${post.slug}`,
+    routeImage: true,
+    article: {
+      publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
+      authors: [post.author.name],
+    },
+  });
 }
 
 export default async function PostPage(props: PageProps<"/blog/[slug]">) {

@@ -11,15 +11,15 @@ export function CallToAction() {
   return (
     <Section className="bg-muted">
       <SectionHeader align="center">
-        <SectionTitle>Ready to see what we can automate?</SectionTitle>
+        <SectionTitle>Find out what to automate first</SectionTitle>
         <SectionDescription>
-          Tell us about your workflow. We&apos;ll come back with a clear plan and
-          a fixed price.
+          A free 30-min call with me, the engineer who builds the work. You
+          leave knowing which tasks to hand off first.
         </SectionDescription>
       </SectionHeader>
       <SectionFooter>
         <LinkButton href="/contact" size="lg">
-          Get in touch
+          Book a free 30-min call
         </LinkButton>
       </SectionFooter>
     </Section>

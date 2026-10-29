@@ -2,11 +2,20 @@ import { posts } from "@/lib/blog";
 import { services } from "@/lib/services";
 import { legalNav, nav } from "@/lib/site";
 
+const landingServiceSlugs = [
+  "ai-agent-development",
+  "ai-customer-support-agents",
+  "ai-document-processing",
+  "ai-lead-generation-crm-automation",
+  "business-process-automation-services",
+];
+
 export function pagePaths() {
   return [
     "/",
     ...nav.map((item) => item.href),
     ...services.map((service) => `/services/${service.slug}`),
+    ...landingServiceSlugs.map((slug) => `/services/${slug}`),
     ...posts.map((post) => `/blog/${post.slug}`),
     ...legalNav.map((item) => item.href),
   ];

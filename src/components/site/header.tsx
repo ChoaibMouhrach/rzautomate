@@ -28,7 +28,7 @@ export function Header() {
                   {servicesLink.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="grid w-[44rem] max-w-full grid-cols-3 gap-2">
-                  <ul className="col-span-2 grid grid-cols-2 grid-rows-3 gap-1">
+                  <ul className="col-span-2 grid grid-cols-2 gap-1">
                     {services.map((service) => (
                       <li key={service.slug}>
                         <NavigationMenuLink

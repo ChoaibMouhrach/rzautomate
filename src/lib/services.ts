@@ -11,10 +11,10 @@ export interface Service {
 
 export const services: readonly Service[] = [
   {
-    slug: "ai-agents",
-    title: "AI Agents",
+    slug: "ai-customer-support-agents",
+    title: "AI Customer Support Agents",
     description:
-      "Custom agents that handle support, research and operations tasks end to end, with humans in the loop where it matters.",
+      "AI agents that answer routine customer questions, triage support requests and hand off to your team when needed.",
     image: "/services/ai-agents.svg",
     imageAlt: "A central AI agent connected to chat messages and tools",
     overview:
@@ -29,27 +29,6 @@ export const services: readonly Service[] = [
       "Routine requests handled without manual effort",
       "Consistent answers and fewer dropped tasks",
       "A team that spends its time on judgement, not repetition",
-    ],
-  },
-  {
-    slug: "workflow-automation",
-    title: "Workflow Automation",
-    description:
-      "Connect your CRM, inbox, billing and internal tools so repetitive handoffs run on their own.",
-    image: "/services/workflow-automation.svg",
-    imageAlt: "Tools connected in a branching automated workflow",
-    overview:
-      "Most teams lose hours to copying data between tools and chasing the next step. We connect the systems you already use so information moves on its own, with notifications and checks along the way.",
-    features: [
-      "Integrations between your CRM, email, billing and project tools",
-      "Triggers, conditions and error handling that match how you work",
-      "Alerts when something needs attention instead of silent failures",
-      "Documentation so your team can understand and adjust each workflow",
-    ],
-    outcomes: [
-      "Fewer manual hand-offs and copy-and-paste tasks",
-      "Faster turnaround between steps",
-      "Data that stays consistent across your tools",
     ],
   },
   {
@@ -95,8 +74,8 @@ export const services: readonly Service[] = [
     ],
   },
   {
-    slug: "data-and-document-processing",
-    title: "Data & Document Processing",
+    slug: "ai-document-processing",
+    title: "AI document processing",
     description:
       "Extract, classify and summarize documents, emails and records into structured data your systems can use.",
     image: "/services/data-and-document-processing.svg",
@@ -115,27 +94,7 @@ export const services: readonly Service[] = [
       "Fewer transcription errors",
     ],
   },
-  {
-    slug: "ai-strategy-and-audits",
-    title: "AI Strategy & Audits",
-    description:
-      "Find the highest-return automation opportunities in your business and get a clear, costed roadmap.",
-    image: "/services/ai-strategy-and-audits.svg",
-    imageAlt: "Rising bars and a magnifier representing an audit and roadmap",
-    overview:
-      "Before building anything, it helps to know where automation will pay off. We review how your team works, identify the best opportunities and give you a prioritized plan with effort and expected impact for each.",
-    features: [
-      "Workshops and interviews to understand how work gets done",
-      "An inventory of automation opportunities, ranked by impact and effort",
-      "A costed roadmap you can act on with us or on your own",
-      "Recommendations on tools, data and risks",
-    ],
-    outcomes: [
-      "Clarity on where to start",
-      "A plan you can budget and schedule",
-      "Confidence that effort goes to the highest-return work first",
-    ],
-  },
+
 ];
 
 export const getService = (slug: string) =>

@@ -357,7 +357,7 @@ export const book = {
     {
       title: "Business process automation",
       body: "Invoices, onboarding, reports and data entry moved into n8n workflows that run on their own.",
-      href: "/services/business-process-automation-services",
+      href: "/services/business-process-automation",
     },
     {
       title: "AI agent development",

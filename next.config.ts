@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   async redirects() {
     return [
+      { source: "/services/business-process-automation-services", destination: "/services/business-process-automation", permanent: true },
+      { source: "/services/data-and-document-processing", destination: "/services/ai-document-processing", permanent: true },
       { source: "/services/ai-lead-generation-crm-automation", destination: "/services/ai-lead-generation", permanent: true },
       { source: "/services/lead-and-sales-automation", destination: "/services/ai-lead-generation", permanent: true },
     ];

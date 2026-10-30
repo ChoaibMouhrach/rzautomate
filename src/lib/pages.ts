@@ -5,8 +5,6 @@ import { legalNav, nav } from "@/lib/site";
 const landingServiceSlugs = [
   "ai-agent-development",
   "ai-customer-support-agents",
-  "ai-document-processing",
-  "business-process-automation-services",
 ];
 
 export function pagePaths() {
@@ -24,7 +22,7 @@ export const pageMetadata = {
   services: {
     title: "Services",
     description:
-      "AI agents, workflow automation, lead and sales automation, document processing and AI strategy.",
+      "AI customer support agents, business process automation, AI lead generation and CRM automation, and AI document processing.",
   },
   blog: {
     title: "Blog",

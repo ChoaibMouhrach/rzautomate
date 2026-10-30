@@ -1,20 +1,44 @@
 import type { Metadata } from "next";
-import { Page, PageHeader, PageTitle } from "@/components/site/page";
 import { pageSocial } from "@/lib/metadata";
+import { path, seo } from "./content";
+import { authorName } from "./json-ld";
+import { DocumentProcessingContent } from "./document-processing-content";
 
-export const metadata: Metadata = pageSocial({
-  title: "AI Document Processing",
-  description:
-    "Extract invoice and document data into structured records and cut manual data entry.",
-  path: "/services/ai-document-processing",
+const social = pageSocial({
+  title: seo.title,
+  description: seo.description,
+  path,
 });
 
-export default function ServicePage() {
-  return (
-    <Page>
-      <PageHeader>
-        <PageTitle>AI Document Processing</PageTitle>
-      </PageHeader>
-    </Page>
-  );
+const socialImages = [
+  { url: `${path}/opengraph-image`, width: 1200, height: 630, alt: seo.imageAlt },
+];
+
+export const metadata: Metadata = {
+  ...social,
+  alternates: { canonical: path },
+  authors: [{ name: authorName }],
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+  openGraph: {
+    ...social.openGraph,
+    title: seo.socialTitle,
+    description: seo.openGraphDescription,
+    images: socialImages,
+  },
+  twitter: {
+    ...social.twitter,
+    title: seo.socialTitle,
+    description: seo.twitterDescription,
+    images: socialImages,
+  },
+};
+
+export default function DocumentProcessingPage() {
+  return <DocumentProcessingContent />;
 }

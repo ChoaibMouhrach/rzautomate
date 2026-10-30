@@ -352,7 +352,7 @@ export const book = {
     {
       title: "AI lead generation & CRM automation",
       body: "New leads researched, scored and added to your CRM, with first follow-ups drafted for you.",
-      href: "/services/ai-lead-generation-crm-automation",
+      href: "/services/ai-lead-generation",
     },
     {
       title: "Business process automation",

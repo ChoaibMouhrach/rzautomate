@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  async redirects() {
+    return [
+      { source: "/services/ai-lead-generation-crm-automation", destination: "/services/ai-lead-generation", permanent: true },
+      { source: "/services/lead-and-sales-automation", destination: "/services/ai-lead-generation", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

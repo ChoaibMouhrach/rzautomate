@@ -6,7 +6,6 @@ const landingServiceSlugs = [
   "ai-agent-development",
   "ai-customer-support-agents",
   "ai-document-processing",
-  "ai-lead-generation-crm-automation",
   "business-process-automation-services",
 ];
 

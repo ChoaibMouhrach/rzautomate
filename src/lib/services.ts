@@ -74,8 +74,8 @@ export const services: readonly Service[] = [
     ],
   },
   {
-    slug: "lead-and-sales-automation",
-    title: "Lead & Sales Automation",
+    slug: "ai-lead-generation",
+    title: "AI lead generation & CRM automation",
     description:
       "Capture, enrich, qualify and follow up with leads automatically, then route the good ones to your team.",
     image: "/services/lead-and-sales-automation.svg",

@@ -82,6 +82,7 @@ export function NavigationMenuLink({
 }) {
   return (
     <BaseNavigationMenu.Link
+      closeOnClick
       render={<Link href={href} />}
       className={link({ variant, className })}
     >

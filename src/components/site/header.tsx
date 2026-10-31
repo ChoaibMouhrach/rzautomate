@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Logo } from "@/components/site/logo";
+import { MobileNavigation } from "@/components/site/mobile-navigation";
 import { Link, LinkButton } from "@/components/ui/link";
 import {
   NavigationMenu,
@@ -15,7 +16,7 @@ const [servicesLink, ...otherLinks] = nav.slice(0, -1);
 
 export function Header() {
   return (
-    <header className="border-b border-border">
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="page-container flex h-16 items-center justify-between gap-6">
         <div className="flex items-center gap-10">
           <Link href="/" className="font-semibold tracking-tight no-underline">
@@ -54,13 +55,13 @@ export function Header() {
                         work off your team.
                       </p>
                     </div>
-                    <Link
+                    <NavigationMenuLink
                       href={servicesLink.href}
                       className="inline-flex items-center gap-1 self-start font-medium text-foreground no-underline"
                     >
                       View all services
                       <ArrowRight aria-hidden className="size-4" />
-                    </Link>
+                    </NavigationMenuLink>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -78,6 +79,29 @@ export function Header() {
           Book a free call
         </LinkButton>
       </div>
+      <MobileNavigation>
+        <div className="border-t border-border p-4 text-sm">
+          <Link href="/services" className="font-medium no-underline">
+            All services
+          </Link>
+          <ul className="mt-3 space-y-3 border-l border-border pl-4">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link href={`/services/${service.slug}`} variant="muted">
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-4">
+            {nav.filter((item) => item.href !== "/services").map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} variant="muted">{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </MobileNavigation>
     </header>
   );
 }

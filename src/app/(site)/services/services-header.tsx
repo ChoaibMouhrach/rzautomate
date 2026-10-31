@@ -10,10 +10,11 @@ import {
 export function ServicesHeader() {
   return (
     <PageHeader>
-      <PageTitle>Services</PageTitle>
+      <PageTitle>AI automation services for your business</PageTitle>
       <PageDescription>
-        From a single automated workflow to a full AI-powered operation, we
-        build what moves the needle for your business.
+        Customer support, lead generation, document processing, business
+        processes and custom AI agents. Pick the job you need help with and see
+        what I build, how it works and what&apos;s included.
       </PageDescription>
       <PageActions>
         <PagePrimaryAction href="/contact">Book a free call</PagePrimaryAction>

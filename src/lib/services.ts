@@ -12,7 +12,7 @@ export interface Service {
 export const services: readonly Service[] = [
   {
     slug: "ai-customer-support-agents",
-    title: "AI Customer Support Agents",
+    title: "AI customer support agents",
     description:
       "AI agents that answer routine customer questions, triage support requests and hand off to your team when needed.",
     image: "/services/ai-agents.svg",
@@ -33,7 +33,7 @@ export const services: readonly Service[] = [
   },
   {
     slug: "business-process-automation",
-    title: "Business Process Automation",
+    title: "Business process automation",
     description:
       "Automate the internal processes that run your operations, from onboarding and approvals to invoicing and reporting.",
     image: "/services/business-process-automation.svg",
@@ -56,7 +56,7 @@ export const services: readonly Service[] = [
     slug: "ai-lead-generation",
     title: "AI lead generation & CRM automation",
     description:
-      "Capture, enrich, qualify and follow up with leads automatically, then route the good ones to your team.",
+      "Research, score and add new leads to your CRM, with first follow-ups drafted for your team to review.",
     image: "/services/lead-and-sales-automation.svg",
     imageAlt: "Leads flowing down a sales funnel",
     overview:
@@ -77,7 +77,7 @@ export const services: readonly Service[] = [
     slug: "ai-document-processing",
     title: "AI document processing",
     description:
-      "Extract, classify and summarize documents, emails and records into structured data your systems can use.",
+      "Read invoices, receipts, POs and forms, validate the extracted data and send it to your accounting tools, CRM or sheets. Unclear fields go to review.",
     image: "/services/data-and-document-processing.svg",
     imageAlt: "A document being turned into a structured table",
     overview:
@@ -94,7 +94,27 @@ export const services: readonly Service[] = [
       "Fewer transcription errors",
     ],
   },
-
+  {
+    slug: "ai-agent-development",
+    title: "AI agent development",
+    description:
+      "Custom agents that answer from your docs, research, take approved actions and connect Claude or ChatGPT to your systems through MCP.",
+    image: "/services/ai-agents.svg",
+    imageAlt: "An AI agent connected to messages and business tools",
+    overview:
+      "I build custom AI agents for jobs that need reading, judgment and several steps across your tools. Each agent is tested on your real examples before launch, asks for approval before risky actions and logs every run.",
+    features: [
+      "Internal knowledge assistants that answer with source links",
+      "Research and operations agents connected to your tools",
+      "Custom MCP servers for Claude, ChatGPT and Cursor",
+      "Test sets, approval steps, run logs and cost tracking",
+    ],
+    outcomes: [
+      "Less time searching company documents and preparing research",
+      "Approved actions across your CRM and internal tools",
+      "Code, prompts and accounts that you own",
+    ],
+  },
 ];
 
 export const getService = (slug: string) =>

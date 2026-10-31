@@ -2,17 +2,11 @@ import { posts } from "@/lib/blog";
 import { services } from "@/lib/services";
 import { legalNav, nav } from "@/lib/site";
 
-const landingServiceSlugs = [
-  "ai-agent-development",
-  "ai-customer-support-agents",
-];
-
 export function pagePaths() {
   return [
     "/",
     ...nav.map((item) => item.href),
     ...services.map((service) => `/services/${service.slug}`),
-    ...landingServiceSlugs.map((slug) => `/services/${slug}`),
     ...posts.map((post) => `/blog/${post.slug}`),
     ...legalNav.map((item) => item.href),
   ];
@@ -22,7 +16,7 @@ export const pageMetadata = {
   services: {
     title: "Services",
     description:
-      "AI customer support agents, business process automation, AI lead generation and CRM automation, and AI document processing.",
+      "AI customer support agents, business process automation, AI lead generation & CRM automation, AI document processing and custom AI agent development.",
   },
   blog: {
     title: "Blog",

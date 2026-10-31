@@ -20,7 +20,7 @@ export function TableOfContents({ items }: { items: readonly TocItem[] }) {
         const visible = entries.find((entry) => entry.isIntersecting);
         if (visible) setActiveId(visible.target.id);
       },
-      { rootMargin: "0px 0px -70% 0px" },
+      { rootMargin: "-96px 0px -70% 0px" },
     );
     for (const { id } of items) {
       const element = document.getElementById(id);

@@ -33,7 +33,7 @@ export function PostHeading({
   }
 
   return (
-    <Tag id={id} className="group relative scroll-mt-8">
+    <Tag id={id} className="group relative scroll-mt-24">
       <Button
         onPress={copyLink}
         aria-label={`Copy link to “${children}”`}

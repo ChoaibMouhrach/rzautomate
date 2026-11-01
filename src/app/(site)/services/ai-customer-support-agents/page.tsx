@@ -125,8 +125,8 @@ export default function AiCustomerSupportAgentsPage() {
           </div>
           <p className="mt-8 text-center text-muted-foreground">
             {fit.closing}{" "}
-            <Link href={auditHref}>Get a free workflow audit</Link> and I&apos;ll
-            tell you if support is the right thing to automate first.
+            <Link href={auditHref}>Get a free workflow audit</Link> and
+            I&apos;ll tell you if support is the right thing to automate first.
           </p>
         </SectionContent>
       </Section>
@@ -354,7 +354,8 @@ export default function AiCustomerSupportAgentsPage() {
           </ul>
           <p className="mt-6 text-muted-foreground">{pricing.payment}</p>
           <p className="mt-2 text-muted-foreground">
-            {pricing.guarantee} <Link href="/guarantee">How the guarantee works</Link>
+            {pricing.guarantee}{" "}
+            <Link href="/guarantee">How the guarantee works</Link>
           </p>
           <p className="mt-6 text-center text-muted-foreground">
             {pricing.microcopy}

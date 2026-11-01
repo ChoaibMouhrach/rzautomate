@@ -7,7 +7,10 @@ import { BlogHeader } from "./blog-header";
 import { BlogJsonLd } from "./blog-json-ld";
 import { PostList } from "./post-list";
 
-export const metadata: Metadata = pageSocial({ ...pageMetadata.blog, path: "/blog" });
+export const metadata: Metadata = pageSocial({
+  ...pageMetadata.blog,
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

@@ -1,8 +1,4 @@
-import {
-  PageDescription,
-  PageHeader,
-  PageTitle,
-} from "@/components/site/page";
+import { PageDescription, PageHeader, PageTitle } from "@/components/site/page";
 
 export function ContactHeader() {
   return (

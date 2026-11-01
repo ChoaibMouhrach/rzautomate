@@ -94,11 +94,15 @@ export function Header() {
             ))}
           </ul>
           <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-4">
-            {nav.filter((item) => item.href !== "/services").map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} variant="muted">{item.label}</Link>
-              </li>
-            ))}
+            {nav
+              .filter((item) => item.href !== "/services")
+              .map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} variant="muted">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       </MobileNavigation>

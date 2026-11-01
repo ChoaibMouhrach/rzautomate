@@ -7,7 +7,10 @@ import { ServiceList } from "./service-list";
 import { ServicesHeader } from "./services-header";
 import { ServicesJsonLd } from "./services-json-ld";
 
-export const metadata: Metadata = pageSocial({ ...pageMetadata.services, path: "/services" });
+export const metadata: Metadata = pageSocial({
+  ...pageMetadata.services,
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

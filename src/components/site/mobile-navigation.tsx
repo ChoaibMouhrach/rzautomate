@@ -6,7 +6,10 @@ export function MobileNavigation({ children }: { children: ReactNode }) {
   const menu = useRef<HTMLDetailsElement>(null);
 
   return (
-    <nav aria-label="Mobile navigation" className="page-container pb-4 sm:hidden">
+    <nav
+      aria-label="Mobile navigation"
+      className="page-container pb-4 sm:hidden"
+    >
       <details
         ref={menu}
         className="group rounded-ui border border-border"

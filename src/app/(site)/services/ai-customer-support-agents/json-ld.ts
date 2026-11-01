@@ -29,9 +29,24 @@ export function supportAgentsJsonLd(): Graph {
         "@type": "BreadcrumbList",
         "@id": `${url}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
-          { "@type": "ListItem", position: 2, name: "Services", item: absoluteUrl("/services") },
-          { "@type": "ListItem", position: 3, name: seo.serviceName, item: url },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: absoluteUrl("/"),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: absoluteUrl("/services"),
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: seo.serviceName,
+            item: url,
+          },
         ],
       },
       {

@@ -157,7 +157,9 @@ export function BusinessProcessAutomationContent() {
               <li key={step}>{step}</li>
             ))}
           </ol>
-          <p className="mt-8 max-w-3xl text-muted-foreground">{proof.pastWork}</p>
+          <p className="mt-8 max-w-3xl text-muted-foreground">
+            {proof.pastWork}
+          </p>
           <p className="mt-8 text-center text-lg font-medium">{proof.leadIn}</p>
           <p className="mt-2 text-center text-muted-foreground">
             {proof.microcopy}
@@ -424,8 +426,8 @@ export function BusinessProcessAutomationContent() {
               <Link href="mailto:contact@rizon.agency">
                 contact@rizon.agency
               </Link>{" "}
-              with the steps of one process you repeat every week and the
-              tools involved. A rough list is fine.
+              with the steps of one process you repeat every week and the tools
+              involved. A rough list is fine.
             </p>
             <p className="mt-4 text-center text-sm">
               Not ready to talk?{" "}

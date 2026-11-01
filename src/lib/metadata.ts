@@ -31,7 +31,10 @@ export function pageSocial({
     ? {}
     : {
         images: [
-          socialImage("/opengraph-image", `${site.name} | AI Automation Agency`),
+          socialImage(
+            "/opengraph-image",
+            `${site.name} | AI Automation Agency`,
+          ),
         ],
       };
   return {

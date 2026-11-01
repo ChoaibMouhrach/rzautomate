@@ -47,7 +47,10 @@ export default function Home() {
         <SectionContent>
           <ul className="flex flex-wrap gap-2 text-sm">
             {proof.shipped.map((item) => (
-              <li key={item} className="rounded-ui border border-border px-3 py-1">
+              <li
+                key={item}
+                className="rounded-ui border border-border px-3 py-1"
+              >
                 {item}
               </li>
             ))}
@@ -87,7 +90,9 @@ export default function Home() {
           <p className="mt-8 text-center text-lg font-medium">{pain.bridge}</p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -115,7 +120,9 @@ export default function Home() {
           </p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -167,7 +174,9 @@ export default function Home() {
           </p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -197,10 +206,14 @@ export default function Home() {
             {results.calculatorTitle}
           </h3>
           <p className="mt-2 text-muted-foreground">{results.calculator}</p>
-          <p className="mt-6 text-sm text-muted-foreground">{results.honesty}</p>
+          <p className="mt-6 text-sm text-muted-foreground">
+            {results.honesty}
+          </p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -265,7 +278,9 @@ export default function Home() {
           <p className="mt-6 text-muted-foreground">{why.note}</p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -292,7 +307,9 @@ export default function Home() {
           <p className="mt-6 font-medium">{guarantee.confidence}</p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -339,7 +356,9 @@ export default function Home() {
           </p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -389,7 +408,9 @@ export default function Home() {
           </ul>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -403,7 +424,9 @@ export default function Home() {
           <p className="mt-6 text-muted-foreground">{faq.closing}</p>
         </SectionContent>
         <SectionFooter>
-          <LinkButton href={site.bookingUrl}>Book a free 30-min call</LinkButton>
+          <LinkButton href={site.bookingUrl}>
+            Book a free 30-min call
+          </LinkButton>
         </SectionFooter>
       </Section>
 
@@ -416,7 +439,9 @@ export default function Home() {
               <li key={bullet}>{bullet}</li>
             ))}
           </ul>
-          <p className="mt-6 text-center text-muted-foreground">{finalCta.next}</p>
+          <p className="mt-6 text-center text-muted-foreground">
+            {finalCta.next}
+          </p>
           <p className="mt-2 text-center text-muted-foreground">
             {finalCta.capacity}
           </p>

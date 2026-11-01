@@ -58,8 +58,6 @@ export function PageContent({
   children: React.ReactNode;
 }) {
   return (
-    <div className={twMerge("page-container pb-24", className)}>
-      {children}
-    </div>
+    <div className={twMerge("page-container pb-24", className)}>{children}</div>
   );
 }

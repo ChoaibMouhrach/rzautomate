@@ -13,7 +13,10 @@ export function GET(request: NextRequest) {
     ["Company website", source.get("website")],
     ["Monthly new leads", source.get("volume")],
     ["CRM", source.get("crm")],
-  ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`).join("\n");
+  ]
+    .filter(([, value]) => value)
+    .map(([label, value]) => `${label}: ${value}`)
+    .join("\n");
   if (notes) target.searchParams.set("notes", notes);
   const response = NextResponse.redirect(target);
   response.headers.set("Cache-Control", "no-store");

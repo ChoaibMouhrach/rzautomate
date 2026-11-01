@@ -1,4 +1,10 @@
-import { Page, PageContent, PageDescription, PageHeader, PageTitle } from "@/components/site/page";
+import {
+  Page,
+  PageContent,
+  PageDescription,
+  PageHeader,
+  PageTitle,
+} from "@/components/site/page";
 
 export interface LegalSection {
   heading: string;

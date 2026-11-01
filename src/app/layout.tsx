@@ -51,7 +51,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <JsonLd data={siteJsonLd()} />
-        <NextTopLoader color="var(--primary)" height={3} showSpinner={false} shadow={false} />
+        <NextTopLoader
+          color="var(--primary)"
+          height={3}
+          showSpinner={false}
+          shadow={false}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>

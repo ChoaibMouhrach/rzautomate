@@ -90,8 +90,8 @@ export function DocumentProcessingContent() {
           <p className="mt-8 text-center text-muted-foreground">
             {fit.closing}{" "}
             <Link href={auditHref}>Get a free workflow audit</Link> and
-            I&apos;ll tell you if document processing is the right thing to automate
-            first.
+            I&apos;ll tell you if document processing is the right thing to
+            automate first.
           </p>
         </SectionContent>
       </Section>

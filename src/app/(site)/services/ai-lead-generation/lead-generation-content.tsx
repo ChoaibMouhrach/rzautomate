@@ -39,7 +39,6 @@ import {
 } from "./content";
 import { leadGenerationJsonLd } from "./json-ld";
 
-
 const ctaButtons = (
   <div className="flex flex-wrap justify-center gap-3">
     <LinkButton href={bookHref}>Book a free 30-min call</LinkButton>

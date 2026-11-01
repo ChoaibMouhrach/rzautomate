@@ -6,7 +6,10 @@ import { ContactHeader } from "./contact-header";
 import { ContactJsonLd } from "./contact-json-ld";
 import { ContactOptions } from "./contact-options";
 
-export const metadata: Metadata = pageSocial({ ...pageMetadata.contact, path: "/contact" });
+export const metadata: Metadata = pageSocial({
+  ...pageMetadata.contact,
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

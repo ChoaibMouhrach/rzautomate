@@ -1,9 +1,5 @@
 import { CalendarDays, Mail } from "lucide-react";
-import {
-  Card,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copy-button";
 import { LinkButton } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";

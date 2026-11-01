@@ -19,9 +19,7 @@ export function Breadcrumbs({ items }: { items: readonly BreadcrumbItem[] }) {
         return (
           <Breadcrumb key={item.label} className="flex items-center gap-2">
             {isLast ? (
-              <Link
-                className="cursor-default text-foreground hover:no-underline"
-              >
+              <Link className="cursor-default text-foreground hover:no-underline">
                 {item.label}
               </Link>
             ) : (

@@ -25,9 +25,7 @@ export function CtaCardContent({ children }: { children: React.ReactNode }) {
 }
 
 export function CtaCardTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xl font-semibold tracking-tight">{children}</h2>
-  );
+  return <h2 className="text-xl font-semibold tracking-tight">{children}</h2>;
 }
 
 export function CtaCardDescription({

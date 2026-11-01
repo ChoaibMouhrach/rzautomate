@@ -55,9 +55,7 @@ export function SectionDescription({
   );
 }
 
-export function SectionAction(
-  props: React.ComponentProps<typeof LinkButton>,
-) {
+export function SectionAction(props: React.ComponentProps<typeof LinkButton>) {
   return (
     <LinkButton
       variant="secondary"

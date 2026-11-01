@@ -36,35 +36,40 @@ export const servicesCopy = {
     "Six kinds of repetitive work I take off small and mid-sized businesses. Each one connects to the tools you already use.",
   cards: [
     {
-      title: "AI lead qualification and follow-up: every new lead answered and scored",
+      title:
+        "AI lead qualification and follow-up: every new lead answered and scored",
       body: "A form fill or inbound email lands. An AI agent scores the lead, writes back right away, and drops a qualified row into your CRM.",
       tools: "HubSpot · OpenAI · n8n",
       href: "/services/ai-lead-qualification",
       label: "AI lead qualification and follow-up",
     },
     {
-      title: "AI customer support agents: routine questions answered, hard ones escalated",
+      title:
+        "AI customer support agents: routine questions answered, hard ones escalated",
       body: "A customer emails or opens a ticket. The agent answers from your docs and past replies, and hands anything tricky to a person with context.",
       tools: "Claude · Gmail · Slack",
       href: "/services/ai-support-agents",
       label: "AI customer support agents",
     },
     {
-      title: "Client onboarding automation: new clients set up without the checklist",
+      title:
+        "Client onboarding automation: new clients set up without the checklist",
       body: "A deal closes or a Stripe payment clears. The welcome email, shared folder and kickoff invite are created and sent without anyone touching them.",
       tools: "Stripe · Gmail · Make",
       href: "/services/client-onboarding-automation",
       label: "Client onboarding automation",
     },
     {
-      title: "Operations and reporting automation: the weekly report builds itself",
+      title:
+        "Operations and reporting automation: the weekly report builds itself",
       body: "Every Monday, numbers get pulled from your CRM, accounting and ad accounts into one sheet, with a plain-English summary posted to Slack.",
       tools: "Google Sheets · QuickBooks · n8n",
       href: "/services/ops-reporting-automation",
       label: "Operations and reporting automation",
     },
     {
-      title: "Document and data entry automation: PDFs, invoices and forms entered for you",
+      title:
+        "Document and data entry automation: PDFs, invoices and forms entered for you",
       body: "An invoice or form lands in your inbox. AI reads the fields, flags anything unclear, and enters the rest into your CRM or books.",
       tools: "OpenAI · Xero · Google Sheets",
       href: "/services/document-data-automation",
@@ -129,7 +134,8 @@ export const useCases = {
         "Every Monday at 8am → data pulled from your CRM, billing and project tools → summary posted to Slack",
         "Task overdue or step skipped in onboarding → owner reminded automatically, manager copied after [X days]",
       ],
-      tools: "DocuSign · Google Drive · Notion · Asana · Google Sheets · Slack · n8n",
+      tools:
+        "DocuSign · Google Drive · Notion · Asana · Google Sheets · Slack · n8n",
     },
     {
       title: "AI automation for finance and admin",
@@ -139,7 +145,8 @@ export const useCases = {
         "Stripe payment fails → customer gets a polite retry email → finance sees it in a daily list",
         "PDF form or receipt uploaded → fields parsed into a row in your spreadsheet or database, low-confidence fields flagged for review",
       ],
-      tools: "Gmail · QuickBooks · Xero · Stripe · Google Sheets · Airtable · Claude",
+      tools:
+        "Gmail · QuickBooks · Xero · Stripe · Google Sheets · Airtable · Claude",
     },
     {
       title: "AI automation for marketing teams",
@@ -149,7 +156,8 @@ export const useCases = {
         "New subscriber or download → contact tagged by interest in your email tool → matching follow-up sequence starts",
         "First of the month → traffic, signups and campaign results pulled together → one-page summary emailed to you",
       ],
-      tools: "WordPress · Mailchimp · HubSpot · Google Analytics · Notion · OpenAI · Make",
+      tools:
+        "WordPress · Mailchimp · HubSpot · Google Analytics · Notion · OpenAI · Make",
     },
   ],
   footer:
@@ -201,7 +209,8 @@ export const results = {
 
 export const why = {
   eyebrow: "Why RZ Automate",
-  title: "Why hire me instead of a freelancer, a big agency, or doing it yourself",
+  title:
+    "Why hire me instead of a freelancer, a big agency, or doing it yourself",
   description:
     "A lot of AI automation gets sold on big ROI promises and demos that break in week two. Here are four things you can check before you pay me anything.",
   cards: [
@@ -287,13 +296,13 @@ export const guarantee = {
   opener:
     "Paying a new agency before you've seen anything run is a fair thing to worry about, so I carry that risk instead of you.",
   body: [
-    "Before I build anything, we write down what \"working\" means for your first automation. Plain checks you can test yourself, like \"every new form lead lands in the CRM with the right owner assigned.\" We both sign off on that list.",
+    'Before I build anything, we write down what "working" means for your first automation. Plain checks you can test yourself, like "every new form lead lands in the CRM with the right owner assigned." We both sign off on that list.',
     "Then I build it. If the first automation doesn't meet those written criteria within [GUARANTEE WINDOW] of kickoff, you choose one of two options: a full refund of the first milestone fee, paid within [REFUND SPEED], or I keep working on it at no charge until it passes. Either way, you keep the plan, the workflow map and the documentation.",
     "This covers what I control: the system does the job we agreed on. I don't promise revenue or sales numbers, because those depend on things outside the build. It also needs three things from you: access to your tools by [ACCESS DEADLINE], the success criteria agreed in writing before work starts, and the scope we signed. If the scope changes mid-build, we rewrite the criteria together.",
   ],
   claimTitle: "How to claim it",
   claim: [
-    "Email contact@rizon.agency with \"[GUARANTEE NAME] claim\" in the subject and tell me which criterion isn't met.",
+    'Email contact@rizon.agency with "[GUARANTEE NAME] claim" in the subject and tell me which criterion isn\'t met.',
     "We check it together against the written list, on a short call or a screen recording.",
     "You pick: the refund, sent within [REFUND SPEED], or free work until it passes.",
   ],
@@ -458,5 +467,6 @@ export const finalCta = {
   ],
   next: "Pick a time below. After the call, I send you the written plan within [PLAN TURNAROUND].",
   capacity: "I take on [N] builds a month. Next opening is [MONTH].",
-  email: "Rather not get on a call? Email me at contact@rizon.agency and tell me what you want off your plate.",
+  email:
+    "Rather not get on a call? Email me at contact@rizon.agency and tell me what you want off your plate.",
 };

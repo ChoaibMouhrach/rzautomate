@@ -11,7 +11,12 @@ const social = pageSocial({
 });
 
 const socialImages = [
-  { url: `${path}/opengraph-image`, width: 1200, height: 630, alt: seo.imageAlt },
+  {
+    url: `${path}/opengraph-image`,
+    width: 1200,
+    height: 630,
+    alt: seo.imageAlt,
+  },
 ];
 
 export const metadata: Metadata = {

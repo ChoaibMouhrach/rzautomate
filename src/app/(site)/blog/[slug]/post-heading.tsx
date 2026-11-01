@@ -37,9 +37,7 @@ export function PostHeading({
       <Button
         onPress={copyLink}
         aria-label={`Copy link to “${children}”`}
-        className={({ isFocusVisible }) =>
-          anchor({ isCopied, isFocusVisible })
-        }
+        className={({ isFocusVisible }) => anchor({ isCopied, isFocusVisible })}
       >
         {isCopied ? (
           <Check aria-hidden className="size-5" />

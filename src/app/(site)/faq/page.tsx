@@ -7,7 +7,10 @@ import { FaqHeader } from "./faq-header";
 import { FaqJsonLd } from "./faq-json-ld";
 import { FaqList } from "./faq-list";
 
-export const metadata: Metadata = pageSocial({ ...pageMetadata.faq, path: "/faq" });
+export const metadata: Metadata = pageSocial({
+  ...pageMetadata.faq,
+  path: "/faq",
+});
 
 export default function FaqPage() {
   return (

@@ -6,5 +6,8 @@ export const contentType = ogContentType;
 export const alt = seo.imageAlt;
 
 export default function Image() {
-  return ogCard({ eyebrow: "AI agent development", title: "Answers with sources. Actions with approval." });
+  return ogCard({
+    eyebrow: "AI agent development",
+    title: "Answers with sources. Actions with approval.",
+  });
 }

@@ -8,7 +8,8 @@ export const hero = {
     "AI chatbot development for customer support: routine questions answered, hard ones escalated",
   subline:
     "I'm a software engineer. I build a custom AI customer service agent that answers your customers' repeat questions from your own docs and data, and hands the tricky ones to your team.",
-  trust: "Free · 30 min · No commitment. You talk to the engineer who builds it.",
+  trust:
+    "Free · 30 min · No commitment. You talk to the engineer who builds it.",
 };
 
 export const fit = {
@@ -36,9 +37,18 @@ export const pain = {
   title: "Still answering support emails by hand?",
   description: "That's [X hrs/week] gone, and customers still wait.",
   cards: [
-    ["Same 10 questions, all day", "Order status, pricing, how-to, refunds. Typed again, every time."],
-    ["Replies sit overnight and all weekend", "By then they've complained or bought elsewhere."],
-    ["Best people stuck copy-pasting", "Hard cases wait while they paste the refund policy."],
+    [
+      "Same 10 questions, all day",
+      "Order status, pricing, how-to, refunds. Typed again, every time.",
+    ],
+    [
+      "Replies sit overnight and all weekend",
+      "By then they've complained or bought elsewhere.",
+    ],
+    [
+      "Best people stuck copy-pasting",
+      "Hard cases wait while they paste the refund policy.",
+    ],
     ["Burned by a bad chatbot", "Canned, wrong answers made AI feel risky."],
   ],
   bridge:
@@ -86,7 +96,8 @@ export const build = {
 
 export const proof = {
   eyebrow: "See it running",
-  title: "Watch an AI support agent answer, look up an order and hand off to a human",
+  title:
+    "Watch an AI support agent answer, look up an order and hand off to a human",
   description:
     "This is a demo on a sample store's help docs and order data, not a client project. Three customer emails go in, and you see exactly what the agent does with each one.",
   steps: [
@@ -160,14 +171,16 @@ export const how = {
       you: "Tell me when prices, policies or products change, and when you want more question types added.",
     },
   ],
-  total: "From our first call to your support agent drafting real replies: [TOTAL DAYS] days.",
+  total:
+    "From our first call to your support agent drafting real replies: [TOTAL DAYS] days.",
   microcopy:
     "Bring a few recent tickets. You'll leave knowing how much of your inbox an agent could take, even if you never hire me.",
 };
 
 export const scope = {
   title: "What's included in your customer support automation",
-  intro: "Here's exactly what you get, what you don't, and the tools it works with.",
+  intro:
+    "Here's exactly what you get, what you don't, and the tools it works with.",
   includedTitle: "Included",
   included: [
     "The AI support agent, built and tested on your real questions",
@@ -229,11 +242,26 @@ export const pricing = {
     "The exact build price goes in your written plan before any work starts. It doesn't change unless you add scope.",
   affectsTitle: "What affects the price",
   affects: [
-    ["Channels.", "One inbox costs less than email plus live chat plus a contact form."],
-    ["Lookups.", "Answering from your FAQ is simple. Pulling order status from Shopify or account details from Stripe or your CRM adds work."],
-    ["Volume.", "More tickets a day means more routing rules, more edge cases and more testing before launch."],
-    ["Languages.", "Each extra language needs its own testing against real customer questions."],
-    ["Your knowledge base.", "Clean, current docs keep the price down. If the answers only live in people's heads or old email threads, I write them up first, and that's part of the scope."],
+    [
+      "Channels.",
+      "One inbox costs less than email plus live chat plus a contact form.",
+    ],
+    [
+      "Lookups.",
+      "Answering from your FAQ is simple. Pulling order status from Shopify or account details from Stripe or your CRM adds work.",
+    ],
+    [
+      "Volume.",
+      "More tickets a day means more routing rules, more edge cases and more testing before launch.",
+    ],
+    [
+      "Languages.",
+      "Each extra language needs its own testing against real customer questions.",
+    ],
+    [
+      "Your knowledge base.",
+      "Clean, current docs keep the price down. If the answers only live in people's heads or old email threads, I write them up first, and that's part of the scope.",
+    ],
   ],
   payment:
     "[PAYMENT TERMS]. Maintenance is billed monthly and you can stop it at any time. Everything stays in your accounts either way.",
@@ -290,7 +318,8 @@ export const faq = {
     "Straight answers to what owners ask before they let an AI reply to customers.",
   items: [
     {
-      question: "Will an AI customer service agent give wrong answers to my customers?",
+      question:
+        "Will an AI customer service agent give wrong answers to my customers?",
       answer:
         "It can, so I build it to hold back when it's unsure. The agent answers only from your docs, FAQs, past replies and order data. Below the confidence threshold you set, it drafts a reply for your team instead of sending. You can launch in drafts-only mode, where a person approves every reply. Quality depends on your docs.",
     },
@@ -305,7 +334,8 @@ export const faq = {
         "They go to a person. The agent spots anger, refund disputes, legal or sensitive topics and anything outside your docs, then hands the ticket to your team in Slack or your help desk with the full thread, the customer's order details and a short summary. It doesn't make refunds or account changes unless you approve them.",
     },
     {
-      question: "Does the AI support agent work with my help desk or email inbox?",
+      question:
+        "Does the AI support agent work with my help desk or email inbox?",
       answer:
         "Yes, in most cases. The agent works inside the tools you already use, including Gmail, Outlook, Zendesk, Freshdesk, Help Scout, Gorgias, Intercom and Crisp. It reads new tickets, posts replies or internal notes, and adds tags. You don't switch help desks. If yours isn't listed but has an API, I'll confirm on the free call.",
     },
@@ -315,7 +345,8 @@ export const faq = {
         "Your customers' data stays in accounts you own. The agent reads only the inboxes, tickets and order fields it needs. AI steps run through the OpenAI or Anthropic business APIs, which don't train on API data by default, and n8n can be self-hosted on an EU server. For GDPR, I'll sign a data processing agreement before launch.",
     },
     {
-      question: "What does an AI customer service agent cost to run each month?",
+      question:
+        "What does an AI customer service agent cost to run each month?",
       answer:
         "Usually [MONTHLY RANGE] a month, on top of the one-time build from [SUPPORT AGENT PRICE FROM]. That covers n8n hosting, AI model usage and maintenance. Model costs grow with ticket volume, so a few hundred tickets a month cost far less than thousands. API fees bill to your own accounts, so you see every charge.",
     },

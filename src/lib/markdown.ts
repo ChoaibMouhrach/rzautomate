@@ -17,7 +17,10 @@ const entities: Record<string, string> = {
 };
 
 function decodeEntities(text: string) {
-  return text.replace(/&(?:amp|lt|gt|quot|apos|#x27|#39);/g, (m) => entities[m]);
+  return text.replace(
+    /&(?:amp|lt|gt|quot|apos|#x27|#39);/g,
+    (m) => entities[m],
+  );
 }
 
 function metaContent(html: string, name: string) {
@@ -48,7 +51,10 @@ export function pageToMarkdown(html: string, pageUrl: URL) {
 
   const body = converter
     .translate(cleaned)
-    .replace(/\]\((\/(?!\/)[^)]*)\)/g, (_, path) => `](${pageUrl.origin}${path})`)
+    .replace(
+      /\]\((\/(?!\/)[^)]*)\)/g,
+      (_, path) => `](${pageUrl.origin}${path})`,
+    )
     .replace(/(\]\([^)]*\))(\[)/g, "$1\n$2")
     .replace(/!\[\]\([^)]*\)\n*/g, "");
 

@@ -90,12 +90,29 @@ export function AgentDevelopmentContent() {
             </Card>
           </div>
           <p className="mt-8 text-muted-foreground">
-            Looking for something specific? See <Link href="/services/ai-customer-support-agents">AI customer support agents</Link>, <Link href="/services/ai-lead-generation">AI lead generation &amp; CRM automation</Link>, <Link href="/services/ai-document-processing">AI document processing</Link> or <Link href="/services/business-process-automation">business process automation</Link>.
+            Choosing a model? <Link href="/models">Compare model prices</Link>. Looking for something specific? See{" "}
+            <Link href="/services/ai-customer-support-agents">
+              AI customer support agents
+            </Link>
+            ,{" "}
+            <Link href="/services/ai-lead-generation">
+              AI lead generation &amp; CRM automation
+            </Link>
+            ,{" "}
+            <Link href="/services/ai-document-processing">
+              AI document processing
+            </Link>{" "}
+            or{" "}
+            <Link href="/services/business-process-automation">
+              business process automation
+            </Link>
+            .
           </p>
           <p className="mt-8 text-center text-muted-foreground">
             {fit.closing}{" "}
             <Link href={auditHref}>Get a free workflow audit</Link> and
-            I&apos;ll tell you whether your task needs an agent, a simpler workflow or nothing yet.
+            I&apos;ll tell you whether your task needs an agent, a simpler
+            workflow or nothing yet.
           </p>
         </SectionContent>
       </Section>
@@ -162,9 +179,17 @@ export function AgentDevelopmentContent() {
             ))}
           </ol>
           <h3 className="mt-10 text-xl font-semibold">Internal builds</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Systems I built and use in my own business. Measured results will be added when available.</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Systems I built and use in my own business. Measured results will be
+            added when available.
+          </p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {proof.internal.map((item) => <Card key={item.title}><CardTitle>{item.title}</CardTitle><CardDescription>{item.body}</CardDescription></Card>)}
+            {proof.internal.map((item) => (
+              <Card key={item.title}>
+                <CardTitle>{item.title}</CardTitle>
+                <CardDescription>{item.body}</CardDescription>
+              </Card>
+            ))}
           </div>
           <p className="mt-8 text-center text-lg font-medium">{proof.leadIn}</p>
           <p className="mt-2 text-center text-muted-foreground">

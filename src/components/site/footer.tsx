@@ -32,7 +32,7 @@ export async function Footer() {
             {site.description}
           </p>
         </div>
-        <div className="grid gap-8 text-sm sm:grid-cols-[minmax(0,20rem)_auto_auto] sm:gap-12">
+        <div className="grid gap-8 text-sm sm:grid-cols-2 xl:grid-cols-[minmax(0,20rem)_auto_auto_auto] sm:gap-12">
           <nav aria-label="Services" className="flex flex-col gap-2">
             <h2 className="mb-2 font-semibold">Services</h2>
             <Link href="/services" variant="muted">
@@ -50,11 +50,19 @@ export async function Footer() {
           </nav>
           <nav aria-label="Company" className="flex flex-col gap-2">
             <h2 className="mb-2 font-semibold">Company</h2>
-            {nav.filter((item) => item.href !== "/services").map((item) => (
-              <Link key={item.href} href={item.href} variant="muted">
-                {item.label}
-              </Link>
-            ))}
+            {nav
+              .filter((item) => item.href !== "/services")
+              .map((item) => (
+                <Link key={item.href} href={item.href} variant="muted">
+                  {item.label}
+                </Link>
+              ))}
+          </nav>
+          <nav aria-label="Directories" className="flex flex-col gap-2">
+            <h2 className="mb-2 font-semibold">Directories</h2>
+            <Link href="/models" variant="muted">
+              Compare model prices
+            </Link>
           </nav>
           <nav aria-label="Legal" className="flex flex-col gap-2">
             <h2 className="mb-2 font-semibold">Legal</h2>

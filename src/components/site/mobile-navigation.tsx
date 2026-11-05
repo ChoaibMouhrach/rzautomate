@@ -1,33 +1,40 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useState, type ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 
 export function MobileNavigation({ children }: { children: ReactNode }) {
-  const menu = useRef<HTMLDetailsElement>(null);
+  const pathname = usePathname();
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
+  const isOpen = openedOn === pathname;
+  const setIsOpen = (open: boolean) => setOpenedOn(open ? pathname : null);
 
   return (
-    <nav
-      aria-label="Mobile navigation"
-      className="page-container pb-4 sm:hidden"
-    >
-      <details
-        ref={menu}
-        className="group rounded-ui border border-border"
-        onClick={(event) => {
-          if (
-            event.target instanceof Element &&
-            event.target.closest("a[href]") &&
-            menu.current
-          ) {
-            menu.current.open = false;
-          }
-        }}
-      >
-        <summary className="cursor-pointer px-4 py-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
-          Menu
-        </summary>
-        {children}
-      </details>
-    </nav>
+    <div className="sm:hidden">
+      <SheetTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+        <Button variant="secondary" size="icon" aria-label="Open menu">
+          <Menu aria-hidden className="size-5" />
+        </Button>
+        <Sheet position="end" aria-label="Mobile navigation">
+          <nav
+            aria-label="Mobile navigation"
+            onClickCapture={(event) => {
+              if (
+                event.target instanceof Element &&
+                event.target.closest("a[href]")
+              ) {
+                setIsOpen(false);
+              }
+            }}
+          >
+            <SheetHeader>Menu</SheetHeader>
+            {children}
+          </nav>
+        </Sheet>
+      </SheetTrigger>
+    </div>
   );
 }

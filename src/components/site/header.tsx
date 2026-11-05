@@ -75,37 +75,39 @@ export function Header() {
             </NavigationMenu>
           </div>
         </div>
-        <LinkButton href="/contact" size="sm">
-          Book a free call
-        </LinkButton>
-      </div>
-      <MobileNavigation>
-        <div className="border-t border-border p-4 text-sm">
-          <Link href="/services" className="font-medium no-underline">
-            All services
-          </Link>
-          <ul className="mt-3 space-y-3 border-l border-border pl-4">
-            {services.map((service) => (
-              <li key={service.slug}>
-                <Link href={`/services/${service.slug}`} variant="muted">
-                  {service.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-4">
-            {nav
-              .filter((item) => item.href !== "/services")
-              .map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} variant="muted">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-          </ul>
+        <div className="flex items-center gap-3">
+          <LinkButton href="/contact" size="sm">
+            Book a free call
+          </LinkButton>
+          <MobileNavigation>
+            <div className="mt-4 text-sm">
+              <Link href="/services" className="font-medium no-underline">
+                All services
+              </Link>
+              <ul className="mt-3 space-y-3 border-l border-border pl-4">
+                {services.map((service) => (
+                  <li key={service.slug}>
+                    <Link href={`/services/${service.slug}`} variant="muted">
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-4">
+                {nav
+                  .filter((item) => item.href !== "/services")
+                  .map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} variant="muted">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </MobileNavigation>
         </div>
-      </MobileNavigation>
+      </div>
     </header>
   );
 }

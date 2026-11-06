@@ -12,7 +12,7 @@ Object.assign(bar.style, {
   pointerEvents: "none",
   transition: "width 200ms ease-out, opacity 200ms ease-out",
 });
-document.documentElement.append(bar);
+document.documentElement.appendChild(bar);
 
 let progress = 0;
 let trickle: number | undefined;

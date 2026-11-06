@@ -2,7 +2,6 @@
 
 import { NavigationMenu as BaseNavigationMenu } from "@base-ui/react/navigation-menu";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { tv } from "@/lib/ui";
 
@@ -83,7 +82,7 @@ export function NavigationMenuLink({
   return (
     <BaseNavigationMenu.Link
       closeOnClick
-      render={<Link href={href} />}
+      render={<a href={href} />}
       className={link({ variant, className })}
     >
       {children}

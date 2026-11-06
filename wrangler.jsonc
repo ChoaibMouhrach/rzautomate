@@ -1,0 +1,11 @@
+{
+  "name": "rzautomate",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist/client",
+    "run_worker_first": ["/*", "!/_astro/*"]
+  }
+}

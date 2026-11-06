@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Footer from "@/components/site/footer.astro";
+import { Header } from "@/components/site/header";
+import type { PageSeo } from "@/lib/metadata";
+
+type Props = PageSeo;
+---
+
+<BaseLayout {...Astro.props}>
+  <Header client:load transition:persist="header" pathname={Astro.url.pathname} />
+  <main class="flex-1"><slot /></main>
+  <Footer />
+</BaseLayout>

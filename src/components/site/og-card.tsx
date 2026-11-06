@@ -1,11 +1,34 @@
-import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { Resvg } from "@resvg/resvg-js";
+import satori from "satori";
 import { site } from "@/lib/site";
 
-export const ogSize = { width: 1200, height: 630 };
-export const ogContentType = "image/png";
+const require = createRequire(import.meta.url);
 
-export function ogCard({ eyebrow, title }: { eyebrow: string; title: string }) {
-  return new ImageResponse(
+const fonts = Promise.all(
+  [400, 700].map(async (weight) => ({
+    name: "Geist",
+    weight: weight as 400 | 700,
+    style: "normal" as const,
+    data: await readFile(
+      require.resolve(
+        `@fontsource/geist/files/geist-latin-${weight}-normal.woff`,
+      ),
+    ),
+  })),
+);
+
+export const ogSize = { width: 1200, height: 630 };
+
+export async function ogCard({
+  eyebrow,
+  title,
+}: {
+  eyebrow: string;
+  title: string;
+}) {
+  const svg = await satori(
     <div
       style={{
         width: "100%",
@@ -16,6 +39,7 @@ export function ogCard({ eyebrow, title }: { eyebrow: string; title: string }) {
         padding: 96,
         background: "#0a0a0a",
         color: "#fafafa",
+        fontFamily: "Geist",
       }}
     >
       <div style={{ fontSize: 40, opacity: 0.7 }}>{eyebrow}</div>
@@ -24,6 +48,12 @@ export function ogCard({ eyebrow, title }: { eyebrow: string; title: string }) {
       </div>
       <div style={{ fontSize: 36, opacity: 0.7 }}>{site.name}</div>
     </div>,
-    ogSize,
+    { ...ogSize, fonts: await fonts },
   );
+  const png = new Resvg(svg, { fitTo: { mode: "width", value: ogSize.width } })
+    .render()
+    .asPng();
+  return new Response(new Uint8Array(png), {
+    headers: { "Content-Type": "image/png" },
+  });
 }

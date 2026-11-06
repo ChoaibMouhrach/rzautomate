@@ -1,0 +1,11 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { LegalPage } from "@/components/site/legal-page";
+import { privacyPolicy } from "@/components/pages/privacy/content";
+import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
+---
+
+<SiteLayout {...pageSocial(pageMetadata.privacy)}>
+  <LegalPage {...privacyPolicy} />
+</SiteLayout>

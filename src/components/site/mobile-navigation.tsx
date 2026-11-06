@@ -1,13 +1,17 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 
-export function MobileNavigation({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
+export function MobileNavigation({
+  pathname,
+  children,
+}: {
+  pathname: string;
+  children: ReactNode;
+}) {
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const isOpen = openedOn === pathname;
   const setIsOpen = (open: boolean) => setOpenedOn(open ? pathname : null);

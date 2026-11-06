@@ -1,7 +1,4 @@
-import Image from "next/image";
 import { tv, type VariantProps } from "@/lib/ui";
-
-const pixels = { sm: 32, md: 40, lg: 56 } as const;
 
 const avatar = tv({
   base: "relative shrink-0 overflow-hidden rounded-full bg-muted",
@@ -19,12 +16,12 @@ export interface AvatarProps extends VariantProps<typeof avatar> {
 export function Avatar({ src, alt = "", size = "md" }: AvatarProps) {
   return (
     <span className={avatar({ size })}>
-      <Image
+      <img
         src={src}
         alt={alt}
-        fill
-        sizes={`${pixels[size] * 2}px`}
-        className="object-cover"
+        decoding="async"
+        loading="lazy"
+        className="absolute inset-0 size-full object-cover"
       />
     </span>
   );

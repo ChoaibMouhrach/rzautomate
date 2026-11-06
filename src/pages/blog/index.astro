@@ -1,0 +1,21 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { ContactCta } from "@/components/site/contact-cta";
+import { Page, PageContent } from "@/components/site/page";
+import { BlogHeader } from "@/components/pages/blog/blog-header";
+import { BlogJsonLd } from "@/components/pages/blog/blog-json-ld";
+import { PostList } from "@/components/pages/blog/post-list";
+import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
+---
+
+<SiteLayout {...pageSocial(pageMetadata.blog)}>
+  <Page>
+    <BlogJsonLd />
+    <BlogHeader />
+    <PageContent>
+      <PostList />
+      <ContactCta className="mt-16" />
+    </PageContent>
+  </Page>
+</SiteLayout>

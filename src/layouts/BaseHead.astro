@@ -1,0 +1,73 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { defaultImage, defaultTitle, type PageSeo } from "@/lib/metadata";
+import { absoluteUrl, site } from "@/lib/site";
+
+type Props = PageSeo;
+
+const seo = Astro.props;
+const title = seo.title ? `${seo.title} | ${site.name}` : defaultTitle;
+const description = seo.description ?? site.description;
+const pathname =
+  Astro.url.pathname.replace(/(?:^|\/)index\.html$|\.html$|\/+$/, "") || "/";
+const canonical = absoluteUrl(pathname);
+const image = seo.image ?? defaultImage;
+const openGraphTitle = seo.openGraphTitle ?? seo.title ?? defaultTitle;
+const openGraphDescription = seo.openGraphDescription ?? description;
+const twitterTitle = seo.twitterTitle ?? seo.title ?? defaultTitle;
+const twitterDescription = seo.twitterDescription ?? description;
+const robots = seo.noindex
+  ? "noindex, nofollow"
+  : seo.richSnippets
+    ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    : undefined;
+---
+
+<meta charset="utf-8" />
+<ClientRouter />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{robots && <meta name="robots" content={robots} />}
+{seo.authors?.map((author) => <meta name="author" content={author} />)}
+{!seo.noindex && <link rel="canonical" href={canonical} />}
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  href="/blog/feed.xml"
+/>
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" href="/icon.png" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-icon.png" />
+<meta property="og:type" content={seo.article ? "article" : "website"} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={openGraphTitle} />
+<meta property="og:description" content={openGraphDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={absoluteUrl(image.url)} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={image.alt} />
+{
+  seo.article && (
+    <>
+      <meta
+        property="article:published_time"
+        content={seo.article.publishedTime}
+      />
+      <meta
+        property="article:modified_time"
+        content={seo.article.modifiedTime}
+      />
+      {seo.authors?.map((author) => (
+        <meta property="article:author" content={author} />
+      ))}
+    </>
+  )
+}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={twitterTitle} />
+<meta name="twitter:description" content={twitterDescription} />
+<meta name="twitter:image" content={absoluteUrl(image.url)} />
+<meta name="twitter:image:alt" content={image.alt} />

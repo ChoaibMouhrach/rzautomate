@@ -1,0 +1,23 @@
+---
+import { LeadGenerationContent } from "@/components/pages/services/ai-lead-generation/lead-generation-content";
+import { path, seo } from "@/components/pages/services/ai-lead-generation/content";
+import { authorName } from "@/components/pages/services/ai-lead-generation/json-ld";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+
+const social = pageSocial({
+  title: seo.title,
+  description: seo.description,
+  richSnippets: true,
+  authors: [authorName],
+  image: { url: `${path}/opengraph-image.png`, alt: seo.imageAlt },
+  openGraphTitle: "AI Lead Generation & CRM Automation",
+  openGraphDescription: seo.openGraphDescription,
+  twitterTitle: "AI Lead Generation & CRM Automation",
+  twitterDescription: seo.twitterDescription,
+});
+---
+
+<SiteLayout {...social}>
+  <LeadGenerationContent />
+</SiteLayout>

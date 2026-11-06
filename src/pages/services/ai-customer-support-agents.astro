@@ -1,0 +1,21 @@
+---
+import { AiCustomerSupportAgentsContent } from "@/components/pages/services/ai-customer-support-agents/customer-support-content";
+import { seo } from "@/components/pages/services/ai-customer-support-agents/content";
+import { authorName } from "@/components/pages/services/ai-customer-support-agents/json-ld";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { defaultImage, pageSocial } from "@/lib/metadata";
+
+const social = pageSocial({
+  title: seo.title,
+  description: seo.description,
+  richSnippets: true,
+  authors: [authorName],
+  image: { ...defaultImage, alt: seo.imageAlt },
+  openGraphDescription: seo.openGraphDescription,
+  twitterDescription: seo.twitterDescription,
+});
+---
+
+<SiteLayout {...social}>
+  <AiCustomerSupportAgentsContent />
+</SiteLayout>

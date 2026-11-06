@@ -1,5 +1,4 @@
 import { NodeHtmlMarkdown } from "node-html-markdown";
-import { site } from "@/lib/site";
 
 const converter = new NodeHtmlMarkdown({
   ignore: ["script", "style", "svg", "template", "noscript"],
@@ -79,29 +78,4 @@ export function htmlToMarkdown(html: string, pageUrl: URL) {
     .join("\n");
 
   return `${frontMatter}\n\n${body}\n`;
-}
-
-export function trustedOrigin(requestUrl: URL) {
-  const trustedHosts = new Set(
-    [
-      "localhost",
-      "127.0.0.1",
-      new URL(site.url).hostname,
-      process.env.VERCEL_URL,
-      process.env.VERCEL_BRANCH_URL,
-    ].filter(Boolean),
-  );
-
-  return trustedHosts.has(requestUrl.hostname)
-    ? requestUrl.origin
-    : new URL(site.url).origin;
-}
-
-export async function fetchPageHtml(pageUrl: URL) {
-  const response = await fetch(pageUrl, {
-    headers: { Accept: "text/html", "x-markdown-source": "1" },
-  });
-  const html = await response.text();
-
-  return response.ok && !isNotFoundPage(html) ? html : undefined;
 }

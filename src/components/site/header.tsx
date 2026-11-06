@@ -14,7 +14,7 @@ import { nav } from "@/lib/site";
 
 const [servicesLink, ...otherLinks] = nav.slice(0, -1);
 
-export function Header() {
+export function Header({ pathname }: { pathname: string }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="page-container flex h-16 items-center justify-between gap-6">
@@ -79,7 +79,7 @@ export function Header() {
           <LinkButton href="/contact" size="sm">
             Book a free call
           </LinkButton>
-          <MobileNavigation>
+          <MobileNavigation pathname={pathname}>
             <div className="mt-4 text-sm">
               <Link href="/services" className="font-medium no-underline">
                 All services

@@ -2,7 +2,7 @@ export const site = {
   name: "RZ Automate",
   description:
     "RZ Automate builds AI agents and n8n workflows that take lead follow-up, data entry, support replies and reporting off your team. Free 30-min call.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://rzautomate.com",
+  url: import.meta.env.PUBLIC_SITE_URL ?? "https://rzautomate.com",
   email: "choaib.m@rizon.agency",
   bookingUrl: "https://cal.com/rizon.agency-cvbkll/30min",
 };

@@ -1,0 +1,21 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { ContactCta } from "@/components/site/contact-cta";
+import { Page, PageContent } from "@/components/site/page";
+import { ServiceList } from "@/components/pages/services/service-list";
+import { ServicesHeader } from "@/components/pages/services/services-header";
+import { ServicesJsonLd } from "@/components/pages/services/services-json-ld";
+import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
+---
+
+<SiteLayout {...pageSocial(pageMetadata.services)}>
+  <Page>
+    <ServicesJsonLd />
+    <ServicesHeader />
+    <PageContent>
+      <ServiceList />
+      <ContactCta className="mt-16" />
+    </PageContent>
+  </Page>
+</SiteLayout>

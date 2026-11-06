@@ -1,54 +1,34 @@
-import type { Metadata } from "next";
 import { site } from "@/lib/site";
 
-const socialImage = (url: string, alt: string) => ({
-  url,
-  width: 1200,
-  height: 630,
-  alt,
-});
+export interface SocialImage {
+  url: string;
+  alt: string;
+}
 
-type PageSocial = {
-  title: string;
-  description: string;
-  path: string;
-  routeImage?: boolean;
+export interface PageSeo {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  richSnippets?: boolean;
+  image?: SocialImage;
+  openGraphTitle?: string;
+  openGraphDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  authors?: string[];
   article?: {
     publishedTime: string;
     modifiedTime: string;
-    authors: string[];
   };
+}
+
+export const defaultTitle = `${site.name} | AI Automation Agency`;
+
+export const defaultImage: SocialImage = {
+  url: "/opengraph-image.png",
+  alt: defaultTitle,
 };
 
-export function pageSocial({
-  title,
-  description,
-  path,
-  routeImage,
-  article,
-}: PageSocial): Metadata {
-  const images = routeImage
-    ? {}
-    : {
-        images: [
-          socialImage(
-            "/opengraph-image",
-            `${site.name} | AI Automation Agency`,
-          ),
-        ],
-      };
-  return {
-    title,
-    description,
-    openGraph: {
-      ...(article ? { type: "article", ...article } : { type: "website" }),
-      siteName: site.name,
-      locale: "en_US",
-      title,
-      description,
-      url: path,
-      ...images,
-    },
-    twitter: { card: "summary_large_image", title, description, ...images },
-  };
+export function pageSocial(seo: PageSeo): PageSeo {
+  return { image: defaultImage, ...seo };
 }

@@ -1,0 +1,23 @@
+---
+import { BusinessProcessAutomationContent } from "@/components/pages/services/business-process-automation/business-process-automation-content";
+import { path, seo } from "@/components/pages/services/business-process-automation/content";
+import { authorName } from "@/components/pages/services/business-process-automation/json-ld";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+
+const social = pageSocial({
+  title: seo.title,
+  description: seo.description,
+  richSnippets: true,
+  authors: [authorName],
+  image: { url: `${path}/opengraph-image.png`, alt: seo.imageAlt },
+  openGraphTitle: seo.socialTitle,
+  openGraphDescription: seo.openGraphDescription,
+  twitterTitle: seo.socialTitle,
+  twitterDescription: seo.twitterDescription,
+});
+---
+
+<SiteLayout {...social}>
+  <BusinessProcessAutomationContent />
+</SiteLayout>

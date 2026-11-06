@@ -1,0 +1,23 @@
+---
+import { DocumentProcessingContent } from "@/components/pages/services/ai-document-processing/document-processing-content";
+import { path, seo } from "@/components/pages/services/ai-document-processing/content";
+import { authorName } from "@/components/pages/services/ai-document-processing/json-ld";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+
+const social = pageSocial({
+  title: seo.title,
+  description: seo.description,
+  richSnippets: true,
+  authors: [authorName],
+  image: { url: `${path}/opengraph-image.png`, alt: seo.imageAlt },
+  openGraphTitle: seo.socialTitle,
+  openGraphDescription: seo.openGraphDescription,
+  twitterTitle: seo.socialTitle,
+  twitterDescription: seo.twitterDescription,
+});
+---
+
+<SiteLayout {...social}>
+  <DocumentProcessingContent />
+</SiteLayout>

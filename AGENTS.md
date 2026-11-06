@@ -1,25 +1,19 @@
-<!-- BEGIN:nextjs-agent-rules -->
-
-## This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
-
 ## Code comments
 
 Do not add comments unless they are required: for example a TODO, a warning about placeholder content, or a non-obvious reason that the code cannot express itself. Do not add comments that describe what the code does.
 
 ## Component placement
 
-A component used by only one page lives next to that page's `page.tsx` and is imported with a relative path. A component used by more than one page lives in `src/components`: design-system primitives in `ui/`, site-specific shared components in `site/`. When a colocated component is needed by a second page, move it to `src/components` as part of the same change, and update the imports.
+A component used by only one page lives in `src/components/pages/<route>/` and is imported with that path. A component used by more than one page lives in `src/components`: design-system primitives in `ui/`, site-specific shared components in `site/`. When a colocated component is needed by a second page, move it to `src/components` as part of the same change, and update the imports.
 
 ## Page files
 
-A `page.tsx` contains only the structure of the page: metadata, loading data from `params` (including `notFound()`), and composing components and layout wrappers. It must not contain body content: no copy, no data arrays, no list rendering, and no multi-element markup. Put that content in components next to the page, or in a `content.ts` file next to the page for plain data. This keeps each page readable as an outline of its sections, and keeps content and markup edits away from routing, metadata and data loading.
+A file in `src/pages` contains only the structure of the page: SEO props, loading data (`getStaticPaths` and props), and composing components and layout wrappers. It must not contain body content: no copy, no data arrays, no list rendering, and no multi-element markup. Put that content in components in `src/components/pages/<route>/`, or in a `content.ts` file there for plain data. This keeps each page readable as an outline of its sections, and keeps content and markup edits away from routing, SEO and data loading.
+
+## Stack
+
+The site is Astro with React islands, deployed to Cloudflare through `@astrojs/cloudflare`. Components render to static HTML by default; add a `client:*` directive in the `.astro` page only for the outermost interactive component, because nested React components do not hydrate on their own. `src/worker.ts` negotiates Markdown for AI agents and sets security headers, and `src/integrations/markdown-pages.ts` generates the `.md` files and `llms-full.txt` at build time.
 
 ## Canonical URLs
 
-Every indexable page must emit a self-referencing `<link rel="canonical">` for its own clean URL, without query parameters. Set `alternates.canonical` in the root layout metadata, or per page where a route needs a different value. Never set a canonical on a `noindex` page, and never point it at another page unless that page is a true duplicate. When adding a page or changing its URL, check that its rendered canonical is correct.
+Every indexable page must emit a self-referencing `<link rel="canonical">` for its own clean URL, without query parameters. `src/layouts/BaseHead.astro` derives the canonical from the page URL and omits it for `noindex` pages. Never set a canonical on a `noindex` page, and never point it at another page unless that page is a true duplicate. When adding a page or changing its URL, check that its rendered canonical is correct.

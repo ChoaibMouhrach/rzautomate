@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from "astro";
+import { FableDetails } from "@/components/pages/models/[slug]/fable-details";
+import { ModelDetails } from "@/components/pages/models/[slug]/model-details";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+import { models } from "@/lib/models";
+
+export const getStaticPaths = (() =>
+  models.map((model) => ({
+    params: { slug: model.slug },
+    props: { model },
+  }))) satisfies GetStaticPaths;
+
+const { model } = Astro.props;
+const isFable = model.slug === "claude-fable-5-1";
+const seo = pageSocial({
+  title: isFable
+    ? "Claude Fable 5.1 API Pricing, Context Window & Specs"
+    : model.name,
+  description: model.description,
+});
+---
+
+<SiteLayout {...seo}>
+  {isFable ? <FableDetails client:load /> : <ModelDetails model={model} />}
+</SiteLayout>

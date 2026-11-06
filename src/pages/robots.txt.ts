@@ -1,0 +1,8 @@
+import { absoluteUrl } from "@/lib/site";
+
+export function GET() {
+  return new Response(
+    `User-Agent: *\nAllow: /\nDisallow: /design\n\nSitemap: ${absoluteUrl("/sitemap.xml")}\n`,
+    { headers: { "Content-Type": "text/plain; charset=utf-8" } },
+  );
+}

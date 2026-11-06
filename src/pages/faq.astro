@@ -1,0 +1,21 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { ContactCta } from "@/components/site/contact-cta";
+import { Page, PageContent } from "@/components/site/page";
+import { FaqHeader } from "@/components/pages/faq/faq-header";
+import { FaqJsonLd } from "@/components/pages/faq/faq-json-ld";
+import { FaqList } from "@/components/pages/faq/faq-list";
+import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
+---
+
+<SiteLayout {...pageSocial(pageMetadata.faq)}>
+  <Page>
+    <FaqJsonLd />
+    <FaqHeader />
+    <PageContent>
+      <FaqList />
+      <ContactCta className="mt-16" />
+    </PageContent>
+  </Page>
+</SiteLayout>

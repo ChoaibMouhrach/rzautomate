@@ -41,7 +41,7 @@ export const TableOfContents = ({ items }: { items: readonly TocItem[] }) => {
               href={`#${item.id}`}
               variant="muted"
               aria-current={activeId === item.id ? "location" : undefined}
-              className={`-ml-px block border-l py-0.5 no-underline ${indent[item.level]} ${
+              className={`-ml-px block rounded-none border-l py-0.5 no-underline ${indent[item.level]} ${
                 activeId === item.id
                   ? "border-primary text-foreground"
                   : "border-transparent"

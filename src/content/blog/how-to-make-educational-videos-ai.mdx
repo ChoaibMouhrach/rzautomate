@@ -1,0 +1,154 @@
+---
+title: "How to make educational videos with AI in 10 minutes"
+metaTitle: "How to Make Educational Videos With AI (10 Min Each)"
+excerpt: "How to make educational videos with AI: our pipeline for slides, voice, clips and subtitles, what each video costs, and the checks that catch AI mistakes."
+category: "Video automation"
+date: 2026-11-09
+readingMinutes: 8
+author: choaib
+image: /blog/how-to-make-educational-videos-ai.webp
+imageAlt: "Pipeline for making educational videos with AI: script, slides, voice and clips joined into one MP4 with subtitles"
+faq:
+  - question: "How do I make an educational video with AI?"
+    answer: "Split the video into slides, voiceover, AI clips and a stitching step. Write the script first, generate the voice one scene at a time, then generate one short clip per scene from a list of what must be on screen. Stitch everything with subtitles timed from the audio, and watch the full result before you publish."
+  - question: "Can ChatGPT create animated videos?"
+    answer: "ChatGPT can write the script, scene list and clip prompts, but a video model makes the actual footage. We use Kling 3.0 for 10-second clips and ElevenLabs for the voice, then stitch them together with our own script. The language model plans the video, and a separate model renders each clip."
+  - question: "How much does it cost to make an educational video with AI?"
+    answer: "Our paid generation is about $0.25 for the voice per video plus $0.84 for each 10-second clip. Our videos have at least 8 scenes, so each one starts at about $6.97. Slides, subtitle timing and assembly run on our own machine for free, so the main cost left is review time."
+  - question: "How long should an educational video be?"
+    answer: "Most viewers prefer three to six minutes for instructional content. TechSmith's 2024 research found more than 30% of people pick that range. Let the script set the length: one clear point per scene, and stop when the point is made."
+  - question: "Can I make educational videos without showing my face?"
+    answer: "Yes. Our videos use AI voices, slides and AI clips with no presenter on camera. The voice carries the lesson, the slides show the key points, and the clips show the situation being described. Keep the same voice across a series so viewers get used to it."
+---
+
+import { PostFaq } from "@/components/pages/blog/[slug]/post-faq";
+import {
+  CtaCard,
+  CtaCardAction,
+  CtaCardContent,
+  CtaCardDescription,
+  CtaCardTitle,
+} from "@/components/ui/cta-card";
+
+To make educational videos with AI, split each video into four parts: slides, a voiceover, short AI video clips, and a stitching step that joins them with subtitles. Make each part on its own, check it, then put it together. That's how we make educational videos for a client now. Each one takes us about 10 minutes, including watching the result.
+
+The client's first sample, made by hand, took 4 hours. Yeah.
+
+## What goes into an AI educational video?
+
+Every video we make is four kinds of asset glued together. Slides carry the key points. A voice reads the script. Short AI clips show the scene. Then a script on our own machine stitches everything into one MP4 with subtitles burned in.
+
+Only two of those steps cost money.
+
+| Part | Tool we use | Cost |
+| --- | --- | --- |
+| Script text | Python reads the .docx, pdftotext reads PDFs | Free |
+| Slides | HTML with one locked CSS theme, rendered to PNG by headless Chrome | Free |
+| Voice | ElevenLabs, model eleven_v4 | About $0.25 per video |
+| Video clips | Kling 3.0, 720p, no audio | $0.84 per 10-second clip |
+| Subtitle timing | Local speech-to-text | Free |
+| Assembly | Our own stitch script | Free |
+
+We run the steps through Claude as an agent, with one hard rule: it never starts a paid generation unless we ask for it in that exact message. The generation account belongs to the client, so every call spends their money. The agent states the cost before the call and reports the remaining balance after.
+
+## How to make educational videos step by step
+
+Do the free steps first. Only pay for generation once the plan is locked.
+
+### Plan every scene from the script
+
+We pull the text out of the client's script file and list every scene: what the narrator says, the on-screen line, and the visual direction. That list is what everything else gets built from.
+
+The scripts were already reviewed by specialists before they reached us. So the narration stays word for word, and AI doesn't get to "improve" it. Honestly, this rule is why the client trusts the rest of the pipeline.
+
+### Build the slides from copy only
+
+For each slide we write copy and nothing else: a kicker, a headline, a few chips and a note. A build script drops that copy into a locked design and renders 1280x720 PNGs. Each chip fades in when the narrator says its words, so the slide builds up with the voice.
+
+We don't let AI design the slides. Every video would look different, and a series has to look like one series. We look at every PNG to make sure nothing sits under the subtitle area.
+
+### Generate the voice, one scene first
+
+We use two voices only, one female and one male, both British, picked to match the narrator in the script. Scene 1 gets rendered first so we can check the pace before paying for the rest. Each scene gets its own MP3, plus one file with the exact narration text. That text file drives the subtitles and the transcript later.
+
+### Generate the clips from a beat list
+
+The clips are the expensive step, and they're where AI video breaks most. For each scene we build the prompt from the script's visual line and voiceover, never from memory. The prompt includes a beat list: every person, action and setting that has to be on screen.
+
+Every request is 720p, 16:9, audio off and single shot. Before generating anything, we show the beats, anything we left out and why, and wait for a go-ahead. One request covers one run. No quiet re-rolls on the client's account.
+
+### Stitch it with measured subtitles
+
+One command builds the final video. Local speech-to-text finds when each word is spoken, so subtitle timing comes from the real audio.
+
+The timeline is simple. A 4-second title card comes first. For each scene, the narration starts together with its 10-second clip, the slide continues under the same narration, and a 1-second pause follows. A 5-second end card closes it. Every clip gets the same light color grade. If any subtitle cue is missing from the final frames, the script deletes the export (harsh, but it has saved us more than once).
+
+## Why we dropped Kling 2.5
+
+We started on Kling 2.5, and the clips looked AI from the first second. No joke. The lighting was flat and grey, the movement felt off, and then the worst part showed up: people and objects started disappearing mid-clip. Someone would be in the frame at the start and gone by the end.
+
+For an educational video, that kills it. The viewer stops listening and starts watching the glitch.
+
+So we switched to Kling 3.0 and changed how we prompt. Every prompt now carries a block against the grey-veil lighting and a block banning text and signs, because AI text in video is pretty much always garbage. We also keep each 10-second clip to one or two subjects. The more things the model has to keep track of, the more likely one of them vanishes.
+
+## What checks catch AI mistakes before the client sees them?
+
+Every clip gets checked against its beat list before it goes anywhere near the timeline. We report each beat as shown, partly shown or missing, and we never regenerate on our own.
+
+The clip checks we run:
+
+- The file is 1280x720 with no audio stream.
+- Every person, action and setting from the beat list is visible.
+- There's no grey veil and no text or signs, and ages and appearance match the script.
+- Continuity: frames sampled across the whole clip, with every person and prop from the start still there at the end, and no hand or object that appears, vanishes or changes shape.
+
+We added the continuity check after the Kling 2.5 mess. Spot-checking a few frames misses a person who vanishes at second 6.
+
+Then the export gets its own checks: H.264 video with stereo AAC audio, subtitles burned in on every cue, captions and transcript saved next to the file, and subtitle sync checked against both the voice pauses and the SRT times.
+
+## How much does an AI educational video cost?
+
+The paid parts are about $0.25 for the voice plus $0.84 for each 10-second clip. Every video has at least 8 scenes, so generation starts at about $6.97 per video.
+
+| | By hand (client's first sample) | Our AI pipeline |
+| --- | --- | --- |
+| Tools | ChatGPT + Runway | ElevenLabs + Kling 3.0, with local scripts for the rest |
+| Time per video | 4 hours | About 10 minutes, including review |
+
+Time is the real cost in educational video production. The [Chapman Alliance](https://www.slideshare.net/slideshow/learning-development-times-benchmark/127354292) found in 2010 that basic e-learning took about 79 hours to build one finished hour, at around $10,054 per hour. That data is old, but the problem hasn't gone away. Cheap and working beats expensive and fancy.
+
+## How long should an educational video be?
+
+Let the script decide. In our format, each scene is one 10-second clip followed by a slide under the same narration, so the length follows the script and nothing gets padded.
+
+[TechSmith's 2024 Video Viewer Trends report](https://www.techsmith.com/blog/video-length/) found more than 30% of people prefer instructional videos of three to six minutes. TechSmith's Ryan Knott also wrote that "good content trumps perfect production." We agree, and it's why 720p is fine for us.
+
+People do want short video for learning. [Wyzowl's 2026 State of Video Marketing survey](https://wyzowl.com/sovm-results-2025/) found 63% of people would most like a short video when learning about a product or service.
+
+## When is AI video the wrong choice?
+
+AI clips are a bad fit when the viewer needs to see a real thing. A software walkthrough should be a screen recording. A demo of a real product or place should be real footage.
+
+AI video is also the wrong call if nobody reviews the output. The 10 minutes per video includes watching the result. Skip that and you'll ship a clip where someone disappears, and the time you saved won't count for much.
+
+## Want this for your videos?
+
+If your team spends hours making each educational video, start by writing down how long one takes you today and what it costs. Then we can tell you what this pipeline would look like for your content.
+
+<div className="not-prose my-10">
+  <CtaCard className="items-center text-center sm:flex-col sm:justify-center sm:gap-6">
+    <CtaCardContent>
+      <CtaCardTitle>Want this for your videos?</CtaCardTitle>
+      <CtaCardDescription>
+        Book a <span className="text-primary">free</span>, <span className="text-primary">no-commitment</span> discovery call with RZ Automate. We'll tell you what this pipeline would look like for your content.
+      </CtaCardDescription>
+    </CtaCardContent>
+    <CtaCardAction href="https://cal.com/rzautomate/30min">
+      Book a free call
+    </CtaCardAction>
+  </CtaCard>
+</div>
+
+## FAQ
+
+<PostFaq items={frontmatter.faq} />

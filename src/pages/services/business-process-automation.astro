@@ -2,6 +2,8 @@
 import { BusinessProcessAutomationContent } from "@/components/pages/services/business-process-automation/business-process-automation-content";
 import { path, seo } from "@/components/pages/services/business-process-automation/content";
 import { authorName } from "@/components/pages/services/business-process-automation/json-ld";
+import { ServicePosts } from "@/components/site/service-posts";
+import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
 
@@ -16,8 +18,10 @@ const social = pageSocial({
   twitterTitle: seo.socialTitle,
   twitterDescription: seo.twitterDescription,
 });
+const posts = await getPostsForService("business-process-automation");
 ---
 
 <SiteLayout {...social}>
   <BusinessProcessAutomationContent />
+  <ServicePosts posts={posts} />
 </SiteLayout>

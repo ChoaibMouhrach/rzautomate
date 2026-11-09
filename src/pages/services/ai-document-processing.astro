@@ -2,6 +2,8 @@
 import { DocumentProcessingContent } from "@/components/pages/services/ai-document-processing/document-processing-content";
 import { path, seo } from "@/components/pages/services/ai-document-processing/content";
 import { authorName } from "@/components/pages/services/ai-document-processing/json-ld";
+import { ServicePosts } from "@/components/site/service-posts";
+import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
 
@@ -16,8 +18,10 @@ const social = pageSocial({
   twitterTitle: seo.socialTitle,
   twitterDescription: seo.twitterDescription,
 });
+const posts = await getPostsForService("ai-document-processing");
 ---
 
 <SiteLayout {...social}>
   <DocumentProcessingContent />
+  <ServicePosts posts={posts} />
 </SiteLayout>

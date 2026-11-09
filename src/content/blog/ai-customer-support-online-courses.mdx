@@ -8,6 +8,10 @@ readingMinutes: 9
 author: choaib
 image: /blog/ai-customer-support-online-courses.webp
 imageAlt: "AI customer support flow for an online course business: student question, Jev docs check, GPT answer or MCP tool action, email handoff"
+service: ai-customer-support-agents
+related:
+  - moodle-wordpress-integration
+  - ai-lead-qualification-jev
 faq:
   - question: "Can AI handle course enrollment and access issues?"
     answer: "Yes, if it's connected to your store and your LMS. In our build, the agent checks the WooCommerce order and, if it's paid, enrols the account tied to that order in Moodle through MCP. The wait dropped from 3.5 hours to about 15 seconds. If the payment isn't confirmed, the bot grants nothing and sends the case to email."
@@ -98,7 +102,7 @@ Whichever number you believe, a real chunk of conversations ends at "I don't kno
 
 ## How MCP connects the bot to your course tools
 
-MCP (Model Context Protocol) is a standard way to give an AI model tools it can call, like "look up this order" or "enrol this student." That's what turns a chatbot into something that can actually do the work.
+MCP (Model Context Protocol) is a standard way to give an AI model tools it can call, like "look up this order" or "enrol this student." That's what turns a chatbot into something that can actually do the work. It's the same approach behind our [AI agent development](/services/ai-agent-development) work.
 
 We wrote a small MCP server in TypeScript using Bun and Hono that wraps Moodle's web services and the WooCommerce REST API. It exposes only the actions in the table above.
 
@@ -152,6 +156,8 @@ Then clean your docs, add the "can I answer this?" check, limit the bot to actio
 Cost matters too. Fin bills $0.99 per outcome on its standard pricing ([Fin pricing](https://fin.ai/pricing/)). Our model usage runs about $0.006 per conversation (excluding hosting, email, and development). Cheap and working beats expensive and fancy, every time.
 
 ## Where to start
+
+If you'd like us to build this for your team, see our [AI customer support agents](/services/ai-customer-support-agents) service. The enrolment side of this build is covered in our [Moodle WordPress integration](/blog/moodle-wordpress-integration) post.
 
 If your inbox is mostly "I paid but can't access my course" emails, start there. That one fix pays for a lot.
 

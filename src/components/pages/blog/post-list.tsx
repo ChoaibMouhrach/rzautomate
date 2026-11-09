@@ -1,5 +1,5 @@
 import type { Post } from "@/lib/blog";
-import { PostCard } from "./post-card";
+import { PostCard } from "@/components/site/post-card";
 
 export const PostList = ({ posts }: { posts: readonly Post[] }) => {
   if (posts.length === 0) {

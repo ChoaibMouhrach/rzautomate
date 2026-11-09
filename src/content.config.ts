@@ -16,6 +16,8 @@ const blog = defineCollection({
     author: z.enum(Object.keys(authors) as [AuthorId, ...AuthorId[]]),
     image: z.string().startsWith("/"),
     imageAlt: z.string(),
+    service: z.string().optional(),
+    related: z.array(z.string()).default([]),
     faq: z
       .array(z.object({ question: z.string(), answer: z.string() }))
       .default([]),

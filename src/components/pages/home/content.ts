@@ -40,7 +40,7 @@ export const servicesCopy = {
         "AI lead qualification and follow-up: every new lead answered and scored",
       body: "A form fill or inbound email lands. An AI agent scores the lead, writes back right away, and drops a qualified row into your CRM.",
       tools: "HubSpot · OpenAI · n8n",
-      href: "/services/ai-lead-qualification",
+      href: "/services/ai-lead-generation",
       label: "AI lead qualification and follow-up",
     },
     {
@@ -48,7 +48,7 @@ export const servicesCopy = {
         "AI customer support agents: routine questions answered, hard ones escalated",
       body: "A customer emails or opens a ticket. The agent answers from your docs and past replies, and hands anything tricky to a person with context.",
       tools: "Claude · Gmail · Slack",
-      href: "/services/ai-support-agents",
+      href: "/services/ai-customer-support-agents",
       label: "AI customer support agents",
     },
     {
@@ -56,7 +56,7 @@ export const servicesCopy = {
         "Client onboarding automation: new clients set up without the checklist",
       body: "A deal closes or a Stripe payment clears. The welcome email, shared folder and kickoff invite are created and sent without anyone touching them.",
       tools: "Stripe · Gmail · Make",
-      href: "/services/client-onboarding-automation",
+      href: "/services/business-process-automation",
       label: "Client onboarding automation",
     },
     {
@@ -64,7 +64,7 @@ export const servicesCopy = {
         "Operations and reporting automation: the weekly report builds itself",
       body: "Every Monday, numbers get pulled from your CRM, accounting and ad accounts into one sheet, with a plain-English summary posted to Slack.",
       tools: "Google Sheets · QuickBooks · n8n",
-      href: "/services/ops-reporting-automation",
+      href: "/services/business-process-automation",
       label: "Operations and reporting automation",
     },
     {
@@ -72,14 +72,14 @@ export const servicesCopy = {
         "Document and data entry automation: PDFs, invoices and forms entered for you",
       body: "An invoice or form lands in your inbox. AI reads the fields, flags anything unclear, and enters the rest into your CRM or books.",
       tools: "OpenAI · Xero · Google Sheets",
-      href: "/services/document-data-automation",
+      href: "/services/ai-document-processing",
       label: "Document and data entry automation",
     },
     {
       title: "Custom AI agents: built for the job no template fits",
       body: "A task eats hours and no off-the-shelf tool handles it. I build an agent around your systems, then hand it over running and documented.",
       tools: "Claude · OpenAI · n8n",
-      href: "/services/custom-ai-agents",
+      href: "/services/ai-agent-development",
       label: "Custom AI agents",
     },
   ],

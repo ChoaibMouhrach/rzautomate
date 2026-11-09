@@ -2,6 +2,8 @@
 @plugin "tailwindcss-react-aria-components";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --font-geist-sans: "Geist Variable";
   --font-geist-mono: "Geist Mono Variable";
@@ -10,27 +12,24 @@
   --muted: #f4f4f5;
   --muted-foreground: #71717a;
   --border: #e4e4e7;
-  --primary: #4f46e5;
+  --primary: #ff4133;
   --primary-foreground: #ffffff;
   --danger: #dc2626;
   --danger-foreground: #ffffff;
-  --ring: #6366f1;
+  --ring: #ff4133;
   --radius: 0.5rem;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --primary: #6366f1;
-    --primary-foreground: #ffffff;
-    --danger: #ef4444;
-    --danger-foreground: #ffffff;
-    --ring: #818cf8;
-  }
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+  --danger: #ef4444;
+  --danger-foreground: #ffffff;
+  color-scheme: dark;
 }
 
 @theme inline {

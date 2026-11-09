@@ -1,5 +1,6 @@
 ---
 import { NewsletterForm } from "@/components/site/newsletter-form";
+import { ThemeSwitcher } from "@/components/site/theme-switcher";
 import { Logo } from "@/components/site/logo";
 import { Link } from "@/components/ui/link";
 import { services } from "@/lib/services";
@@ -71,7 +72,8 @@ import { legalNav, nav, site } from "@/lib/site";
           </nav>
         </div>
       </div>
-      <div class="page-container pb-8 text-sm text-muted-foreground">
-        © {new Date().getFullYear()} {site.name}. All rights reserved.
+      <div class="page-container flex flex-col gap-4 pb-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+        <ThemeSwitcher client:load />
       </div>
     </footer>

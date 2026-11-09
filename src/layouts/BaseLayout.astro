@@ -14,6 +14,26 @@ type Props = PageSeo;
 <html lang="en" class="h-full antialiased">
   <head>
     <BaseHead {...Astro.props} />
+    <script is:inline>
+      (() => {
+        const query = matchMedia("(prefers-color-scheme: dark)");
+        const apply = (root) => {
+          let theme = "system";
+          try {
+            theme = localStorage.getItem("theme");
+          } catch {}
+          root.classList.toggle(
+            "dark",
+            theme === "dark" || (theme !== "light" && query.matches),
+          );
+        };
+        apply(document.documentElement);
+        query.addEventListener("change", () => apply(document.documentElement));
+        document.addEventListener("astro:before-swap", (event) =>
+          apply(event.newDocument.documentElement),
+        );
+      })();
+    </script>
   </head>
   <body class="min-h-full flex flex-col" transition:animate="none">
     <JsonLd data={siteJsonLd()} />

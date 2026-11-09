@@ -11,7 +11,7 @@ export interface TocItem {
 
 const indent = { 2: "pl-4", 3: "pl-8", 4: "pl-12" } as const;
 
-export function TableOfContents({ items }: { items: readonly TocItem[] }) {
+export const TableOfContents = ({ items }: { items: readonly TocItem[] }) => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -54,4 +54,4 @@ export function TableOfContents({ items }: { items: readonly TocItem[] }) {
       </ul>
     </nav>
   );
-}
+};

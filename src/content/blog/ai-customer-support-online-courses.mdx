@@ -1,0 +1,175 @@
+---
+title: "AI customer support for online courses: how we built one"
+metaTitle: "AI customer support for online courses: a real build"
+excerpt: "How we set up AI customer support for online courses at a 7-figure school: answers from real docs, MCP actions for enrolment, and email handoff."
+category: "Customer support"
+date: 2026-11-09
+readingMinutes: 9
+author: choaib
+image: /blog/ai-customer-support-online-courses.webp
+imageAlt: "AI customer support flow for an online course business: student question, Jev docs check, GPT answer or MCP tool action, email handoff"
+faq:
+  - question: "Can AI handle course enrollment and access issues?"
+    answer: "Yes, if it's connected to your store and your LMS. In our build, the agent checks the WooCommerce order and, if it's paid, enrols the account tied to that order in Moodle through MCP. The wait dropped from 3.5 hours to about 15 seconds. If the payment isn't confirmed, the bot grants nothing and sends the case to email."
+  - question: "Will an AI support bot make up answers about my courses?"
+    answer: "It can, if you let it answer everything. We added a check first: Jev looks at whether the retrieved docs actually contain the answer. If they do, the model replies using only those docs. If they don't, the bot sends the student to email instead of guessing. A slow answer is better than a wrong one about your course."
+  - question: "What tools does an AI support agent for online courses need?"
+    answer: "At minimum: a knowledge base built from your website and support replies, a model to write answers, and access to the tools where student data lives. For us that was markdown docs, Jev, GPT-4.1 mini, and an MCP server wrapping Moodle and WooCommerce. Add an email handoff for anything that needs a verified student or that the bot can't finish."
+  - question: "Should I use Fin or build a custom AI agent?"
+    answer: "Fin is quick to set up and can take actions too. A custom build with MCP makes sense when you want exact control over what the bot can touch in your own stack, like Moodle enrolments, and want to pay for model calls instead of per outcome. On resolution rates: Fin reports 76% but counts silence as a resolution, and a competing agency's small test found 38%. Plan for the lower end."
+  - question: "Does AI customer support replace a support team?"
+    answer: "Not fully, and it shouldn't. The bot handles the repeat requests: access, logins, course questions. The team handles what's left through the email handoff, including anything that needs a verified student. In our build, manual work dropped to about 144 requests a month. Plenty of students still want a person sometimes, so keep that path open."
+---
+
+import { PostFaq } from "@/components/pages/blog/[slug]/post-faq";
+import {
+  CtaCard,
+  CtaCardAction,
+  CtaCardContent,
+  CtaCardDescription,
+  CtaCardTitle,
+} from "@/components/ui/cta-card";
+
+AI customer support for online courses works when the bot can do two things: answer from your real course docs, and fix account problems like enrolment and course access. A bot that can only answer questions won't cover most of what students ask for.
+
+We built this for a 7-figure online education business getting about 480 support requests a month. The bot now resolves about 70% of them end to end, around 336 a month, with no one on the team stepping in. Everything it can't answer or do goes straight to email.
+
+## What can AI customer support for online courses handle?
+
+Most course support is the same few requests, over and over. Before we built anything, the client's team did all of them by hand: creating accounts, granting access after payment, answering course questions, digging through orders.
+
+So we listed every request that kept coming back and gave the agent one specific tool for each.
+
+| Request | What the agent does | Tool behind it |
+|---|---|---|
+| Questions about the courses | Answers from the docs, only if Jev confirms the answer is there | Markdown knowledge base + GPT-4.1 mini |
+| Account creation | Creates the student account | Moodle `core_user_create_users` |
+| Course access after payment | Checks the order is paid, then grants access | WooCommerce `GET /wc/v3/orders` + Moodle `enrol_manual_enrol_users` |
+| Password resets and login help | Triggers Moodle's normal reset email, so the link only goes to the account's own inbox | Moodle `core_auth_request_password_reset` |
+| Order and payment status | Confirms whether access was granted; anything about the order itself goes to email | Email (team verifies manually) |
+| Course extensions or switching | Hands off, since these need a verified student | Email (team verifies manually) |
+| Anything else | Hands off to the team by email | Email |
+
+Students don't keep office hours. Zendesk's CX Trends 2026 report found 74% of consumers now expect customer service to be available 24/7 ([Zendesk, 2025](https://www.zendesk.com/newsroom/press-releases/contextual-intelligence-becomes-the-new-standard-for-exceptional-customer-experience-in-2026/)). A human team can't cover that without a lot of money. A bot can, for the boring stuff.
+
+## Why course access after payment was the biggest problem
+
+Course access caused the most stress. The flow was: student pays, then waits for someone on the team to give them access by hand.
+
+Why manual? She didn't have a WooCommerce–Moodle sync like Edwiser Bridge or WooMoodle in place, and she was in her peak season. Installing a new plugin on a live store and LMS at that point risked taking the platform down at the worst possible time. The bot was the safer route: it runs outside both sites and only calls their existing APIs, so nothing on production had to change.
+
+The wait averaged 3.5 hours, and people freaked out. Think about it from their side. You just paid for a course and you can't open it. You email. You email again. Now one sale turns into a pile of tickets, and the student is annoyed before they even started.
+
+So the agent does this in the chat:
+
+1. Finds the order through the WooCommerce REST API and checks the status is `processing` or `completed` (paid).
+2. Checks Moodle with `core_enrol_get_users_courses` to confirm the account tied to that order doesn't already have access.
+3. Enrols that account with `enrol_manual_enrol_users`.
+
+Now it takes about 15 seconds instead of 3.5 hours. If the payment isn't confirmed, the bot grants nothing and sends the case to email.
+
+One honest note. If your store can enrol students automatically on payment, most of these tickets shouldn't exist. Set up that sync when you have a quiet window. The bot covers the gap until then, and catches whatever still slips through after.
+
+## How we turned the website into a knowledge base
+
+We started with two things: the support team's saved replies and the whole website. We turned 92 pages into 71 markdown files.
+
+Why markdown? Models read it cleanly, it's cheap on tokens, and when a page changes you update one file. No fancy database needed for this part.
+
+The bot is only as good as those docs. If your website says one thing and your team's replies say another, the bot will pick one, and you won't like which. We found 9 of those conflicts and fixed them before launch. Boring, but do it anyway.
+
+## How the bot checks if it can answer before it replies
+
+Every question goes through three steps:
+
+1. We pull the five most relevant markdown files for the question.
+2. Jev ([TypeSafe AI](https://typesafe.ai/)) gets the question plus those files and returns a typed yes/no: do these docs contain the answer? It comes with a confidence score.
+3. Above 0.85 confidence, GPT-4.1 mini writes the reply using only those files. Below it, the bot doesn't guess. It tells the student the team will help and sends the request to email.
+
+Check first, then spend the expensive model call.
+
+No AI agent answers everything. Fin, the biggest name in AI support, claims a 76% average resolution rate. Salesforce repeated that figure when it agreed to buy Fin for $3.6B in June 2026 ([Salesforce, June 2026](https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-signs-definitive-agreement-to-acquire-fin/)), a month after Intercom renamed the whole company to Fin ([Fin, May 2026](https://www.intercom.com/blog/today-intercom-becomes-fin/)).
+
+But read how Fin counts a resolution: the customer didn't ask for more help after Fin's last answer ([Fin pricing](https://fin.ai/pricing/)). Silence counts as success.
+
+A competing agency, Builts.ai, ran Fin for 60 days across 4 small business clients (about 500 tickets a month combined) and got 38% ([Builts.ai, March 2026](https://builts.ai/blog/intercom-fin-ai-review/)). They sell custom support builds, like we do, and didn't publish how they defined a resolution, so don't treat that number as gospel either.
+
+Whichever number you believe, a real chunk of conversations ends at "I don't know." In our build, about 30% (around 144 requests a month) go to email.
+
+## How MCP connects the bot to your course tools
+
+MCP (Model Context Protocol) is a standard way to give an AI model tools it can call, like "look up this order" or "enrol this student." That's what turns a chatbot into something that can actually do the work.
+
+We wrote a small MCP server in TypeScript using Bun and Hono that wraps Moodle's web services and the WooCommerce REST API. It exposes only the actions in the table above.
+
+The lock is on the Moodle side too. Moodle lets you create a custom external service with only the functions you pick, so the bot's token can create accounts and enrol, but it can't delete users or touch grades. The WooCommerce API key is read-only. If the bot doesn't need to do something, it can't.
+
+## How the bot knows who it's talking to
+
+It doesn't, and it's built so it doesn't need to. Anyone can type into a chat box, so the bot only takes actions that are safe even if someone lies about who they are:
+
+- **Enrolment** goes to the Moodle account tied to the email on the paid order. If someone types another person's email, the real buyer gets their access. Nobody else does.
+- **Account creation** sends the login details to that same email.
+- **Password resets** go through Moodle's normal reset email, so the link only reaches the account's own inbox.
+
+Anything that would show order details or change someone's enrolment, like extensions or course switches, goes to email. The team verifies the student by hand before acting.
+
+## What a conversation looks like
+
+A simplified example of the flow:
+
+> **Student:** I paid an hour ago and can't see the course.
+> **Agent:** *finds the paid order for that email → checks Moodle, no enrolment → enrols the account*
+> **Agent:** You're in. Refresh your dashboard and the course will be there. If it's not, reply here and the team will pick it up.
+
+## When should the bot hand off to a human?
+
+Whenever it can't answer from the docs, can't finish the action, or the request needs a verified student. The student is sent to email, and the team gets a short summary, the conversation, the relevant order or course ID, and a record of which checks or actions the agent already attempted, so nobody starts from zero.
+
+Some people just want a person. In a Gartner survey of 5,801 US customers from early 2025, 54% said they trust human agents more than AI for product or service recommendations, versus 32% who trust AI more ([Gartner, April 2026](https://www.businesswire.com/news/home/20260428850485/en/)).
+
+Gartner's Kim Hedlin said service organizations are entering a period where "AI and human expertise must work in tandem" ([Gartner, February 2026](https://gartner.com/en/newsroom/press-releases/2026-02-18-gartner-survey-finds-ninety-one-percent-of-customer-service-leaders-under-pressure-to-implement-ai-in-2026)). I agree. The email path is what keeps the bot honest.
+
+## What changed for the business
+
+| | Before | After |
+|---|---|---|
+| Requests handled by the team | 480 / month | 144 / month |
+| Wait for course access after payment | 3.5 hours | 15 seconds |
+| Share of conversations resolved by the bot | — | 70% |
+| Model cost per conversation | — | ~$0.006 |
+
+The team no longer handles routine account and access repairs by hand. What's left is the work that actually needs a human.
+
+Service teams in general are moving the same way. A Gartner survey of 199 service and support leaders found AI spending went up 38% while overall service budgets grew just 2% ([Gartner, August 2026](https://www.gartner.com/en/newsroom/press-releases/2026-08-26-gartner-survey-finds-ai-spending-by-customer-service-leaders-has-surged-by-38-percent-despite-overall-service-and-support-function-budgets-rising-by-just-2-percent)).
+
+## What I'd do if you're building one
+
+Start with the requests your team answers ten times a day. For most course businesses that's access, logins and orders. Those are also the easiest wins, because the answer lives in a tool you already have.
+
+Then clean your docs, add the "can I answer this?" check, limit the bot to actions that are safe without verification, and keep the email handoff from day one.
+
+Cost matters too. Fin bills $0.99 per outcome on its standard pricing ([Fin pricing](https://fin.ai/pricing/)). Our model usage runs about $0.006 per conversation (excluding hosting, email, and development). Cheap and working beats expensive and fancy, every time.
+
+## Where to start
+
+If your inbox is mostly "I paid but can't access my course" emails, start there. That one fix pays for a lot.
+
+<div className="not-prose my-10">
+  <CtaCard className="items-center text-center sm:flex-col sm:justify-center sm:gap-6">
+    <CtaCardContent>
+      <CtaCardTitle>Want to know if this makes sense for your volume?</CtaCardTitle>
+      <CtaCardDescription>
+        Book a <span className="text-primary">free</span>, <span className="text-primary">no-commitment</span> discovery call and I'll tell you honestly, even if the answer is “not yet.”
+      </CtaCardDescription>
+    </CtaCardContent>
+    <CtaCardAction href="https://cal.com/rzautomate/30min">
+      Book a free call
+    </CtaCardAction>
+  </CtaCard>
+</div>
+
+## FAQ
+
+
+<PostFaq items={frontmatter.faq} />

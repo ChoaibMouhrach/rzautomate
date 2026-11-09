@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { AstroIntegration } from "astro";
@@ -14,7 +14,7 @@ async function* walk(dir: string): AsyncGenerator<string> {
   }
 }
 
-export function markdownPages(): AstroIntegration {
+export const markdownPages = (): AstroIntegration => {
   let origin = "https://rzautomate.com";
   return {
     name: "markdown-pages",
@@ -22,9 +22,15 @@ export function markdownPages(): AstroIntegration {
       "astro:config:done": ({ config }) => {
         origin = new URL(config.site ?? origin).origin;
       },
-      "astro:build:done": async ({ dir }) => {
+      "astro:build:done": async ({ dir, pages }) => {
         const root = fileURLToPath(dir);
         const sections = new Map<string, string>();
+        const paths = pagePaths(
+          pages.flatMap(({ pathname }) => {
+            const slug = pathname.match(/^blog\/([^/.]+)\/?$/)?.[1];
+            return slug ? [slug] : [];
+          }),
+        );
         for await (const file of walk(root)) {
           if (!file.endsWith(".html")) continue;
           const route = relative(root, file).slice(0, -".html".length);
@@ -34,12 +40,17 @@ export function markdownPages(): AstroIntegration {
             continue;
           }
           const pathname = route === "index" ? "/" : `/${route}`;
-          const markdown = htmlToMarkdown(html, new URL(pathname, origin));
+          const pageUrl = new URL(pathname, origin);
           const target = join(root, `${route}.md`);
-          await mkdir(dirname(target), { recursive: true });
-          await writeFile(target, markdown);
-          if (pagePaths().includes(pathname)) {
-            const pageUrl = new URL(pathname, origin);
+          const hasSource = await access(target).then(
+            () => true,
+            () => false,
+          );
+          if (!hasSource) {
+            await mkdir(dirname(target), { recursive: true });
+            await writeFile(target, htmlToMarkdown(html, pageUrl));
+          }
+          if (paths.includes(pathname)) {
             sections.set(
               pathname,
               `Source: ${pageUrl}\n\n${pageToMarkdown(html, pageUrl).body}`,
@@ -48,9 +59,9 @@ export function markdownPages(): AstroIntegration {
         }
         await writeFile(
           join(root, "llms-full.txt"),
-          `${[`# ${site.name}\n\n> ${company.description}`, ...pagePaths().flatMap((path) => sections.get(path) ?? [])].join("\n\n---\n\n")}\n`,
+          `${[`# ${site.name}\n\n> ${company.description}`, ...paths.flatMap((path) => sections.get(path) ?? [])].join("\n\n---\n\n")}\n`,
         );
       },
     },
   };
-}
+};

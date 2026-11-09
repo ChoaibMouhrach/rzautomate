@@ -1,19 +1,16 @@
-import { posts } from "@/lib/blog";
 import { models } from "@/lib/models";
 import { services } from "@/lib/services";
 import { legalNav, nav } from "@/lib/site";
 
-export function pagePaths() {
-  return [
+export const pagePaths = (postSlugs: readonly string[]) => [
     "/",
     "/models",
     ...models.map((model) => `/models/${model.slug}`),
     ...nav.map((item) => item.href),
     ...services.map((service) => `/services/${service.slug}`),
-    ...posts.map((post) => `/blog/${post.slug}`),
+    ...postSlugs.map((slug) => `/blog/${slug}`),
     ...legalNav.map((item) => item.href),
   ];
-}
 
 export const pageMetadata = {
   services: {

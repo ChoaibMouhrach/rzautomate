@@ -1,33 +1,27 @@
 import { Avatar, type AvatarProps } from "@/components/ui/avatar";
-import type { Author as AuthorData } from "@/lib/blog";
+import type { Author as AuthorData } from "@/lib/authors";
 
-export function Author({
+export const Author = ({
   author,
   size,
 }: {
   author: AuthorData;
   size?: AvatarProps["size"];
-}) {
-  return (
-    <div className="flex items-center gap-3">
+}) => <div className="flex items-center gap-3">
       <Avatar src={author.image} size={size} />
       <div className="flex flex-col text-sm leading-tight">
         <span className="font-medium text-foreground">{author.name}</span>
         <span className="text-muted-foreground">{author.title}</span>
       </div>
-    </div>
-  );
-}
+    </div>;
 
-export function PostByline({
+export const PostByline = ({
   author,
   readingMinutes,
 }: {
   author: AuthorData;
   readingMinutes: number;
-}) {
-  return (
-    <div className="flex items-center gap-4">
+}) => <div className="flex items-center gap-4">
       <Avatar src={author.image} size="lg" />
       <div className="flex flex-col gap-0.5">
         <span className="font-semibold text-foreground">{author.name}</span>
@@ -37,6 +31,4 @@ export function PostByline({
           <span>{readingMinutes} min read</span>
         </p>
       </div>
-    </div>
-  );
-}
+    </div>;

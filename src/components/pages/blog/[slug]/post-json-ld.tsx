@@ -1,18 +1,21 @@
 import { JsonLd } from "@/components/site/json-ld";
-import type { Post } from "@/lib/blog";
-import { blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { getPostFaq, postPath, type Post } from "@/lib/blog";
+import { blogPostingJsonLd, breadcrumbJsonLd, postFaqJsonLd } from "@/lib/json-ld";
 
-export function PostJsonLd({ post }: { post: Post }) {
+export const PostJsonLd = ({ post }: { post: Post }) => {
+  const faq = getPostFaq(post);
+
   return (
     <JsonLd
       data={[
         blogPostingJsonLd(post),
+        ...(faq.length > 0 ? [postFaqJsonLd(post, faq)] : []),
         breadcrumbJsonLd([
           { name: "Home", path: "/" },
           { name: "Blog", path: "/blog" },
-          { name: post.title, path: `/blog/${post.slug}` },
+          { name: post.data.title, path: postPath(post) },
         ]),
       ]}
     />
   );
-}
+};

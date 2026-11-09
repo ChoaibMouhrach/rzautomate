@@ -9,7 +9,14 @@ import type {
   Service as ServiceSchema,
   WithContext,
 } from "schema-dts";
-import { posts, type Post } from "@/lib/blog";
+import { authors } from "@/lib/authors";
+import {
+  isoDate,
+  lastModified,
+  postPath,
+  type Post,
+  type PostFaq,
+} from "@/lib/blog";
 import { pageMetadata } from "@/lib/pages";
 import { services, type Service } from "@/lib/services";
 import { absoluteUrl, company, founder, site } from "@/lib/site";
@@ -20,8 +27,7 @@ const organizationRef = { "@id": absoluteUrl("/#organization") } as const;
 const founderRef = { "@id": absoluteUrl("/#choaib-mouhrach") } as const;
 const websiteRef = { "@id": absoluteUrl("/#website") } as const;
 
-export function siteJsonLd(): Graph {
-  return {
+export const siteJsonLd = (): Graph => ({
     "@context": context,
     "@graph": [
       {
@@ -64,11 +70,9 @@ export function siteJsonLd(): Graph {
         publisher: organizationRef,
       },
     ],
-  };
-}
+  });
 
-export function serviceJsonLd(service: Service): WithContext<ServiceSchema> {
-  return {
+export const serviceJsonLd = (service: Service): WithContext<ServiceSchema> => ({
     "@context": context,
     "@type": "Service",
     name: service.title,
@@ -77,40 +81,39 @@ export function serviceJsonLd(service: Service): WithContext<ServiceSchema> {
     url: absoluteUrl(`/services/${service.slug}`),
     image: absoluteUrl(service.image),
     provider: organizationRef,
-  };
-}
+  });
 
-export function blogPostingJsonLd(post: Post): WithContext<BlogPosting> {
-  const url = absoluteUrl(`/blog/${post.slug}`);
+export const blogPostingJsonLd = (post: Post): WithContext<BlogPosting> => {
+  const url = absoluteUrl(postPath(post));
+  const author = authors[post.data.author];
 
   return {
     "@context": context,
     "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
+    headline: post.data.title,
+    description: post.data.excerpt,
     url,
     mainEntityOfPage: url,
-    image: absoluteUrl(post.image),
-    datePublished: post.date,
-    dateModified: post.updated ?? post.date,
-    articleSection: post.category,
+    image: absoluteUrl(post.data.image),
+    datePublished: isoDate(post.data.date),
+    dateModified: lastModified(post),
+    articleSection: post.data.category,
     author:
-      post.author.name === founder.name
+      author.name === founder.name
         ? founderRef
         : {
             "@type": "Person",
-            name: post.author.name,
-            jobTitle: post.author.title,
-            image: absoluteUrl(post.author.image),
+            name: author.name,
+            jobTitle: author.title,
+            image: absoluteUrl(author.image),
           },
     publisher: organizationRef,
   };
-}
+};
 
-export function faqPageJsonLd(
+export const faqPageJsonLd = (
   items: readonly { question: string; answer: string }[],
-): WithContext<FAQPage> {
-  return {
+): WithContext<FAQPage> => ({
     "@context": context,
     "@type": "FAQPage",
     name: pageMetadata.faq.title,
@@ -122,11 +125,24 @@ export function faqPageJsonLd(
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
-  };
-}
+  });
 
-export function servicesPageJsonLd(): WithContext<CollectionPage> {
-  return {
+export const postFaqJsonLd = (
+  post: Post,
+  faq: readonly PostFaq[],
+): WithContext<FAQPage> => ({
+    "@context": context,
+    "@type": "FAQPage",
+    name: post.data.title,
+    url: absoluteUrl(postPath(post)),
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  });
+
+export const servicesPageJsonLd = (): WithContext<CollectionPage> => ({
     "@context": context,
     "@type": "CollectionPage",
     name: pageMetadata.services.title,
@@ -142,11 +158,9 @@ export function servicesPageJsonLd(): WithContext<CollectionPage> {
         url: absoluteUrl(`/services/${service.slug}`),
       })),
     },
-  };
-}
+  });
 
-export function blogJsonLd(): WithContext<Blog> {
-  return {
+export const blogJsonLd = (posts: readonly Post[]): WithContext<Blog> => ({
     "@context": context,
     "@type": "Blog",
     name: pageMetadata.blog.title,
@@ -156,17 +170,15 @@ export function blogJsonLd(): WithContext<Blog> {
     publisher: organizationRef,
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
-      headline: post.title,
-      description: post.excerpt,
-      url: absoluteUrl(`/blog/${post.slug}`),
-      image: absoluteUrl(post.image),
-      datePublished: post.date,
+      headline: post.data.title,
+      description: post.data.excerpt,
+      url: absoluteUrl(postPath(post)),
+      image: absoluteUrl(post.data.image),
+      datePublished: isoDate(post.data.date),
     })),
-  };
-}
+  });
 
-export function contactPageJsonLd(): WithContext<ContactPage> {
-  return {
+export const contactPageJsonLd = (): WithContext<ContactPage> => ({
     "@context": context,
     "@type": "ContactPage",
     name: pageMetadata.contact.title,
@@ -174,13 +186,11 @@ export function contactPageJsonLd(): WithContext<ContactPage> {
     url: absoluteUrl("/contact"),
     isPartOf: websiteRef,
     about: organizationRef,
-  };
-}
+  });
 
-export function breadcrumbJsonLd(
+export const breadcrumbJsonLd = (
   items: readonly { name: string; path: string }[],
-): WithContext<BreadcrumbList> {
-  return {
+): WithContext<BreadcrumbList> => ({
     "@context": context,
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
@@ -189,5 +199,4 @@ export function breadcrumbJsonLd(
       name: item.name,
       item: absoluteUrl(item.path),
     })),
-  };
-}
+  });

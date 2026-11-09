@@ -1,7 +1,7 @@
-import { posts } from "@/lib/blog";
+import type { Post } from "@/lib/blog";
 import { PostCard } from "./post-card";
 
-export function PostList() {
+export const PostList = ({ posts }: { posts: readonly Post[] }) => {
   if (posts.length === 0) {
     return (
       <div className="rounded-ui border border-dashed border-border p-12 text-center text-muted-foreground">
@@ -13,10 +13,10 @@ export function PostList() {
   return (
     <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <li key={post.slug} className="flex">
+        <li key={post.id} className="flex">
           <PostCard post={post} />
         </li>
       ))}
     </ul>
   );
-}
+};

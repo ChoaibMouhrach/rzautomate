@@ -1,48 +1,51 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { PostBody } from "@/components/pages/blog/[slug]/post-body";
+import { render } from "astro:content";
+import PostBody from "@/components/pages/blog/[slug]/post-body.astro";
 import { PostCover } from "@/components/pages/blog/[slug]/post-cover";
-import { PostCta } from "@/components/pages/blog/[slug]/post-cta";
 import { PostHeader } from "@/components/pages/blog/[slug]/post-header";
 import { PostJsonLd } from "@/components/pages/blog/[slug]/post-json-ld";
+import { PostReadingProgress } from "@/components/pages/blog/[slug]/post-reading-progress";
 import { PostSidebar } from "@/components/pages/blog/[slug]/post-sidebar";
+import { getPosts, isoDate, lastModified, postPath } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
-import { posts } from "@/lib/blog";
+import { authors } from "@/lib/authors";
 import { pageSocial } from "@/lib/metadata";
 
-export const getStaticPaths = (() =>
-  posts.map((post) => ({
-    params: { slug: post.slug },
+export const getStaticPaths = (async () =>
+  (await getPosts()).map((post) => ({
+    params: { slug: post.id },
     props: { post },
   }))) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
+const { Content, headings } = await render(post);
 const seo = pageSocial({
-  title: post.title,
-  description: post.excerpt,
+  title: post.data.metaTitle ?? post.data.title,
+  description: post.data.excerpt,
   image: {
-    url: `/blog/${post.slug}/opengraph-image.png`,
-    alt: post.title,
+    url: `${postPath(post)}/opengraph-image.png`,
+    alt: post.data.title,
   },
-  authors: [post.author.name],
+  authors: [authors[post.data.author].name],
   article: {
-    publishedTime: post.date,
-    modifiedTime: post.updated ?? post.date,
+    publishedTime: isoDate(post.data.date),
+    modifiedTime: lastModified(post),
   },
 });
 ---
 
 <SiteLayout {...seo}>
-  <article class="page-container pb-24 pt-10 sm:pt-16">
+  <PostReadingProgress client:load targetId="post-article" />
+  <article id="post-article" class="page-container pb-24 pt-10 sm:pt-16">
     <PostJsonLd post={post} />
     <PostHeader post={post} />
     <PostCover post={post} />
     <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_14rem]">
       <div>
-        <PostBody client:load post={post} />
-        <PostCta />
+        <PostBody><Content /></PostBody>
       </div>
-      <PostSidebar client:load post={post} />
+      <PostSidebar client:visible headings={headings} />
     </div>
   </article>
 </SiteLayout>

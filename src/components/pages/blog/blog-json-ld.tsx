@@ -1,17 +1,14 @@
+import type { Post } from "@/lib/blog";
 import { JsonLd } from "@/components/site/json-ld";
 import { blogJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/pages";
 
-export function BlogJsonLd() {
-  return (
-    <JsonLd
+export const BlogJsonLd = ({ posts }: { posts: readonly Post[] }) => <JsonLd
       data={[
-        blogJsonLd(),
+        blogJsonLd(posts),
         breadcrumbJsonLd([
           { name: "Home", path: "/" },
           { name: pageMetadata.blog.title, path: "/blog" },
         ]),
       ]}
-    />
-  );
-}
+    />;

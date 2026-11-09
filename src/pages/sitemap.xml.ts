@@ -1,23 +1,15 @@
-import { posts } from "@/lib/blog";
+import { getPosts, lastModified, postPath } from "@/lib/blog";
 import { modelsCheckedAt } from "@/lib/models";
 import { pagePaths } from "@/lib/pages";
 import { absoluteUrl } from "@/lib/site";
 
-const postDates = new Map<string, string | undefined>([
-  ...posts.map(
-    (post) => [`/blog/${post.slug}`, post.updated ?? post.date] as const,
-  ),
-  [
-    "/blog",
-    posts
-      .map((post) => post.updated ?? post.date)
-      .sort()
-      .at(-1),
-  ] as const,
-]);
-
-export function GET() {
-  const entries = pagePaths()
+export const GET = async () => {
+  const posts = await getPosts();
+  const postDates = new Map<string, string | undefined>([
+    ...posts.map((post) => [postPath(post), lastModified(post)] as const),
+    ["/blog", posts.map(lastModified).sort().at(-1)] as const,
+  ]);
+  const entries = pagePaths(posts.map((post) => post.id))
     .map((path) => {
       const lastModified =
         path === "/models" || path.startsWith("/models/")
@@ -35,4 +27,4 @@ ${entries}
 `,
     { headers: { "Content-Type": "application/xml; charset=utf-8" } },
   );
-}
+};

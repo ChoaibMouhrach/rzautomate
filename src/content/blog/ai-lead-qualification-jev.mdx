@@ -1,0 +1,175 @@
+---
+title: "AI lead qualification with Jev: how we filter cold leads"
+metaTitle: "AI Lead Qualification with Jev: Filter Cold Leads Fast"
+excerpt: "AI lead qualification for cold outbound: how we use Jev to check AI-researched lead data against real sources and drop bad-fit leads before sending."
+category: "Lead generation"
+date: 2026-11-09
+readingMinutes: 9
+author: choaib
+image: /blog/ai-lead-qualification-jev.webp
+imageAlt: "Lead qualification pipeline: lead list, Tavily research, Jev fact check, Jev fit check, manual review for uncertain leads, and sending queue for approved leads"
+faq:
+  - question: "What is AI lead qualification?"
+    answer: "AI lead qualification is using AI to decide if a lead fits your offer before anyone contacts them. For inbound, that's usually a chatbot or voice agent asking qualifying questions. For cold outbound, it means checking AI-researched data against available website and profile information, then filtering out poor-fit leads before outreach."
+  - question: "How does AI assist in lead qualification?"
+    answer: "AI assists with research and the yes/no decisions a person would otherwise do by hand. Our workflow checks the available website and profile text against the research summary, then answers fixed questions about fit. Salesforce's 2026 State of Sales found sellers expect AI agents to cut prospect research time by 34% once fully set up. You still decide where the cut-off is."
+  - question: "Is Jev an LLM?"
+    answer: 'No. Jev is a decision model introduced by TypeSafe AI on [September 15, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev) as its first "System One" model. It reads text and returns typed answers (a choice, a yes/no or a score) with probabilities instead of free-form prose. That makes it good for steps like lead qualification and useless for writing emails.'
+  - question: "How much does Jev cost?"
+    answer: "Jev’s published early-access rate is $0.042 per million input tokens, with output free. A 6-million-input-token workload costs $0.252 for Jev alone, excluding Tavily and other services. The charge for any specific run depends on its actual input-token count and billing terms."
+  - question: "Is AI lead scoring the same as AI lead qualification?"
+    answer: "They overlap, but they're different. AI lead scoring ranks leads by how likely they are to convert, usually from behavior like page visits and email opens. AI lead qualification is a fit call: should you contact this lead at all? For cold outbound, qualification comes first. Scoring only matters for the leads that pass."
+  - question: "Can AI lead qualification replace manual research?"
+    answer: "Most of it, yes. AI handles the repeat checks on every lead, and you spot-check samples and review the unsure cases. Claude Opus 4.5 with web search had a 30.2% hallucination rate on HalluHard, a benchmark unrelated to lead research. It illustrates why we still verify a sample, not the error rate of this workflow."
+---
+
+import { PostFaq } from "@/components/pages/blog/[slug]/post-faq";
+import {
+  CtaCard,
+  CtaCardAction,
+  CtaCardContent,
+  CtaCardDescription,
+  CtaCardTitle,
+} from "@/components/ui/cta-card";
+
+AI lead qualification means using AI to decide if a lead is worth contacting before you spend a single email on them. For cold outbound we do it in two checks: is the AI research about the lead actually true, and does the lead fit at all. We run both checks with Jev, a decision model from TypeSafe AI. Every lead goes through it before we send anything.
+
+## What does AI lead qualification mean for cold outbound?
+
+For cold outbound, AI lead qualification is the filter between your lead list and your sending tool. Most articles on this topic are about inbound. A chatbot asks a website visitor about budget and timeline, then passes hot leads to sales.
+
+Cold leads never filled out your form. All you've got is what you can find about them online.
+
+So the AI isn't judging what a lead told you. It's judging research about the lead, and that research can be wrong.
+
+## Why we don't trust AI lead research without checking it
+
+AI research is the step we trust least in our whole pipeline. It's fast and it's cheap. It also gets things wrong way more often than people think.
+
+Researchers at EPFL and partner institutes developed a hallucination benchmark called HalluHard. Claude Opus 4.5 with web search had a 30.2% hallucination rate in that test ([HalluHard paper, 2026](https://arxiv.org/abs/2602.01031)). The benchmark covers legal, research, medical and coding questions, not lead research, and it didn't test Tavily. We take it as a warning about trusting AI-generated claims, not a measured error rate for our pipeline.
+
+That's a real problem for lead research. A summary can link to the lead's real website and still get their service or team size wrong. Put that in your first line and you open the email with a wrong fact about their business. Put it in your fit check and you end up emailing people who were never a fit.
+
+Salesforce surveyed 4,050 salespeople for its State of Sales report, and sellers expect AI agents to cut prospect research time by 34% once they're fully set up ([Salesforce, 2026](https://www.salesforce.com/news/stories/state-of-sales-report-announcement-2026/)). That's what sellers expect, not something anyone measured. And even if it's true, fast research that's wrong doesn't help you.
+
+## Which leads should AI lead qualification filter out?
+
+We filter out leads that are unlikely to need our services, even when the research about them is correct. The three main groups are competitors, teams equipped to handle the work internally, and leads with no visible need.
+
+The "builds everything themselves" one we learned the hard way. Back when we sold edtech development, we did cold LinkedIn outreach to about 20 active people in edtech. Zero replies. Not one. When we looked closer, the founders either ran everything on platforms themselves or had their own devs. There was no gap for us to sell into.
+
+So now that check happens before we write a single message.
+
+| Filter               | Question we ask Jev                                                | Answer type       | Why we drop them                                                      |
+| -------------------- | ----------------------------------------------------------------- | ----------------- | -------------------------------------------------------------------- |
+| Competitor           | Does this company sell AI automation or similar services itself?  | Yes/no            | Usually not a relevant prospect for the same service.                |
+| Builds it themselves | Does this company have in-house developers or an automation team? | Yes/no            | They may already have the capacity to handle this work.              |
+| No visible need      | Do the website and profile show a problem this offer solves?      | Score from 0 to 1 | If there is no clear problem we can solve, outreach is less relevant. |
+
+We send about 20 emails a day per mailbox. At that volume, every send that goes to a bad lead is a send that didn't go to a good one.
+
+## How we run AI lead qualification on every lead
+
+We run every lead through three steps, inside Carl, the outbound tool we built ourselves. It's the tool we used for our Skool community owner outreach pipeline. You can rebuild each step as a separate API call in whatever stack you use.
+
+### Step 1: Tavily researches the lead
+
+We use Tavily, an AI search API, to pull a short summary on each lead and their company: what they sell, who they sell to and, when available, their reported team size. It's quick. We just don't take it at face value.
+
+### Step 2: Jev checks the research against the lead's own pages
+
+We give Jev the Tavily summary plus text collected from the lead's public website pages and any LinkedIn profile details already available in our lead records. We don't rely on Jev to retrieve LinkedIn pages, and we don't assume full profile text is available for every lead. Then we ask it yes/no questions about whether each claim in the summary is actually backed by the source material. For example, if Tavily labels a solo coach as an "agency" but the website says otherwise, that claim should get flagged. We do not use Jev to validate numerical team-size claims; those require separate checking against the source.
+
+This is the part everyone skips, and it's the part that matters. Without it, the only way to catch bad research is to open every website yourself.
+
+### Step 3: Jev drops the leads that don't fit
+
+Once the research checks out, Jev answers the three questions from the table above. The point is to filter out bad-fit leads before outreach, instead of spending sends on people who can't use what we sell. We still check the decisions on a sample, especially the borderline ones.
+
+### How the results are routed
+
+We keep the research check before the fit questions run. A lead with unsupported claims or an uncertain fit goes to a manual-review queue, not straight into outreach. Clear competitors, in-house teams and low-need leads are dropped; strong-fit leads can move to the sending queue.
+
+We collected and deduplicated 968 Skool community owner leads. Here is how those leads were classified by our qualification pipeline:
+
+| Qualification result      |   Leads |
+| ------------------------- | ------: |
+| Dropped as poor fit       |     312 |
+| Flagged for manual review |     174 |
+| Approved for outreach     |     482 |
+| **Total**                 | **968** |
+
+The 174 flagged leads went into the manual-review queue rather than being approved automatically. The 482 approved leads were eligible for outreach; that does not mean all 482 had already been emailed.
+
+## Why we use a decision model instead of an LLM for this
+
+Lead qualification is a bunch of yes/no and pick-one questions, and that's exactly what decision models are built for. Jev doesn't write text. You give it the lead info plus your questions, and it gives back a choice, a yes/no or a score, each with a probability.
+
+What we care about most is that the output never breaks our code. Ask an LLM for JSON and it can still send back a broken object or a label you never defined, so you end up writing parsing and retry logic around it. Jev's answers are locked to the options you give it. It can still pick the wrong option (you still check samples), but the shape is always right.
+
+Speed matters too when you're running a whole list. TypeSafe says Jev answers in 70 to 500 milliseconds end to end ([VKTR, 2026](https://www.vktr.com/ai-platforms/chatgpt-cocreator-launches-typesafe-ai-with-jev/)).
+
+TypeSafe reported gains of up to 193.6x in speed and 444.6x in cost in its workflow evaluations ([TypeSafe launch post, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev)). That's their own number from their own tests, and they say themselves it's the high end. We wouldn't plan around it.
+
+In a writing-check test reported by Every, Jev took a median 0.35 seconds per passage versus 8.83 seconds for Claude Fable 5.1. Jev caught six of seven planted defects; Fable caught all seven ([Every’s Jev test, 2026](https://every.to/vibe-check/mini-vibe-check-typesafe-s-jev-judged-everything-i-ve-written-in-0-7-seconds)). That is a speed-versus-accuracy tradeoff in a small writing test, not a measurement of our lead qualification pipeline. Fable 5.1 also isn't the Sonnet model in our cost table.
+
+But the real reason we added Jev was cost. Jev charges $0.042 per million input tokens, and output is free ([TypeSafe’s launch post, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev)). LLMs charge you for every output token, even the brackets and quote marks in a JSON reply.
+
+One thing we don't use AI for: writing the email. We tried AI-personalized cold emails and they read like AI. Prospects can tell. We switched to a fixed template with merge fields, so in our setup AI picks who gets an email and a plain template does the talking.
+
+## What does AI lead qualification cost with Jev?
+
+At Jev’s published early-access rate, processing 6 million input tokens costs $0.252. That works out to roughly $0.25 per 1,000 leads when each lead uses 6,000 input tokens. Tavily research is billed separately.
+
+Here is the direct cost comparison at **6,000 input tokens and 300 output tokens per lead**, using published rates as of November 9, 2026. The token counts define the workload being priced; they are not claimed as our recorded API usage.
+
+| Per 1,000 leads              | Jev                       | Claude Sonnet 5.5      |
+| ---------------------------- | ------------------------- | ---------------------- |
+| Input price                  | $0.042 per million tokens | $2 per million tokens  |
+| Output price                 | Free                      | $10 per million tokens |
+| Input cost (6M tokens)       | $0.252                    | $12.00                 |
+| Output cost (300,000 tokens) | $0                        | $3.00                  |
+| **Total at this workload**   | **$0.252**                | **$15.00**             |
+
+The Sonnet 5.5 standard API prices come from [Anthropic's pricing page](https://platform.claude.com/docs/en/about-claude/pricing). Anthropic’s Batch API offers a 50% discount: the same Sonnet workload costs $7.50 using batch pricing instead of $15.00 at standard rates. At [Tavily's pay-as-you-go rate](https://www.tavily.com/pricing) of $0.008 per credit, one [basic search](https://help.tavily.com/articles/6938147944-basic-vs-advanced-search-what-s-the-difference) per lead adds about $8 per 1,000 leads, or around $8.25 including Jev. An advanced search uses two credits, and extra searches, extraction and other tools cost more. Free credits or another plan can change the bill.
+
+Time adds up too. At TypeSafe's quoted upper-end 500 ms per call, 1,000 sequential Jev calls would take about 8 minutes and 20 seconds of model response time. The 8.83-second Fable 5.1 figure above would work out to around two and a half hours sequentially, but it comes from a different writing-check task and model. Neither figure measures our end-to-end pipeline, and parallel calls can change wall-clock time.
+
+So at Jev's price we can re-check every lead each time we refresh a list, and ask more questions per lead, without checking the bill.
+
+## Where Jev falls short for lead qualification
+
+Jev gives you a typed decision and probability, not a written explanation. When it drops a lead, you can see the decision but not a reasoning trace. For outreach, that can work as long as uncertain leads go to review. The pain comes when it starts dropping good leads, because you can't read its reasoning to figure out why.
+
+Simon Willison tested Jev after launch, and said evals and structured experiments matter even more with a model like this than with a regular LLM ([Simon Willison, 2026](https://simonwillison.net/2026/Sep/21/jev/)). We agree. Hand-check a sample of its decisions before you trust it, and keep doing it every so often.
+
+It also has limits you should know before you build on it:
+
+- It only answers questions you define upfront. If you need free-form research or a written first line, you still need an LLM.
+- It's a closed model: API access only, no weights. Cloudflare and Microsoft have shipped their own decision models since ([Kai Waehner, 2026](https://www.kai-waehner.de/blog/2026/10/20/how-decision-models-became-a-new-ai-category-after-jev/)), so you're not locked in forever.
+- TypeSafe’s own guidance says Jev currently struggles with numbers, dates and adversarial content, so we keep those checks outside its fact-verification decisions ([Simon Willison, 2026](https://simonwillison.net/2026/Sep/21/jev/)).
+- Most speed and accuracy numbers out there still come from TypeSafe itself.
+
+That's why we use the confidence scores as a gate in the workflow: clear decisions can move forward or be dropped, and the unsure middle goes to manual review. The right threshold depends on the offer and how consistently the decisions match manual checks.
+
+## Your next step
+
+If you add one thing this week, make it the fact check. Put a yes/no step between your research tool and your sending tool that asks if each claim is backed by the lead's own website. It's the cheapest step in the whole pipeline, and it catches the mistakes that cost you the most.
+
+<div className="not-prose my-10">
+  <CtaCard className="items-center text-center sm:flex-col sm:justify-center sm:gap-6">
+    <CtaCardContent>
+      <CtaCardTitle>Want this built into your own outbound?</CtaCardTitle>
+      <CtaCardDescription>
+        Book a <span className="text-primary">free</span> discovery call with RZ Automate. <span className="text-primary">No commitment</span>. We'll look at your pipeline together and we'll tell you where AI lead qualification would save you time and sends.
+      </CtaCardDescription>
+    </CtaCardContent>
+    <CtaCardAction href="https://cal.com/rzautomate/30min">
+      Book a free call
+    </CtaCardAction>
+  </CtaCard>
+</div>
+
+## FAQ
+
+<PostFaq items={frontmatter.faq} />

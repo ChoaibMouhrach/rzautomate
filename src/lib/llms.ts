@@ -1,4 +1,4 @@
-import { posts } from "@/lib/blog";
+import { postPath, type Post } from "@/lib/blog";
 import { pageMetadata } from "@/lib/pages";
 import { services } from "@/lib/services";
 import { absoluteUrl, company, site } from "@/lib/site";
@@ -22,7 +22,7 @@ const legalPages = [
   { path: "/terms", ...pageMetadata.terms },
 ];
 
-export function buildLlmsTxt() {
+export const buildLlmsTxt = (posts: readonly Post[]) => {
   const section = (heading: string, lines: string[]) =>
     [`## ${heading}`, "", ...lines].join("\n");
 
@@ -46,7 +46,7 @@ export function buildLlmsTxt() {
       section(
         "Blog",
         posts.map((post) =>
-          link(post.title, `/blog/${post.slug}`, post.excerpt),
+          link(post.data.title, postPath(post), post.data.excerpt),
         ),
       ),
       section("Optional", [
@@ -58,4 +58,4 @@ export function buildLlmsTxt() {
       ]),
     ].join("\n\n") + "\n"
   );
-}
+};

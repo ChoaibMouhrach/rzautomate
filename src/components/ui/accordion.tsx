@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Plus } from "lucide-react";
 import { focusRing, tv } from "@/lib/ui";
 
@@ -12,18 +13,16 @@ const trigger = tv({
 
 export interface AccordionItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
 }
 
-export function Accordion({
+export const Accordion = ({
   items,
   name = "accordion",
 }: {
   items: readonly AccordionItem[];
   name?: string;
-}) {
-  return (
-    <div className="flex w-full flex-col gap-3">
+}) => <div className="flex w-full flex-col gap-3">
       {items.map((entry) => (
         <details key={entry.question} name={name} className={item()}>
           <summary className={trigger({ isFocusVisible: false })}>
@@ -40,6 +39,4 @@ export function Accordion({
           </p>
         </details>
       ))}
-    </div>
-  );
-}
+    </div>;

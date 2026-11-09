@@ -11,9 +11,7 @@ export interface BreadcrumbItem {
   href?: string;
 }
 
-export function Breadcrumbs({ items }: { items: readonly BreadcrumbItem[] }) {
-  return (
-    <AriaBreadcrumbs className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+export const Breadcrumbs = ({ items }: { items: readonly BreadcrumbItem[] }) => <AriaBreadcrumbs className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
       {items.map((item, index) => {
         const isLast = index === items.length - 1;
         return (
@@ -31,6 +29,4 @@ export function Breadcrumbs({ items }: { items: readonly BreadcrumbItem[] }) {
           </Breadcrumb>
         );
       })}
-    </AriaBreadcrumbs>
-  );
-}
+    </AriaBreadcrumbs>;

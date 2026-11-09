@@ -3,7 +3,7 @@ import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/pages";
 import { faqGroups } from "./content";
 
-export function FaqJsonLd() {
+export const FaqJsonLd = () => {
   const items = faqGroups.flatMap(
     (group): { question: string; answer: string }[] => [...group.items],
   );
@@ -19,4 +19,4 @@ export function FaqJsonLd() {
       ]}
     />
   );
-}
+};

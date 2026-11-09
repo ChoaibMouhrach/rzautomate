@@ -15,26 +15,22 @@ const entities: Record<string, string> = {
   "&apos;": "'",
 };
 
-function decodeEntities(text: string) {
-  return text.replace(
+const decodeEntities = (text: string) => text.replace(
     /&(?:amp|lt|gt|quot|apos|#x27|#39);/g,
     (m) => entities[m],
   );
-}
 
-function metaContent(html: string, name: string) {
+const metaContent = (html: string, name: string) => {
   const tag = html.match(
     new RegExp(`<meta[^>]*name="${name}"[^>]*>`, "i"),
   )?.[0];
   const content = tag?.match(/content="([^"]*)"/i)?.[1];
   return content ? decodeEntities(content) : undefined;
-}
+};
 
-export function isNotFoundPage(html: string) {
-  return /<meta[^>]*name="robots"[^>]*content="noindex/i.test(html);
-}
+export const isNotFoundPage = (html: string) => /<meta[^>]*name="robots"[^>]*content="noindex/i.test(html);
 
-export function pageToMarkdown(html: string, pageUrl: URL) {
+export const pageToMarkdown = (html: string, pageUrl: URL) => {
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1];
   const description = metaContent(html, "description");
   const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? html;
@@ -62,9 +58,9 @@ export function pageToMarkdown(html: string, pageUrl: URL) {
     description,
     body: body.trim(),
   };
-}
+};
 
-export function htmlToMarkdown(html: string, pageUrl: URL) {
+export const htmlToMarkdown = (html: string, pageUrl: URL) => {
   const { title, description, body } = pageToMarkdown(html, pageUrl);
 
   const frontMatter = [
@@ -78,4 +74,4 @@ export function htmlToMarkdown(html: string, pageUrl: URL) {
     .join("\n");
 
   return `${frontMatter}\n\n${body}\n`;
-}
+};

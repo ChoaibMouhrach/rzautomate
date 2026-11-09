@@ -9,10 +9,10 @@ export const cheapestTools = [...models].filter((model) => model.tools).sort((a,
 export const cheapestOpen = ([...models] as AiModel[]).filter((model) => model.openWeights).sort((a, b) => a.outputPrice - b.outputPrice)[0];
 
 
-export function priceTieNote(model: AiModel, toolCallingOnly = false) {
+export const priceTieNote = (model: AiModel, toolCallingOnly = false) => {
   const ties = models.filter((candidate) => candidate.slug !== model.slug && candidate.outputPrice === model.outputPrice && (!toolCallingOnly || candidate.tools));
   return ties.length ? ` Tied with ${ties.map((candidate) => candidate.name).join(", ")}.` : "";
-}
+};
 
 export const workflows = [
   { name: "Answer 1,000 support emails", count: 1000, input: 1500, output: 400, service: "AI customer support agents", href: "/services/ai-customer-support-agents" },
@@ -20,9 +20,7 @@ export const workflows = [
   { name: "Score 500 new leads", count: 500, input: 1000, output: 200, service: "AI lead generation & CRM automation", href: "/services/ai-lead-generation" },
 ] as const;
 
-export function workflowEstimates(job: (typeof workflows)[number]) {
-  return models.filter((model) => model.tools).map((model) => ({ model, cost: job.count * (job.input * model.inputPrice + job.output * model.outputPrice) / 1_000_000 })).sort((a, b) => a.cost - b.cost || a.model.name.localeCompare(b.model.name));
-}
+export const workflowEstimates = (job: (typeof workflows)[number]) => models.filter((model) => model.tools).map((model) => ({ model, cost: job.count * (job.input * model.inputPrice + job.output * model.outputPrice) / 1_000_000 })).sort((a, b) => a.cost - b.cost || a.model.name.localeCompare(b.model.name));
 
 export const selectionSteps = [
   ["Can it use tools?", "If the workflow has to update a CRM, send an email or look up an order, tool calling is required. Start with that filter."],

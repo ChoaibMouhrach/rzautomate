@@ -20,9 +20,7 @@ const link = tv({
   defaultVariants: { variant: "nav" },
 });
 
-export function NavigationMenu({ children }: { children: ReactNode }) {
-  return (
-    <BaseNavigationMenu.Root className="relative">
+export const NavigationMenu = ({ children }: { children: ReactNode }) => <BaseNavigationMenu.Root className="relative">
       <BaseNavigationMenu.List className="flex items-center gap-6">
         {children}
       </BaseNavigationMenu.List>
@@ -37,38 +35,26 @@ export function NavigationMenu({ children }: { children: ReactNode }) {
           </BaseNavigationMenu.Popup>
         </BaseNavigationMenu.Positioner>
       </BaseNavigationMenu.Portal>
-    </BaseNavigationMenu.Root>
-  );
-}
+    </BaseNavigationMenu.Root>;
 
-export function NavigationMenuItem({ children }: { children: ReactNode }) {
-  return <BaseNavigationMenu.Item>{children}</BaseNavigationMenu.Item>;
-}
+export const NavigationMenuItem = ({ children }: { children: ReactNode }) => <BaseNavigationMenu.Item>{children}</BaseNavigationMenu.Item>;
 
-export function NavigationMenuTrigger({ children }: { children: ReactNode }) {
-  return (
-    <BaseNavigationMenu.Trigger className={trigger()}>
+export const NavigationMenuTrigger = ({ children }: { children: ReactNode }) => <BaseNavigationMenu.Trigger className={trigger()}>
       {children}
       <BaseNavigationMenu.Icon className="transition-transform data-popup-open:rotate-180">
         <ChevronDown aria-hidden className="size-4" />
       </BaseNavigationMenu.Icon>
-    </BaseNavigationMenu.Trigger>
-  );
-}
+    </BaseNavigationMenu.Trigger>;
 
-export function NavigationMenuContent({
+export const NavigationMenuContent = ({
   className,
   ...props
-}: ComponentProps<typeof BaseNavigationMenu.Content>) {
-  return (
-    <BaseNavigationMenu.Content
+}: ComponentProps<typeof BaseNavigationMenu.Content>) => <BaseNavigationMenu.Content
       className={`p-2 transition-[opacity,transform] duration-200 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 ${className ?? ""}`}
       {...props}
-    />
-  );
-}
+    />;
 
-export function NavigationMenuLink({
+export const NavigationMenuLink = ({
   href,
   variant,
   className,
@@ -78,14 +64,10 @@ export function NavigationMenuLink({
   variant?: "nav" | "item";
   className?: string;
   children: ReactNode;
-}) {
-  return (
-    <BaseNavigationMenu.Link
+}) => <BaseNavigationMenu.Link
       closeOnClick
       render={<a href={href} />}
       className={link({ variant, className })}
     >
       {children}
-    </BaseNavigationMenu.Link>
-  );
-}
+    </BaseNavigationMenu.Link>;

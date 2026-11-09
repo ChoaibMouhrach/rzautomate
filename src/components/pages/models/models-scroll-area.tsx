@@ -3,9 +3,7 @@
 import type { ReactNode } from "react";
 import { ScrollArea } from "@base-ui/react/scroll-area";
 
-export function ModelsScrollArea({ children, label }: { children: ReactNode; label: string }) {
-  return (
-    <ScrollArea.Root className="relative isolate min-w-0 overflow-hidden rounded-xl border border-border">
+export const ModelsScrollArea = ({ children, label }: { children: ReactNode; label: string }) => <ScrollArea.Root className="relative isolate min-w-0 overflow-hidden rounded-xl border border-border">
       <ScrollArea.Viewport
         role="region"
         aria-label={label}
@@ -22,6 +20,4 @@ export function ModelsScrollArea({ children, label }: { children: ReactNode; lab
       >
         <ScrollArea.Thumb className="h-full rounded-full bg-muted-foreground/40 transition-colors hover:bg-muted-foreground/70" />
       </ScrollArea.Scrollbar>
-    </ScrollArea.Root>
-  );
-}
+    </ScrollArea.Root>;

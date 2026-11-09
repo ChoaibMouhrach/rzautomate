@@ -1,24 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/text-field";
 
-function Section({
+const Section = ({
   title,
   children,
 }: {
   title: string;
   children: React.ReactNode;
-}) {
-  return (
-    <section className="flex flex-col gap-4 border-t border-border py-8">
+}) => <section className="flex flex-col gap-4 border-t border-border py-8">
       <h2 className="text-sm font-medium text-muted-foreground">{title}</h2>
       {children}
-    </section>
-  );
-}
+    </section>;
 
-export function DesignGallery() {
-  return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-16">
+export const DesignGallery = () => <main className="mx-auto w-full max-w-3xl px-6 py-16">
       <h1 className="mb-8 text-3xl font-semibold tracking-tight">
         Design system
       </h1>
@@ -57,6 +51,4 @@ export function DesignGallery() {
           />
         </div>
       </Section>
-    </main>
-  );
-}
+    </main>;

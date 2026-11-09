@@ -8,9 +8,7 @@ import {
   PageTitle,
 } from "@/components/site/page";
 
-export function NotFoundContent() {
-  return (
-    <Page>
+export const NotFoundContent = () => <Page>
       <PageHeader>
         <PageTitle>Page not found</PageTitle>
         <PageDescription>
@@ -24,6 +22,4 @@ export function NotFoundContent() {
           <PageSecondaryAction href="/blog">Read the blog</PageSecondaryAction>
         </PageActions>
       </PageHeader>
-    </Page>
-  );
-}
+    </Page>;

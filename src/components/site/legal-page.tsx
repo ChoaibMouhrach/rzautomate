@@ -11,7 +11,7 @@ export interface LegalSection {
   body: string;
 }
 
-export function LegalPage({
+export const LegalPage = ({
   title,
   updated,
   sections,
@@ -19,9 +19,7 @@ export function LegalPage({
   title: string;
   updated: string;
   sections: readonly LegalSection[];
-}) {
-  return (
-    <Page>
+}) => <Page>
       <PageHeader>
         <PageTitle>{title}</PageTitle>
         <PageDescription>Last updated {updated}</PageDescription>
@@ -38,6 +36,4 @@ export function LegalPage({
           ))}
         </div>
       </PageContent>
-    </Page>
-  );
-}
+    </Page>;

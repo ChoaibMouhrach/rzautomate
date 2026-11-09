@@ -29,7 +29,7 @@ const features = [
 const fieldClass = "rounded-lg border border-border bg-background px-3 py-2 text-sm";
 const sortValue = (model: AiModel, key: SortKey) => key === "features" ? features.filter(({ key }) => model[key]).length : typeof model[key] === "boolean" ? Number(model[key]) : model[key];
 
-export function ModelsTable() {
+export const ModelsTable = () => {
   const { query, provider, weights, selected, sort, updateParams } = useModelsTableState();
   const rows = models.filter((model) => `${model.name} ${model.provider} ${model.modelId}`.toLowerCase().includes(query.trim().toLowerCase()) && (!provider || model.provider === provider) && (!weights || model.openWeights === (weights === "open")) && selected.every((feature) => model[feature])).sort((a, b) => {
     const left = sortValue(a, sort.key);
@@ -82,4 +82,4 @@ export function ModelsTable() {
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground" aria-label="Feature legend">{features.map(({ key, label, Icon }) => <span key={key} className="flex items-center gap-2"><Icon size={14} aria-hidden="true" />{label}</span>)}</div>
     </>
   );
-}
+};

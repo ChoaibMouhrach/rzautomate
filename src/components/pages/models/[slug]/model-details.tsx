@@ -7,7 +7,7 @@ import {
 import { Link } from "@/components/ui/link";
 import { formatPrice, formatTokens, modelsCheckedLabel, type AiModel } from "@/lib/models";
 
-export function ModelDetails({ model }: { model: AiModel }) {
+export const ModelDetails = ({ model }: { model: AiModel }) => {
   const specifications = [
     ["Provider", model.provider],
     ["Model ID", model.modelId],
@@ -60,4 +60,4 @@ export function ModelDetails({ model }: { model: AiModel }) {
       </PageContent>
     </>
   );
-}
+};

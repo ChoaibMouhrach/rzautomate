@@ -7,9 +7,7 @@ import {
   PageTitle,
 } from "@/components/site/page";
 
-export function ServicesHeader() {
-  return (
-    <PageHeader>
+export const ServicesHeader = () => <PageHeader>
       <PageTitle>AI automation services for your business</PageTitle>
       <PageDescription>
         Customer support, lead generation, document processing, business
@@ -20,6 +18,4 @@ export function ServicesHeader() {
         <PagePrimaryAction href="/contact">Book a free call</PagePrimaryAction>
         <PageSecondaryAction href="/faq">Read the FAQ</PageSecondaryAction>
       </PageActions>
-    </PageHeader>
-  );
-}
+    </PageHeader>;

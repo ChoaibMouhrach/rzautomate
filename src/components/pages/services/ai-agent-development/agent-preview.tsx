@@ -5,9 +5,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function AgentPreview() {
-  return (
-    <figure className="page-container pb-16">
+export const AgentPreview = () => <figure className="page-container pb-16">
       <figcaption className="mb-4 text-center text-sm text-muted-foreground">
         Illustrative workflow · sample data
       </figcaption>
@@ -56,6 +54,4 @@ export function AgentPreview() {
           </dl>
         </Card>
       </div>
-    </figure>
-  );
-}
+    </figure>;

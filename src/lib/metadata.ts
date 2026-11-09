@@ -29,6 +29,4 @@ export const defaultImage: SocialImage = {
   alt: defaultTitle,
 };
 
-export function pageSocial(seo: PageSeo): PageSeo {
-  return { image: defaultImage, ...seo };
-}
+export const pageSocial = (seo: PageSeo): PageSeo => ({ image: defaultImage, ...seo });

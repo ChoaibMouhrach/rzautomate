@@ -5,17 +5,11 @@ import { LinkButton } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";
 import { site } from "@/lib/site";
 
-function IconTile({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="flex size-10 items-center justify-center rounded-ui border border-border bg-muted text-foreground">
+const IconTile = ({ children }: { children: React.ReactNode }) => <span className="flex size-10 items-center justify-center rounded-ui border border-border bg-muted text-foreground">
       {children}
-    </span>
-  );
-}
+    </span>;
 
-export function ContactOptions() {
-  return (
-    <section aria-label="Ways to reach us">
+export const ContactOptions = () => <section aria-label="Ways to reach us">
       <h2 className="sr-only">Ways to reach us</h2>
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="gap-4 p-8">
@@ -65,6 +59,4 @@ export function ContactOptions() {
           </div>
         </Card>
       </div>
-    </section>
-  );
-}
+    </section>;

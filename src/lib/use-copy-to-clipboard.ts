@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useCopyToClipboard(resetAfterMs = 2000) {
+export const useCopyToClipboard = (resetAfterMs = 2000) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
@@ -9,14 +9,14 @@ export function useCopyToClipboard(resetAfterMs = 2000) {
     return () => clearTimeout(timeout);
   }, [isCopied, resetAfterMs]);
 
-  async function copy(text: string) {
+  const copy = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setIsCopied(true);
     } catch {
       // Clipboard unavailable (insecure context or permission denied).
     }
-  }
+  };
 
   return { isCopied, copy };
-}
+};

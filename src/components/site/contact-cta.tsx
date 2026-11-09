@@ -6,9 +6,7 @@ import {
   CtaCardTitle,
 } from "@/components/ui/cta-card";
 
-export function ContactCta({ className }: { className?: string }) {
-  return (
-    <CtaCard className={className}>
+export const ContactCta = ({ className }: { className?: string }) => <CtaCard className={className}>
       <CtaCardContent>
         <CtaCardTitle>Ready to automate your workflow?</CtaCardTitle>
         <CtaCardDescription>
@@ -17,6 +15,4 @@ export function ContactCta({ className }: { className?: string }) {
         </CtaCardDescription>
       </CtaCardContent>
       <CtaCardAction href="/contact">Contact us</CtaCardAction>
-    </CtaCard>
-  );
-}
+    </CtaCard>;

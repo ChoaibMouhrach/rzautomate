@@ -2,7 +2,7 @@ import type { Graph } from "schema-dts";
 import { absoluteUrl, company, founder } from "@/lib/site";
 import { book, build, faq, path, seo } from "./content";
 
-export function leadGenerationJsonLd(): Graph {
+export const leadGenerationJsonLd = (): Graph => {
   const url = absoluteUrl(path);
 
   return {
@@ -102,6 +102,6 @@ export function leadGenerationJsonLd(): Graph {
       },
     ],
   };
-}
+};
 
 export const authorName = founder.name;

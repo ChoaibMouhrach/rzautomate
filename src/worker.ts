@@ -13,7 +13,7 @@ const securityHeaders = {
 
 const onDemandRoutes = /^\/(book|api\/.*)$/;
 
-function quality(accept: string, type: string) {
+const quality = (accept: string, type: string) => {
   const entry = accept
     .split(",")
     .map((part) => part.trim().split(";"))
@@ -21,34 +21,30 @@ function quality(accept: string, type: string) {
   if (!entry) return 0;
   const q = entry.slice(1).find((param) => param.trim().startsWith("q="));
   return q ? Number(q.trim().slice(2)) : 1;
-}
+};
 
-function wantsMarkdown(request: Request) {
+const wantsMarkdown = (request: Request) => {
   const accept = request.headers.get("accept") ?? "";
   if (quality(accept, "text/markdown") > quality(accept, "text/html")) {
     return true;
   }
   return aiAgentPattern.test(request.headers.get("user-agent") ?? "");
-}
+};
 
-function withHeaders(response: Response, headers: Record<string, string>) {
+const withHeaders = (response: Response, headers: Record<string, string>) => {
   const next = new Response(response.body, response);
   for (const [key, value] of Object.entries(headers)) {
     next.headers.set(key, value);
   }
   return next;
-}
+};
 
-function markdownPath(pathname: string) {
-  return pathname === "/" ? "/index.md" : `${pathname}.md`;
-}
+const markdownPath = (pathname: string) => pathname === "/" ? "/index.md" : `${pathname}.md`;
 
-function isPage(pathname: string) {
-  return !/\.[^/]+$/.test(pathname) || pathname.endsWith(".md");
-}
+const isPage = (pathname: string) => !/\.[^/]+$/.test(pathname) || pathname.endsWith(".md");
 
 export default {
-  async fetch(request, env, ctx) {
+  fetch: async (request, env, ctx) => {
     const url = new URL(request.url);
     const { pathname } = url;
 

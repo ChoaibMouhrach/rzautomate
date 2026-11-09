@@ -24,29 +24,21 @@ export interface LinkProps extends AriaLinkProps {
   variant?: "default" | "muted";
 }
 
-export function Link({ variant, className, ...props }: LinkProps) {
-  return (
-    <AriaLink
+export const Link = ({ variant, className, ...props }: LinkProps) => <AriaLink
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         link({ ...renderProps, variant, className }),
       )}
-    />
-  );
-}
+    />;
 
-export function LinkButton({
+export const LinkButton = ({
   variant,
   size,
   className,
   ...props
-}: AriaLinkProps & ButtonVariantProps) {
-  return (
-    <AriaLink
+}: AriaLinkProps & ButtonVariantProps) => <AriaLink
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         button({ ...renderProps, variant, size, className }),
       )}
-    />
-  );
-}
+    />;

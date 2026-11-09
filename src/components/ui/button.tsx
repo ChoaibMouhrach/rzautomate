@@ -34,13 +34,9 @@ export type ButtonVariantProps = VariantProps<typeof button>;
 
 export interface ButtonProps extends AriaButtonProps, ButtonVariantProps {}
 
-export function Button({ variant, size, className, ...props }: ButtonProps) {
-  return (
-    <AriaButton
+export const Button = ({ variant, size, className, ...props }: ButtonProps) => <AriaButton
       {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         button({ ...renderProps, variant, size, className }),
       )}
-    />
-  );
-}
+    />;

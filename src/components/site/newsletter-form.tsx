@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/text-field";
 import { subscribe } from "@/lib/newsletter";
 
-export function NewsletterForm() {
+export const NewsletterForm = () => {
   const [isPending, startTransition] = useTransition();
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [error, setError] = useState<string>();
@@ -52,4 +52,4 @@ export function NewsletterForm() {
       </Button>
     </Form>
   );
-}
+};

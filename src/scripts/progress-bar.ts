@@ -18,12 +18,12 @@ let progress = 0;
 let trickle: number | undefined;
 let hideTimer: number | undefined;
 
-function set(value: number) {
+const set = (value: number) => {
   progress = value;
   bar.style.width = `${value}%`;
-}
+};
 
-function start() {
+const start = () => {
   window.clearTimeout(hideTimer);
   window.clearInterval(trickle);
   bar.style.transition = "none";
@@ -35,15 +35,15 @@ function start() {
   trickle = window.setInterval(() => {
     set(progress + (90 - progress) * 0.1);
   }, 200);
-}
+};
 
-function done() {
+const done = () => {
   window.clearInterval(trickle);
   set(100);
   hideTimer = window.setTimeout(() => {
     bar.style.opacity = "0";
   }, 200);
-}
+};
 
 document.addEventListener("astro:before-preparation", start);
 document.addEventListener("astro:page-load", done);

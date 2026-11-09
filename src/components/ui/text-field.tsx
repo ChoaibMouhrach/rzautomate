@@ -33,7 +33,7 @@ export interface TextFieldProps extends AriaTextFieldProps {
   errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
-export function TextField({
+export const TextField = ({
   label,
   description,
   placeholder,
@@ -41,9 +41,7 @@ export function TextField({
   errorMessage,
   className,
   ...props
-}: TextFieldProps) {
-  return (
-    <AriaTextField
+}: TextFieldProps) => <AriaTextField
       {...props}
       className={composeRenderProps(className, (className) =>
         field({ className }),
@@ -77,6 +75,4 @@ export function TextField({
           </FieldError>
         </>
       )}
-    </AriaTextField>
-  );
-}
+    </AriaTextField>;

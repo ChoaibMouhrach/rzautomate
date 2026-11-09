@@ -2,9 +2,7 @@ import { JsonLd } from "@/components/site/json-ld";
 import { breadcrumbJsonLd, servicesPageJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/pages";
 
-export function ServicesJsonLd() {
-  return (
-    <JsonLd
+export const ServicesJsonLd = () => <JsonLd
       data={[
         servicesPageJsonLd(),
         breadcrumbJsonLd([
@@ -12,6 +10,4 @@ export function ServicesJsonLd() {
           { name: pageMetadata.services.title, path: "/services" },
         ]),
       ]}
-    />
-  );
-}
+    />;

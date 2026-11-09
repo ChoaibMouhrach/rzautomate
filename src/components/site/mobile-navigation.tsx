@@ -5,13 +5,13 @@ import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 
-export function MobileNavigation({
+export const MobileNavigation = ({
   pathname,
   children,
 }: {
   pathname: string;
   children: ReactNode;
-}) {
+}) => {
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const isOpen = openedOn === pathname;
   const setIsOpen = (open: boolean) => setOpenedOn(open ? pathname : null);
@@ -41,4 +41,4 @@ export function MobileNavigation({
       </SheetTrigger>
     </div>
   );
-}
+};

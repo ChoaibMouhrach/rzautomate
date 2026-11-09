@@ -21,13 +21,13 @@ const fonts = Promise.all(
 
 export const ogSize = { width: 1200, height: 630 };
 
-export async function ogCard({
+export const ogCard = async ({
   eyebrow,
   title,
 }: {
   eyebrow: string;
   title: string;
-}) {
+}) => {
   const svg = await satori(
     <div
       style={{
@@ -56,4 +56,4 @@ export async function ogCard({
   return new Response(new Uint8Array(png), {
     headers: { "Content-Type": "image/png" },
   });
-}
+};

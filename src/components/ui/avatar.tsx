@@ -13,9 +13,7 @@ export interface AvatarProps extends VariantProps<typeof avatar> {
   alt?: string;
 }
 
-export function Avatar({ src, alt = "", size = "md" }: AvatarProps) {
-  return (
-    <span className={avatar({ size })}>
+export const Avatar = ({ src, alt = "", size = "md" }: AvatarProps) => <span className={avatar({ size })}>
       <img
         src={src}
         alt={alt}
@@ -23,6 +21,4 @@ export function Avatar({ src, alt = "", size = "md" }: AvatarProps) {
         loading="lazy"
         className="absolute inset-0 size-full object-cover"
       />
-    </span>
-  );
-}
+    </span>;

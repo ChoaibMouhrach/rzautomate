@@ -94,8 +94,6 @@ export const models = [
 
 export type AiModel = (typeof models)[number];
 
-export function getModel(slug: string) {
-  return models.find((model) => model.slug === slug);
-}
+export const getModel = (slug: string) => models.find((model) => model.slug === slug);
 
 export const formatTokens = (tokens: number) => tokens.toLocaleString("en-US");

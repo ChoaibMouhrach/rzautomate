@@ -43,12 +43,12 @@ export interface SheetProps extends Omit<SheetOverlayProps, "children"> {
   "aria-label"?: string;
 }
 
-export function Sheet({
+export const Sheet = ({
   children,
   className,
   "aria-label": ariaLabel,
   ...props
-}: SheetProps) {
+}: SheetProps) => {
   const { snapPoints } = props;
   return (
     <SheetOverlay
@@ -80,17 +80,13 @@ export function Sheet({
       </AriaSheet>
     </SheetOverlay>
   );
-}
+};
 
-export function SheetHeader({ children }: { children: ReactNode }) {
-  return (
-    <div className="flex items-center justify-between gap-4">
+export const SheetHeader = ({ children }: { children: ReactNode }) => <div className="flex items-center justify-between gap-4">
       <Heading slot="title" className="text-lg font-semibold tracking-tight">
         {children}
       </Heading>
       <Button slot="close" variant="ghost" size="icon" aria-label="Close menu">
         <X aria-hidden className="size-5" />
       </Button>
-    </div>
-  );
-}
+    </div>;

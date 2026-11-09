@@ -3,15 +3,13 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Link } from "@/components/ui/link";
 import type { Service } from "@/lib/services";
 
-export function ServiceCard({
+export const ServiceCard = ({
   service,
   headingLevel = "h3",
 }: {
   service: Service;
   headingLevel?: "h2" | "h3";
-}) {
-  return (
-    <Card interactive className="group gap-0 overflow-hidden p-0">
+}) => <Card interactive className="group gap-0 overflow-hidden p-0">
       <div className="relative aspect-[1200/630] overflow-hidden border-b border-border">
         <img
           src={service.image}
@@ -39,6 +37,4 @@ export function ServiceCard({
           />
         </span>
       </div>
-    </Card>
-  );
-}
+    </Card>;

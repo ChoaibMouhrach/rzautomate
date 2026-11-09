@@ -1,8 +1,6 @@
 import { ogCard } from "@/components/site/og-card";
 
-export function GET() {
-  return ogCard({
+export const GET = () => ogCard({
     eyebrow: "AI document processing",
     title: "Invoices and forms entered without retyping",
   });
-}

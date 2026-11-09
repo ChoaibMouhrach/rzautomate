@@ -1,9 +1,7 @@
 import { ogCard } from "@/components/site/og-card";
 import { site } from "@/lib/site";
 
-export function GET() {
-  return ogCard({
+export const GET = () => ogCard({
     eyebrow: site.name,
     title: "AI automation that removes manual work",
   });
-}

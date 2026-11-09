@@ -2,7 +2,7 @@ import type { Graph } from "schema-dts";
 import { absoluteUrl, company, founder } from "@/lib/site";
 import { book, build, faq, path, seo } from "./content";
 
-export function supportAgentsJsonLd(): Graph {
+export const supportAgentsJsonLd = (): Graph => {
   const url = absoluteUrl(path);
 
   return {
@@ -93,6 +93,6 @@ export function supportAgentsJsonLd(): Graph {
       },
     ],
   };
-}
+};
 
 export const authorName = founder.name;

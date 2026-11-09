@@ -4,7 +4,7 @@ import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCopyToClipboard } from "@/lib/use-copy-to-clipboard";
 
-export function CopyButton({ text, label }: { text: string; label: string }) {
+export const CopyButton = ({ text, label }: { text: string; label: string }) => {
   const { isCopied, copy } = useCopyToClipboard();
 
   return (
@@ -26,4 +26,4 @@ export function CopyButton({ text, label }: { text: string; label: string }) {
       </span>
     </>
   );
-}
+};

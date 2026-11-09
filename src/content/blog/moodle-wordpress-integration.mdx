@@ -1,0 +1,162 @@
+---
+title: "Moodle WordPress integration: how we made course access instant"
+metaTitle: "Moodle WordPress integration with instant enrolment"
+excerpt: "How we built a Moodle WordPress integration with WooCommerce and MooWoodle so students get access the moment they pay, plus paid extension packs."
+category: "Course automation"
+date: 2026-11-09
+readingMinutes: 9
+author: choaib
+image: /blog/moodle-wordpress-integration.webp
+imageAlt: "Moodle WordPress integration flow: student pays in WooCommerce, order completes, MooWoodle enrols the student in Moodle, SSO login, extension packs extend the enrolment end date"
+faq:
+  - question: "Can you integrate Moodle with WordPress for free?"
+    answer: "Yes. MooWoodle's free plugin syncs Moodle courses into WooCommerce products, enrols students when an order completes, and works with any WooCommerce payment gateway. You only need MooWoodle Pro ($199 a year for one site) for things like single sign-on, real-time user sync, subscriptions and selling multiple seats. Edwiser Bridge's base plugin is also free, but its WooCommerce checkout is a paid add-on."
+  - question: "Does MooWoodle need a plugin installed on Moodle?"
+    answer: "The free version doesn't. It talks to Moodle through Moodle's built-in REST web services using a token. MooWoodle Pro features like SSO and two-way user sync need the MooWoodle Connect authentication plugin installed on Moodle. According to its GitHub page, MooWoodle Connect requires Moodle 5.0 or newer."
+  - question: "Why isn't a student enrolled in Moodle after paying?"
+    answer: "The most common reason is that the WooCommerce order is stuck at Processing, and MooWoodle only enrols on Completed. After that, check that the product is actually linked to a Moodle course and that the Moodle token has the user and enrolment functions it needs. MooWoodle's Test Connection button and log show which part is failing."
+  - question: "Can Moodle course access expire automatically?"
+    answer: "Yes. Every Moodle enrolment can have an end date, and access stops when it passes. Set the expiry action to keep the user enrolled so their progress is saved, and turn on expiry notifications so students get a reminder before they lose access. To sell more time, update the end date through Moodle's manual enrolment web service when someone buys an extension."
+  - question: "Is MooWoodle better than Edwiser Bridge?"
+    answer: "For a WooCommerce store, we prefer MooWoodle, because WooCommerce selling is in the free plugin and it's updated often (latest release October 29, 2026). Edwiser Bridge is older and well known, but you pay extra for its WooCommerce integration. If you don't use WooCommerce at all, compare them on the features you actually need."
+  - question: "What PHP version should a Moodle site run in late 2026?"
+    answer: "At minimum, a release patched for the PHP2Shell vulnerabilities from October 2026: PHP 8.5.12, 8.4.27, 8.3.36, 8.2.35 or newer. Older PHP branches didn't get those fixes. Check your Moodle version's own PHP requirements before upgrading, and do it on a staging copy first."
+---
+
+import { PostFaq } from "@/components/pages/blog/[slug]/post-faq";
+import {
+  CtaCard,
+  CtaCardAction,
+  CtaCardContent,
+  CtaCardDescription,
+  CtaCardTitle,
+} from "@/components/ui/cta-card";
+
+The Moodle WordPress integration we trust for selling courses is WooCommerce plus the MooWoodle plugin, with single sign-on on top. A student pays, the order completes, and they're enrolled in the right Moodle course without anyone on the team touching anything. We built exactly this for a client whose students were waiting hours to get in, and 140+ students have been enrolled this way in its first two months. Then we used the same setup to sell extension packs that add time to a course.
+
+## Why were students waiting for course access?
+
+Because enrolment was manual. Someone on the team had to see the order, open Moodle and add the student by hand.
+
+We wrote about this in our post on [AI customer support for online courses](/blog/ai-customer-support-online-courses). Students paid, didn't get access, emailed support, then emailed again. One sale turned into a handful of tickets, and the student was annoyed before they'd watched a single lesson.
+
+Students aren't being dramatic here. Zendesk's CX Trends 2026 report found that [88% of customers expect faster response times than they did a year ago](https://cxtrends.zendesk.com/). And that's for a reply. Paying for a course and then sitting outside the door for hours is worse than a slow reply.
+
+The AI agent in that post fixed the symptom. It found the paid order and enrolled the student in about 15 seconds. That's good, but it still only kicks in after the student complains. The real fix is making access happen at checkout, so there's nothing to complain about.
+
+## What does a Moodle WordPress integration actually do?
+
+A Moodle WordPress integration connects your store to your LMS so a purchase on one side creates an account and an enrolment on the other. Moodle keeps doing what it's good at: courses, quizzes, grades. WordPress with WooCommerce handles the product pages, the cart and the payment.
+
+The connection runs through Moodle's own REST web services. You create a service in Moodle, give it a list of allowed functions, generate a token, and paste that token into the WordPress plugin. From then on, WordPress calls Moodle to create users and enrol them.
+
+Moodle is a big ecosystem to plug into. The [Moodle statistics page](https://moodle.org/stats/) lists 161,020 registered sites and over 2.3 billion enrolments as of November 2026, and that only counts sites that chose to register. So yeah, a lot of course businesses run on Moodle and still sell through a separate website.
+
+## MooWoodle vs Edwiser Bridge: which one did we pick?
+
+We went with MooWoodle. The reason was simple: we had just moved the client to the newest PHP and the latest stable Moodle, and we didn't want to pay for an add-on just to get a checkout, then hope it kept up with those versions. MooWoodle gave us WooCommerce selling in the free plugin, it was being updated for the latest WooCommerce releases, and the free version needs nothing installed on Moodle. Fewer moving parts on a freshly upgraded site. That's what tipped it.
+
+Both plugins come up for every "integrate Moodle with WordPress" search, and both import Moodle courses as products. The difference that matters for a WooCommerce store is where checkout lives. With Edwiser Bridge, the base plugin is free, but [the WooCommerce integration is a separate paid extension](https://store.wisdmlabs.com/woocommerce-moodle-integration-solution/). With MooWoodle, WooCommerce selling is in the free plugin.
+
+MooWoodle is also actively maintained. Its [WordPress.org listing](https://wordpress.org/plugins/moowoodle/) shows 800+ active installs and a release on October 29, 2026 that added support for WooCommerce 11.2.1.
+
+Here's what our client needed and where MooWoodle covers it:
+
+| What the client needed | How MooWoodle handles it | Edition |
+| --- | --- | --- |
+| Sell Moodle courses through WooCommerce | Course sync turns Moodle courses into products | Free |
+| Enrol students right after payment | Enrols on order completion, creates the Moodle user if needed | Free |
+| Any payment gateway | Works with whatever WooCommerce supports | Free |
+| One login for the store and the course | SSO through the MooWoodle Connect Moodle plugin | Pro |
+| Keep user accounts matched on both sides | User sync, matched by email | Pro |
+| Price | $199 a year for one site, per [DualCube](https://dualcube.com/product/moowoodle-pro/) | Pro |
+
+Honestly, for a small course business, $199 a year is cheap compared to one team member spending hours a week enrolling people by hand.
+
+## Why we upgraded PHP and Moodle before touching any plugin
+
+Before installing anything, we updated the server to the latest PHP version and Moodle to the latest stable release. That's the part people skip, and it's the part that decides whether everything after it works.
+
+The upgrade did two more things for us. First, it let us move the client's Moodle theme to its latest release, which needed the newer versions. Second, it put the server on a patched PHP release for PHP2Shell.
+
+If you missed that one: on October 21, 2026, the PHP project shipped emergency fixes for two critical remote code execution flaws, CVE-2026-109618 and CVE-2026-109619, both rated 9.2. The [SANS Internet Storm Center](https://isc.sans.edu/diary.html?storyid=31200) covered it the same day. The fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. Older PHP branches didn't get a patch at all.
+
+So if your Moodle site is sitting on an old PHP version "because it still works", that's your first job. No plugin fixes a server that can be taken over remotely.
+
+## How does the integration work, step by step?
+
+Here's the order we did it in.
+
+1. Upgrade PHP and Moodle, then the theme.
+2. In Moodle, turn on web services and the REST protocol.
+3. Create an external service for MooWoodle and add the functions it needs (getting site info, reading courses, finding and creating users, manual enrolment).
+4. Generate a token for that service.
+5. Install WooCommerce and MooWoodle in WordPress, paste the Moodle URL and token, and run Test Connection.
+6. Sync courses into WooCommerce products, set prices and publish.
+7. Install MooWoodle Connect on Moodle and set the shared secret for SSO.
+
+One thing that catches a lot of people: enrolment fires when the WooCommerce order reaches Completed. Many payment gateways leave orders sitting at Processing. If your course products aren't set to complete automatically, students get stuck in exactly the wait you were trying to remove. Mark course products as virtual and make sure paid orders auto-complete.
+
+With SSO on, the student clicks through from the store and lands inside Moodle already logged in. No second password to set up and lose. That kills a whole category of "I can't log in" tickets.
+
+## How we sell extension packs that add time to a course
+
+Every Moodle enrolment can have an end date. Once it passes, the student can't open the course anymore. Extension packs are WooCommerce products that push that end date further out.
+
+When a student buys a pack, we call Moodle's manual enrolment function again for the same student and course with a new end date. Moodle updates the existing enrolment instead of creating a new one. The new date is the current end date plus the pack's days. If the student has already expired, we count from today instead, so they don't pay for days that already passed.
+
+A few rules made this work in practice:
+
+- Only logged-in students who are enrolled in that course can add the pack to their cart.
+- Students with lifetime access can't buy one (there's nothing to extend).
+- Each order line is applied once, so a retry never adds the days twice.
+- On a refund, the days come back off.
+
+On the Moodle side, set the enrolment expiry action to keep the user enrolled. That way an expired student keeps their grades and progress, and buying a pack brings them right back where they left off. Unenrolling on expiry wipes that, which is a terrible experience for someone who's about to pay you again. Turn on Moodle's "notify before enrolment expires" too. Those reminder emails are pretty much your extension sales channel.
+
+Same as course purchases: it's all automatic. Nobody on the team has to add days by hand.
+
+## Do you still need an AI support agent after this?
+
+Yes, but for a much smaller job. Automatic enrolment removes the main reason students write in. The agent handles what slips through: an order stuck at Processing, a Moodle call that failed, a student who checked out as a guest with a different email.
+
+That's how we like to build things. Fix the root cause with plain automation first, then use AI for the messy cases that are left. It's cheaper to run, and there's less to break.
+
+## What happened after two months live?
+
+Access is almost instant now. The student pays, and by the time they click through to the course, they're in.
+
+The automation has been live for two months. In that time, more than 140 students have got access to their courses this way, with nobody on the team adding a single one by hand. No joke, that's 140+ "where's my course?" emails that never got written.
+
+We also added one more piece on top. When a purchase comes in, a webhook hits a small Bun app we wrote, and that app subscribes the student to a weekly check-in email that goes out every Monday. So the student isn't left alone after enrolling. Every week there's a nudge to come back and keep going. It's a tiny app, cheap to run, and it does one job.
+
+| | Before | After |
+| --- | --- | --- |
+| Who enrols the student | Someone on the team, by hand | MooWoodle, on order completion |
+| Time from payment to access | Hours | Almost instant |
+| Logins | Separate store and Moodle accounts | One login with SSO |
+| Extra course time | Not sellable | Extension packs, applied automatically |
+| Follow-up after enrolment | None | Weekly check-in email every Monday |
+| Students enrolled automatically | 0 | 140+ in the first two months |
+
+## Want this set up for your course business?
+
+If your students still wait for someone to grant access by hand, start with the order status check: find out how long a paid order takes to reach Completed today. That number tells you how much waiting you can remove.
+
+<div className="not-prose my-10">
+  <CtaCard className="items-center text-center sm:flex-col sm:justify-center sm:gap-6">
+    <CtaCardContent>
+      <CtaCardTitle>Want this set up for your course business?</CtaCardTitle>
+      <CtaCardDescription>
+        Book a <span className="text-primary">free</span>, <span className="text-primary">no-commitment</span> discovery call with RZ Automate. We'll look at your Moodle and WordPress setup and tell you what we'd automate first.
+      </CtaCardDescription>
+    </CtaCardContent>
+    <CtaCardAction href="https://cal.com/rzautomate/30min">
+      Book a free call
+    </CtaCardAction>
+  </CtaCard>
+</div>
+
+## FAQ
+
+<PostFaq items={frontmatter.faq} />

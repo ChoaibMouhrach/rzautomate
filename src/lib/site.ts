@@ -3,7 +3,7 @@ export const site = {
   description:
     "RZ Automate builds AI agents and n8n workflows that take lead follow-up, data entry, support replies and reporting off your team. Free 30-min call.",
   url: import.meta.env.PUBLIC_SITE_URL ?? "https://rzautomate.com",
-  email: "choaib.m@rizon.agency",
+  email: "choaib@rzautomate.com",
   bookingUrl: "https://cal.com/rizon.agency-cvbkll/30min",
 };
 
@@ -12,7 +12,7 @@ export const company = {
   description:
     "RZ Automate is an AI automation agency that builds AI agents and n8n workflows that take repetitive work off small and mid-sized businesses.",
   foundingDate: "2026-05",
-  email: "contact@rizon.agency",
+  email: "choaib@rzautomate.com",
   logo: "/logo.png",
   sameAs: [] as readonly string[],
   areaServed: "Worldwide",

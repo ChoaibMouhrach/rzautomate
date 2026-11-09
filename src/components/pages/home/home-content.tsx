@@ -1,3 +1,4 @@
+import { FreeText } from "@/components/ui/free-text";
 import { CallToAction } from "@/components/site/call-to-action";
 import {
   Section,
@@ -34,9 +35,7 @@ import {
 import { Hero } from "./hero";
 import { Process } from "./process";
 
-export function HomeContent() {
-  return (
-    <>
+export const HomeContent = () => <>
       <Hero />
 
       <Section>
@@ -451,12 +450,10 @@ export function HomeContent() {
           <p className="mt-4 text-center text-sm">
             Not ready to talk?{" "}
             <Link href="/tools/what-to-automate-first">
-              Get a free workflow audit
+              <FreeText>Get a free workflow audit</FreeText>
             </Link>{" "}
             and see what to automate first on your own.
           </p>
         </SectionContent>
       </Section>
-    </>
-  );
-}
+    </>;

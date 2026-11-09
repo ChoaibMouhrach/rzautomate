@@ -1,9 +1,8 @@
+import { FreeText } from "@/components/ui/free-text";
 import { LinkButton } from "@/components/ui/link";
 import { company } from "@/lib/site";
 
-export function Hero() {
-  return (
-    <section className="page-container pb-24 pt-20 text-center sm:pt-32">
+export const Hero = () => <section className="page-container pb-24 pt-20 text-center sm:pt-32">
       <p className="mb-4 text-sm text-muted-foreground">
         AI automation for small and mid-sized businesses
       </p>
@@ -22,12 +21,12 @@ export function Hero() {
           Book a free 30-min call
         </LinkButton>
         <LinkButton href="/services" size="lg" variant="secondary">
-          Get a free workflow audit
+          <FreeText>Get a free workflow audit</FreeText>
         </LinkButton>
       </div>
       <p className="mt-4 text-sm text-muted-foreground">
-        Free · 30 min · No commitment. You talk to the engineer who builds it.
+        <FreeText>
+          Free · 30 min · No commitment. You talk to the engineer who builds it.
+        </FreeText>
       </p>
-    </section>
-  );
-}
+    </section>;

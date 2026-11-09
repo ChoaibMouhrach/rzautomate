@@ -8,9 +8,7 @@ import {
 } from "@/components/site/section";
 import { services } from "@/lib/services";
 
-export function ServicesOverview() {
-  return (
-    <Section>
+export const ServicesOverview = () => <Section>
       <SectionHeader>
         <SectionTitle>What we build</SectionTitle>
         <SectionAction href="/services">All services</SectionAction>
@@ -24,6 +22,4 @@ export function ServicesOverview() {
           ))}
         </ul>
       </SectionContent>
-    </Section>
-  );
-}
+    </Section>;

@@ -1,3 +1,4 @@
+import { FreeText } from "@/components/ui/free-text";
 import { Accordion } from "@/components/ui/accordion";
 import { ModelsScrollArea } from "./models-scroll-area";
 import { PageContent, PageDescription, PageHeader, PageTitle } from "@/components/site/page";
@@ -11,7 +12,7 @@ import { ModelsTable } from "./models-table";
 const sectionClass = "mt-20 space-y-6";
 const headingClass = "text-2xl font-semibold tracking-tight sm:text-3xl";
 
-export function ModelsDirectory() {
+export const ModelsDirectory = () => {
   const picks = [
     { title: "Cheapest output price", model: cheapest, body: `${cheapest.name} at ${formatPrice(cheapest.outputPrice)} per 1M output tokens.${priceTieNote(cheapest)}` },
     { title: "Largest context window", model: largest, body: `${largest.name} reads up to ${formatTokens(largest.context)} tokens in one request, subject to the provider's input and output limits.` },
@@ -28,14 +29,14 @@ export function ModelsDirectory() {
         <PageDescription>Compare four selected models in one table, priced per 1 million tokens. Use the list to shortlist models for your next workflow, with a source for every specification.</PageDescription>
         <ul className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground"><li>{models.length} models</li><li>{providerCount} providers</li><li>Prices checked <time dateTime={modelsCheckedAt}>{modelsCheckedLabel}</time></li></ul>
         <p className="mt-3 text-xs text-muted-foreground">Last updated {modelsCheckedLabel}</p>
-        <div className="mt-8 flex flex-col items-center gap-4"><LinkButton href="#model-table">Jump to the table</LinkButton><Link href={bookHref}>Not sure which model fits your workflow? Book a free 30-min call</Link></div>
+        <div className="mt-8 flex flex-col items-center gap-4"><LinkButton href="#model-table">Jump to the table</LinkButton><Link href={bookHref}><FreeText>Not sure which model fits your workflow? Book a free 30-min call</FreeText></Link></div>
       </PageHeader>
       <PageContent>
         <section id="model-table" className="scroll-mt-24 space-y-6" aria-labelledby="pricing-title">
           <h2 id="pricing-title" className={headingClass}>AI model pricing comparison</h2>
           <p className="text-muted-foreground">Prices are per 1 million tokens in US dollars. Click any column heading to sort, or any row to see the model&apos;s full specs.</p>
           <ModelsTable />
-          <p className="text-sm text-muted-foreground">These are standard API rates from the catalog snapshot; service tiers, long-context requests, caching rules and batch discounts can change the bill. Check the provider before you commit a budget. Spot a wrong number? Email <Link href="mailto:contact@rizon.agency">contact@rizon.agency</Link> and I&apos;ll fix it.</p>
+          <p className="text-sm text-muted-foreground">These are standard API rates from the catalog snapshot; service tiers, long-context requests, caching rules and batch discounts can change the bill. Check the provider before you commit a budget. Spot a wrong number? Email <Link href="mailto:choaib@rzautomate.com">choaib@rzautomate.com</Link> and I&apos;ll fix it.</p>
           <details className="rounded-xl border border-border p-5"><summary className="cursor-pointer text-sm font-medium">Pricing notes and model sources</summary><ul className="mt-4 space-y-3 text-sm text-muted-foreground">{models.map((model) => <li key={model.slug}><Link href={model.source}>{model.name}</Link>: {model.pricingNote}</li>)}</ul></details>
         </section>
         <section className={sectionClass}>
@@ -59,7 +60,7 @@ export function ModelsDirectory() {
           <h2 className={headingClass}>How to choose an AI model for business automation</h2>
           <p className="text-muted-foreground">The cheapest model that does the job reliably wins. Here&apos;s the order I check things in:</p>
           <ol className="max-w-3xl list-decimal space-y-5 pl-5">{selectionSteps.map(([title, body]) => <li key={title} className="pl-2"><h3 className="font-semibold">{title}</h3><p className="mt-1 text-muted-foreground">{body}</p></li>)}</ol>
-          <p>Want me to run this test on your own data? <Link href={bookHref}>Book a free 30-min call</Link></p>
+          <p>Want me to run this test on your own data? <Link href={bookHref}><FreeText>Book a free 30-min call</FreeText></Link></p>
         </section>
         <section className={sectionClass}>
           <h2 className={headingClass}>How this table is maintained</h2>
@@ -77,9 +78,9 @@ export function ModelsDirectory() {
         <section className="mt-20 rounded-2xl border border-border bg-muted/40 p-8 text-center sm:p-12">
           <h2 className={headingClass}>Picking a model is the easy part</h2>
           <p className="mx-auto mt-5 max-w-3xl text-muted-foreground">Getting it to do real work in your tools is where most projects stall. RZ Automate builds AI agents and n8n workflows that take repetitive work off small and mid-sized businesses. On a free 30-minute call, I&apos;ll look at one task you want off your plate and tell you which model I&apos;d use, what it could cost per month at your volume, and whether it&apos;s worth automating at all.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3"><LinkButton href={bookHref}>Book a free 30-min call</LinkButton><LinkButton href={auditHref} variant="secondary">Get a free workflow audit</LinkButton></div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3"><LinkButton href={bookHref}>Book a free 30-min call</LinkButton><LinkButton href={auditHref} variant="secondary"><FreeText>Get a free workflow audit</FreeText></LinkButton></div>
         </section>
       </PageContent>
     </>
   );
-}
+};

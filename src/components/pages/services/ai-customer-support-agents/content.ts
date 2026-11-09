@@ -377,7 +377,7 @@ export const book = {
   next: "Pick a time below. After the call, I send you the written plan within [PLAN TURNAROUND].",
   capacity: "I take on [N] builds a month. Next opening is [MONTH].",
   email:
-    "Rather not get on a call? Email me at contact@rizon.agency and forward two or three questions customers ask you every week.",
+    "Rather not get on a call? Email me at choaib@rzautomate.com and forward two or three questions customers ask you every week.",
   relatedTitle: "Related services",
   related: [
     {

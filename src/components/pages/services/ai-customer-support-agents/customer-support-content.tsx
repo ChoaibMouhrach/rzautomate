@@ -1,3 +1,4 @@
+import { FreeText } from "@/components/ui/free-text";
 import {
   Page,
   PageDescription,
@@ -43,14 +44,12 @@ const ctaButtons = (
   <>
     <LinkButton href={bookHref}>Book a free 30-min call</LinkButton>
     <LinkButton href={auditHref} variant="secondary">
-      Get a free workflow audit
+      <FreeText>Get a free workflow audit</FreeText>
     </LinkButton>
   </>
 );
 
-export function AiCustomerSupportAgentsContent() {
-  return (
-    <Page>
+export const AiCustomerSupportAgentsContent = () => <Page>
       <JsonLd data={supportAgentsJsonLd()} />
 
       <PageHeader>
@@ -60,7 +59,7 @@ export function AiCustomerSupportAgentsContent() {
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           {ctaButtons}
         </div>
-        <p className="mt-4 text-sm text-muted-foreground">{hero.trust}</p>
+        <p className="mt-4 text-sm text-muted-foreground"><FreeText>{hero.trust}</FreeText></p>
       </PageHeader>
 
       <Section>
@@ -89,7 +88,7 @@ export function AiCustomerSupportAgentsContent() {
           </div>
           <p className="mt-8 text-center text-muted-foreground">
             {fit.closing}{" "}
-            <Link href={auditHref}>Get a free workflow audit</Link> and
+            <Link href={auditHref}><FreeText>Get a free workflow audit</FreeText></Link> and
             I&apos;ll tell you if support is the right thing to automate first.
           </p>
         </SectionContent>
@@ -326,7 +325,7 @@ export function AiCustomerSupportAgentsContent() {
           </p>
           <p className="mt-2 text-center text-sm text-muted-foreground">
             {pricing.secondary}{" "}
-            <Link href={auditHref}>Get a free workflow audit</Link>
+            <Link href={auditHref}><FreeText>Get a free workflow audit</FreeText></Link>
           </p>
         </SectionContent>
         <SectionFooter>
@@ -400,7 +399,7 @@ export function AiCustomerSupportAgentsContent() {
       <Section className="bg-muted">
         <SectionHeader align="center">
           <SectionTitle>{book.title}</SectionTitle>
-          <SectionDescription>{book.subhead}</SectionDescription>
+          <SectionDescription><FreeText>{book.subhead}</FreeText></SectionDescription>
         </SectionHeader>
         <SectionContent>
           <ul className="mx-auto max-w-2xl list-disc space-y-2 pl-5 text-muted-foreground">
@@ -415,7 +414,7 @@ export function AiCustomerSupportAgentsContent() {
           <p className="mt-2 text-center text-muted-foreground">{book.email}</p>
           <p className="mt-4 text-center text-sm">
             Not ready to talk?{" "}
-            <Link href={auditHref}>Get a free workflow audit</Link> and see what
+            <Link href={auditHref}><FreeText>Get a free workflow audit</FreeText></Link> and see what
             to automate first on your own.
           </p>
         </SectionContent>
@@ -446,12 +445,10 @@ export function AiCustomerSupportAgentsContent() {
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Not sure your docs and inbox are ready for an agent?{" "}
             <Link href="/tools/ai-readiness-check">
-              Take the free AI readiness check
+              <FreeText>Take the free AI readiness check</FreeText>
             </Link>
             .
           </p>
         </SectionContent>
       </Section>
-    </Page>
-  );
-}
+    </Page>;

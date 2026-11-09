@@ -302,7 +302,7 @@ export const guarantee = {
   ],
   claimTitle: "How to claim it",
   claim: [
-    'Email contact@rizon.agency with "[GUARANTEE NAME] claim" in the subject and tell me which criterion isn\'t met.',
+    'Email choaib@rzautomate.com with "[GUARANTEE NAME] claim" in the subject and tell me which criterion isn\'t met.',
     "We check it together against the written list, on a short call or a screen recording.",
     "You pick: the refund, sent within [REFUND SPEED], or free work until it passes.",
   ],
@@ -468,5 +468,5 @@ export const finalCta = {
   next: "Pick a time below. After the call, I send you the written plan within [PLAN TURNAROUND].",
   capacity: "I take on [N] builds a month. Next opening is [MONTH].",
   email:
-    "Rather not get on a call? Email me at contact@rizon.agency and tell me what you want off your plate.",
+    "Rather not get on a call? Email me at choaib@rzautomate.com and tell me what you want off your plate.",
 };

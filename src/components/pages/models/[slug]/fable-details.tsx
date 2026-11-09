@@ -1,3 +1,4 @@
+import { FreeText } from "@/components/ui/free-text";
 import type { ReactNode } from "react";
 import { PageContent, PageHeader, PageTitle, PageDescription } from "@/components/site/page";
 import { Accordion } from "@/components/ui/accordion";
@@ -14,14 +15,10 @@ const path = "/models/claude-fable-5-1";
 const pricingSource = "https://platform.claude.com/docs/en/about-claude/pricing";
 const breadcrumbs = [{ label: "Home", href: "/" }, { label: "AI Models", href: "/models" }, { label: "Anthropic", href: "/models?provider=Anthropic" }, { label: "Claude Fable 5.1" }];
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
-  return <section className="space-y-6 border-t border-border pt-10"><h2 className="text-2xl font-semibold tracking-tight">{title}</h2>{children}</section>;
-}
-function DataTable({ headers, rows }: { headers: string[]; rows: ReactNode[][] }) {
-  return <div className="overflow-x-auto rounded-xl border border-border"><table className="w-full text-left text-sm"><thead className="bg-muted/50"><tr>{headers.map((header) => <th key={header} scope="col" className="whitespace-nowrap px-4 py-4 font-medium">{header}</th>)}</tr></thead><tbody className="divide-y divide-border">{rows.map((row, index) => <tr key={index}>{row.map((cell, i) => i === 0 ? <th key={i} scope="row" className="px-4 py-4 font-medium">{cell}</th> : <td key={i} className="px-4 py-4 tabular-nums">{cell}</td>)}</tr>)}</tbody></table></div>;
-}
+const Section = ({ title, children }: { title: string; children: ReactNode }) => <section className="space-y-6 border-t border-border pt-10"><h2 className="text-2xl font-semibold tracking-tight">{title}</h2>{children}</section>;
+const DataTable = ({ headers, rows }: { headers: string[]; rows: ReactNode[][] }) => <div className="overflow-x-auto rounded-xl border border-border"><table className="w-full text-left text-sm"><thead className="bg-muted/50"><tr>{headers.map((header) => <th key={header} scope="col" className="whitespace-nowrap px-4 py-4 font-medium">{header}</th>)}</tr></thead><tbody className="divide-y divide-border">{rows.map((row, index) => <tr key={index}>{row.map((cell, i) => i === 0 ? <th key={i} scope="row" className="px-4 py-4 font-medium">{cell}</th> : <td key={i} className="px-4 py-4 tabular-nums">{cell}</td>)}</tr>)}</tbody></table></div>;
 
-export function FableDetails() {
+export const FableDetails = () => {
   const newer = models.filter((model) => model.name.startsWith("Claude Fable ") && model.released > "2026-09-01").sort((a, b) => b.released.localeCompare(a.released))[0];
   return <>
     <JsonLd data={{ "@context": "https://schema.org", "@graph": [
@@ -45,11 +42,11 @@ export function FableDetails() {
       <CtaCard>
         <CtaCardContent>
           <CtaCardTitle>Want Claude working inside your tools?</CtaCardTitle>
-          <CtaCardDescription>Bring one task to a free 30-minute call. I’ll recommend the right model and estimate the monthly cost for your workflow.</CtaCardDescription>
+          <CtaCardDescription><FreeText>Bring one task to a free 30-minute call. I’ll recommend the right model and estimate the monthly cost for your workflow.</FreeText></CtaCardDescription>
         </CtaCardContent>
         <CtaCardAction href="/book?service=models&model=claude-fable-5-1">Book a free 30-min call</CtaCardAction>
       </CtaCard>
       <nav aria-label="Related services" className="flex flex-wrap gap-x-6 gap-y-3 text-sm"><Link href="/services/ai-agent-development">AI agent development</Link><Link href="/services/business-process-automation">Business process automation</Link></nav>
     </div></PageContent>
   </>;
-}
+};

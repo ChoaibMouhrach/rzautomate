@@ -366,7 +366,7 @@ export const book = {
   next: "After the call, I send you the written plan within [PLAN TURNAROUND].",
   capacity: "I take on [N] builds a month. Next opening is [MONTH].",
   email:
-    "Rather not get on a call? Email me at contact@rizon.agency with 2–3 sample documents, sensitive details blacked out, and tell me where the data goes today.",
+    "Rather not get on a call? Email me at choaib@rzautomate.com with 2–3 sample documents, sensitive details blacked out, and tell me where the data goes today.",
   relatedTitle: "Related services",
   related: [
     {

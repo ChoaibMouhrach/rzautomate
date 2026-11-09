@@ -29,9 +29,7 @@ const steps = [
   },
 ];
 
-export function Process() {
-  return (
-    <Section>
+export const Process = () => <Section>
       <SectionHeader>
         <SectionTitle>How my AI automation process works</SectionTitle>
         <SectionDescription>
@@ -56,6 +54,4 @@ export function Process() {
           ))}
         </ol>
       </SectionContent>
-    </Section>
-  );
-}
+    </Section>;

@@ -1,3 +1,4 @@
+import { FreeText } from "@/components/ui/free-text";
 import {
   Page,
   PageDescription,
@@ -43,14 +44,12 @@ const ctaButtons = (
   <div className="flex flex-wrap justify-center gap-3">
     <LinkButton href={bookHref}>Book a free 30-min call</LinkButton>
     <LinkButton href={auditHref} variant="secondary">
-      Get a free workflow audit
+      <FreeText>Get a free workflow audit</FreeText>
     </LinkButton>
   </div>
 );
 
-export function LeadGenerationContent() {
-  return (
-    <Page>
+export const LeadGenerationContent = () => <Page>
       <JsonLd data={leadGenerationJsonLd()} />
 
       <PageHeader>
@@ -60,7 +59,7 @@ export function LeadGenerationContent() {
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           {ctaButtons}
         </div>
-        <p className="mt-4 text-sm text-muted-foreground">{hero.trust}</p>
+        <p className="mt-4 text-sm text-muted-foreground"><FreeText>{hero.trust}</FreeText></p>
       </PageHeader>
 
       <Section>
@@ -89,7 +88,7 @@ export function LeadGenerationContent() {
           </div>
           <p className="mt-8 text-center text-muted-foreground">
             {fit.closing}{" "}
-            <Link href={auditHref}>Get a free workflow audit</Link> and
+            <Link href={auditHref}><FreeText>Get a free workflow audit</FreeText></Link> and
             I&apos;ll tell you if lead handling is the right thing to automate
             first.
           </p>
@@ -318,7 +317,7 @@ export function LeadGenerationContent() {
             </p>
             <p className="mt-2 text-center text-sm text-muted-foreground">
               {pricing.secondary}{" "}
-              <Link href={auditHref}>Get a free workflow audit</Link>
+              <Link href={auditHref}><FreeText>Get a free workflow audit</FreeText></Link>
             </p>
           </SectionContent>
           <SectionFooter>
@@ -398,7 +397,7 @@ export function LeadGenerationContent() {
         <Section className="bg-muted">
           <SectionHeader align="center">
             <SectionTitle>{book.title}</SectionTitle>
-            <SectionDescription>{book.subhead}</SectionDescription>
+            <SectionDescription><FreeText>{book.subhead}</FreeText></SectionDescription>
           </SectionHeader>
           <SectionContent>
             <ul className="mx-auto max-w-2xl list-disc space-y-2 pl-5 text-muted-foreground">
@@ -414,15 +413,15 @@ export function LeadGenerationContent() {
             </p>
             <p className="mt-2 text-center text-muted-foreground">
               Rather not get on a call? Email me at{" "}
-              <Link href="mailto:contact@rizon.agency">
-                contact@rizon.agency
+              <Link href="mailto:choaib@rzautomate.com">
+                choaib@rzautomate.com
               </Link>
               , forward one recent lead and tell me how long it took someone to
               reply.
             </p>
             <p className="mt-4 text-center text-sm">
               Not ready to talk?{" "}
-              <Link href={auditHref}>Get a free workflow audit</Link> and see
+              <Link href={auditHref}><FreeText>Get a free workflow audit</FreeText></Link> and see
               what to automate first on your own.
             </p>
           </SectionContent>
@@ -454,12 +453,10 @@ export function LeadGenerationContent() {
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Want a number before you talk to anyone?{" "}
             <Link href="/tools/automation-roi-calculator">
-              Use the free automation ROI calculator
+              <FreeText>Use the free automation ROI calculator</FreeText>
             </Link>{" "}
             to see what slow follow-up is costing you in hours.
           </p>
         </SectionContent>
       </Section>
-    </Page>
-  );
-}
+    </Page>;

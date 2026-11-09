@@ -1,3 +1,4 @@
+import { FreeText } from "@/components/ui/free-text";
 import {
   Section,
   SectionDescription,
@@ -7,14 +8,14 @@ import {
 } from "@/components/site/section";
 import { LinkButton } from "@/components/ui/link";
 
-export function CallToAction() {
-  return (
-    <Section className="bg-muted">
+export const CallToAction = () => <Section className="bg-muted">
       <SectionHeader align="center">
         <SectionTitle>Find out what to automate first</SectionTitle>
         <SectionDescription>
-          A free 30-min call with me, the engineer who builds the work. You
-          leave knowing which tasks to hand off first.
+          <FreeText>
+            A free 30-min call with me, the engineer who builds the work. You
+            leave knowing which tasks to hand off first.
+          </FreeText>
         </SectionDescription>
       </SectionHeader>
       <SectionFooter>
@@ -22,6 +23,4 @@ export function CallToAction() {
           Book a free 30-min call
         </LinkButton>
       </SectionFooter>
-    </Section>
-  );
-}
+    </Section>;

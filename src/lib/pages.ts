@@ -25,7 +25,9 @@ export const pageMetadata = {
   },
   faq: {
     title: "FAQ",
-    description: "Answers to common questions about working with us.",
+    seoTitle: "Frequently Asked Questions",
+    description:
+      "Answers to what clients ask before working with us: fit, trust, timelines, cost, data and what happens after launch.",
   },
   contact: {
     title: "Contact",

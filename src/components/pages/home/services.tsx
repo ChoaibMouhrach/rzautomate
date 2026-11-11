@@ -58,7 +58,7 @@ export const Services = () => {
                     {item.tools.map((tool) => (
                       <li
                         key={tool.name}
-                        className="flex size-9 items-center justify-center rounded-lg bg-muted"
+                        className="flex size-9 items-center justify-center rounded-lg bg-muted dark:bg-white"
                       >
                         <img
                           src={tool.src}

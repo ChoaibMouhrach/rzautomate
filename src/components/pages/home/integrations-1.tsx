@@ -17,7 +17,7 @@ const tile =
   "relative flex aspect-square w-full items-center justify-center rounded-lg shadow-[0px_1px_2px_-1px_rgba(0,0,0,0.08),0px_2px_4px_0px_rgba(0,0,0,0.06)]";
 
 const IntegrationCard = ({ app }: { app: (typeof why.logos)[number] }) => (
-  <div className={`${tile} bg-background`}>
+  <div className={`${tile} bg-background dark:bg-white`}>
     <img
       src={app.src}
       alt={app.name}

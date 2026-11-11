@@ -20,7 +20,7 @@ const field = tv({ base: "flex flex-col gap-1.5" });
 
 const trigger = tv({
   extend: focusRing,
-  base: "inline-flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-2xl bg-muted px-4 text-base transition-colors hover:bg-muted/70 pressed:bg-muted/60 disabled:cursor-default disabled:opacity-50",
+  base: "inline-flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-2xl bg-muted px-4 text-base text-foreground transition-colors focus-visible:ring-2 focus-visible:ring-primary hover:bg-muted/70 pressed:bg-muted/60 disabled:cursor-default disabled:opacity-50",
 });
 
 const item = tv({

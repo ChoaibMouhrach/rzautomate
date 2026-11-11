@@ -17,9 +17,9 @@ const field = tv({ base: "flex flex-col gap-1.5" });
 
 const input = tv({
   extend: focusRing,
-  base: "rounded-2xl bg-muted px-4 text-base placeholder:text-muted-foreground disabled:opacity-50",
+  base: "rounded-2xl bg-muted px-4 text-base text-foreground caret-primary placeholder:text-muted-foreground transition-shadow focus:ring-2 focus:ring-primary disabled:opacity-50",
   variants: {
-    isInvalid: { true: "ring-2 ring-danger" },
+    isInvalid: { true: "ring-2 ring-danger focus:ring-danger" },
     multiline: { false: "h-12", true: "min-h-32 resize-y py-3" },
   },
   defaultVariants: { multiline: false },

@@ -10,8 +10,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --border: #e4e4e7;
+  --muted-foreground: #5c5f66;
+  --border: #e4e2da;
   --primary: #ff4133;
   --primary-foreground: #ffffff;
   --danger: #dc2626;
@@ -30,6 +30,8 @@
   --muted: #18181b;
   --muted-foreground: #a1a1aa;
   --border: #27272a;
+  --ink: #1c1d22;
+  --tint: #16171a;
   --danger: #ef4444;
   --danger-foreground: #ffffff;
   color-scheme: dark;
@@ -303,11 +305,11 @@ body {
   }
 }
 
-.home {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f4f4f5;
-  --muted-foreground: #5c5f66;
-  --border: #e4e2da;
-  color-scheme: light;
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--foreground);
+  caret-color: var(--foreground);
+  box-shadow: 0 0 0 1000px var(--muted) inset;
+  transition: background-color 9999s ease-in-out 0s;
 }

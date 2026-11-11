@@ -17,7 +17,7 @@ export const LogoStrip = () => (
               src={logo.src}
               alt={logo.name}
               loading="lazy"
-              className={`${logo.height} w-auto max-w-none opacity-70 grayscale transition-[filter,opacity] duration-300 group-hover/logo:opacity-100 group-hover/logo:grayscale-0`}
+              className={`${logo.height} w-auto max-w-none opacity-70 grayscale dark:brightness-0 dark:invert transition-[filter,opacity] duration-300 group-hover/logo:opacity-100 group-hover/logo:grayscale-0`}
             />
           </div>
         ))}

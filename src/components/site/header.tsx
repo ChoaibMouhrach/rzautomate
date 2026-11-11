@@ -32,7 +32,7 @@ const useScrolled = () => {
   return scrolled;
 };
 
-export const Header = ({ pathname }: { pathname: string }) => {
+export const Header = () => {
   const solid = useScrolled();
 
   return <header
@@ -105,33 +105,7 @@ export const Header = ({ pathname }: { pathname: string }) => {
           <LinkButton href="/contact" size="sm" className="h-10 rounded-full px-5">
             Book a free call
           </LinkButton>
-          <MobileNavigation pathname={pathname}>
-            <div className="mt-4 text-sm">
-              <Link href="/services" className="font-medium no-underline hover:no-underline">
-                All services
-              </Link>
-              <ul className="mt-3 space-y-3 border-l border-border pl-4">
-                {services.map((service) => (
-                  <li key={service.slug}>
-                    <Link href={`/services/${service.slug}`} variant="muted">
-                      {service.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 border-t border-border pt-4">
-                {nav
-                  .filter((item) => item.href !== "/services")
-                  .map((item) => (
-                    <li key={item.href}>
-                      <Link href={item.href} variant="muted">
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          </MobileNavigation>
+          <MobileNavigation />
         </div>
       </div>
     </header>;

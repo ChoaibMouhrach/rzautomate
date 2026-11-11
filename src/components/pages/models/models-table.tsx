@@ -26,7 +26,7 @@ const features = [
   { key: "reasoning", label: "Reasoning", Icon: Brain },
   { key: "structured", label: "Structured output", Icon: Braces },
 ] as const;
-const fieldClass = "rounded-lg border border-border bg-background px-3 py-2 text-sm";
+const fieldClass = "rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary";
 const sortValue = (model: AiModel, key: SortKey) => key === "features" ? features.filter(({ key }) => model[key]).length : typeof model[key] === "boolean" ? Number(model[key]) : model[key];
 
 export const ModelsTable = () => {

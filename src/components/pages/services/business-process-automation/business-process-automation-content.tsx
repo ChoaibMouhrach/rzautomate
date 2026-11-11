@@ -145,7 +145,7 @@ export const BusinessProcessAutomationContent = () => <Page>
           <SectionDescription>{proof.description}</SectionDescription>
         </SectionHeader>
         <SectionContent>
-          <div className="mb-8 flex aspect-video items-center justify-center rounded-ui border border-dashed border-border bg-muted p-8 text-center text-muted-foreground">
+          <div className="mb-8 flex aspect-video items-center justify-center rounded-3xl bg-muted p-8 text-center text-muted-foreground">
             Demo recording coming soon. Sample data and test accounts only.
           </div>
           <p className="mb-6">

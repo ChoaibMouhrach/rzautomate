@@ -13,7 +13,7 @@ export const FableCalculator = () => {
   const inputCost = input * (10 * (1 - cached / 100) + 0.25 * cached / 100) / 1000000;
   const outputCost = output * 50 / 1000000;
   const cost = inputCost + outputCost;
-  return <div className="space-y-6 rounded-xl border border-border p-6">
+  return <div className="space-y-6 rounded-3xl bg-muted p-8">
     <div className="grid gap-4 sm:grid-cols-2">{fields.map((label, index) => <label key={label} className="grid gap-2 text-sm font-medium">{label}<input type="number" min="0" max={index === 3 ? 100 : undefined} step={index === 3 ? "any" : 1} value={values[index]} onChange={(event) => setValues(values.map((value, i) => i === index ? Math.min(index === 3 ? 100 : Number.MAX_SAFE_INTEGER, Math.max(0, Number(event.target.value) || 0)) : value))} className="w-full rounded-lg border border-border bg-background px-3 py-2" /></label>)}</div>
     <div aria-live="polite" className="space-y-2 tabular-nums"><p className="text-2xl font-semibold">{formatPrice(cost)} per request</p><p>{formatPrice(inputCost)} input + {formatPrice(outputCost)} output</p><p>{formatPrice(cost * requests)} per month · {formatPrice(cost * requests * 12)} per year</p></div>
     <p className="text-sm text-muted-foreground">Illustrative presets, not measured client usage. Estimates exclude cache writes, tools, hosting and taxes. Output volume must include thinking tokens.</p>

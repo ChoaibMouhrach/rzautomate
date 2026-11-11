@@ -1,57 +1,77 @@
-import {
-  Section,
-  SectionContent,
-  SectionDescription,
-  SectionHeader,
-  SectionTitle,
-} from "@/components/site/section";
+import { button } from "@/components/ui/button";
+import { bookingLabel, process } from "./content";
+import { HomeSection, MonoLabel, SectionHeading } from "./section";
 
-const steps = [
-  {
-    title: "Free 30-min call and workflow audit",
-    description:
-      "You walk me through the work that eats your week. I ask which tools you use, how often the task runs and where it goes wrong. You get a short list of the workflows worth automating first, and an honest call on anything that isn't worth it.",
-  },
-  {
-    title: "Scoped plan with a fixed price",
-    description:
-      "I write up exactly what I'll build: the trigger, the steps, the tools it connects, what the AI decides and where a human stays in the loop. One fixed price, no hourly billing. If it doesn't make sense for you, keep the plan and walk away.",
-  },
-  {
-    title: "Build and launch your first automation",
-    description:
-      "I build it inside your accounts, test it on real data from your inbox, CRM or billing tool, and switch it on once you've seen it work. You get a short Loom walkthrough and a one-page runbook.",
-  },
-  {
-    title: "Run, monitor and improve",
-    description:
-      "I watch the runs, fix errors when an app or API changes, and tune the prompts when the AI gets something wrong.",
-  },
+const heights = ["lg:min-h-[22rem]", "lg:min-h-[26rem]", "lg:min-h-[30rem]", "lg:min-h-[34rem]"];
+const tones = [
+  "bg-muted",
+  "bg-tint",
+  "bg-ink text-paper",
+  "bg-primary text-primary-foreground",
+];
+const mutedTones = [
+  "text-muted-foreground",
+  "text-muted-foreground",
+  "text-paper/70",
+  "text-primary-foreground/80",
 ];
 
-export const Process = () => <Section>
-      <SectionHeader>
-        <SectionTitle>How my AI automation process works</SectionTitle>
-        <SectionDescription>
-          RZ Automate works in four steps: a free 30-minute workflow audit, a
-          written plan with a fixed price, a build that puts your first
-          automation live, and ongoing monitoring once it runs. You talk to me
-          at every step.
-        </SectionDescription>
-      </SectionHeader>
-      <SectionContent>
-        <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, index) => (
-            <li key={step.title}>
-              <p className="font-mono text-sm text-muted-foreground">
-                0{index + 1}
-              </p>
-              <h3 className="mt-2 font-medium">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {step.description}
-              </p>
+export const Process = () => (
+  <HomeSection id="how-it-works">
+    <div className="max-w-2xl">
+      <MonoLabel>{process.label}</MonoLabel>
+      <SectionHeading className="mt-4">{process.heading}</SectionHeading>
+      <p className="mt-4 text-lg text-muted-foreground">
+        {process.description}
+      </p>
+    </div>
+    <div className="mt-12 lg:mt-16">
+    <ol className="grid gap-4 lg:grid-cols-4 lg:items-end">
+      {process.steps.map((step, index) => {
+        const isLast = index === process.steps.length - 1;
+        const card = (
+          <div
+            className={`flex flex-1 flex-col justify-between gap-10 rounded-3xl p-8 ${tones[index]} ${isLast ? "" : heights[index]}`}
+          >
+            <span className="text-7xl font-semibold leading-none tracking-tighter">
+              {index + 1}
+            </span>
+            <div>
+              <h3 className="text-2xl font-semibold tracking-tight">
+                {step.title}
+              </h3>
+              <p className={`mt-3 text-sm ${mutedTones[index]}`}>{step.line}</p>
+            </div>
+          </div>
+        );
+
+        if (!isLast) {
+          return (
+            <li key={step.title} className="flex flex-col">
+              {card}
             </li>
-          ))}
-        </ol>
-      </SectionContent>
-    </Section>;
+          );
+        }
+
+        return (
+          <li
+            key={step.title}
+            className={`flex flex-col gap-2 ${heights[index]}`}
+          >
+            {card}
+            <a
+              href="#book"
+              className={button({
+                size: "lg",
+                className: "h-20 w-full rounded-3xl! text-lg",
+              })}
+            >
+              {bookingLabel}
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+    </div>
+  </HomeSection>
+);

@@ -3,20 +3,18 @@ import { breadcrumbJsonLd, faqPageJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/pages";
 import { faqGroups } from "./content";
 
-export const FaqJsonLd = () => {
-  const items = faqGroups.flatMap(
-    (group): { question: string; answer: string }[] => [...group.items],
-  );
-
-  return (
-    <JsonLd
-      data={[
-        faqPageJsonLd(items),
-        breadcrumbJsonLd([
-          { name: "Home", path: "/" },
-          { name: pageMetadata.faq.title, path: "/faq" },
-        ]),
-      ]}
-    />
-  );
-};
+export const FaqJsonLd = () => (
+  <JsonLd
+    data={[
+      faqPageJsonLd(
+        faqGroups.flatMap((group) =>
+          group.items.map(({ question, answer }) => ({ question, answer })),
+        ),
+      ),
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: pageMetadata.faq.title, path: "/faq" },
+      ]),
+    ]}
+  />
+);

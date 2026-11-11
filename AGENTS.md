@@ -28,4 +28,8 @@ Never commit, push or otherwise change git history unless the user explicitly as
 
 ## CTA copy
 
-In any call to action that says "free" or "no commitment" (for example "free, no-commitment discovery call"), that wording must be set in the primary colour (`text-primary`), so it stands out from the surrounding text.
+In any call to action that says "free" or "no commitment" (for example "free, no-commitment discovery call"), that wording must be set in the primary colour (`text-primary`), so it stands out from the surrounding text. Inside buttons, apply this only to non-primary buttons (secondary, ghost): a primary button already has the primary colour as its background, so leave its text plain.
+
+## Borders
+
+Do not put a border on every card, panel or container. A border is the exception, not the default: use it only where it does a job, such as separating a form field, a table or an input from its surroundings. For cards and grouped content, create separation with spacing, a subtle background tint (`bg-muted`), or typography instead. When designing a new card, section or component, start without a border and add one only if the layout is unclear without it.

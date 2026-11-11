@@ -1,79 +1,64 @@
 ---
+import { Logo } from "@/components/site/logo";
 import { NewsletterForm } from "@/components/site/newsletter-form";
 import { ThemeSwitcher } from "@/components/site/theme-switcher";
-import { Logo } from "@/components/site/logo";
-import { Link } from "@/components/ui/link";
-import { services } from "@/lib/services";
-import { legalNav, nav, site } from "@/lib/site";
+import { legalNav } from "@/lib/site";
+import { footer } from "@/lib/footer";
 ---
 
-<footer class="mt-auto border-t border-border">
-      <div class="border-b border-border">
-        <div class="page-container flex flex-col gap-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-          <div class="max-w-md">
-            <h2 class="text-lg font-semibold tracking-tight">
-              Subscribe to our newsletter
-            </h2>
-            <p class="mt-2 text-sm text-muted-foreground">
-              Practical AI automation ideas and case studies, delivered to your
-              inbox. No spam.
-            </p>
-          </div>
-          <div class="w-full lg:max-w-md">
-            <NewsletterForm client:visible />
-          </div>
+<footer class="home relative mt-auto overflow-hidden bg-ink text-paper">
+  <div class="page-container relative z-10 grid gap-16 pb-12 pt-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <div class="flex flex-col gap-8">
+      <div>
+        <Logo className="h-8 fill-paper" />
+        <p class="mt-6 max-w-md text-paper/70">{footer.tagline}</p>
+      </div>
+      <div class="rounded-3xl bg-paper p-6 text-ink">
+        <p class="text-sm font-medium text-muted-foreground">
+          {footer.newsletterLabel}
+        </p>
+        <h2 class="mt-2 text-2xl font-semibold tracking-tight">
+          {footer.newsletterHeading}
+        </h2>
+        <div class="mt-5">
+          <NewsletterForm client:visible />
         </div>
       </div>
-      <div class="page-container flex flex-col gap-8 py-12 lg:flex-row lg:justify-between">
-        <div class="max-w-xs">
-          <Logo className="h-7" />
-          <p class="mt-2 text-sm text-muted-foreground">
-            {site.description}
-          </p>
-        </div>
-        <div class="grid gap-8 text-sm sm:grid-cols-2 xl:grid-cols-[minmax(0,20rem)_auto_auto_auto] sm:gap-12">
-          <nav aria-label="Services" class="flex flex-col gap-2">
-            <h2 class="mb-2 font-semibold">Services</h2>
-            <Link href="/services" variant="muted">
-              All services
-            </Link>
-            {services.map((service) => (
-              <Link
-                href={`/services/${service.slug}`}
-                variant="muted"
+    </div>
+    <div class="grid grid-cols-2 gap-x-8 gap-y-12 text-sm sm:grid-cols-4">
+      {
+        footer.columns.map((column) => (
+          <nav aria-label={column.title} class="flex flex-col gap-3">
+            <h2 class="mb-1 text-base font-semibold">{column.title}</h2>
+            {column.links.map((link) => (
+              <a
+                href={link.href}
+                rel={column.title === "Social" ? "me" : undefined}
+                class="text-paper/60 transition-colors hover:text-paper"
               >
-                {service.title}
-              </Link>
-))}
-          </nav>
-          <nav aria-label="Company" class="flex flex-col gap-2">
-            <h2 class="mb-2 font-semibold">Company</h2>
-            {nav
-              .filter((item) => item.href !== "/services")
-              .map((item) => (
-                <Link href={item.href} variant="muted">
-                  {item.label}
-                </Link>
-              ))}
-          </nav>
-          <nav aria-label="Directories" class="flex flex-col gap-2">
-            <h2 class="mb-2 font-semibold">Directories</h2>
-            <Link href="/models" variant="muted">
-              Compare model prices
-            </Link>
-          </nav>
-          <nav aria-label="Legal" class="flex flex-col gap-2">
-            <h2 class="mb-2 font-semibold">Legal</h2>
-            {legalNav.map((item) => (
-              <Link href={item.href} variant="muted">
-                {item.label}
-              </Link>
+                {link.label}
+              </a>
             ))}
           </nav>
-        </div>
-      </div>
-      <div class="page-container flex flex-col gap-4 pb-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-        <ThemeSwitcher client:load />
-      </div>
-    </footer>
+        ))
+      }
+    </div>
+  </div>
+  <div class="page-container relative z-10 flex flex-col gap-4 pb-10 text-sm text-paper/60 sm:flex-row sm:items-center sm:justify-between">
+    <p>{footer.entity} · © {new Date().getFullYear()}</p>
+    <div class="flex items-center gap-6">
+    <nav aria-label="Legal" class="flex gap-6">
+      {
+        legalNav.map((item) => (
+          <a href={item.href} class="transition-colors hover:text-paper">
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="[&_button]:bg-white/10 [&_button]:text-paper">
+      <ThemeSwitcher client:visible />
+    </div>
+    </div>
+  </div>
+</footer>

@@ -20,6 +20,24 @@ const link = tv({
   defaultVariants: { variant: "nav" },
 });
 
+const getAnchor = () => {
+  const bar = document.querySelector("[data-nav-anchor]");
+  const trigger = bar?.querySelector("button");
+  if (!bar || !trigger) return null;
+  return {
+    getBoundingClientRect: () => {
+      const barRect = bar.getBoundingClientRect();
+      const triggerRect = trigger.getBoundingClientRect();
+      return new DOMRect(
+        barRect.left,
+        triggerRect.top,
+        barRect.width,
+        triggerRect.height + (barRect.height < 64 ? 18 : 0),
+      );
+    },
+  };
+};
+
 export const NavigationMenu = ({ children }: { children: ReactNode }) => <BaseNavigationMenu.Root className="relative">
       <BaseNavigationMenu.List className="flex items-center gap-6">
         {children}
@@ -27,10 +45,11 @@ export const NavigationMenu = ({ children }: { children: ReactNode }) => <BaseNa
       <BaseNavigationMenu.Portal>
         <BaseNavigationMenu.Positioner
           sideOffset={12}
-          align="start"
+          align="center"
+          anchor={getAnchor}
           className="z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-200 ease-out"
         >
-          <BaseNavigationMenu.Popup className="relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-ui border border-border bg-background shadow-lg transition-[opacity,transform,width,height] duration-200 ease-out data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
+          <BaseNavigationMenu.Popup className="relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-3xl bg-background shadow-xl transition-[opacity,transform,width,height] duration-200 ease-out data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
             <BaseNavigationMenu.Viewport className="relative h-full w-full overflow-hidden" />
           </BaseNavigationMenu.Popup>
         </BaseNavigationMenu.Positioner>

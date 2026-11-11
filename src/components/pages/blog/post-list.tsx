@@ -1,10 +1,10 @@
 import type { Post } from "@/lib/blog";
-import { PostCard } from "./post-card";
+import { PostCard } from "@/components/site/post-card";
 
 export const PostList = ({ posts }: { posts: readonly Post[] }) => {
   if (posts.length === 0) {
     return (
-      <div className="rounded-ui border border-dashed border-border p-12 text-center text-muted-foreground">
+      <div className="rounded-3xl bg-muted p-12 text-center text-muted-foreground">
         No posts yet. Check back soon.
       </div>
     );

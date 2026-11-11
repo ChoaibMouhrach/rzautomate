@@ -2,6 +2,8 @@
 import { AiCustomerSupportAgentsContent } from "@/components/pages/services/ai-customer-support-agents/customer-support-content";
 import { seo } from "@/components/pages/services/ai-customer-support-agents/content";
 import { authorName } from "@/components/pages/services/ai-customer-support-agents/json-ld";
+import { ServicePosts } from "@/components/site/service-posts";
+import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { defaultImage, pageSocial } from "@/lib/metadata";
 
@@ -14,8 +16,10 @@ const social = pageSocial({
   openGraphDescription: seo.openGraphDescription,
   twitterDescription: seo.twitterDescription,
 });
+const posts = await getPostsForService("ai-customer-support-agents");
 ---
 
 <SiteLayout {...social}>
   <AiCustomerSupportAgentsContent />
+  <ServicePosts posts={posts} />
 </SiteLayout>

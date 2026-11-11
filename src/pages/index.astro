@@ -1,8 +1,42 @@
 ---
-import { HomeContent } from "@/components/pages/home/home-content";
-import SiteLayout from "@/layouts/SiteLayout.astro";
+import { Book } from "@/components/pages/home/book";
+import { homeMeta } from "@/components/pages/home/content";
+import { Faq } from "@/components/pages/home/faq";
+import { HomeFaqJsonLd } from "@/components/pages/home/faq-json-ld";
+import { FreeTools } from "@/components/pages/home/free-tools";
+import { Hero } from "@/components/pages/home/hero";
+import { LogoStrip } from "@/components/pages/home/logo-strip";
+import { MidCta } from "@/components/pages/home/mid-cta";
+import { Pain } from "@/components/pages/home/pain";
+import { Process } from "@/components/pages/home/process";
+import { ProofStats } from "@/components/pages/home/proof-stats";
+import { Results } from "@/components/pages/home/results";
+import { Running } from "@/components/pages/home/running";
+import { Services } from "@/components/pages/home/services";
+import { Team } from "@/components/pages/home/team";
+import { Testimonials } from "@/components/pages/home/testimonials";
+import { Tools } from "@/components/pages/home/tools";
+import { Why } from "@/components/pages/home/why";
+import HomeLayout from "@/layouts/HomeLayout.astro";
+import { pageSocial } from "@/lib/metadata";
 ---
 
-<SiteLayout>
-  <HomeContent />
-</SiteLayout>
+<HomeLayout {...pageSocial(homeMeta)}>
+  <HomeFaqJsonLd />
+  <Hero />
+  <ProofStats client:visible />
+  <LogoStrip />
+  <Pain />
+  <Services client:visible />
+  <Running client:visible />
+  <Results client:visible />
+  <Testimonials />
+  <Process />
+  <Why />
+  <Tools />
+  <Team />
+  <MidCta />
+  <FreeTools />
+  <Faq />
+  <Book />
+</HomeLayout>

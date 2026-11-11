@@ -10,7 +10,7 @@ export const ServiceCard = ({
   service: Service;
   headingLevel?: "h2" | "h3";
 }) => <Card interactive className="group gap-0 overflow-hidden p-0">
-      <div className="relative aspect-[1200/630] overflow-hidden border-b border-border">
+      <div className="relative aspect-[1200/630] overflow-hidden">
         <img
           src={service.image}
           alt={service.imageAlt}
@@ -19,11 +19,11 @@ export const ServiceCard = ({
         className="absolute inset-0 size-full object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-6">
+      <div className="flex flex-1 flex-col gap-3 p-8">
         <CardTitle as={headingLevel}>
           <Link
             href={`/services/${service.slug}`}
-            className="no-underline after:absolute after:inset-0"
+            className="no-underline hover:no-underline after:absolute after:inset-0"
           >
             {service.title}
           </Link>

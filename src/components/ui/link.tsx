@@ -1,16 +1,10 @@
-"use client";
-
-import {
-  Link as AriaLink,
-  composeRenderProps,
-  type LinkProps as AriaLinkProps,
-} from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 import { button, type ButtonVariantProps } from "@/components/ui/button";
 import { focusRing, tv } from "@/lib/ui";
 
 const link = tv({
   extend: focusRing,
-  base: "cursor-pointer rounded-sm underline-offset-4 hover:underline",
+  base: "cursor-pointer rounded-sm underline-offset-4 hover:underline focus-visible:outline-2",
   variants: {
     variant: {
       default: "",
@@ -20,25 +14,29 @@ const link = tv({
   defaultVariants: { variant: "default" },
 });
 
-export interface LinkProps extends AriaLinkProps {
+export interface LinkProps extends React.ComponentProps<"a"> {
   variant?: "default" | "muted";
 }
 
-export const Link = ({ variant, className, ...props }: LinkProps) => <AriaLink
-      {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        link({ ...renderProps, variant, className }),
-      )}
-    />;
+export const Link = ({ variant, className, ...props }: LinkProps) => (
+  <a
+    {...props}
+    className={link({ isFocusVisible: false, variant, className })}
+  />
+);
 
 export const LinkButton = ({
   variant,
   size,
   className,
   ...props
-}: AriaLinkProps & ButtonVariantProps) => <AriaLink
-      {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        button({ ...renderProps, variant, size, className }),
-      )}
-    />;
+}: React.ComponentProps<"a"> & ButtonVariantProps) => (
+  <a
+    {...props}
+    className={twMerge(
+      button({ isFocusVisible: false, variant, size }),
+      "focus-visible:outline-2",
+      className,
+    )}
+  />
+);

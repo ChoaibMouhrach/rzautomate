@@ -5,12 +5,14 @@ import PostBody from "@/components/pages/blog/[slug]/post-body.astro";
 import { PostCover } from "@/components/pages/blog/[slug]/post-cover";
 import { PostHeader } from "@/components/pages/blog/[slug]/post-header";
 import { PostJsonLd } from "@/components/pages/blog/[slug]/post-json-ld";
+import { PostRelated } from "@/components/pages/blog/[slug]/post-related";
 import { PostReadingProgress } from "@/components/pages/blog/[slug]/post-reading-progress";
 import { PostSidebar } from "@/components/pages/blog/[slug]/post-sidebar";
-import { getPosts, isoDate, lastModified, postPath } from "@/lib/blog";
+import { getPosts, getRelatedPosts, isoDate, lastModified, postPath } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { authors } from "@/lib/authors";
 import { pageSocial } from "@/lib/metadata";
+import { getService } from "@/lib/services";
 
 export const getStaticPaths = (async () =>
   (await getPosts()).map((post) => ({
@@ -20,6 +22,8 @@ export const getStaticPaths = (async () =>
 
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
+const service = post.data.service ? getService(post.data.service) : undefined;
+const relatedPosts = await getRelatedPosts(post);
 const seo = pageSocial({
   title: post.data.metaTitle ?? post.data.title,
   description: post.data.excerpt,
@@ -44,6 +48,7 @@ const seo = pageSocial({
     <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_14rem]">
       <div>
         <PostBody><Content /></PostBody>
+        <PostRelated service={service} posts={relatedPosts} />
       </div>
       <PostSidebar client:visible headings={headings} />
     </div>

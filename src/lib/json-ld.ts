@@ -51,6 +51,18 @@ export const siteJsonLd = (): Graph => ({
         ...(company.sameAs.length > 0 && { sameAs: [...company.sameAs] }),
         address: { "@type": "PostalAddress", ...company.address },
         areaServed: company.areaServed,
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "AI automation services",
+          itemListElement: services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.title,
+              url: absoluteUrl(`/services/${service.slug}`),
+            },
+          })),
+        },
       },
       {
         "@type": "Person",

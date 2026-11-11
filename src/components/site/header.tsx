@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/site/logo";
 import { MobileNavigation } from "@/components/site/mobile-navigation";
 import { Link, LinkButton } from "@/components/ui/link";
@@ -14,10 +15,38 @@ import { nav } from "@/lib/site";
 
 const [servicesLink, ...otherLinks] = nav.slice(0, -1);
 
-export const Header = ({ pathname }: { pathname: string }) => <header className="sticky top-0 z-40 border-b border-border bg-background">
-      <div className="page-container flex h-16 items-center justify-between gap-6">
-        <div className="flex items-center gap-10">
-          <Link href="/" className="font-semibold tracking-tight no-underline">
+const useScrolled = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const sync = () => setScrolled(scrollY > 8);
+    sync();
+    addEventListener("scroll", sync, { passive: true });
+    document.addEventListener("astro:page-load", sync);
+    return () => {
+      removeEventListener("scroll", sync);
+      document.removeEventListener("astro:page-load", sync);
+    };
+  }, []);
+
+  return scrolled;
+};
+
+export const Header = ({ pathname }: { pathname: string }) => {
+  const solid = useScrolled();
+
+  return <header
+      className={`sticky top-0 z-40 transition-[padding] duration-300 ${solid ? "px-6 py-3" : "px-0 py-0"}`}
+    >
+      <div
+        data-nav-anchor
+        className={`mx-auto grid grid-cols-[1fr_auto] items-center gap-6 transition-[max-width,height,padding,border-radius,background-color,box-shadow] duration-300 sm:grid-cols-[1fr_auto_1fr] ${
+          solid
+            ? "h-14 max-w-5xl rounded-full bg-background/80 pl-6 pr-2 shadow-lg shadow-black/5 backdrop-blur-md"
+            : "h-20 max-w-6xl rounded-none bg-transparent px-6"
+        }`}
+      >
+          <Link href="/" className="font-semibold tracking-tight no-underline hover:no-underline">
             <Logo />
           </Link>
           <div className="hidden text-sm sm:block">
@@ -55,7 +84,7 @@ export const Header = ({ pathname }: { pathname: string }) => <header className=
                     </div>
                     <NavigationMenuLink
                       href={servicesLink.href}
-                      className="inline-flex items-center gap-1 self-start font-medium text-foreground no-underline"
+                      className="inline-flex items-center gap-1 self-start font-medium text-foreground no-underline hover:no-underline"
                     >
                       View all services
                       <ArrowRight aria-hidden className="size-4" />
@@ -72,14 +101,13 @@ export const Header = ({ pathname }: { pathname: string }) => <header className=
               ))}
             </NavigationMenu>
           </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <LinkButton href="/contact" size="sm">
+        <div className="flex items-center justify-self-end gap-3">
+          <LinkButton href="/contact" size="sm" className="h-10 rounded-full px-5">
             Book a free call
           </LinkButton>
           <MobileNavigation pathname={pathname}>
             <div className="mt-4 text-sm">
-              <Link href="/services" className="font-medium no-underline">
+              <Link href="/services" className="font-medium no-underline hover:no-underline">
                 All services
               </Link>
               <ul className="mt-3 space-y-3 border-l border-border pl-4">
@@ -107,3 +135,4 @@ export const Header = ({ pathname }: { pathname: string }) => <header className=
         </div>
       </div>
     </header>;
+};

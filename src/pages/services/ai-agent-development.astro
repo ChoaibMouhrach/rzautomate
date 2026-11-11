@@ -2,6 +2,8 @@
 import { AgentDevelopmentContent } from "@/components/pages/services/ai-agent-development/agent-development-content";
 import { path, seo } from "@/components/pages/services/ai-agent-development/content";
 import { authorName } from "@/components/pages/services/ai-agent-development/json-ld";
+import { ServicePosts } from "@/components/site/service-posts";
+import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
 
@@ -16,8 +18,10 @@ const social = pageSocial({
   twitterTitle: seo.socialTitle,
   twitterDescription: seo.twitterDescription,
 });
+const posts = await getPostsForService("ai-agent-development");
 ---
 
 <SiteLayout {...social}>
   <AgentDevelopmentContent />
+  <ServicePosts posts={posts} />
 </SiteLayout>

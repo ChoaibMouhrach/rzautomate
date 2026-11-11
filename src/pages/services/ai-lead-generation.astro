@@ -2,6 +2,8 @@
 import { LeadGenerationContent } from "@/components/pages/services/ai-lead-generation/lead-generation-content";
 import { path, seo } from "@/components/pages/services/ai-lead-generation/content";
 import { authorName } from "@/components/pages/services/ai-lead-generation/json-ld";
+import { ServicePosts } from "@/components/site/service-posts";
+import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
 
@@ -16,8 +18,10 @@ const social = pageSocial({
   twitterTitle: "AI Lead Generation & CRM Automation",
   twitterDescription: seo.twitterDescription,
 });
+const posts = await getPostsForService("ai-lead-generation");
 ---
 
 <SiteLayout {...social}>
   <LeadGenerationContent />
+  <ServicePosts posts={posts} />
 </SiteLayout>

@@ -37,3 +37,14 @@ export const getPostFaq = (post: Post): PostFaq[] =>
     question: item.question,
     answer: plainText(item.answer),
   }));
+
+export const getPostsForService = async (slug: string) =>
+  (await getPosts()).filter((post) => post.data.service === slug);
+
+export const getRelatedPosts = async (post: Post) => {
+  const posts = await getPosts();
+  return post.data.related.flatMap((id) => {
+    const match = posts.find((candidate) => candidate.id === id);
+    return match ? [match] : [];
+  });
+};

@@ -14,5 +14,5 @@ export const ContactCta = ({ className }: { className?: string }) => <CtaCard cl
           clear plan and a fixed price.
         </CtaCardDescription>
       </CtaCardContent>
-      <CtaCardAction href="/contact">Contact us</CtaCardAction>
+      <CtaCardAction href="/contact">Book a free consultation</CtaCardAction>
     </CtaCard>;

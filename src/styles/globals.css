@@ -95,6 +95,99 @@ body {
   --tw-prose-pre-bg: var(--muted);
   --tw-prose-th-borders: var(--border);
   --tw-prose-td-borders: var(--border);
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.prose :where(h2, h3, h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  scroll-margin-top: 6rem;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 2.5em;
+}
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose :where(img, video, iframe, svg):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+}
+
+.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-radius: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.prose :where(code):not(:where(pre *)):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background: var(--muted);
+  border-radius: 0.5rem;
+  padding: 0.15em 0.4em;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.prose :where(code):not(:where(pre *)):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+.prose :where(code):not(:where(pre *)):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: none;
+}
+
+.prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background: var(--muted);
+  border-radius: 1.5rem;
+  border-inline-start-width: 0;
+  padding: 1.25rem 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  quotes: none;
+}
+
+.prose :where(blockquote p):first-of-type:not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+.prose :where(blockquote p):last-of-type:not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: none;
+}
+
+.prose :where(blockquote > :first-child):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 0;
+}
+
+.prose :where(blockquote > :last-child):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-bottom: 0;
+}
+
+.prose :where(table):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 1.5rem;
+  background: var(--muted);
+  font-size: 0.9em;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose :where(thead):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-bottom-color: var(--border);
+}
+
+.prose :where(th, td):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  padding: 0.75rem 1rem;
+  min-width: 7rem;
+  vertical-align: top;
+}
+
+.prose :where(thead th):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--foreground);
+  white-space: nowrap;
 }
 
 @keyframes sheet-backdrop {

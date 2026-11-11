@@ -145,7 +145,7 @@ export const LeadGenerationContent = () => <Page>
           <SectionDescription>{proof.description}</SectionDescription>
         </SectionHeader>
         <SectionContent>
-          <div className="mb-8 flex aspect-video items-center justify-center rounded-ui border border-dashed border-border bg-muted p-8 text-center text-muted-foreground">
+          <div className="mb-8 flex aspect-video items-center justify-center rounded-3xl bg-muted p-8 text-center text-muted-foreground">
             Demo recording and transcript coming soon.
           </div>
           <ol className="list-decimal space-y-2 pl-5 text-muted-foreground">

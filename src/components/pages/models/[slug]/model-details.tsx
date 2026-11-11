@@ -40,7 +40,7 @@ export const ModelDetails = ({ model }: { model: AiModel }) => {
         <h2 className="mb-6 text-2xl font-semibold tracking-tight">
           Model specifications
         </h2>
-        <dl className="divide-y divide-border rounded-xl border border-border px-6">
+        <dl className="divide-y divide-border rounded-3xl bg-muted px-8">
           {specifications.map(([label, value]) => (
             <div
               key={label}

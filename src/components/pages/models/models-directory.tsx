@@ -37,12 +37,12 @@ export const ModelsDirectory = () => {
           <p className="text-muted-foreground">Prices are per 1 million tokens in US dollars. Click any column heading to sort, or any row to see the model&apos;s full specs.</p>
           <ModelsTable />
           <p className="text-sm text-muted-foreground">These are standard API rates from the catalog snapshot; service tiers, long-context requests, caching rules and batch discounts can change the bill. Check the provider before you commit a budget. Spot a wrong number? Email <Link href="mailto:choaib@rzautomate.com">choaib@rzautomate.com</Link> and I&apos;ll fix it.</p>
-          <details className="rounded-xl border border-border p-5"><summary className="cursor-pointer text-sm font-medium">Pricing notes and model sources</summary><ul className="mt-4 space-y-3 text-sm text-muted-foreground">{models.map((model) => <li key={model.slug}><Link href={model.source}>{model.name}</Link>: {model.pricingNote}</li>)}</ul></details>
+          <details className="rounded-3xl bg-muted p-6"><summary className="cursor-pointer text-sm font-medium">Pricing notes and model sources</summary><ul className="mt-4 space-y-3 text-sm text-muted-foreground">{models.map((model) => <li key={model.slug}><Link href={model.source}>{model.name}</Link>: {model.pricingNote}</li>)}</ul></details>
         </section>
         <section className={sectionClass}>
           <h2 className={headingClass}>Quick picks</h2>
           <p className="text-muted-foreground">Generated from the full catalog, so these picks update with the data. Ties are resolved alphabetically.</p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{picks.map((pick) => <article key={pick.title} className="flex flex-col gap-4 rounded-xl border border-border p-6"><h3 className="font-semibold">{pick.title}</h3><p className="flex-1 text-sm text-muted-foreground">{pick.body}</p>{pick.model && <Link href={`/models/${pick.model.slug}`} className="text-sm">See {pick.model.name}</Link>}</article>)}</div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{picks.map((pick) => <article key={pick.title} className="flex flex-col gap-4 rounded-3xl bg-muted p-8"><h3 className="font-semibold">{pick.title}</h3><p className="flex-1 text-sm text-muted-foreground">{pick.body}</p>{pick.model && <Link href={`/models/${pick.model.slug}`} className="text-sm">See {pick.model.name}</Link>}</article>)}</div>
         </section>
         <section className={sectionClass}>
           <h2 className={headingClass}>What these prices mean for an actual workflow</h2>
@@ -75,7 +75,7 @@ export const ModelsDirectory = () => {
           <h2 className={headingClass}>AI model pricing FAQ</h2>
           <Accordion items={faqs} />
         </section>
-        <section className="mt-20 rounded-2xl border border-border bg-muted/40 p-8 text-center sm:p-12">
+        <section className="mt-20 rounded-[2rem] bg-muted p-8 text-center sm:p-12">
           <h2 className={headingClass}>Picking a model is the easy part</h2>
           <p className="mx-auto mt-5 max-w-3xl text-muted-foreground">Getting it to do real work in your tools is where most projects stall. RZ Automate builds AI agents and n8n workflows that take repetitive work off small and mid-sized businesses. On a free 30-minute call, I&apos;ll look at one task you want off your plate and tell you which model I&apos;d use, what it could cost per month at your volume, and whether it&apos;s worth automating at all.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3"><LinkButton href={bookHref}>Book a free 30-min call</LinkButton><LinkButton href={auditHref} variant="secondary"><FreeText>Get a free workflow audit</FreeText></LinkButton></div>

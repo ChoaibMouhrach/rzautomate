@@ -20,7 +20,7 @@ export const PostRelated = ({
           <CardTitle>
             <Link
               href={`/services/${service.slug}`}
-              className="no-underline after:absolute after:inset-0"
+              className="no-underline hover:no-underline after:absolute after:inset-0"
             >
               {service.title}
             </Link>
@@ -34,7 +34,7 @@ export const PostRelated = ({
           <CardTitle>
             <Link
               href={postPath(post)}
-              className="no-underline after:absolute after:inset-0"
+              className="no-underline hover:no-underline after:absolute after:inset-0"
             >
               {post.data.title}
             </Link>

@@ -7,8 +7,8 @@ export const Section = ({
 }: {
   className?: string;
   children: React.ReactNode;
-}) => <section className={twMerge("border-t border-border", className)}>
-      <div className="page-container pb-24 pt-16">{children}</div>
+}) => <section className={twMerge("", className)}>
+      <div className="page-container py-16 md:py-24">{children}</div>
     </section>;
 
 export const SectionHeader = ({
@@ -27,7 +27,7 @@ export const SectionHeader = ({
       {children}
     </div>;
 
-export const SectionTitle = ({ children }: { children: React.ReactNode }) => <h2 className="text-3xl font-semibold tracking-tight sm:col-start-1">
+export const SectionTitle = ({ children }: { children: React.ReactNode }) => <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tighter sm:col-start-1 md:text-5xl">
       {children}
     </h2>;
 

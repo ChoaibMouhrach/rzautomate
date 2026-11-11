@@ -5,7 +5,7 @@ import { LinkButton } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";
 import { site } from "@/lib/site";
 
-const IconTile = ({ children }: { children: React.ReactNode }) => <span className="flex size-10 items-center justify-center rounded-ui border border-border bg-muted text-foreground">
+const IconTile = ({ children }: { children: React.ReactNode }) => <span className="flex size-10 items-center justify-center rounded-full bg-background text-foreground">
       {children}
     </span>;
 

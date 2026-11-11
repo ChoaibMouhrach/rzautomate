@@ -1,26 +1,26 @@
-import { FreeText } from "@/components/ui/free-text";
+import { Section } from "@/components/site/section";
 import {
-  Section,
-  SectionDescription,
-  SectionFooter,
-  SectionHeader,
-  SectionTitle,
-} from "@/components/site/section";
-import { LinkButton } from "@/components/ui/link";
+  CtaCard,
+  CtaCardAction,
+  CtaCardContent,
+  CtaCardDescription,
+  CtaCardTitle,
+} from "@/components/ui/cta-card";
+import { FreeText } from "@/components/ui/free-text";
 
-export const CallToAction = () => <Section className="bg-muted">
-      <SectionHeader align="center">
-        <SectionTitle>Find out what to automate first</SectionTitle>
-        <SectionDescription>
+export const CallToAction = () => (
+  <Section>
+    <CtaCard>
+      <CtaCardContent>
+        <CtaCardTitle>Find out what to automate first</CtaCardTitle>
+        <CtaCardDescription>
           <FreeText>
             A free 30-min call with me, the engineer who builds the work. You
             leave knowing which tasks to hand off first.
           </FreeText>
-        </SectionDescription>
-      </SectionHeader>
-      <SectionFooter>
-        <LinkButton href="/contact" size="lg">
-          Book a free 30-min call
-        </LinkButton>
-      </SectionFooter>
-    </Section>;
+        </CtaCardDescription>
+      </CtaCardContent>
+      <CtaCardAction href="/contact">Book a free 30-min call</CtaCardAction>
+    </CtaCard>
+  </Section>
+);

@@ -11,7 +11,7 @@ import { authors } from "@/lib/authors";
 import { formatPostDate, isoDate, postPath, type Post } from "@/lib/blog";
 
 export const PostCard = ({ post }: { post: Post }) => <Card interactive className="group gap-0 overflow-hidden p-0">
-      <div className="relative aspect-[1200/630] overflow-hidden border-b border-border">
+      <div className="relative aspect-[1200/630] overflow-hidden">
         <img
           src={post.data.image}
           alt={post.data.imageAlt}
@@ -20,12 +20,12 @@ export const PostCard = ({ post }: { post: Post }) => <Card interactive classNam
         className="absolute inset-0 size-full object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none"
         />
       </div>
-      <div className="flex flex-1 flex-col gap-3 p-6">
+      <div className="flex flex-1 flex-col gap-3 p-8">
         <CardEyebrow>{post.data.category}</CardEyebrow>
         <CardTitle>
           <Link
             href={postPath(post)}
-            className="no-underline after:absolute after:inset-0"
+            className="no-underline hover:no-underline after:absolute after:inset-0"
           >
             {post.data.title}
           </Link>

@@ -7,7 +7,7 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => <head
       {children}
     </header>;
 
-export const PageTitle = ({ children }: { children: React.ReactNode }) => <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+export const PageTitle = ({ children }: { children: React.ReactNode }) => <h1 className="mx-auto max-w-3xl text-balance text-5xl font-semibold leading-[1.02] tracking-tighter md:text-6xl">
       {children}
     </h1>;
 

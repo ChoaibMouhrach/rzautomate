@@ -50,7 +50,7 @@ export const Header = ({ pathname }: { pathname: string }) => {
             : "h-20 max-w-6xl rounded-none bg-transparent px-6 text-white [&_a:hover]:text-white [&_a]:text-white/80 [&_button:hover]:text-white [&_button]:text-white/80 [&_button[data-popup-open]]:text-white"
         }`}
       >
-          <Link href="/" className="font-semibold tracking-tight no-underline">
+          <Link href="/" className="font-semibold tracking-tight no-underline hover:no-underline">
             <Logo />
           </Link>
           <div className="hidden text-sm sm:block">
@@ -88,7 +88,7 @@ export const Header = ({ pathname }: { pathname: string }) => {
                     </div>
                     <NavigationMenuLink
                       href={servicesLink.href}
-                      className="inline-flex items-center gap-1 self-start font-medium text-foreground no-underline"
+                      className="inline-flex items-center gap-1 self-start font-medium text-foreground no-underline hover:no-underline"
                     >
                       View all services
                       <ArrowRight aria-hidden className="size-4" />
@@ -111,7 +111,7 @@ export const Header = ({ pathname }: { pathname: string }) => {
           </LinkButton>
           <MobileNavigation pathname={pathname}>
             <div className="mt-4 text-sm">
-              <Link href="/services" className="font-medium no-underline">
+              <Link href="/services" className="font-medium no-underline hover:no-underline">
                 All services
               </Link>
               <ul className="mt-3 space-y-3 border-l border-border pl-4">

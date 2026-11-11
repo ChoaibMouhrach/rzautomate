@@ -4,7 +4,7 @@ const card = tv({
   base: "relative flex w-full flex-col gap-3 rounded-3xl bg-muted p-8",
   variants: {
     interactive: {
-      true: "transition-colors hover:bg-foreground/5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring",
+      true: "transition-colors duration-200 hover:bg-foreground/8 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring",
     },
   },
 });

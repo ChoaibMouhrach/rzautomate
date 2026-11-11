@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/site/logo";
 import { MobileNavigation } from "@/components/site/mobile-navigation";
 import { Link, LinkButton } from "@/components/ui/link";
@@ -14,8 +15,38 @@ import { nav } from "@/lib/site";
 
 const [servicesLink, ...otherLinks] = nav.slice(0, -1);
 
-export const Header = ({ pathname }: { pathname: string }) => <header className="sticky top-0 z-40 border-b border-border bg-background">
-      <div className="page-container flex h-16 items-center justify-between gap-6">
+const useSolidHeader = (pathname: string) => {
+  const [isHome, setIsHome] = useState(pathname === "/");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const sync = () => {
+      setIsHome(location.pathname === "/");
+      setScrolled(scrollY > 8);
+    };
+    sync();
+    addEventListener("scroll", sync, { passive: true });
+    document.addEventListener("astro:page-load", sync);
+    return () => {
+      removeEventListener("scroll", sync);
+      document.removeEventListener("astro:page-load", sync);
+    };
+  }, []);
+
+  return scrolled || !isHome;
+};
+
+export const Header = ({ pathname }: { pathname: string }) => {
+  const solid = useSolidHeader(pathname);
+
+  return <header className="sticky top-0 z-40 px-6 py-4">
+      <div
+        className={`mx-auto flex h-16 max-w-[calc(var(--container-6xl)-3rem)] items-center justify-between gap-6 rounded-ui border transition-[background-color,border-color,box-shadow,padding] duration-300 ${
+          solid
+            ? "border-border bg-background/90 pl-6 pr-3 shadow-sm backdrop-blur-sm"
+            : "border-transparent bg-transparent px-0 text-white [&_a:hover]:text-white [&_a]:text-white/80 [&_button:hover]:text-white [&_button]:text-white/80"
+        }`}
+      >
         <div className="flex items-center gap-10">
           <Link href="/" className="font-semibold tracking-tight no-underline">
             <Logo />
@@ -107,3 +138,4 @@ export const Header = ({ pathname }: { pathname: string }) => <header className=
         </div>
       </div>
     </header>;
+};

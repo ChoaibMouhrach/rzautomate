@@ -1,0 +1,56 @@
+---
+import { NewsletterForm } from "@/components/site/newsletter-form";
+import { Logo } from "@/components/site/logo";
+import { legalNav } from "@/lib/site";
+import { footer } from "./content";
+---
+
+<footer class="border-t border-border bg-background">
+  <div class="page-container grid gap-12 py-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <div>
+      <Logo className="h-7" />
+      <p class="mt-6 text-sm font-medium text-muted-foreground">
+        {footer.newsletterLabel}
+      </p>
+      <h2 class="mt-2 text-2xl font-semibold tracking-tight">
+        {footer.newsletterHeading}
+      </h2>
+      <div class="mt-4 max-w-sm">
+        <NewsletterForm client:visible />
+      </div>
+      <p class="mt-6 max-w-sm text-sm text-muted-foreground">{footer.tagline}</p>
+    </div>
+    <div class="grid grid-cols-2 gap-8 text-sm sm:grid-cols-3 xl:grid-cols-4">
+      {
+        footer.columns.map((column) => (
+          <nav aria-label={column.title} class="flex flex-col gap-2">
+            <h2 class="mb-2 font-semibold">{column.title}</h2>
+            {column.links.map((link) => (
+              <a
+                href={link.href}
+                rel={column.title === "Social" ? "me" : undefined}
+                class="text-muted-foreground hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        ))
+      }
+    </div>
+  </div>
+  <div class="border-t border-border">
+    <div class="page-container flex flex-col gap-3 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <p>{footer.entity} · © {new Date().getFullYear()}</p>
+      <nav aria-label="Legal" class="flex gap-6">
+        {
+          legalNav.map((item) => (
+            <a href={item.href} class="hover:text-foreground">
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</footer>

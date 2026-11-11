@@ -1,32 +1,36 @@
-import { FreeText } from "@/components/ui/free-text";
-import { LinkButton } from "@/components/ui/link";
-import { company } from "@/lib/site";
+import { BookCallButton } from "./book-call-button";
+import { hero } from "./content";
 
-export const Hero = () => <section className="page-container pb-24 pt-20 text-center sm:pt-32">
-      <p className="mb-4 text-sm text-muted-foreground">
-        AI automation for small and mid-sized businesses
-      </p>
-      <h1 className="mx-auto max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
-        Take the repetitive work off your team&apos;s plate
+const delay = (seconds: number) => ({ animationDelay: `${seconds}s` });
+
+export const Hero = () => (
+  <section className="relative isolate -mt-24 flex min-h-[80svh] items-center overflow-hidden pt-24">
+    <img
+      src="/hero-bg.jpg"
+      alt=""
+      fetchPriority="high"
+      className="absolute inset-0 -z-20 size-full object-cover"
+    />
+    <div className="absolute inset-0 -z-10 bg-black/40" />
+    <div className="page-container py-20 text-left text-white">
+      <h1
+        className="animate-fade-slide-in max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+        style={delay(0.1)}
+      >
+        {hero.title}
       </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-        {company.description}
+      <p
+        className="animate-fade-slide-in mt-6 max-w-2xl text-base text-white/80 sm:text-lg"
+        style={delay(0.2)}
+      >
+        {hero.description}
       </p>
-      <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-        I&apos;m a software engineer. I build the agents and workflows that
-        handle lead follow-up, data entry, support replies and reporting.
-      </p>
-      <div className="mt-10 flex flex-wrap justify-center gap-3">
-        <LinkButton href="/contact" size="lg">
-          Book a free 30-min call
-        </LinkButton>
-        <LinkButton href="/services" size="lg" variant="secondary">
-          <FreeText>Get a free workflow audit</FreeText>
-        </LinkButton>
+      <div
+        className="animate-fade-slide-in mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
+        style={delay(0.3)}
+      >
+        <BookCallButton size="lg" />
       </div>
-      <p className="mt-4 text-sm text-muted-foreground">
-        <FreeText>
-          Free · 30 min · No commitment. You talk to the engineer who builds it.
-        </FreeText>
-      </p>
-    </section>;
+    </div>
+  </section>
+);

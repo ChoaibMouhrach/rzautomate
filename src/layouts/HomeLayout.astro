@@ -1,0 +1,17 @@
+---
+import "@fontsource/instrument-serif/400-italic.css";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Footer from "@/components/pages/home/footer.astro";
+import { Header } from "@/components/site/header";
+import type { PageSeo } from "@/lib/metadata";
+
+type Props = PageSeo;
+---
+
+<BaseLayout {...Astro.props}>
+  <div class="home flex min-h-full flex-1 flex-col">
+    <Header client:load transition:persist="header" pathname={Astro.url.pathname} />
+    <main class="flex-1"><slot /></main>
+    <Footer />
+  </div>
+</BaseLayout>

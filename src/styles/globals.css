@@ -194,6 +194,62 @@ body {
   animation: beam-x 3s linear infinite;
 }
 
+.beam-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, var(--primary), transparent);
+  animation: beam-y 2.4s linear infinite;
+}
+
+@media (min-width: 48rem) {
+  .beam-link::after {
+    inset-inline: auto;
+    inset-block: 0;
+    width: 40%;
+    height: auto;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    animation-name: beam-x;
+  }
+}
+
+@keyframes beam-y {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(250%);
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dot-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.draw-path {
+  stroke-dasharray: 100;
+  animation: draw 0.4s ease-out both;
+}
+
+.fade-dot {
+  animation: dot-in 0.3s ease-out both;
+}
+
 @keyframes blur-fade {
   from {
     opacity: 0;
@@ -233,6 +289,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .beam-path,
   .beam-line::after,
+  .beam-link::after,
+  .draw-path,
+  .fade-dot,
   .animate-marquee-x,
   .animate-marquee-y {
     animation: none;

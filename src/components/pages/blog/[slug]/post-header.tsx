@@ -11,8 +11,8 @@ export const PostHeader = ({ post }: { post: Post }) => <>
           { label: post.data.title },
         ]}
       />
-      <header className="mt-8 max-w-3xl">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+      <header className="mt-8 max-w-4xl">
+        <h1 className="text-4xl font-semibold tracking-tighter text-balance sm:text-5xl md:text-6xl">
           {post.data.title}
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">{post.data.excerpt}</p>

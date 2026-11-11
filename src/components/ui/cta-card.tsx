@@ -33,7 +33,7 @@ export const CtaCardDescription = ({
   children,
 }: {
   children: React.ReactNode;
-}) => <p className="mt-3 text-lg text-muted-foreground">{children}</p>;
+}) => <p className="mt-3 text-lg leading-relaxed text-muted-foreground">{children}</p>;
 
 export const CtaCardAction = ({
   className,

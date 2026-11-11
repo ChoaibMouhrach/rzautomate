@@ -15,9 +15,9 @@ export const Breadcrumbs = ({ items }: { items: readonly BreadcrumbItem[] }) => 
       {items.map((item, index) => {
         const isLast = index === items.length - 1;
         return (
-          <Breadcrumb key={item.label} className="flex items-center gap-2">
+          <Breadcrumb key={item.label} className="flex min-w-0 items-center gap-2 last:flex-1">
             {isLast ? (
-              <Link className="cursor-default text-foreground hover:no-underline">
+              <Link className="cursor-default truncate text-foreground hover:no-underline">
                 {item.label}
               </Link>
             ) : (

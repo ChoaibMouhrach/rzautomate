@@ -7,13 +7,13 @@ import { footer } from "@/lib/footer";
 ---
 
 <footer class="relative mt-auto overflow-hidden bg-ink text-paper">
-  <div class="page-container relative z-10 grid gap-16 pb-12 pt-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
-    <div class="flex flex-col gap-8">
+  <div class="page-container relative z-10 grid grid-cols-1 gap-16 pb-12 pt-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <div class="flex min-w-0 flex-col gap-8">
       <div>
         <Logo className="h-8 fill-paper" />
         <p class="mt-6 max-w-md text-paper/70">{footer.tagline}</p>
       </div>
-      <div class="rounded-3xl bg-paper p-6 text-ink">
+      <div class="rounded-3xl bg-paper p-6 text-ink [--foreground:#171717] [--muted-foreground:#5c5f66] [--muted:#f4f4f5]">
         <p class="text-sm font-medium text-muted-foreground">
           {footer.newsletterLabel}
         </p>

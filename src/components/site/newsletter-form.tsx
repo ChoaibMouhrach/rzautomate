@@ -45,9 +45,9 @@ export const NewsletterForm = () => {
         isInvalid={Boolean(error)}
         errorMessage={error}
         onChange={() => setError(undefined)}
-        className="flex-1"
+        className="min-w-0 flex-1"
       />
-      <Button type="submit" size="lg" isDisabled={isPending}>
+      <Button type="submit" size="lg" className="shrink-0" isDisabled={isPending}>
         Subscribe
       </Button>
     </Form>

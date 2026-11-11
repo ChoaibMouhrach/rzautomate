@@ -17,10 +17,10 @@ const field = tv({ base: "flex flex-col gap-1.5" });
 
 const input = tv({
   extend: focusRing,
-  base: "rounded-ui border border-border bg-background px-3 text-sm placeholder:text-muted-foreground disabled:opacity-50",
+  base: "rounded-2xl bg-muted px-4 text-base placeholder:text-muted-foreground disabled:opacity-50",
   variants: {
-    isInvalid: { true: "border-danger" },
-    multiline: { false: "h-10", true: "min-h-28 resize-y py-2" },
+    isInvalid: { true: "ring-2 ring-danger" },
+    multiline: { false: "h-12", true: "min-h-32 resize-y py-3" },
   },
   defaultVariants: { multiline: false },
 });

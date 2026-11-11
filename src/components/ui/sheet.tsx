@@ -17,7 +17,7 @@ import { tv } from "@/lib/ui";
 const overlay = tv({ base: "group/sheet z-50" });
 
 const sheet = tv({
-  base: "z-1 box-content overflow-clip border border-border bg-background text-foreground shadow-2xl outline-0 will-change-transform [transform:perspective(1000px)]",
+  base: "z-1 box-content overflow-clip bg-background text-foreground shadow-2xl outline-0 will-change-transform [transform:perspective(1000px)]",
   variants: {
     position: {
       bottom:

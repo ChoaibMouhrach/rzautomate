@@ -9,7 +9,7 @@ export const CtaCard = ({
   children: React.ReactNode;
 }) => <div
       className={twMerge(
-        "flex flex-col gap-6 rounded-ui border border-border bg-muted p-8 sm:flex-row sm:items-center sm:justify-between sm:gap-10",
+        "flex flex-col gap-6 rounded-3xl bg-muted p-8 sm:p-10 sm:flex-row sm:items-center sm:justify-between sm:gap-10",
         className,
       )}
     >

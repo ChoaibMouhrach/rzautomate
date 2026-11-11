@@ -43,10 +43,11 @@ export const Header = ({ pathname }: { pathname: string }) => {
       className={`sticky top-0 z-40 transition-[padding] duration-300 ${solid ? "px-6 py-3" : "px-0 py-0"}`}
     >
       <div
+        data-nav-anchor
         className={`mx-auto grid grid-cols-[1fr_auto] items-center gap-6 transition-[max-width,height,padding,border-radius,background-color,box-shadow] duration-300 sm:grid-cols-[1fr_auto_1fr] ${
           solid
             ? "h-14 max-w-5xl rounded-full bg-background/80 pl-6 pr-2 shadow-lg shadow-black/5 backdrop-blur-md"
-            : "h-20 max-w-6xl rounded-none bg-transparent px-6 text-white [&_a:hover]:text-white [&_a]:text-white/80 [&_button:hover]:text-white [&_button]:text-white/80"
+            : "h-20 max-w-6xl rounded-none bg-transparent px-6 text-white [&_a:hover]:text-white [&_a]:text-white/80 [&_button:hover]:text-white [&_button]:text-white/80 [&_button[data-popup-open]]:text-white"
         }`}
       >
           <Link href="/" className="font-semibold tracking-tight no-underline">

@@ -1,5 +1,4 @@
-import { Accordion } from "@/components/ui/accordion";
-import { FreeText } from "@/components/ui/free-text";
+import { FaqAccordion } from "@/components/site/faq-accordion";
 import { faqGroups } from "./content";
 
 export const FaqList = () => (
@@ -17,13 +16,7 @@ export const FaqList = () => (
         >
           {group.title}
         </h2>
-        <Accordion
-          name={group.id}
-          items={group.items.map((item) => ({
-            question: item.question,
-            answer: <FreeText>{item.answer}</FreeText>,
-          }))}
-        />
+        <FaqAccordion name={group.id} items={group.items} />
       </section>
     ))}
   </div>

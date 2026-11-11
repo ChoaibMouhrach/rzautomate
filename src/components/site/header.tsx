@@ -39,15 +39,16 @@ const useSolidHeader = (pathname: string) => {
 export const Header = ({ pathname }: { pathname: string }) => {
   const solid = useSolidHeader(pathname);
 
-  return <header className="sticky top-0 z-40 px-6 py-4">
+  return <header
+      className={`sticky top-0 z-40 transition-[padding] duration-300 ${solid ? "px-6 py-3" : "px-0 py-0"}`}
+    >
       <div
-        className={`mx-auto flex h-16 max-w-[calc(var(--container-6xl)-3rem)] items-center justify-between gap-6 rounded-ui border transition-[background-color,border-color,box-shadow,padding] duration-300 ${
+        className={`mx-auto grid grid-cols-[1fr_auto] items-center gap-6 transition-[max-width,height,padding,border-radius,background-color,box-shadow] duration-300 sm:grid-cols-[1fr_auto_1fr] ${
           solid
-            ? "border-border bg-background/90 pl-6 pr-3 shadow-sm backdrop-blur-sm"
-            : "border-transparent bg-transparent px-0 text-white [&_a:hover]:text-white [&_a]:text-white/80 [&_button:hover]:text-white [&_button]:text-white/80"
+            ? "h-14 max-w-5xl rounded-full bg-background/80 pl-6 pr-2 shadow-lg shadow-black/5 backdrop-blur-md"
+            : "h-20 max-w-6xl rounded-none bg-transparent px-6 text-white [&_a:hover]:text-white [&_a]:text-white/80 [&_button:hover]:text-white [&_button]:text-white/80"
         }`}
       >
-        <div className="flex items-center gap-10">
           <Link href="/" className="font-semibold tracking-tight no-underline">
             <Logo />
           </Link>
@@ -103,9 +104,8 @@ export const Header = ({ pathname }: { pathname: string }) => {
               ))}
             </NavigationMenu>
           </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <LinkButton href="/contact" size="sm">
+        <div className="flex items-center justify-self-end gap-3">
+          <LinkButton href="/contact" size="sm" className="h-10 rounded-full px-5">
             Book a free call
           </LinkButton>
           <MobileNavigation pathname={pathname}>

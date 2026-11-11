@@ -1,4 +1,4 @@
-import { Calculator, Gauge, ListOrdered, Scale } from "lucide-react";
+import { ArrowUpRight, Calculator, Gauge, ListOrdered, Scale } from "lucide-react";
 import { FreeText } from "@/components/ui/free-text";
 import { TextLink } from "./button";
 import { freeTools } from "./content";
@@ -11,36 +11,68 @@ const icons = {
   scale: Scale,
 };
 
+const cardStyles = [
+  "bg-ink text-paper",
+  "bg-muted",
+  "bg-tint",
+  "bg-muted",
+];
+
+const bodyStyles = [
+  "text-paper/70",
+  "text-muted-foreground",
+  "text-muted-foreground",
+  "text-muted-foreground",
+];
+
 export const FreeTools = () => (
   <HomeSection id="free-tools">
-    <SectionHeading className="max-w-2xl">{freeTools.heading}</SectionHeading>
-    <p className="mt-4 text-lg text-muted-foreground">{freeTools.subhead}</p>
-    <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {freeTools.tiles.map((tile) => {
+    <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="max-w-2xl">
+        <SectionHeading>{freeTools.heading}</SectionHeading>
+        <p className="mt-4 text-lg text-muted-foreground">{freeTools.subhead}</p>
+      </div>
+      <TextLink href={freeTools.footerLink.href} className="shrink-0">
+        {freeTools.footerLink.label} →
+      </TextLink>
+    </div>
+    <ul className="mt-14 grid gap-4 lg:grid-cols-3">
+      {freeTools.tiles.map((tile, index) => {
         const Icon = icons[tile.icon];
+        const isDark = index === 0;
         return (
-          <li key={tile.href} className="flex">
+          <li key={tile.href} className={`flex ${index === 0 ? "lg:row-span-2" : ""} ${index === 3 ? "lg:col-span-2" : ""}`}>
             <a
               href={tile.href}
-              className="flex w-full flex-col rounded-2xl bg-muted p-6 transition-colors hover:bg-tint focus-visible:bg-tint"
+              className={`group flex min-h-72 w-full flex-col justify-between gap-12 rounded-3xl p-8 transition-colors md:p-10 ${cardStyles[index]}`}
             >
-              <Icon aria-hidden className="size-6 text-primary" />
-              <h3 className="mt-6 text-lg font-medium tracking-tight">
-                {tile.name}
-              </h3>
-              <p className="mt-1 flex-1 text-muted-foreground">{tile.line}</p>
-              <span className="mt-6 text-sm text-muted-foreground">
-                <FreeText>{tile.tag}</FreeText>
-              </span>
+              <div className="flex items-start justify-between gap-4">
+                <span
+                  className={`flex size-14 items-center justify-center rounded-full ${isDark ? "bg-primary text-primary-foreground" : "bg-background text-primary"}`}
+                >
+                  <Icon aria-hidden className="size-7" />
+                </span>
+                <span
+                  className={`flex size-10 items-center justify-center rounded-full transition-colors ${isDark ? "bg-white/10 group-hover:bg-primary" : "bg-background group-hover:bg-primary group-hover:text-primary-foreground"}`}
+                >
+                  <ArrowUpRight aria-hidden className="size-5" />
+                </span>
+              </div>
+              <div>
+                <p className={`text-sm font-medium ${isDark ? "text-paper/60" : "text-muted-foreground"}`}>
+                  <FreeText>{tile.tag}</FreeText>
+                </p>
+                <h3 className="mt-2 text-3xl font-semibold leading-tight tracking-tighter">
+                  {tile.name}
+                </h3>
+                <p className={`mt-3 max-w-md text-lg ${bodyStyles[index]}`}>
+                  {tile.line}
+                </p>
+              </div>
             </a>
           </li>
         );
       })}
     </ul>
-    <p className="mt-8">
-      <TextLink href={freeTools.footerLink.href}>
-        {freeTools.footerLink.label} →
-      </TextLink>
-    </p>
   </HomeSection>
 );

@@ -216,6 +216,8 @@ export const results = {
     },
   ],
   summary: {
+    figure: "45 → 5",
+    figureLabel: "minutes per client onboarding",
     text: "A training company cut client onboarding from about 45 minutes to 5 by automating the folder, board and welcome email. Measured over 8 weeks.",
     link: { label: "Read the case study", href: "/case-studies" },
   },
@@ -289,6 +291,7 @@ export const why = {
   points: [
     {
       title: "Built to handle volume",
+      chips: ["Retries", "Logging", "Error alerts"],
       line: "Every build ships with retries, logging and error alerts, so it holds up at 10x the runs and a failed run alerts us instead of failing silently.",
     },
     {
@@ -355,13 +358,14 @@ export const team = {
 };
 
 export const midCta = {
-  pill: "[N] spots open in [MONTH]",
+  pill: "3 spots open in December",
   lineOne: "Grow faster.",
   plain: "Hire ",
   italic: "slower.",
   body: "Find out which tasks to hand off first, in one 30-minute call.",
   secondary: { label: "See our services", href: "/services" },
-  avatars: 4,
+  fullCircle: ["Akera", "Rizon"],
+  avatars: ["Launchlife", "Choice EMR Learning", "CloudSDS", "Akera", "Rizon"],
   proof: "Trusted by 14 growing businesses",
 };
 
@@ -373,21 +377,21 @@ export const freeTools = {
       icon: "calculator",
       name: "Automation ROI calculator",
       line: "Enter five numbers about one task and see the hours and dollars you'd get back each year.",
-      tag: "Free · [TIME]",
+      tag: "Free · 2 min",
       href: "/tools/automation-roi-calculator",
     },
     {
       icon: "list-ordered",
       name: "What to automate first",
-      line: "Answer [N] questions about your week and get a ranked list of tasks to hand off.",
-      tag: "Free · [TIME]",
+      line: "Answer 8 questions about your week and get a ranked list of tasks to hand off.",
+      tag: "Free · 4 min",
       href: "/tools/what-to-automate-first",
     },
     {
       icon: "gauge",
       name: "AI readiness check",
       line: "See whether your data, tools and processes are ready for AI, and what to fix first.",
-      tag: "Free · [TIME]",
+      tag: "Free · 5 min",
       href: "/tools/ai-readiness-check",
     },
     {

@@ -1,3 +1,4 @@
+import { CircleCheck, Inbox, Sparkles } from "lucide-react";
 import { Fragment } from "react";
 import { BookCallButton } from "./book-call-button";
 import { hero, services } from "./content";
@@ -12,18 +13,20 @@ const positions = [
   "xl:left-[704px] xl:top-0",
 ];
 
+const icons = [Inbox, Sparkles, CircleCheck];
+
 const cardDelays = [0.2, 0.8, 1.4];
 
 const connectors = [
-  { d: "M288 80 C 320 80, 320 136, 352 136", delay: 0.4 },
-  { d: "M640 136 C 672 136, 672 80, 704 80", delay: 1 },
+  { d: "M288 88 C 320 88, 320 144, 352 144", delay: 0.4 },
+  { d: "M640 144 C 672 144, 672 88, 704 88", delay: 1 },
 ];
 
 const dots = [
-  { cx: 288, cy: 80, delay: 0.4 },
-  { cx: 352, cy: 136, delay: 0.8 },
-  { cx: 640, cy: 136, delay: 1 },
-  { cx: 704, cy: 80, delay: 1.4 },
+  { cx: 288, cy: 88, delay: 0.4 },
+  { cx: 352, cy: 144, delay: 0.8 },
+  { cx: 640, cy: 144, delay: 1 },
+  { cx: 704, cy: 88, delay: 1.4 },
 ];
 
 export const Hero = () => (
@@ -53,10 +56,10 @@ export const Hero = () => (
           fetchPriority="high"
           className="absolute inset-0 -z-10 size-full object-cover"
         />
-        <ol className="flex flex-col items-center p-6 md:px-12 md:py-20 xl:relative xl:mx-auto xl:block xl:h-[216px] xl:w-[992px] xl:my-24 xl:p-0">
+        <ol className="flex flex-col items-center p-6 md:px-12 md:py-20 xl:relative xl:mx-auto xl:block xl:h-[232px] xl:w-[992px] xl:my-24 xl:p-0">
           <svg
             aria-hidden
-            viewBox="0 0 992 216"
+            viewBox="0 0 992 232"
             className="pointer-events-none absolute inset-0 hidden size-full xl:block"
           >
             {connectors.map(({ d, delay }) => (
@@ -98,27 +101,39 @@ export const Hero = () => (
               />
             ))}
           </svg>
-          {flow.map((card, index) => (
+          {flow.map((card, index) => {
+            const Icon = icons[index];
+            return (
             <Fragment key={card.tag}>
               <li
                 style={{ animationDelay: `${cardDelays[index]}s` }}
-                className={`animate-stack-in h-40 w-full max-w-sm rounded-3xl bg-background p-6 xl:absolute xl:w-72 ${positions[index]}`}
+                className={`animate-stack-in h-44 w-full max-w-sm rounded-3xl bg-background p-6 xl:absolute xl:w-72 ${positions[index]}`}
               >
-                <span
-                  className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${
-                    card.tag === "Done"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground"
-                  }`}
-                >
-                  {card.tag}
-                </span>
+                <div className="flex items-center justify-between">
+                  <span
+                    className={`flex size-10 items-center justify-center rounded-full ${
+                      index === flow.length - 1
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-foreground"
+                    }`}
+                  >
+                    <Icon aria-hidden className="size-5" />
+                  </span>
+                  <span className="text-xs font-medium text-muted-foreground">
+                    {card.tag}
+                  </span>
+                </div>
                 <p className="mt-4 text-xl font-semibold tracking-tight">
                   {card.title}
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {card.meta}
                 </p>
+                {index === 1 && (
+                  <div className="mt-3 h-1.5 rounded-full bg-muted">
+                    <div className="h-full w-[82%] rounded-full bg-primary" />
+                  </div>
+                )}
               </li>
               {index < flow.length - 1 && (
                 <li
@@ -132,7 +147,8 @@ export const Hero = () => (
                 </li>
               )}
             </Fragment>
-          ))}
+            );
+          })}
         </ol>
       </div>
     </div>

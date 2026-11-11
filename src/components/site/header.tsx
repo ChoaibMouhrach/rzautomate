@@ -15,15 +15,11 @@ import { nav } from "@/lib/site";
 
 const [servicesLink, ...otherLinks] = nav.slice(0, -1);
 
-const useSolidHeader = (pathname: string) => {
-  const [isHome, setIsHome] = useState(pathname === "/");
+const useScrolled = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const sync = () => {
-      setIsHome(location.pathname === "/");
-      setScrolled(scrollY > 8);
-    };
+    const sync = () => setScrolled(scrollY > 8);
     sync();
     addEventListener("scroll", sync, { passive: true });
     document.addEventListener("astro:page-load", sync);
@@ -33,11 +29,11 @@ const useSolidHeader = (pathname: string) => {
     };
   }, []);
 
-  return scrolled || !isHome;
+  return scrolled;
 };
 
 export const Header = ({ pathname }: { pathname: string }) => {
-  const solid = useSolidHeader(pathname);
+  const solid = useScrolled();
 
   return <header
       className={`sticky top-0 z-40 transition-[padding] duration-300 ${solid ? "px-6 py-3" : "px-0 py-0"}`}

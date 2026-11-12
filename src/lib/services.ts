@@ -32,27 +32,6 @@ export const services: readonly Service[] = [
     ],
   },
   {
-    slug: "business-process-automation",
-    title: "Business process automation",
-    description:
-      "Automate the internal processes that run your operations, from onboarding and approvals to invoicing and reporting.",
-    image: "/services/business-process-automation.svg",
-    imageAlt: "A process moving through checked steps",
-    overview:
-      "Some processes span several people, tools and approvals. We map the process as it works today, remove the steps that do not need a person, and automate the rest from start to finish.",
-    features: [
-      "Process mapping to find the steps worth automating first",
-      "Automated onboarding, approvals, invoicing and reporting flows",
-      "Role-based approvals and a clear audit trail",
-      "Dashboards that show where each item is in the process",
-    ],
-    outcomes: [
-      "Shorter cycle times on recurring processes",
-      "Fewer errors and missed steps",
-      "Clear visibility into what is waiting on whom",
-    ],
-  },
-  {
     slug: "ai-lead-generation",
     title: "AI lead generation & CRM automation",
     description:
@@ -113,6 +92,27 @@ export const services: readonly Service[] = [
       "Less time searching company documents and preparing research",
       "Approved actions across your CRM and internal tools",
       "Code, prompts and accounts that you own",
+    ],
+  },
+  {
+    slug: "automation-maintenance",
+    title: "Automation maintenance",
+    description:
+      "Monitoring, fixes and updates for your n8n, Make, Zapier and AI automations, so they keep running as your business grows.",
+    image: "/services/workflow-automation.svg",
+    imageAlt: "A workflow with every step checked and running",
+    overview:
+      "Automations stop quietly when an app changes or a process moves on. We monitor your workflows and AI agents, fix what breaks and update them as your business grows, whether we built them or someone else did.",
+    features: [
+      "Monitoring and alerts on every workflow, so failures are caught straight away",
+      "Fixes when connected apps change their APIs or behaviour",
+      "Updates as your products, prices and processes change",
+      "Audits and documentation for automations built by someone else",
+    ],
+    outcomes: [
+      "Automations that keep running without anyone checking by hand",
+      "Breaks fixed before they cost you leads, orders or customers",
+      "A plain-English report every month",
     ],
   },
 ];

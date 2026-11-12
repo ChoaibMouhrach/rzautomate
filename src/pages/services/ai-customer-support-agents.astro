@@ -1,23 +1,39 @@
 ---
-import { Book } from "@/components/pages/services/ai-customer-support-agents/book";
-import { Build } from "@/components/pages/services/ai-customer-support-agents/build";
-import { seo } from "@/components/pages/services/ai-customer-support-agents/content";
-import { Faq } from "@/components/pages/services/ai-customer-support-agents/faq";
-import { Fit } from "@/components/pages/services/ai-customer-support-agents/fit";
-import { Flow } from "@/components/pages/services/ai-customer-support-agents/flow";
+import {
+  auditHref,
+  bookHref,
+  book,
+  build,
+  faq,
+  fit,
+  flow,
+  pain,
+  process,
+  proof,
+  related,
+  results,
+  seo,
+  testimonials,
+  tools,
+} from "@/components/pages/services/ai-customer-support-agents/content";
 import { Hero } from "@/components/pages/services/ai-customer-support-agents/hero";
 import {
   authorName,
   supportAgentsJsonLd,
 } from "@/components/pages/services/ai-customer-support-agents/json-ld";
-import { Pain } from "@/components/pages/services/ai-customer-support-agents/pain";
-import { Process } from "@/components/pages/services/ai-customer-support-agents/process";
-import { Proof } from "@/components/pages/services/ai-customer-support-agents/proof";
-import { Related } from "@/components/pages/services/ai-customer-support-agents/related";
-import { Results } from "@/components/pages/services/ai-customer-support-agents/results";
-import { Testimonials } from "@/components/pages/services/ai-customer-support-agents/testimonials";
-import { Tools } from "@/components/pages/services/ai-customer-support-agents/tools";
+import { BookSection } from "@/components/site/book-section";
 import { JsonLd } from "@/components/site/json-ld";
+import { Build } from "@/components/site/service-page/build";
+import { Faq } from "@/components/site/service-page/faq";
+import { Fit } from "@/components/site/service-page/fit";
+import { Flow } from "@/components/site/service-page/flow";
+import { Pain } from "@/components/site/service-page/pain";
+import { Process } from "@/components/site/service-page/process";
+import { Proof } from "@/components/site/service-page/proof";
+import { Related } from "@/components/site/service-page/related";
+import { Results } from "@/components/site/service-page/results";
+import { Testimonials } from "@/components/site/service-page/testimonials";
+import { Tools } from "@/components/site/service-page/tools";
 import { ServicePosts } from "@/components/site/service-posts";
 import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
@@ -38,17 +54,17 @@ const posts = await getPostsForService("ai-customer-support-agents");
 <SiteLayout {...social}>
   <JsonLd data={supportAgentsJsonLd()} />
   <Hero client:load />
-  <Proof client:visible />
-  <Pain />
-  <Build client:visible />
-  <Flow />
-  <Results client:visible />
-  <Testimonials />
-  <Tools />
-  <Process />
-  <Fit />
-  <Faq />
-  <Book />
-  <Related />
+  <Proof client:visible proof={proof} />
+  <Pain pain={pain} />
+  <Build client:visible build={build} bookHref={bookHref} />
+  <Flow flow={flow} />
+  <Results client:visible results={results} bookHref={bookHref} />
+  <Testimonials testimonials={testimonials} />
+  <Tools tools={tools} />
+  <Process process={process} />
+  <Fit fit={fit} auditHref={auditHref} />
+  <Faq faq={faq} name="support-faq" />
+  <BookSection {...book} />
+  <Related related={related} />
   <ServicePosts posts={posts} />
 </SiteLayout>

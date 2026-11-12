@@ -1,7 +1,40 @@
 ---
-import { LeadGenerationContent } from "@/components/pages/services/ai-lead-generation/lead-generation-content";
-import { path, seo } from "@/components/pages/services/ai-lead-generation/content";
-import { authorName } from "@/components/pages/services/ai-lead-generation/json-ld";
+import { Hero } from "@/components/pages/services/ai-lead-generation/hero";
+import {
+  auditHref,
+  book,
+  bookHref,
+  build,
+  faq,
+  fit,
+  flow,
+  pain,
+  path,
+  process,
+  proof,
+  related,
+  results,
+  seo,
+  testimonials,
+  tools,
+} from "@/components/pages/services/ai-lead-generation/content";
+import {
+  authorName,
+  leadGenerationJsonLd,
+} from "@/components/pages/services/ai-lead-generation/json-ld";
+import { BookSection } from "@/components/site/book-section";
+import { JsonLd } from "@/components/site/json-ld";
+import { Build } from "@/components/site/service-page/build";
+import { Faq } from "@/components/site/service-page/faq";
+import { Fit } from "@/components/site/service-page/fit";
+import { Flow } from "@/components/site/service-page/flow";
+import { Pain } from "@/components/site/service-page/pain";
+import { Process } from "@/components/site/service-page/process";
+import { Proof } from "@/components/site/service-page/proof";
+import { Related } from "@/components/site/service-page/related";
+import { Results } from "@/components/site/service-page/results";
+import { Testimonials } from "@/components/site/service-page/testimonials";
+import { Tools } from "@/components/site/service-page/tools";
 import { ServicePosts } from "@/components/site/service-posts";
 import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
@@ -22,6 +55,19 @@ const posts = await getPostsForService("ai-lead-generation");
 ---
 
 <SiteLayout {...social}>
-  <LeadGenerationContent />
+  <JsonLd data={leadGenerationJsonLd()} />
+  <Hero client:load />
+  <Proof client:visible proof={proof} />
+  <Pain pain={pain} />
+  <Build client:visible build={build} bookHref={bookHref} />
+  <Flow flow={flow} />
+  <Results client:visible results={results} bookHref={bookHref} />
+  <Testimonials testimonials={testimonials} />
+  <Tools tools={tools} />
+  <Process process={process} />
+  <Fit fit={fit} auditHref={auditHref} />
+  <Faq faq={faq} name="lead-faq" />
+  <BookSection {...book} />
+  <Related related={related} />
   <ServicePosts posts={posts} />
 </SiteLayout>

@@ -2,7 +2,8 @@ import { ArrowUp, Check, CheckCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FreeText } from "@/components/ui/free-text";
 import { LinkButton } from "@/components/ui/link";
-import { auditHref, bookHref, bookingLabel, hero } from "./content";
+import { bookingLabel } from "@/components/site/service-page/constants";
+import { auditHref, bookHref, hero } from "./content";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

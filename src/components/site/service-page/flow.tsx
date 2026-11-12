@@ -1,9 +1,26 @@
-import { ArrowDown, LifeBuoy, Mail, MessageCircle, MessageSquare } from "lucide-react";
+import {
+  ArrowDown,
+  CalendarDays,
+  FileText,
+  LifeBuoy,
+  Mail,
+  Megaphone,
+  MessageCircle,
+  MessageSquare,
+} from "lucide-react";
 import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
 import { logoPaths } from "@/components/site/logo";
-import { flow } from "./content";
+import type { FlowContent } from "./types";
 
-const channelIcons = [MessageSquare, Mail, LifeBuoy, MessageCircle];
+const iconMap = {
+  message: MessageSquare,
+  mail: Mail,
+  support: LifeBuoy,
+  chat: MessageCircle,
+  form: FileText,
+  megaphone: Megaphone,
+  calendar: CalendarDays,
+};
 const channelY = [50, 140, 230, 320];
 const outcomeY = [30, 140, 250];
 
@@ -14,8 +31,8 @@ const Connector = () => (
   </span>
 );
 
-export const Flow = () => (
-  <LandingSection className="relative overflow-hidden bg-ink text-paper" id="how-it-works-on-every-conversation">
+export const Flow = ({ flow }: { flow: FlowContent }) => (
+  <LandingSection className="relative overflow-hidden bg-ink text-paper" id="how-it-works">
     <div
       aria-hidden
       className="absolute inset-0 -z-10 opacity-[0.07] [background-image:radial-gradient(circle,#fff_1.5px,transparent_1.5px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
@@ -33,7 +50,7 @@ export const Flow = () => (
     >
       {flow.channels.map((channel, index) => {
         const y = channelY[index];
-        const Icon = channelIcons[index];
+        const Icon = iconMap[flow.icons[index]];
         const path = `M 196 ${y} C 320 ${y}, 330 190, 430 190`;
         return (
           <g key={channel}>

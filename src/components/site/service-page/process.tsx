@@ -1,7 +1,7 @@
 import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
-import { process } from "./content";
+import type { ProcessContent } from "./types";
 
-export const Process = () => (
+export const Process = ({ process }: { process: ProcessContent }) => (
   <LandingSection id="how-we-work">
     <div className="max-w-3xl">
       <SectionLabel>{process.label}</SectionLabel>

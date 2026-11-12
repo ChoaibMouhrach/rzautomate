@@ -1,8 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import { LandingHeading, LandingSection } from "@/components/site/landing-section";
-import { related } from "./content";
+import type { RelatedContent } from "./types";
 
-export const Related = () => (
+export const Related = ({ related }: { related: RelatedContent }) => (
   <LandingSection>
     <LandingHeading className="max-w-2xl text-3xl md:text-4xl">
       {related.heading}

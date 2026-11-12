@@ -1,7 +1,7 @@
 import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
-import { pain } from "./content";
+import type { PainContent } from "./types";
 
-export const Pain = () => (
+export const Pain = ({ pain }: { pain: PainContent }) => (
   <LandingSection>
     <div className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
       <div className="lg:sticky lg:top-28 lg:self-start">

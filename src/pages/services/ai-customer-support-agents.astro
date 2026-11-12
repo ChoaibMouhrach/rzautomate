@@ -1,7 +1,23 @@
 ---
-import { AiCustomerSupportAgentsContent } from "@/components/pages/services/ai-customer-support-agents/customer-support-content";
+import { Book } from "@/components/pages/services/ai-customer-support-agents/book";
+import { Build } from "@/components/pages/services/ai-customer-support-agents/build";
 import { seo } from "@/components/pages/services/ai-customer-support-agents/content";
-import { authorName } from "@/components/pages/services/ai-customer-support-agents/json-ld";
+import { Faq } from "@/components/pages/services/ai-customer-support-agents/faq";
+import { Fit } from "@/components/pages/services/ai-customer-support-agents/fit";
+import { Flow } from "@/components/pages/services/ai-customer-support-agents/flow";
+import { Hero } from "@/components/pages/services/ai-customer-support-agents/hero";
+import {
+  authorName,
+  supportAgentsJsonLd,
+} from "@/components/pages/services/ai-customer-support-agents/json-ld";
+import { Pain } from "@/components/pages/services/ai-customer-support-agents/pain";
+import { Process } from "@/components/pages/services/ai-customer-support-agents/process";
+import { Proof } from "@/components/pages/services/ai-customer-support-agents/proof";
+import { Related } from "@/components/pages/services/ai-customer-support-agents/related";
+import { Results } from "@/components/pages/services/ai-customer-support-agents/results";
+import { Testimonials } from "@/components/pages/services/ai-customer-support-agents/testimonials";
+import { Tools } from "@/components/pages/services/ai-customer-support-agents/tools";
+import { JsonLd } from "@/components/site/json-ld";
 import { ServicePosts } from "@/components/site/service-posts";
 import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
@@ -20,6 +36,19 @@ const posts = await getPostsForService("ai-customer-support-agents");
 ---
 
 <SiteLayout {...social}>
-  <AiCustomerSupportAgentsContent />
+  <JsonLd data={supportAgentsJsonLd()} />
+  <Hero client:load />
+  <Proof client:visible />
+  <Pain />
+  <Build client:visible />
+  <Flow />
+  <Results client:visible />
+  <Testimonials />
+  <Tools />
+  <Process />
+  <Fit />
+  <Faq />
+  <Book />
+  <Related />
   <ServicePosts posts={posts} />
 </SiteLayout>

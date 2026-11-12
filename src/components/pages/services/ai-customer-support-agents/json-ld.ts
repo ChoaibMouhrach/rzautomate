@@ -1,6 +1,6 @@
 import type { Graph } from "schema-dts";
 import { absoluteUrl, company, founder } from "@/lib/site";
-import { book, build, faq, path, seo } from "./content";
+import { build, faq, path, related, seo } from "./content";
 
 export const supportAgentsJsonLd = (): Graph => {
   const url = absoluteUrl(path);
@@ -62,21 +62,21 @@ export const supportAgentsJsonLd = (): Graph => {
         areaServed: company.areaServed,
         audience: {
           "@type": "BusinessAudience",
-          name: "Small and mid-sized businesses",
+          name: "Growing businesses with a support team",
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "AI customer support builds",
-          itemListElement: build.cards.map((card) => ({
+          itemListElement: build.items.map((item) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: card.title,
-              description: card.flow,
+              name: item.name,
+              description: item.body,
             },
           })),
         },
-        isRelatedTo: book.related.map((service) => ({
+        isRelatedTo: related.tiles.map((service) => ({
           "@type": "Service",
           name: service.title,
           url: absoluteUrl(service.href),

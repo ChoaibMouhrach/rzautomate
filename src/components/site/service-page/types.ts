@@ -34,7 +34,11 @@ export type FlowIcon =
   | "upload"
   | "scan"
   | "folder"
-  | "database";
+  | "database"
+  | "workflow"
+  | "blocks"
+  | "zap"
+  | "bot";
 
 export interface FlowContent {
   label: string;
@@ -72,6 +76,7 @@ export interface ProcessContent {
   label: string;
   heading: string;
   steps: readonly { title: string; line: string }[];
+  note?: string;
 }
 
 export interface FitContent {

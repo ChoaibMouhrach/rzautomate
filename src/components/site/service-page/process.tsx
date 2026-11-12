@@ -31,5 +31,8 @@ export const Process = ({ process }: { process: ProcessContent }) => (
         );
       })}
     </ol>
+    {process.note && (
+      <p className="mt-12 max-w-2xl text-muted-foreground">{process.note}</p>
+    )}
   </LandingSection>
 );

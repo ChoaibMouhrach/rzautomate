@@ -14,15 +14,17 @@ const tagStyles: Record<string, string> = {
 export const Build = ({
   build,
   bookHref,
+  id = "what-we-build",
 }: {
   build: BuildContent;
   bookHref: string;
+  id?: string;
 }) => {
   const [open, setOpen] = useState(0);
   const active = build.items[open];
 
   return (
-    <LandingSection id="what-we-build">
+    <LandingSection id={id}>
       <div className="max-w-3xl">
         <SectionLabel>{build.label}</SectionLabel>
         <LandingHeading className="mt-4">{build.heading}</LandingHeading>

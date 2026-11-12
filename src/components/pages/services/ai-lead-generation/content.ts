@@ -29,7 +29,6 @@ export const hero = {
   subhead:
     "We build AI lead generation systems that answer every new lead in minutes, score it, follow up and keep your CRM up to date, so more leads turn into calls without adding reps.",
   secondary: "Find what to automate first →",
-  trust: "Free · 30 min · No commitment",
   flow: [
     { tag: "Step 1", title: "A lead arrives", meta: "Quote request from your website, 11:40 pm" },
     { tag: "Step 2", title: "AI checks the fit", meta: "Company researched. Score: 86 / 100" },

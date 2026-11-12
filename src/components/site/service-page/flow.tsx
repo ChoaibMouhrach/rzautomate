@@ -1,6 +1,7 @@
 import {
   ArrowDown,
   CalendarDays,
+  Database,
   FileText,
   FolderOpen,
   LifeBuoy,
@@ -26,6 +27,7 @@ const iconMap = {
   upload: Upload,
   scan: ScanLine,
   folder: FolderOpen,
+  database: Database,
 };
 const channelY = [50, 140, 230, 320];
 const outcomeY = [30, 140, 250];

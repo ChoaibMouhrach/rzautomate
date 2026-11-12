@@ -33,7 +33,8 @@ export type FlowIcon =
   | "calendar"
   | "upload"
   | "scan"
-  | "folder";
+  | "folder"
+  | "database";
 
 export interface FlowContent {
   label: string;
@@ -79,6 +80,7 @@ export interface FitContent {
   good: readonly string[];
   badTitle: string;
   bad: readonly string[];
+  note?: string;
   closing: string;
 }
 
@@ -98,6 +100,9 @@ export interface HeroContent {
   title: string;
   subhead: string;
   secondary: string;
-  trust: string;
-  flow: readonly { tag: string; title: string; meta: string }[];
+  flow: readonly {
+    tag: string;
+    title: string;
+    meta: string;
+  }[];
 }

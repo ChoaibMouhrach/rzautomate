@@ -25,27 +25,18 @@ export const seo = {
 };
 
 export const hero = {
-  eyebrow: "AI lead generation & CRM automation",
-  line1: "More booked calls,",
-  line2: "from the leads you already get.",
+  title: "More booked calls, from the leads you already get.",
   subhead:
     "We build AI lead generation systems that answer every new lead in minutes, score it, follow up and keep your CRM up to date, so more leads turn into calls without adding reps.",
   secondary: "Find what to automate first →",
   trust: "Free · 30 min · No commitment",
-  browser: {
-    url: "crm.yourcompany.com",
-    lead: { name: "Sarah K.", initial: "S", line: "Ops Director · Brightline" },
-    approve: "Approve and send",
-    sent: "Sent",
-    steps: [
-      { status: "New lead", text: "Sarah K. · Ops Director · Brightline (45 staff)", meta: "Website form · 9:41 pm" },
-      { status: "Enriched", text: "B2B services · UK · brightline.co", meta: "Company data added" },
-      { status: "Scored", text: "86 / 100 · Strong fit", meta: "Matches your ideal customer" },
-      { status: "In your CRM", text: "Deal created · Owner: Alex", meta: "HubSpot" },
-      { status: "Follow-up ready", text: "Personal reply + booking link", meta: "Waiting for approval" },
-    ],
-  },
-} as const;
+  flow: [
+    { tag: "Step 1", title: "A lead arrives", meta: "Quote request from your website, 11:40 pm" },
+    { tag: "Step 2", title: "AI checks the fit", meta: "Company researched. Score: 86 / 100" },
+    { tag: "Step 3", title: "Reply sent, deal logged", meta: "Booking link sent, CRM updated" },
+  ],
+};
+
 
 // TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {

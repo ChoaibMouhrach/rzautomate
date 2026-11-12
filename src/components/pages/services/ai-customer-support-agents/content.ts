@@ -24,50 +24,18 @@ export const seo = {
 };
 
 export const hero = {
-  eyebrow: "AI chatbot development services",
-  line1: "Instant answers",
-  line2: "your customers can trust.",
+  title: "Instant answers your customers can trust.",
   subhead:
     "We build custom AI chatbots that answer your customers from your own docs, look up their orders and hand the hard cases to your team. More customers, same team, faster replies.",
   secondary: "Find what to automate first →",
   trust: "Free · 30 min · No commitment",
-  phone: {
-    agent: "Maya",
-    role: "Northwind Support",
-    status: "Online",
-    messages: [
-      { from: "customer", text: "Hi, where's my order #4821?" },
-      {
-        from: "bot",
-        text: "It shipped yesterday and arrives Thursday. Here's your tracking link.",
-        tag: "Checked in Shopify",
-      },
-      { from: "customer", text: "Can I change the delivery address?" },
-      {
-        from: "bot",
-        text: "Yes, it hasn't left the local depot yet. What's the new address?",
-        tag: "Checked carrier status",
-      },
-      { from: "customer", text: "42 Harbour Street, Leeds LS1 4AB" },
-      {
-        from: "bot",
-        text: "Thanks. I'll change it to 42 Harbour Street, Leeds LS1 4AB. Shall I go ahead?",
-      },
-      { from: "customer", text: "Yes please" },
-      {
-        from: "bot",
-        text: "Done. Order #4821 now goes to 42 Harbour Street and still arrives Thursday.",
-        tag: "Updated in Shopify",
-      },
-      { from: "customer", text: "Perfect, thank you!" },
-      {
-        from: "bot",
-        text: "Happy to help. I've emailed you the new delivery details.",
-        tag: "Confirmation sent",
-      },
-    ],
-  },
-} as const;
+  flow: [
+    { tag: "Step 1", title: "A customer asks", meta: "“Where's my order?” in your chat" },
+    { tag: "Step 2", title: "The chatbot checks", meta: "Looks up the real order in your store" },
+    { tag: "Step 3", title: "Answered in seconds", meta: "Status and tracking link sent" },
+  ],
+};
+
 
 // TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {

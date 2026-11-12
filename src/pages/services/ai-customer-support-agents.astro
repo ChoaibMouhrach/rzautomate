@@ -12,15 +12,16 @@ import {
   proof,
   related,
   results,
+  hero,
   seo,
   testimonials,
   tools,
 } from "@/components/pages/services/ai-customer-support-agents/content";
-import { Hero } from "@/components/pages/services/ai-customer-support-agents/hero";
 import {
   authorName,
   supportAgentsJsonLd,
 } from "@/components/pages/services/ai-customer-support-agents/json-ld";
+import { ServiceHero } from "@/components/site/service-page/service-hero";
 import { BookSection } from "@/components/site/book-section";
 import { JsonLd } from "@/components/site/json-ld";
 import { Build } from "@/components/site/service-page/build";
@@ -53,7 +54,7 @@ const posts = await getPostsForService("ai-customer-support-agents");
 
 <SiteLayout {...social}>
   <JsonLd data={supportAgentsJsonLd()} />
-  <Hero client:load />
+  <ServiceHero hero={hero} bookHref={bookHref} auditHref={auditHref} />
   <Proof client:visible proof={proof} />
   <Pain pain={pain} />
   <Build client:visible build={build} bookHref={bookHref} />

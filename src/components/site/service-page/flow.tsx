@@ -2,11 +2,14 @@ import {
   ArrowDown,
   CalendarDays,
   FileText,
+  FolderOpen,
   LifeBuoy,
   Mail,
   Megaphone,
   MessageCircle,
   MessageSquare,
+  ScanLine,
+  Upload,
 } from "lucide-react";
 import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
 import { logoPaths } from "@/components/site/logo";
@@ -20,6 +23,9 @@ const iconMap = {
   form: FileText,
   megaphone: Megaphone,
   calendar: CalendarDays,
+  upload: Upload,
+  scan: ScanLine,
+  folder: FolderOpen,
 };
 const channelY = [50, 140, 230, 320];
 const outcomeY = [30, 140, 250];

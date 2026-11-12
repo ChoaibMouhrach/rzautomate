@@ -1,10 +1,10 @@
 import { button } from "@/components/ui/button";
 import { FreeText } from "@/components/ui/free-text";
 import { bookingLabel, logos, midCta } from "./content";
-import { HomeSection } from "./section";
+import { LandingSection } from "@/components/site/landing-section";
 
 export const MidCta = () => (
-  <HomeSection className="py-8 md:py-12">
+  <LandingSection className="py-8 md:py-12">
     <div className="relative isolate overflow-hidden rounded-[2rem] bg-primary px-6 py-16 text-center text-primary-foreground md:px-16 md:py-24">
       <div
         aria-hidden
@@ -68,5 +68,5 @@ export const MidCta = () => (
         <p className="text-sm text-primary-foreground/85">{midCta.proof}</p>
       </div>
     </div>
-  </HomeSection>
+  </LandingSection>
 );

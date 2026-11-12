@@ -2,15 +2,15 @@ import { ArrowUpRight } from "lucide-react";
 import { BookCallButton } from "./book-call-button";
 import { button } from "@/components/ui/button";
 import { results } from "./content";
-import { NumberTicker } from "./number-ticker";
-import { HomeSection, MonoLabel, SectionHeading } from "./section";
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { LandingSection, SectionLabel, LandingHeading } from "@/components/site/landing-section";
 
 export const Results = () => (
-  <HomeSection id="results">
+  <LandingSection id="results">
     <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-2xl">
-        <MonoLabel>{results.label}</MonoLabel>
-        <SectionHeading className="mt-4">{results.heading}</SectionHeading>
+        <SectionLabel>{results.label}</SectionLabel>
+        <LandingHeading className="mt-4">{results.heading}</LandingHeading>
         <p className="mt-4 text-lg text-muted-foreground">{results.body}</p>
       </div>
       <div className="flex flex-wrap items-center gap-3">
@@ -60,5 +60,5 @@ export const Results = () => (
         <ArrowUpRight aria-hidden className="size-5" />
       </span>
     </a>
-  </HomeSection>
+  </LandingSection>
 );

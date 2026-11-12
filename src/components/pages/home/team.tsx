@@ -1,10 +1,10 @@
 import { team } from "./content";
-import { TextLink } from "./button";
-import { HomeSection } from "./section";
+import { TextLink } from "@/components/ui/text-link";
+import { LandingSection } from "@/components/site/landing-section";
 import { TextReveal } from "./text-reveal";
 
 export const Team = () => (
-  <HomeSection className="bg-tint">
+  <LandingSection className="bg-tint">
     <h2 className="text-sm font-medium text-muted-foreground">
       {team.label}
     </h2>
@@ -21,5 +21,5 @@ export const Team = () => (
         </li>
       ))}
     </ul>
-  </HomeSection>
+  </LandingSection>
 );

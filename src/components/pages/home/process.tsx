@@ -1,6 +1,6 @@
 import { button } from "@/components/ui/button";
 import { bookingLabel, process } from "./content";
-import { HomeSection, MonoLabel, SectionHeading } from "./section";
+import { LandingSection, SectionLabel, LandingHeading } from "@/components/site/landing-section";
 
 const heights = ["lg:min-h-[22rem]", "lg:min-h-[26rem]", "lg:min-h-[30rem]", "lg:min-h-[34rem]"];
 const tones = [
@@ -17,10 +17,10 @@ const mutedTones = [
 ];
 
 export const Process = () => (
-  <HomeSection id="how-it-works">
+  <LandingSection id="how-it-works">
     <div className="max-w-2xl">
-      <MonoLabel>{process.label}</MonoLabel>
-      <SectionHeading className="mt-4">{process.heading}</SectionHeading>
+      <SectionLabel>{process.label}</SectionLabel>
+      <LandingHeading className="mt-4">{process.heading}</LandingHeading>
       <p className="mt-4 text-lg text-muted-foreground">
         {process.description}
       </p>
@@ -73,5 +73,5 @@ export const Process = () => (
       })}
     </ol>
     </div>
-  </HomeSection>
+  </LandingSection>
 );

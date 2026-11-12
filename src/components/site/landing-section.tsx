@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-export const HomeSection = ({
+export const LandingSection = ({
   id,
   className,
   containerClassName,
@@ -18,7 +18,7 @@ export const HomeSection = ({
   </section>
 );
 
-export const MonoLabel = ({
+export const SectionLabel = ({
   className,
   children,
 }: {
@@ -35,7 +35,7 @@ export const MonoLabel = ({
   </p>
 );
 
-export const SectionHeading = ({
+export const LandingHeading = ({
   className,
   children,
 }: {

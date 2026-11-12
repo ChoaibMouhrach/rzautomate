@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
-import { TextLink } from "./button";
+import { TextLink } from "@/components/ui/text-link";
 import { BookCallButton } from "./book-call-button";
 import { services } from "./content";
-import { HomeSection, MonoLabel, SectionHeading } from "./section";
+import { LandingSection, SectionLabel, LandingHeading } from "@/components/site/landing-section";
 
 const tagStyles: Record<string, string> = {
   Trigger: "bg-tint text-muted-foreground",
@@ -15,10 +15,10 @@ export const Services = () => {
   const active = services.items[open];
 
   return (
-    <HomeSection id="services">
+    <LandingSection id="services">
       <div className="max-w-2xl">
-        <MonoLabel>{services.label}</MonoLabel>
-        <SectionHeading className="mt-4">{services.heading}</SectionHeading>
+        <SectionLabel>{services.label}</SectionLabel>
+        <LandingHeading className="mt-4">{services.heading}</LandingHeading>
         <p className="mt-4 text-lg text-muted-foreground">{services.subhead}</p>
       </div>
       <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-20">
@@ -109,6 +109,6 @@ export const Services = () => {
         <p className="max-w-xl text-muted-foreground">{services.footer}</p>
         <BookCallButton size="lg" />
       </div>
-    </HomeSection>
+    </LandingSection>
   );
 };

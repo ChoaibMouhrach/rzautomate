@@ -6,10 +6,10 @@ import {
   Receipt,
   UserPlus,
 } from "lucide-react";
-import { AnimatedList } from "./animated-list";
+import { AnimatedList } from "@/components/ui/animated-list";
 import { running } from "./content";
 import { RunningBeam } from "./running-beam";
-import { MonoLabel } from "./section";
+import { SectionLabel } from "@/components/site/landing-section";
 
 const icons = {
   mail: Mail,
@@ -24,7 +24,7 @@ export const Running = () => (
   <section className="relative overflow-hidden bg-ink py-16 text-paper md:py-28">
     <div className="page-container blur-fade relative grid items-center gap-x-20 gap-y-12 md:grid-cols-2">
       <div className="md:col-span-2">
-        <MonoLabel className="text-paper/60">{running.label}</MonoLabel>
+        <SectionLabel className="text-paper/60">{running.label}</SectionLabel>
         <h2 className="mt-4 text-balance text-4xl font-semibold leading-[1.05] tracking-tighter md:text-5xl">
           {running.heading}
         </h2>

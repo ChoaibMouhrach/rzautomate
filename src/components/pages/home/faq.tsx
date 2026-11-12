@@ -1,10 +1,10 @@
 import { FaqAccordion } from "@/components/site/faq-accordion";
 import { button } from "@/components/ui/button";
 import { bookingLabel, faq } from "./content";
-import { HomeSection } from "./section";
+import { LandingSection } from "@/components/site/landing-section";
 
 export const Faq = () => (
-  <HomeSection
+  <LandingSection
     id="faq"
     containerClassName="grid gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
   >
@@ -29,5 +29,5 @@ export const Faq = () => (
       </a>
     </div>
     <FaqAccordion name="home-faq" items={faq.items} />
-  </HomeSection>
+  </LandingSection>
 );

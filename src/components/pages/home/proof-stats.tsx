@@ -1,9 +1,9 @@
 import { stats } from "./content";
-import { NumberTicker } from "./number-ticker";
-import { HomeSection } from "./section";
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { LandingSection } from "@/components/site/landing-section";
 
 export const ProofStats = () => (
-  <HomeSection className="py-12 md:py-16">
+  <LandingSection className="py-12 md:py-16">
     <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat) => (
         <li key={stat.label} className="flex flex-col gap-2 rounded-2xl bg-muted p-6">
@@ -14,5 +14,5 @@ export const ProofStats = () => (
         </li>
       ))}
     </ul>
-  </HomeSection>
+  </LandingSection>
 );

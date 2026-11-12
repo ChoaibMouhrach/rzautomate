@@ -1,7 +1,11 @@
 import { LandingHeading, LandingSection } from "@/components/site/landing-section";
-import { testimonials } from "./content";
+import type { TestimonialsContent } from "./types";
 
-export const Testimonials = () => (
+export const Testimonials = ({
+  testimonials,
+}: {
+  testimonials: TestimonialsContent;
+}) => (
   <LandingSection>
     <div className="mx-auto max-w-2xl text-center">
       <LandingHeading>{testimonials.heading}</LandingHeading>

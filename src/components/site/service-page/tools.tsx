@@ -1,7 +1,7 @@
 import { LandingHeading, LandingSection } from "@/components/site/landing-section";
-import { tools } from "./content";
+import type { ToolsContent } from "./types";
 
-export const Tools = () => (
+export const Tools = ({ tools }: { tools: ToolsContent }) => (
   <LandingSection className="bg-tint">
     <div className="mx-auto max-w-2xl text-center">
       <LandingHeading>{tools.heading}</LandingHeading>

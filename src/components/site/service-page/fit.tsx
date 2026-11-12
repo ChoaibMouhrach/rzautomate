@@ -1,7 +1,7 @@
 import { Check, X } from "lucide-react";
 import { LandingHeading, LandingSection } from "@/components/site/landing-section";
 import { TextLink } from "@/components/ui/text-link";
-import { auditHref, fit } from "./content";
+import type { FitContent } from "./types";
 
 const Column = ({
   title,
@@ -29,7 +29,13 @@ const Column = ({
   </div>
 );
 
-export const Fit = () => (
+export const Fit = ({
+  fit,
+  auditHref,
+}: {
+  fit: FitContent;
+  auditHref: string;
+}) => (
   <LandingSection className="bg-tint">
     <LandingHeading className="max-w-3xl">{fit.heading}</LandingHeading>
     <div className="mt-14 grid gap-12 md:grid-cols-2 md:gap-0">

@@ -2,7 +2,8 @@ import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
 import { LinkButton } from "@/components/ui/link";
-import { bookHref, bookingLabel, build } from "./content";
+import { bookingLabel } from "./constants";
+import type { BuildContent } from "./types";
 
 const tagStyles: Record<string, string> = {
   Answered: "bg-primary text-primary-foreground",
@@ -10,7 +11,13 @@ const tagStyles: Record<string, string> = {
   "Handed off": "bg-primary text-primary-foreground",
 };
 
-export const Build = () => {
+export const Build = ({
+  build,
+  bookHref,
+}: {
+  build: BuildContent;
+  bookHref: string;
+}) => {
   const [open, setOpen] = useState(0);
   const active = build.items[open];
 

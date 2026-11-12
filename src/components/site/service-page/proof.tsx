@@ -1,9 +1,9 @@
 import { LandingHeading, LandingSection } from "@/components/site/landing-section";
 import { Marquee } from "@/components/ui/marquee";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import { proof } from "./content";
+import type { ProofContent } from "./types";
 
-export const Proof = () => (
+export const Proof = ({ proof }: { proof: ProofContent }) => (
   <LandingSection className="py-12 md:py-16">
     <LandingHeading className="max-w-2xl text-3xl md:text-4xl">
       {proof.heading}

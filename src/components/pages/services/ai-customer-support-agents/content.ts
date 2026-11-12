@@ -1,7 +1,8 @@
+import type { FlowIcon } from "@/components/site/service-page/types";
+
 export const path = "/services/ai-customer-support-agents";
 export const bookHref = "/book?service=support-agents";
 export const auditHref = "/tools/what-to-automate-first";
-export const bookingLabel = "Book a free 30-min call";
 
 export const seo = {
   title: "AI Chatbot Development Services for Customer Support",
@@ -158,6 +159,7 @@ export const flow = {
   label: "How it works on every conversation",
   heading: "One chatbot, every channel, three possible outcomes",
   channels: ["Website chat", "Email", "Help desk", "WhatsApp"],
+  icons: ["message", "mail", "support", "chat"] as FlowIcon[],
   center: "Your chatbot",
   outcomes: [
     { title: "Answered", line: "From your docs, with the source" },

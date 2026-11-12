@@ -3,9 +3,16 @@ import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/
 import { button } from "@/components/ui/button";
 import { LinkButton } from "@/components/ui/link";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import { bookHref, bookingLabel, results } from "./content";
+import { bookingLabel } from "./constants";
+import type { ResultsContent } from "./types";
 
-export const Results = () => (
+export const Results = ({
+  results,
+  bookHref,
+}: {
+  results: ResultsContent;
+  bookHref: string;
+}) => (
   <LandingSection id="results">
     <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-2xl">

@@ -7,7 +7,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { pain } from "./content";
-import { HomeSection, MonoLabel, SectionHeading } from "./section";
+import { LandingSection, SectionLabel, LandingHeading } from "@/components/site/landing-section";
 import { TextReveal } from "./text-reveal";
 
 const icons = [
@@ -27,10 +27,10 @@ const columns = [
 
 export const Pain = () => (
   <>
-    <HomeSection>
+    <LandingSection>
       <div className="mx-auto max-w-3xl text-center">
-        <MonoLabel>{pain.label}</MonoLabel>
-        <SectionHeading className="mt-4">{pain.heading}</SectionHeading>
+        <SectionLabel>{pain.label}</SectionLabel>
+        <LandingHeading className="mt-4">{pain.heading}</LandingHeading>
         <p className="mt-4 text-lg text-muted-foreground">{pain.description}</p>
       </div>
       <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:flex lg:items-start">
@@ -63,7 +63,7 @@ export const Pain = () => (
           </ol>
         ))}
       </div>
-    </HomeSection>
+    </LandingSection>
     <section className="pb-16 pt-6 md:pb-28">
       <div className="page-container">
         <TextReveal

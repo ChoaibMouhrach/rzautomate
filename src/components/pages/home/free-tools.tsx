@@ -1,8 +1,8 @@
 import { ArrowUpRight, Calculator, Gauge, ListOrdered, Scale } from "lucide-react";
 import { FreeText } from "@/components/ui/free-text";
-import { TextLink } from "./button";
+import { TextLink } from "@/components/ui/text-link";
 import { freeTools } from "./content";
-import { HomeSection, SectionHeading } from "./section";
+import { LandingSection, LandingHeading } from "@/components/site/landing-section";
 
 const icons = {
   calculator: Calculator,
@@ -26,10 +26,10 @@ const bodyStyles = [
 ];
 
 export const FreeTools = () => (
-  <HomeSection id="free-tools">
+  <LandingSection id="free-tools">
     <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div className="max-w-2xl">
-        <SectionHeading>{freeTools.heading}</SectionHeading>
+        <LandingHeading>{freeTools.heading}</LandingHeading>
         <p className="mt-4 text-lg text-muted-foreground">{freeTools.subhead}</p>
       </div>
       <TextLink href={freeTools.footerLink.href} className="shrink-0">
@@ -74,5 +74,5 @@ export const FreeTools = () => (
         );
       })}
     </ul>
-  </HomeSection>
+  </LandingSection>
 );

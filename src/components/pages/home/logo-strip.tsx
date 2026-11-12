@@ -1,5 +1,5 @@
 import { logos } from "./content";
-import { Marquee } from "./marquee";
+import { Marquee } from "@/components/ui/marquee";
 
 export const LogoStrip = () => (
   <section>

@@ -1,6 +1,6 @@
 import { Activity, FileText, KeyRound, Wrench } from "lucide-react";
 import { why } from "./content";
-import { HomeSection, SectionHeading } from "./section";
+import { LandingSection, LandingHeading } from "@/components/site/landing-section";
 
 const icons = [Activity, KeyRound, FileText, Wrench];
 
@@ -26,8 +26,8 @@ const iconStyles = [
 ];
 
 export const Why = () => (
-  <HomeSection id="why">
-    <SectionHeading className="max-w-3xl">{why.heading}</SectionHeading>
+  <LandingSection id="why">
+    <LandingHeading className="max-w-3xl">{why.heading}</LandingHeading>
     <ul className="mt-14 grid gap-4 lg:grid-cols-3">
       {why.points.map((point, index) => {
         const Icon = icons[index];
@@ -67,5 +67,5 @@ export const Why = () => (
         );
       })}
     </ul>
-  </HomeSection>
+  </LandingSection>
 );

@@ -1,6 +1,6 @@
 import { testimonials } from "./content";
-import { Marquee } from "./marquee";
-import { HomeSection, SectionHeading } from "./section";
+import { Marquee } from "@/components/ui/marquee";
+import { LandingSection, LandingHeading } from "@/components/site/landing-section";
 
 const Quote = ({
   name,
@@ -19,9 +19,9 @@ const Quote = ({
 );
 
 export const Testimonials = () => (
-  <HomeSection containerClassName="max-w-none px-0">
+  <LandingSection containerClassName="max-w-none px-0">
     <div className="mx-auto max-w-2xl px-6 text-center">
-      <SectionHeading>{testimonials.heading}</SectionHeading>
+      <LandingHeading>{testimonials.heading}</LandingHeading>
       <p className="mt-4 text-lg text-muted-foreground">
         {testimonials.subhead}
       </p>
@@ -35,5 +35,5 @@ export const Testimonials = () => (
         <Quote key={quote.name} {...quote} />
       ))}
     </Marquee>
-  </HomeSection>
+  </LandingSection>
 );

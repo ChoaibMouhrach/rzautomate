@@ -1,5 +1,4 @@
 ---
-import { Hero } from "@/components/pages/services/ai-lead-generation/hero";
 import {
   auditHref,
   book,
@@ -14,6 +13,7 @@ import {
   proof,
   related,
   results,
+  hero,
   seo,
   testimonials,
   tools,
@@ -22,6 +22,7 @@ import {
   authorName,
   leadGenerationJsonLd,
 } from "@/components/pages/services/ai-lead-generation/json-ld";
+import { ServiceHero } from "@/components/site/service-page/service-hero";
 import { BookSection } from "@/components/site/book-section";
 import { JsonLd } from "@/components/site/json-ld";
 import { Build } from "@/components/site/service-page/build";
@@ -56,7 +57,7 @@ const posts = await getPostsForService("ai-lead-generation");
 
 <SiteLayout {...social}>
   <JsonLd data={leadGenerationJsonLd()} />
-  <Hero client:load />
+  <ServiceHero hero={hero} bookHref={bookHref} auditHref={auditHref} />
   <Proof client:visible proof={proof} />
   <Pain pain={pain} />
   <Build client:visible build={build} bookHref={bookHref} />

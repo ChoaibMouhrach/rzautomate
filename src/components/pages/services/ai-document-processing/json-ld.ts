@@ -1,6 +1,6 @@
 import type { Graph } from "schema-dts";
 import { absoluteUrl, company, founder } from "@/lib/site";
-import { book, build, faq, path, seo } from "./content";
+import { build, faq, path, related, seo } from "./content";
 
 export const documentProcessingJsonLd = (): Graph => {
   const url = absoluteUrl(path);
@@ -63,7 +63,7 @@ export const documentProcessingJsonLd = (): Graph => {
         "@id": `${url}#service`,
         name: seo.serviceName,
         alternateName: [...seo.alternateNames],
-        serviceType: "AI document processing",
+        serviceType: "Intelligent document processing",
         category: "Document automation",
         description: seo.serviceDescription,
         url,
@@ -71,21 +71,21 @@ export const documentProcessingJsonLd = (): Graph => {
         areaServed: company.areaServed,
         audience: {
           "@type": "BusinessAudience",
-          name: "Small and mid-sized businesses",
+          name: "Growing businesses with high document volume",
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "AI document processing builds",
-          itemListElement: build.cards.map((card) => ({
+          itemListElement: build.items.map((item) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: card.title,
-              description: card.flow,
+              name: item.name,
+              description: item.body,
             },
           })),
         },
-        isRelatedTo: book.related.map((service) => ({
+        isRelatedTo: related.tiles.map((service) => ({
           "@type": "Service",
           name: service.title,
           url: absoluteUrl(service.href),

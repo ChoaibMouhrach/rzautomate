@@ -1,7 +1,41 @@
 ---
-import { AgentDevelopmentContent } from "@/components/pages/services/ai-agent-development/agent-development-content";
-import { path, seo } from "@/components/pages/services/ai-agent-development/content";
-import { authorName } from "@/components/pages/services/ai-agent-development/json-ld";
+import {
+  auditHref,
+  book,
+  bookHref,
+  build,
+  faq,
+  fit,
+  flow,
+  pain,
+  path,
+  process,
+  proof,
+  related,
+  results,
+  hero,
+  seo,
+  testimonials,
+  tools,
+} from "@/components/pages/services/ai-agent-development/content";
+import {
+  authorName,
+  agentDevelopmentJsonLd,
+} from "@/components/pages/services/ai-agent-development/json-ld";
+import { ServiceHero } from "@/components/site/service-page/service-hero";
+import { BookSection } from "@/components/site/book-section";
+import { JsonLd } from "@/components/site/json-ld";
+import { Build } from "@/components/site/service-page/build";
+import { Faq } from "@/components/site/service-page/faq";
+import { Fit } from "@/components/site/service-page/fit";
+import { Flow } from "@/components/site/service-page/flow";
+import { Pain } from "@/components/site/service-page/pain";
+import { Process } from "@/components/site/service-page/process";
+import { Proof } from "@/components/site/service-page/proof";
+import { Related } from "@/components/site/service-page/related";
+import { Results } from "@/components/site/service-page/results";
+import { Testimonials } from "@/components/site/service-page/testimonials";
+import { Tools } from "@/components/site/service-page/tools";
 import { ServicePosts } from "@/components/site/service-posts";
 import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
@@ -22,6 +56,19 @@ const posts = await getPostsForService("ai-agent-development");
 ---
 
 <SiteLayout {...social}>
-  <AgentDevelopmentContent />
+  <JsonLd data={agentDevelopmentJsonLd()} />
+  <ServiceHero hero={hero} bookHref={bookHref} auditHref={auditHref} handoff />
+  <Proof client:visible proof={proof} />
+  <Pain pain={pain} />
+  <Build client:visible build={build} bookHref={bookHref} />
+  <Flow flow={flow} />
+  <Results client:visible results={results} bookHref={bookHref} />
+  <Testimonials testimonials={testimonials} />
+  <Tools tools={tools} />
+  <Process process={process} />
+  <Fit fit={fit} auditHref={auditHref} />
+  <Faq faq={faq} name="agent-faq" />
+  <BookSection {...book} />
+  <Related related={related} />
   <ServicePosts posts={posts} />
 </SiteLayout>

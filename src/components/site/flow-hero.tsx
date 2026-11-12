@@ -13,6 +13,13 @@ const icons = [Inbox, Sparkles, CircleCheck];
 
 const cardDelays = [0.2, 0.8, 1.4];
 
+const handoffStart = 2.4;
+const cycle = 6;
+const stage = (fraction: number) => ({
+  animationDelay: `${(handoffStart + fraction * cycle).toFixed(2)}s`,
+});
+const receiveAt = [0, 0.22, 0.78];
+
 const connectors = [
   { d: "M288 88 C 320 88, 320 144, 352 144", delay: 0.4 },
   { d: "M640 144 C 672 144, 672 88, 704 88", delay: 1 },
@@ -30,12 +37,14 @@ export const FlowHero = ({
   description,
   flow,
   showProgress = false,
+  handoff = false,
   children,
 }: {
   title: string;
   description: string;
   flow: readonly { tag: string; title: string; meta: string }[];
   showProgress?: boolean;
+  handoff?: boolean;
   children: ReactNode;
 }) => (
   <section className="pb-8 pt-12 md:pb-12 md:pt-20">
@@ -92,7 +101,7 @@ export const FlowHero = ({
                     pathLength="100"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    className="beam-path stroke-primary"
+                    className={handoff ? "hidden" : "beam-path stroke-primary"}
                   />
                 </g>
               </g>
@@ -108,6 +117,19 @@ export const FlowHero = ({
                 style={{ animationDelay: `${delay}s` }}
               />
             ))}
+            {handoff &&
+              connectors.map(({ d }, connectorIndex) => (
+                <circle
+                  key={`packet-${d}`}
+                  r="7"
+                  className="handoff-packet fill-primary stroke-white"
+                  strokeWidth="3"
+                  style={{
+                    offsetPath: `path("${d}")`,
+                    ...stage(connectorIndex === 0 ? 0.06 : 0.62),
+                  }}
+                />
+              ))}
           </svg>
           {flow.map((card, index) => {
             const Icon = icons[index];
@@ -115,17 +137,40 @@ export const FlowHero = ({
             <Fragment key={card.tag}>
               <li
                 style={{ animationDelay: `${cardDelays[index]}s` }}
-                className={`animate-stack-in h-44 w-full max-w-sm rounded-3xl bg-background p-6 xl:absolute xl:w-72 ${positions[index]}`}
+                className={`animate-stack-in relative h-44 w-full max-w-sm rounded-3xl bg-background p-6 xl:absolute xl:w-72 ${positions[index]}`}
               >
+                {handoff && index === 1 && (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl"
+                  >
+                    <span
+                      style={stage(0.25)}
+                      className="handoff-shimmer absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-primary/15 to-transparent"
+                    />
+                  </span>
+                )}
                 <div className="flex items-center justify-between">
                   <span
-                    className={`flex size-10 items-center justify-center rounded-full ${
+                    style={handoff ? stage(receiveAt[index]) : undefined}
+                    className={`relative flex size-10 items-center justify-center rounded-full ${handoff ? "handoff-pop" : ""} ${
                       index === flow.length - 1
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted text-foreground"
                     }`}
                   >
-                    <Icon aria-hidden className="size-5" />
+                    {handoff && (
+                      <span
+                        aria-hidden
+                        style={stage(receiveAt[index])}
+                        className="handoff-ring absolute inset-0 rounded-full ring-2 ring-primary"
+                      />
+                    )}
+                    <Icon
+                      aria-hidden
+                      style={handoff && index === 1 ? stage(0.24) : undefined}
+                      className={`size-5 ${handoff && index === 1 ? "handoff-spin" : ""}`}
+                    />
                   </span>
                   <span className="text-xs font-medium text-muted-foreground">
                     {card.tag}

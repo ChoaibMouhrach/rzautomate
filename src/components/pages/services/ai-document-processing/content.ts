@@ -29,7 +29,6 @@ export const hero = {
   subhead:
     "We build AI document processing that reads your invoices, receipts, forms and PDFs, enters the data into your systems and flags anything unclear for a person. Your volume grows, your data entry doesn't.",
   secondary: "Find what to automate first →",
-  trust: "Free · 30 min · No commitment",
   flow: [
     { tag: "Step 1", title: "Invoice arrives", meta: "INV-20931.pdf in your inbox" },
     { tag: "Step 2", title: "AI reads the fields", meta: "Fields found. PO missing, so flagged" },

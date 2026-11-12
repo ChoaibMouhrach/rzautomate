@@ -46,7 +46,11 @@ export const Fit = ({
         <Column title={fit.badTitle} items={fit.bad} />
       </div>
     </div>
-    <TextLink href={auditHref} className="mt-12 inline-block text-primary">
+    {fit.note && <p className="mt-12 text-muted-foreground">{fit.note}</p>}
+    <TextLink
+      href={auditHref}
+      className={`${fit.note ? "mt-3" : "mt-12"} inline-block text-primary`}
+    >
       {fit.closing}
     </TextLink>
   </LandingSection>

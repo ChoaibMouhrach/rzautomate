@@ -28,7 +28,6 @@ export const hero = {
   subhead:
     "We build custom AI chatbots that answer your customers from your own docs, look up their orders and hand the hard cases to your team. More customers, same team, faster replies.",
   secondary: "Find what to automate first →",
-  trust: "Free · 30 min · No commitment",
   flow: [
     { tag: "Step 1", title: "A customer asks", meta: "“Where's my order?” in your chat" },
     { tag: "Step 2", title: "The chatbot checks", meta: "Looks up the real order in your store" },

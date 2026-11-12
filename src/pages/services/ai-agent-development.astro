@@ -57,7 +57,7 @@ const posts = await getPostsForService("ai-agent-development");
 
 <SiteLayout {...social}>
   <JsonLd data={agentDevelopmentJsonLd()} />
-  <ServiceHero hero={hero} bookHref={bookHref} auditHref={auditHref} handoff />
+  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={auditHref} handoff />
   <Proof client:visible proof={proof} />
   <Pain pain={pain} />
   <Build client:visible build={build} bookHref={bookHref} />

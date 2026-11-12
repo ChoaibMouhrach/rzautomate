@@ -57,7 +57,7 @@ const posts = await getPostsForService("ai-document-processing");
 
 <SiteLayout {...social}>
   <JsonLd data={documentProcessingJsonLd()} />
-  <ServiceHero hero={hero} bookHref={bookHref} auditHref={auditHref} />
+  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={auditHref} />
   <Proof client:visible proof={proof} />
   <Pain pain={pain} />
   <Build client:visible build={build} bookHref={bookHref} />

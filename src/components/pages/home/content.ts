@@ -144,17 +144,17 @@ export const services = {
       ),
     },
     {
-      name: "Business process automation",
-      body: "Onboarding, reporting and the handoffs between tools run the same way at 10 clients or 1,000.",
-      tools: [{ name: "DocuSign", src: "/logos/docusign.png" }, { name: "Google Drive", src: "/logos/googledrive.svg" }, { name: "Notion", src: "/logos/notion.svg" }, { name: "Asana", src: "/logos/asana.svg" }],
+      name: "Automation maintenance",
+      body: "Your n8n, Make and Zapier workflows monitored, fixed when apps change and updated as you grow.",
+      tools: [{ name: "n8n", src: "/logos/n8n.svg" }, { name: "Make", src: "/logos/make.svg" }, { name: "Zapier", src: "/logos/zapier.svg" }, { name: "Slack", src: "/logos/slack.svg" }],
       link: {
-        label: "See business process automation",
-        href: "/services/business-process-automation",
+        label: "See automation maintenance",
+        href: "/services/automation-maintenance",
       },
       stack: stack(
-        ["Contract signed", "DocuSign"],
-        ["Workflow", "Client setup", "Folder · board · welcome email"],
-        ["Welcome email sent", "Kickoff booked"],
+        ["Run failed", "Lead workflow · 3:12 am"],
+        ["We fix it", "Alert received", "Error and input logged"],
+        ["Fixed and re-run", "No lead lost"],
       ),
     },
     {

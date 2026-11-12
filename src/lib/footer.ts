@@ -11,7 +11,7 @@ export const footer = {
         { label: "AI lead generation & CRM automation", href: "/services/ai-lead-generation" },
         { label: "AI customer support agents", href: "/services/ai-customer-support-agents" },
         { label: "AI document processing", href: "/services/ai-document-processing" },
-        { label: "Business process automation", href: "/services/business-process-automation" },
+        { label: "Automation maintenance", href: "/services/automation-maintenance" },
         { label: "AI agent development", href: "/services/ai-agent-development" },
         { label: "All services", href: "/services" },
       ],

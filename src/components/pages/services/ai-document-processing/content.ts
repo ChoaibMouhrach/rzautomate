@@ -288,7 +288,7 @@ export const book = {
 export const related = {
   heading: "Related services",
   tiles: [
-    { title: "Business process automation", line: "Onboarding, reporting and handoffs that run themselves.", href: "/services/business-process-automation" },
+    { title: "Automation maintenance", line: "Your automations keep running, so your business keeps growing.", href: "/services/automation-maintenance" },
     { title: "AI lead generation & CRM automation", line: "More booked calls, from the leads you already get.", href: "/services/ai-lead-generation" },
     { title: "AI agent development", line: "Custom agents for work no template covers.", href: "/services/ai-agent-development" },
   ],

@@ -16,7 +16,7 @@ export const pageMetadata = {
   services: {
     title: "Services",
     description:
-      "AI customer support agents, business process automation, AI lead generation & CRM automation, AI document processing and custom AI agent development.",
+      "AI customer support agents, automation maintenance, AI lead generation & CRM automation, AI document processing and custom AI agent development.",
   },
   blog: {
     title: "Blog",

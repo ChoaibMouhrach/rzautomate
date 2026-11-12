@@ -299,6 +299,6 @@ export const related = {
   tiles: [
     { title: "AI customer support agents", line: "Every customer answered, however fast you grow.", href: "/services/ai-customer-support-agents" },
     { title: "AI lead generation & CRM automation", line: "More booked calls, from the leads you already get.", href: "/services/ai-lead-generation" },
-    { title: "Business process automation", line: "Onboarding, reporting and handoffs that run themselves.", href: "/services/business-process-automation" },
+    { title: "Automation maintenance", line: "Your automations keep running, so your business keeps growing.", href: "/services/automation-maintenance" },
   ],
 };

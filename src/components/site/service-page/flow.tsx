@@ -1,5 +1,7 @@
 import {
   ArrowDown,
+  Blocks,
+  Bot,
   CalendarDays,
   Database,
   FileText,
@@ -11,6 +13,8 @@ import {
   MessageSquare,
   ScanLine,
   Upload,
+  Workflow,
+  Zap,
 } from "lucide-react";
 import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
 import { logoPaths } from "@/components/site/logo";
@@ -28,6 +32,10 @@ const iconMap = {
   scan: ScanLine,
   folder: FolderOpen,
   database: Database,
+  workflow: Workflow,
+  blocks: Blocks,
+  zap: Zap,
+  bot: Bot,
 };
 const channelY = [50, 140, 230, 320];
 const outcomeY = [30, 140, 250];

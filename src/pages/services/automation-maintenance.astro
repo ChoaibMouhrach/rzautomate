@@ -1,0 +1,74 @@
+---
+import {
+  includedHref,
+  book,
+  bookHref,
+  build,
+  faq,
+  fit,
+  flow,
+  pain,
+  path,
+  process,
+  proof,
+  related,
+  results,
+  hero,
+  seo,
+  testimonials,
+  tools,
+} from "@/components/pages/services/automation-maintenance/content";
+import {
+  authorName,
+  automationMaintenanceJsonLd,
+} from "@/components/pages/services/automation-maintenance/json-ld";
+import { ServiceHero } from "@/components/site/service-page/service-hero";
+import { BookSection } from "@/components/site/book-section";
+import { JsonLd } from "@/components/site/json-ld";
+import { Build } from "@/components/site/service-page/build";
+import { Faq } from "@/components/site/service-page/faq";
+import { Fit } from "@/components/site/service-page/fit";
+import { Flow } from "@/components/site/service-page/flow";
+import { Pain } from "@/components/site/service-page/pain";
+import { Process } from "@/components/site/service-page/process";
+import { Proof } from "@/components/site/service-page/proof";
+import { Related } from "@/components/site/service-page/related";
+import { Results } from "@/components/site/service-page/results";
+import { Testimonials } from "@/components/site/service-page/testimonials";
+import { Tools } from "@/components/site/service-page/tools";
+import { ServicePosts } from "@/components/site/service-posts";
+import { getPostsForService } from "@/lib/blog";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+
+const social = pageSocial({
+  title: seo.title,
+  description: seo.description,
+  richSnippets: true,
+  authors: [authorName],
+  image: { url: `${path}/opengraph-image.png`, alt: seo.imageAlt },
+  openGraphTitle: seo.socialTitle,
+  openGraphDescription: seo.openGraphDescription,
+  twitterTitle: seo.socialTitle,
+  twitterDescription: seo.twitterDescription,
+});
+const posts = await getPostsForService("automation-maintenance");
+---
+
+<SiteLayout {...social}>
+  <JsonLd data={automationMaintenanceJsonLd()} />
+  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={includedHref} />
+  <Proof client:visible proof={proof} />
+  <Pain pain={pain} />
+  <Build client:visible build={build} bookHref={bookHref} id="included" />
+  <Flow flow={flow} />
+  <Results client:visible results={results} bookHref={bookHref} />
+  <Testimonials testimonials={testimonials} />
+  <Tools tools={tools} />
+  <Process process={process} />
+  <Fit fit={fit} auditHref={bookHref} />
+  <Faq faq={faq} name="maintenance-faq" />
+  <BookSection {...book} />
+  <Related related={related} />
+  <ServicePosts posts={posts} />
+</SiteLayout>

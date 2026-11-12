@@ -6,20 +6,20 @@ import type { HeroContent } from "./types";
 export const ServiceHero = ({
   hero,
   bookHref,
-  auditHref,
+  secondaryHref,
   handoff,
 }: {
   hero: HeroContent;
   handoff?: boolean;
   bookHref: string;
-  auditHref: string;
+  secondaryHref: string;
 }) => (
   <FlowHero title={hero.title} description={hero.subhead} flow={hero.flow} handoff={handoff}>
     <div className="flex flex-wrap items-center justify-center gap-3">
       <LinkButton href={bookHref} size="lg">
         {bookingLabel}
       </LinkButton>
-      <LinkButton href={auditHref} size="lg" variant="ghost">
+      <LinkButton href={secondaryHref} size="lg" variant="ghost">
         {hero.secondary}
       </LinkButton>
     </div>

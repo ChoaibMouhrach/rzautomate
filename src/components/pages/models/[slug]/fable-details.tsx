@@ -46,7 +46,7 @@ export const FableDetails = () => {
         </CtaCardContent>
         <CtaCardAction href="/book?service=models&model=claude-fable-5-1">Book a free 30-min call</CtaCardAction>
       </CtaCard>
-      <nav aria-label="Related services" className="flex flex-wrap gap-x-6 gap-y-3 text-sm"><Link href="/services/ai-agent-development">AI agent development</Link><Link href="/services/business-process-automation">Business process automation</Link></nav>
+      <nav aria-label="Related services" className="flex flex-wrap gap-x-6 gap-y-3 text-sm"><Link href="/services/ai-agent-development">AI agent development</Link><Link href="/services/automation-maintenance">Automation maintenance</Link></nav>
     </div></PageContent>
   </>;
 };

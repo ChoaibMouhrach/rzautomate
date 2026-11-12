@@ -28,9 +28,8 @@ export default defineConfig({
   integrations: [react(), mdx(), markdownPages()],
   markdown: { processor: satteri({ hastPlugins: [headingAnchors] }) },
   redirects: {
-    "/services/business-process-automation-services": permanent(
-      "/services/business-process-automation",
-    ),
+    "/services/business-process-automation": permanent("/services"),
+    "/services/business-process-automation-services": permanent("/services"),
     "/services/data-and-document-processing": permanent(
       "/services/ai-document-processing",
     ),

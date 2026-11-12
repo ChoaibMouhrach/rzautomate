@@ -1,8 +1,8 @@
 import type { Graph } from "schema-dts";
 import { absoluteUrl, company, founder } from "@/lib/site";
-import { book, build, faq, path, seo } from "./content";
+import { build, faq, path, related, seo } from "./content";
 
-export const businessProcessAutomationJsonLd = (): Graph => {
+export const automationMaintenanceJsonLd = (): Graph => {
   const url = absoluteUrl(path);
 
   return {
@@ -23,7 +23,7 @@ export const businessProcessAutomationJsonLd = (): Graph => {
         potentialAction: {
           "@type": "ReserveAction",
           name: "Book a free 30-min call",
-          target: absoluteUrl("/book?service=business-process-automation"),
+          target: absoluteUrl("/book?service=maintenance"),
         },
       },
       {
@@ -63,29 +63,29 @@ export const businessProcessAutomationJsonLd = (): Graph => {
         "@id": `${url}#service`,
         name: seo.serviceName,
         alternateName: [...seo.alternateNames],
-        serviceType: "Business process automation",
-        category: "Workflow automation",
+        serviceType: "Workflow automation maintenance and support",
+        category: "Automation maintenance",
         description: seo.serviceDescription,
         url,
         provider: { "@id": absoluteUrl("/#organization") },
         areaServed: company.areaServed,
         audience: {
           "@type": "BusinessAudience",
-          name: "Small and mid-sized businesses",
+          name: "Growing businesses that rely on automations",
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Business process automation builds",
-          itemListElement: build.cards.map((card) => ({
+          name: "Automation maintenance plan",
+          itemListElement: build.items.map((item) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: card.title,
-              description: card.flow,
+              name: item.name,
+              description: item.body,
             },
           })),
         },
-        isRelatedTo: book.related.map((service) => ({
+        isRelatedTo: related.tiles.map((service) => ({
           "@type": "Service",
           name: service.title,
           url: absoluteUrl(service.href),

@@ -30,7 +30,10 @@ export type FlowIcon =
   | "chat"
   | "form"
   | "megaphone"
-  | "calendar";
+  | "calendar"
+  | "upload"
+  | "scan"
+  | "folder";
 
 export interface FlowContent {
   label: string;
@@ -89,4 +92,12 @@ export interface FaqContent {
 export interface RelatedContent {
   heading: string;
   tiles: readonly { title: string; line: string; href: string }[];
+}
+
+export interface HeroContent {
+  title: string;
+  subhead: string;
+  secondary: string;
+  trust: string;
+  flow: readonly { tag: string; title: string; meta: string }[];
 }

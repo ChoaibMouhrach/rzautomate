@@ -1,0 +1,32 @@
+---
+import { bookCall, faq, related } from "@/components/pages/tools/automation-roi-calculator/content";
+import { RoiAssumptions } from "@/components/pages/tools/automation-roi-calculator/roi-assumptions";
+import { RoiCalculator } from "@/components/pages/tools/automation-roi-calculator/roi-calculator";
+import { RoiHero } from "@/components/pages/tools/automation-roi-calculator/roi-hero";
+import { RoiHowItWorks } from "@/components/pages/tools/automation-roi-calculator/roi-how-it-works";
+import { RoiJsonLd } from "@/components/pages/tools/automation-roi-calculator/roi-json-ld";
+import { RoiWorkedExample } from "@/components/pages/tools/automation-roi-calculator/roi-worked-example";
+import { BookCall } from "@/components/site/book-call";
+import { Faq } from "@/components/site/service-page/faq";
+import { Related } from "@/components/site/service-page/related";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
+
+const seo = pageSocial({
+  title: pageMetadata.roiCalculator.title,
+  description: pageMetadata.roiCalculator.description,
+});
+---
+
+<SiteLayout {...seo}>
+  <RoiJsonLd />
+  <RoiHero />
+  <RoiCalculator client:load />
+  <RoiHowItWorks />
+  <RoiWorkedExample />
+  <RoiAssumptions />
+  <Faq faq={faq} name="roi-faq" />
+  <BookCall {...bookCall} id="book" tone="dark" client:visible />
+  <Related related={related} />
+</SiteLayout>

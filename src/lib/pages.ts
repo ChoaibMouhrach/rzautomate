@@ -4,6 +4,7 @@ import { legalNav, nav } from "@/lib/site";
 
 export const pagePaths = (postSlugs: readonly string[]) => [
     "/",
+    "/tools/automation-roi-calculator",
     "/models",
     ...models.map((model) => `/models/${model.slug}`),
     ...nav.map((item) => item.href),
@@ -34,6 +35,11 @@ export const pageMetadata = {
     seoTitle: "Contact and Book a Free 30-Min Call",
     description:
       "Talk to RZ Automate about AI automation for your business. Book a free 30-minute call or email us, and we'll reply within two hours.",
+  },
+  roiCalculator: {
+    title: "Automation ROI Calculator: Hours, Money & Hires Saved",
+    description:
+      "Free automation ROI calculator. Enter five numbers about one task and see the hours, money and hires automation could save you each year. No email needed.",
   },
   privacy: {
     title: "Privacy Policy",

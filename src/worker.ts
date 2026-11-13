@@ -69,7 +69,10 @@ export default {
       }
     }
 
-    const response = await env.ASSETS.fetch(request);
+    let response = await env.ASSETS.fetch(request);
+    if (response.status === 404 && import.meta.env.DEV) {
+      response = await handle(request, env, ctx);
+    }
     const headers: Record<string, string> = { ...securityHeaders };
     if (isPage(pathname) && !pathname.endsWith(".md") && response.ok) {
       headers.Link = `<${markdownPath(pathname)}>; rel="alternate"; type="text/markdown"`;

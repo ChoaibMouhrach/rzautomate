@@ -43,7 +43,7 @@ export const siteJsonLd = (): Graph => ({
         email: company.email,
         contactPoint: {
           "@type": "ContactPoint",
-          contactType: "customer service",
+          contactType: "sales",
           email: company.email,
           url: absoluteUrl("/contact"),
           availableLanguage: "English",

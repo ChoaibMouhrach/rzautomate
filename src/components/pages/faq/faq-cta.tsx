@@ -16,6 +16,6 @@ export const FaqCta = ({ className }: { className?: string }) => (
         answer for your business specifically.
       </CtaCardDescription>
     </CtaCardContent>
-    <CtaCardAction href="/book/">Book a free 30-min call</CtaCardAction>
+    <CtaCardAction href="/book">Book a free 30-min call</CtaCardAction>
   </CtaCard>
 );

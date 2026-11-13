@@ -3,6 +3,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { ModelsScrollArea } from "./models-scroll-area";
 import { PageContent, PageDescription, PageHeader, PageTitle } from "@/components/site/page";
 import { JsonLd } from "@/components/site/json-ld";
+import { site } from "@/lib/site";
 import { Link, LinkButton } from "@/components/ui/link";
 import { formatPrice, formatTokens, models, modelsCheckedAt, modelsCheckedLabel } from "@/lib/models";
 import { auditHref, bookHref, cheapest, cheapestOpen, cheapestTools, faqs, largest, providerCount, priceTieNote, selectionSteps, workflowEstimates, workflows } from "./content";
@@ -36,7 +37,7 @@ export const ModelsDirectory = () => {
           <h2 id="pricing-title" className={headingClass}>AI model pricing comparison</h2>
           <p className="text-muted-foreground">Prices are per 1 million tokens in US dollars. Click any column heading to sort, or any row to see the model&apos;s full specs.</p>
           <ModelsTable />
-          <p className="text-sm text-muted-foreground">These are standard API rates from the catalog snapshot; service tiers, long-context requests, caching rules and batch discounts can change the bill. Check the provider before you commit a budget. Spot a wrong number? Email <Link href="mailto:choaib@rzautomate.com">choaib@rzautomate.com</Link> and I&apos;ll fix it.</p>
+          <p className="text-sm text-muted-foreground">These are standard API rates from the catalog snapshot; service tiers, long-context requests, caching rules and batch discounts can change the bill. Check the provider before you commit a budget. Spot a wrong number? Email <Link href={`mailto:${site.email}`}>{site.email}</Link> and I&apos;ll fix it.</p>
           <details className="rounded-3xl bg-muted p-6"><summary className="cursor-pointer text-sm font-medium">Pricing notes and model sources</summary><ul className="mt-4 space-y-3 text-sm text-muted-foreground">{models.map((model) => <li key={model.slug}><Link href={model.source}>{model.name}</Link>: {model.pricingNote}</li>)}</ul></details>
         </section>
         <section className={sectionClass}>

@@ -25,15 +25,14 @@ import { footer } from "@/lib/footer";
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-x-8 gap-y-12 text-sm sm:grid-cols-4">
+    <div class="grid grid-cols-2 gap-x-8 gap-y-12 text-sm sm:grid-cols-3">
       {
         footer.columns.map((column) => (
-          <nav aria-label={column.title} class="flex flex-col gap-3">
+          <nav aria-label={column.title} class="flex flex-col items-start gap-3">
             <h2 class="mb-1 text-base font-semibold">{column.title}</h2>
             {column.links.map((link) => (
               <a
                 href={link.href}
-                rel={column.title === "Social" ? "me" : undefined}
                 class="text-paper/60 transition-colors hover:text-paper"
               >
                 {link.label}

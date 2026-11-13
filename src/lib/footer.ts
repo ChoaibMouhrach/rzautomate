@@ -34,13 +34,6 @@ export const footer = {
         { label: "Contact", href: "/contact" },
       ],
     },
-    {
-      title: "Social",
-      links: [
-        { label: "LinkedIn", href: "https://www.linkedin.com/in/choaib-mouhrach" },
-        { label: "GitHub", href: "https://github.com/ChoaibMouhrach" },
-      ],
-    },
   ],
   entity: "RZ Automate is a Rizon LLC company · 30 N Gould St Ste N, Sheridan, WY 82801",
 };

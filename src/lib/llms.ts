@@ -14,6 +14,7 @@ const pages = [
   { path: "/services", ...pageMetadata.services },
   { path: "/blog", ...pageMetadata.blog },
   { path: "/faq", ...pageMetadata.faq },
+  { path: "/tools/automation-roi-calculator", ...pageMetadata.roiCalculator },
   { path: "/contact", ...pageMetadata.contact },
 ];
 

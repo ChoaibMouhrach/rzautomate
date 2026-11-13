@@ -5,6 +5,7 @@ import type {
   CollectionPage,
   ContactPage,
   FAQPage,
+  WebApplication,
   Graph,
   Service as ServiceSchema,
   WithContext,
@@ -125,18 +126,40 @@ export const blogPostingJsonLd = (post: Post): WithContext<BlogPosting> => {
 
 export const faqPageJsonLd = (
   items: readonly { question: string; answer: string }[],
+  page: { name: string; description: string; path: string } = {
+    name: pageMetadata.faq.title,
+    description: pageMetadata.faq.description,
+    path: "/faq",
+  },
 ): WithContext<FAQPage> => ({
     "@context": context,
     "@type": "FAQPage",
-    name: pageMetadata.faq.title,
-    description: pageMetadata.faq.description,
-    url: absoluteUrl("/faq"),
+    name: page.name,
+    description: page.description,
+    url: absoluteUrl(page.path),
     isPartOf: websiteRef,
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
+  });
+
+export const webApplicationJsonLd = (app: {
+  name: string;
+  description: string;
+  path: string;
+}): WithContext<WebApplication> => ({
+    "@context": context,
+    "@type": "WebApplication",
+    name: app.name,
+    description: app.description,
+    url: absoluteUrl(app.path),
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Any",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    provider: organizationRef,
   });
 
 export const postFaqJsonLd = (

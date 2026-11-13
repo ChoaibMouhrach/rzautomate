@@ -20,7 +20,7 @@ export const nextSteps = {
 export const contactFaq = {
   label: "FAQ",
   heading: "Before you reach out.",
-  link: { label: "See all questions →", href: "/faq/" },
+  link: { label: "See all questions →", href: "/faq" },
   items: [
     {
       question: "Is the call really free?",

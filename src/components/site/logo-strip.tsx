@@ -1,4 +1,4 @@
-import { logos } from "./content";
+import { logos } from "@/lib/clients";
 import { Marquee } from "@/components/ui/marquee";
 
 export const LogoStrip = () => (

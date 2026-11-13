@@ -275,13 +275,9 @@ export const faq = {
 
 // TODO: confirm the plan turnaround before launch.
 export const book = {
-  eyebrow: "Free 30-min call",
-  plain: "See which documents you can ",
-  muted: "stop typing in",
-  body: "Bring a few real invoices, receipts or forms. We'll show you what can be read and entered automatically, and what should stay with your team. You keep the plan either way.",
-  planLabel: "Written plan",
-  plan: "In your inbox within one business day",
-  embedTitle: "Book a free 30-minute call",
+  title: "See which documents you can stop typing in",
+  description:
+    "Bring a few real invoices, receipts or forms. We'll show you what can be read and entered automatically, and what should stay with your team. You keep the plan either way.",
   service: "document-processing",
 };
 

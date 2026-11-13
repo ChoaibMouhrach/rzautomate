@@ -1,3 +1,4 @@
+// TODO: placeholder numbers. Replace with real figures before launch.
 export const stats = [
   { value: "38", label: "automations running in production" },
   { value: "640 hrs", label: "of manual work taken off clients every month" },

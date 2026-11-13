@@ -49,7 +49,16 @@ export const TextField = ({
     >
       {({ isInvalid }) => (
         <>
-          {label && <Label className="text-sm font-medium">{label}</Label>}
+          {label && (
+            <Label className="text-sm font-medium">
+              {label}
+              {props.isRequired && (
+                <span aria-hidden className="ml-0.5 text-primary">
+                  *
+                </span>
+              )}
+            </Label>
+          )}
           {multiline ? (
             <TextArea
               placeholder={placeholder}

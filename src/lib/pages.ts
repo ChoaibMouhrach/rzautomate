@@ -31,7 +31,9 @@ export const pageMetadata = {
   },
   contact: {
     title: "Contact",
-    description: "Tell us what you want to automate and we'll get back to you.",
+    seoTitle: "Contact and Book a Free 30-Min Call",
+    description:
+      "Talk to RZ Automate about AI automation for your business. Book a free 30-minute call or email us, and we'll reply within two hours.",
   },
   privacy: {
     title: "Privacy Policy",

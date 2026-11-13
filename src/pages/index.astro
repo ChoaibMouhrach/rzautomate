@@ -5,7 +5,7 @@ import { Faq } from "@/components/pages/home/faq";
 import { HomeFaqJsonLd } from "@/components/pages/home/faq-json-ld";
 import { FreeTools } from "@/components/pages/home/free-tools";
 import { Hero } from "@/components/pages/home/hero";
-import { LogoStrip } from "@/components/pages/home/logo-strip";
+import { LogoStrip } from "@/components/site/logo-strip";
 import { MidCta } from "@/components/pages/home/mid-cta";
 import { Pain } from "@/components/pages/home/pain";
 import { Process } from "@/components/pages/home/process";
@@ -38,5 +38,5 @@ import { pageSocial } from "@/lib/metadata";
   <MidCta />
   <FreeTools />
   <Faq />
-  <Book />
+  <Book client:visible />
 </HomeLayout>

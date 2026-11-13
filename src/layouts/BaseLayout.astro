@@ -3,6 +3,7 @@ import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
 import "@/styles/globals.css";
 import BaseHead from "@/layouts/BaseHead.astro";
+import { BackToTop } from "@/components/site/back-to-top";
 import { JsonLd } from "@/components/site/json-ld";
 import { siteJsonLd } from "@/lib/json-ld";
 import type { PageSeo } from "@/lib/metadata";
@@ -38,6 +39,7 @@ type Props = PageSeo;
   <body class="min-h-full flex flex-col" transition:animate="none">
     <JsonLd data={siteJsonLd()} />
     <slot />
+    <BackToTop client:idle transition:persist="back-to-top" />
     <script>
       import "@/scripts/progress-bar";
     </script>

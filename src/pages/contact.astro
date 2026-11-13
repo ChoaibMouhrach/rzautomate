@@ -1,19 +1,22 @@
 ---
 import SiteLayout from "@/layouts/SiteLayout.astro";
-import { Page, PageContent } from "@/components/site/page";
-import { ContactHeader } from "@/components/pages/contact/contact-header";
+import { Page } from "@/components/site/page";
+import { ContactHero } from "@/components/pages/contact/contact-hero";
+import { NextSteps } from "@/components/pages/contact/next-steps";
+import { LogoStrip } from "@/components/site/logo-strip";
+import { Faq } from "@/components/site/service-page/faq";
+import { contactFaq } from "@/components/pages/contact/content";
 import { ContactJsonLd } from "@/components/pages/contact/contact-json-ld";
-import { ContactOptions } from "@/components/pages/contact/contact-options";
 import { pageSocial } from "@/lib/metadata";
 import { pageMetadata } from "@/lib/pages";
 ---
 
-<SiteLayout {...pageSocial(pageMetadata.contact)}>
+<SiteLayout {...pageSocial({ ...pageMetadata.contact, title: pageMetadata.contact.seoTitle })}>
   <Page>
     <ContactJsonLd />
-    <ContactHeader />
-    <PageContent>
-      <ContactOptions client:load />
-    </PageContent>
+    <ContactHero client:load />
+    <LogoStrip />
+    <NextSteps />
+    <Faq faq={contactFaq} name="contact-faq" />
   </Page>
 </SiteLayout>

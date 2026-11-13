@@ -280,13 +280,9 @@ export const faq = {
 
 // TODO: confirm the plan turnaround before launch.
 export const book = {
-  eyebrow: "Free 30-min call",
-  plain: "Find out what's at risk in ",
-  muted: "the automations you run",
-  body: "Tell us what you have and what keeps breaking. We'll show you where the risks are and what a maintenance plan would cover. You keep the notes either way.",
-  planLabel: "Written plan",
-  plan: "In your inbox within one business day",
-  embedTitle: "Book a free 30-minute call",
+  title: "Find out what's at risk in the automations you run",
+  description:
+    "Tell us what you have and what keeps breaking. We'll show you where the risks are and what a maintenance plan would cover. You keep the notes either way.",
   service: "maintenance",
 };
 

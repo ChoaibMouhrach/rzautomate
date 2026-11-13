@@ -276,13 +276,9 @@ export const faq = {
 
 // TODO: confirm the plan turnaround before launch.
 export const book = {
-  eyebrow: "Free 30-min call",
-  plain: "Find out how many more calls ",
-  muted: "your leads could bring",
-  body: "We look at where your leads come from and where they stall, then show you what to automate first. You keep the plan either way.",
-  planLabel: "Written plan",
-  plan: "In your inbox within one business day",
-  embedTitle: "Book a free 30-minute call",
+  title: "Find out how many more calls your leads could bring",
+  description:
+    "We look at where your leads come from and where they stall, then show you what to automate first. You keep the plan either way.",
   service: "lead-generation",
 };
 

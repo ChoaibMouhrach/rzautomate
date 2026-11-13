@@ -284,13 +284,9 @@ export const faq = {
 
 // TODO: confirm the plan turnaround before launch.
 export const book = {
-  eyebrow: "Free 30-min call",
-  plain: "Tell us the task. ",
-  muted: "We'll tell you if an agent can do it.",
-  body: "Walk us through the work that eats the most time. You'll leave knowing whether an agent fits, what it would do and what it would ask before doing. You keep the plan either way.",
-  planLabel: "Written plan",
-  plan: "In your inbox within one business day",
-  embedTitle: "Book a free 30-minute call",
+  title: "Tell us the task. We'll tell you if an agent can do it.",
+  description:
+    "Walk us through the work that eats the most time. You'll leave knowing whether an agent fits, what it would do and what it would ask before doing. You keep the plan either way.",
   service: "agent-development",
 };
 

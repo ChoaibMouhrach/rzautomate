@@ -22,7 +22,7 @@ import {
   supportAgentsJsonLd,
 } from "@/components/pages/services/ai-customer-support-agents/json-ld";
 import { ServiceHero } from "@/components/site/service-page/service-hero";
-import { BookSection } from "@/components/site/book-section";
+import { BookCall } from "@/components/site/book-call";
 import { JsonLd } from "@/components/site/json-ld";
 import { Build } from "@/components/site/service-page/build";
 import { Faq } from "@/components/site/service-page/faq";
@@ -65,7 +65,7 @@ const posts = await getPostsForService("ai-customer-support-agents");
   <Process process={process} />
   <Fit fit={fit} auditHref={auditHref} />
   <Faq faq={faq} name="support-faq" />
-  <BookSection {...book} />
+  <BookCall {...book} id="book" tone="dark" client:visible />
   <Related related={related} />
   <ServicePosts posts={posts} />
 </SiteLayout>

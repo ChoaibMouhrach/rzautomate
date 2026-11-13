@@ -275,13 +275,9 @@ export const faq = {
 
 // TODO: confirm the plan turnaround before launch.
 export const book = {
-  eyebrow: "Free 30-min call",
-  plain: "See how much of your support ",
-  muted: "a chatbot can take",
-  body: "Bring a few real customer questions. We'll show you which ones a chatbot can answer and which should stay with your team. You keep the plan either way.",
-  planLabel: "Written plan",
-  plan: "In your inbox within one business day",
-  embedTitle: "Book a free 30-minute call",
+  title: "See how much of your support a chatbot can take",
+  description:
+    "Bring a few real customer questions. We'll show you which ones a chatbot can answer and which should stay with your team. You keep the plan either way.",
   service: "support-agents",
 };
 

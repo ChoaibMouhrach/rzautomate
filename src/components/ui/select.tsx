@@ -35,12 +35,14 @@ export interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
   label?: string;
   triggerContent?: ReactNode;
+  triggerClassName?: string;
   children: ReactNode;
 }
 
 export const Select = <T extends object>({
   label,
   triggerContent,
+  triggerClassName,
   children,
   className,
   ...props
@@ -52,7 +54,9 @@ export const Select = <T extends object>({
     >
       {label && <Label className="text-sm font-medium">{label}</Label>}
       <Button
-        className={({ isFocusVisible }) => trigger({ isFocusVisible })}
+        className={({ isFocusVisible }) =>
+          trigger({ isFocusVisible, className: triggerClassName })
+        }
       >
         {triggerContent ?? <SelectValue className="flex items-center gap-2 truncate" />}
       </Button>

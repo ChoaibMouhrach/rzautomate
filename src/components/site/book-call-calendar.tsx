@@ -113,7 +113,7 @@ export const BookCallCalendar = ({
         className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-paper text-ink dark:bg-[#101010] dark:text-paper"
       >
         {!isReady && (
-          <p
+          <span
             role="status"
             className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-sm text-ink/60 dark:text-paper/60"
           >
@@ -122,7 +122,7 @@ export const BookCallCalendar = ({
               className="size-6 animate-spin motion-reduce:animate-none"
             />
             Loading the calendar…
-          </p>
+          </span>
         )}
         <ScrollArea className="h-full max-h-full">
           <Cal
@@ -141,7 +141,16 @@ export const BookCallCalendar = ({
       <p
         className={`mt-4 text-sm ${tone === "dark" ? "text-paper/60" : "text-muted-foreground"}`}
       >
-        After the call, we send you a written plan. You keep it either way.
+        After the call, we send you a written plan. You keep it either way.{" "}
+        <a
+          href={site.bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`font-medium underline-offset-4 hover:underline ${tone === "dark" ? "text-paper" : "text-foreground"}`}
+        >
+          Book a free 30-minute call on Cal.com
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
       </p>
     </div>
   );

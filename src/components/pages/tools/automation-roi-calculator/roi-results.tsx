@@ -1,5 +1,5 @@
 import { Check, Link2 } from "lucide-react";
-import { LinkButton } from "@/components/ui/link";
+import { Link, LinkButton } from "@/components/ui/link";
 import { useCopyToClipboard } from "@/lib/use-copy-to-clipboard";
 import {
   calcRoi,
@@ -144,6 +144,10 @@ export const RoiResults = ({ inputs }: { inputs: RoiInputs }) => {
         </LinkButton>
         <CopyLink inputs={inputs} />
       </div>
+      <p className="text-sm text-paper/60">
+        Not sure which tool to use?{" "}
+        <Link href="/automation-tools" className="text-paper">Compare automation tool pricing</Link>.
+      </p>
     </section>
   );
 };

@@ -211,6 +211,13 @@ export const tools = {
     { name: "Zendesk", src: "/logos/zendesk.svg" },
     { name: "Asana", src: "/logos/asana.svg" },
   ],
+  footnote: [
+    "Looking at agent builders? See ",
+    { label: "Gumloop pricing", href: "/automation-tools/gumloop" },
+    " and ",
+    { label: "Lindy pricing", href: "/automation-tools/lindy" },
+    ".",
+  ],
 };
 
 export const process = {

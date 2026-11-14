@@ -69,7 +69,8 @@ export interface ToolsContent {
   heading: string;
   centerTitle: string;
   centerLine: string;
-  logos: readonly { name: string; src: string }[];
+  logos: readonly { name: string; src: string; href?: string; ariaLabel?: string }[];
+  footnote?: readonly (string | { label: string; href: string })[];
 }
 
 export interface ProcessContent {

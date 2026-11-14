@@ -186,9 +186,9 @@ export const tools = {
   centerTitle: "Built by us or someone else",
   centerLine: "We'll audit it, document it and keep it running.",
   logos: [
-    { name: "n8n", src: "/logos/n8n.svg" },
-    { name: "Make", src: "/logos/make.svg" },
-    { name: "Zapier", src: "/logos/zapier.svg" },
+    { name: "n8n", src: "/logos/n8n.svg", href: "/automation-tools/n8n", ariaLabel: "n8n pricing" },
+    { name: "Make", src: "/logos/make.svg", href: "/automation-tools/make", ariaLabel: "Make pricing" },
+    { name: "Zapier", src: "/logos/zapier.svg", href: "/automation-tools/zapier", ariaLabel: "Zapier pricing" },
     { name: "Claude", src: "/logos/claude.svg" },
     { name: "OpenAI", src: "/logos/openai.svg" },
     { name: "HubSpot", src: "/logos/hubspot.svg" },
@@ -206,6 +206,15 @@ export const tools = {
     { name: "Google Drive", src: "/logos/googledrive.svg" },
     { name: "Gemini", src: "/logos/gemini.svg" },
     { name: "Pipedrive", src: "/logos/pipedrive.png" },
+  ],
+  footnote: [
+    "Comparing tools? See ",
+    { label: "n8n pricing", href: "/automation-tools/n8n" },
+    ", ",
+    { label: "Make pricing", href: "/automation-tools/make" },
+    " and ",
+    { label: "Zapier pricing", href: "/automation-tools/zapier" },
+    ".",
   ],
 };
 

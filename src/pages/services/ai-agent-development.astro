@@ -1,6 +1,6 @@
 ---
 import {
-  auditHref,
+  calculatorHref,
   book,
   bookHref,
   build,
@@ -58,7 +58,7 @@ const posts = await getPostsForService("ai-agent-development");
 
 <SiteLayout {...social}>
   <JsonLd data={agentDevelopmentJsonLd()} />
-  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={auditHref} handoff />
+  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={calculatorHref} handoff />
   <Proof client:visible proof={proof} />
   <Pain pain={pain} />
   <Build client:visible build={build} bookHref={bookHref} />
@@ -67,7 +67,7 @@ const posts = await getPostsForService("ai-agent-development");
   <Testimonials testimonials={testimonials} />
   <Tools tools={tools} />
   <Process process={process} />
-  <Fit fit={fit} auditHref={auditHref} />
+  <Fit fit={fit} auditHref={bookHref} />
   <Faq faq={faq} name="agent-faq" />
   <BookCall {...book} id="book" tone="dark" client:visible />
   <Related related={related} />

@@ -2,7 +2,7 @@ import type { FlowIcon } from "@/components/site/service-page/types";
 
 export const path = "/services/ai-lead-generation";
 export const bookHref = "/book?service=lead-generation";
-export const auditHref = "/tools/what-to-automate-first";
+export const calculatorHref = "/tools/automation-roi-calculator";
 
 export const seo = {
   title: "AI Lead Generation & CRM Automation",
@@ -28,7 +28,7 @@ export const hero = {
   title: "More booked calls, from the leads you already get.",
   subhead:
     "We build AI lead generation systems that answer every new lead in minutes, score it, follow up and keep your CRM up to date, so more leads turn into calls without adding reps.",
-  secondary: "Find what to automate first →",
+  secondary: "Calculate what you'd save →",
   flow: [
     { tag: "Step 1", title: "A lead arrives", meta: "Quote request from your website, 11:40 pm" },
     { tag: "Step 2", title: "AI checks the fit", meta: "Company researched. Score: 86 / 100" },
@@ -233,7 +233,7 @@ export const fit = {
     "You want LinkedIn messages sent automatically",
     "Every deal is a one-off with no repeatable process",
   ],
-  closing: "Not sure? Find what to automate first →",
+  closing: "Not sure? Book a free 30-min call →",
 };
 
 export const faq = {

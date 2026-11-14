@@ -1,6 +1,6 @@
 ---
 import {
-  auditHref,
+  calculatorHref,
   book,
   bookHref,
   build,
@@ -58,7 +58,7 @@ const posts = await getPostsForService("ai-document-processing");
 
 <SiteLayout {...social}>
   <JsonLd data={documentProcessingJsonLd()} />
-  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={auditHref} />
+  <ServiceHero hero={hero} bookHref={bookHref} secondaryHref={calculatorHref} />
   <Proof client:visible proof={proof} />
   <Pain pain={pain} />
   <Build client:visible build={build} bookHref={bookHref} />
@@ -67,7 +67,7 @@ const posts = await getPostsForService("ai-document-processing");
   <Testimonials testimonials={testimonials} />
   <Tools tools={tools} />
   <Process process={process} />
-  <Fit fit={fit} auditHref={auditHref} />
+  <Fit fit={fit} auditHref={bookHref} />
   <Faq faq={faq} name="document-faq" />
   <BookCall {...book} id="book" tone="dark" client:visible />
   <Related related={related} />

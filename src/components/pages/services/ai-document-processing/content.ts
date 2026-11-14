@@ -2,7 +2,7 @@ import type { FlowIcon } from "@/components/site/service-page/types";
 
 export const path = "/services/ai-document-processing";
 export const bookHref = "/book?service=document-processing";
-export const auditHref = "/tools/what-to-automate-first";
+export const calculatorHref = "/tools/automation-roi-calculator";
 
 export const seo = {
   title: "AI Document Processing & Invoice Automation",
@@ -28,7 +28,7 @@ export const hero = {
   title: "More invoices and forms, no extra data entry.",
   subhead:
     "We build AI document processing that reads your invoices, receipts, forms and PDFs, enters the data into your systems and flags anything unclear for a person. Your volume grows, your data entry doesn't.",
-  secondary: "Find what to automate first →",
+  secondary: "Calculate what you'd save →",
   flow: [
     { tag: "Step 1", title: "Invoice arrives", meta: "INV-20931.pdf in your inbox" },
     { tag: "Step 2", title: "AI reads the fields", meta: "Fields found. PO missing, so flagged" },
@@ -232,7 +232,7 @@ export const fit = {
     "You need a full accounting or ERP system replaced",
     "You want legal judgment on contracts, not data extraction",
   ],
-  closing: "Not sure? Find what to automate first →",
+  closing: "Not sure? Book a free 30-min call →",
 };
 
 export const faq = {

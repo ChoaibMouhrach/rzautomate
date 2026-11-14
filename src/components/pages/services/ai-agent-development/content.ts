@@ -5,7 +5,7 @@ import type {
 
 export const path = "/services/ai-agent-development";
 export const bookHref = "/book?service=agent-development";
-export const auditHref = "/tools/what-to-automate-first";
+export const calculatorHref = "/tools/automation-roi-calculator";
 
 export const seo = {
   title: "AI Agent Development Company | Custom AI Agents",
@@ -33,7 +33,7 @@ export const hero: HeroContent = {
   title: "AI agents that do the work, with your team in control.",
   subhead:
     "We're an AI agent development company. We build custom agents that use your systems, complete multi-step work from start to finish and check with your team before anything risky, so you can take on more without hiring for it.",
-  secondary: "Find what to automate first →",
+  secondary: "Calculate what you'd save →",
   flow: [
     { tag: "Step 1", title: "A task arrives", meta: "Quote request for 12 pallets, by email" },
     {
@@ -248,7 +248,7 @@ export const fit = {
     "You're after an AI strategy deck, not a working build",
   ],
   note: "Need support, leads or documents handled? Those have their own pages below.",
-  closing: "Not sure? Find what to automate first →",
+  closing: "Not sure? Book a free 30-min call →",
 };
 
 export const faq = {

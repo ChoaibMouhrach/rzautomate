@@ -1,7 +1,7 @@
 import type { LegalSection } from "@/components/site/legal-page";
 import { company, site } from "@/lib/site";
 
-// DRAFT: written from what this site does today. Update it when the newsletter provider or analytics change, and have a lawyer review before launch.
+// DRAFT: written from what this site does today. Update it when you add a newsletter, analytics or a new provider, and have a lawyer review before launch.
 const sections: LegalSection[] = [
   {
     heading: "Who we are",
@@ -16,7 +16,6 @@ const sections: LegalSection[] = [
       {
         list: [
           "Booking details. When you book a call, the scheduling tool collects your name, email address, the time you choose, and any notes or answers you add, such as your company website, your CRM or your monthly lead volume.",
-          "Newsletter. If you subscribe, we collect your email address.",
           "Email. If you write to us, we keep your message and your email address.",
           "Technical data. Like most websites, our hosting provider processes your IP address and basic request details such as the page requested, browser type and time, to deliver the site and keep it secure.",
           "Your theme choice. If you pick a light or dark theme, your browser stores that choice on your device. It is not sent to us.",
@@ -31,7 +30,6 @@ const sections: LegalSection[] = [
       {
         list: [
           "Respond to enquiries and run the calls you book",
-          "Send the newsletter, if you subscribed. You can unsubscribe at any time",
           "Provide and improve our services",
           "Keep this website secure and working",
         ],
@@ -47,7 +45,7 @@ const sections: LegalSection[] = [
         list: [
           "Cal.com, which runs our booking calendar and receives the details you enter when you book",
           "Cloudflare, which hosts this website and delivers it to your browser",
-          "Our email and newsletter tools, which receive the addresses used to contact you",
+          "Our email provider, which handles the messages we exchange with you",
         ],
       },
       { paragraph: "These providers handle your information under their own privacy policies." },
@@ -62,7 +60,7 @@ const sections: LegalSection[] = [
   {
     heading: "How long we keep it",
     blocks: [
-      { paragraph: "We keep booking and email records for as long as we need them to run the relationship and meet our legal and accounting duties. We keep newsletter addresses until you unsubscribe. You can ask us to delete your information at any time." },
+      { paragraph: "We keep booking and email records for as long as we need them to run the relationship and meet our legal and accounting duties. You can ask us to delete your information at any time." },
     ],
   },
   {

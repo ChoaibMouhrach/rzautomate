@@ -1,6 +1,5 @@
 ---
 import { Logo } from "@/components/site/logo";
-import { NewsletterForm } from "@/components/site/newsletter-form";
 import { ThemeSwitcher } from "@/components/site/theme-switcher";
 import { legalNav } from "@/lib/site";
 import { footer } from "@/lib/footer";
@@ -12,17 +11,6 @@ import { footer } from "@/lib/footer";
       <div>
         <Logo className="h-8 fill-paper" />
         <p class="mt-6 max-w-md text-paper/70">{footer.tagline}</p>
-      </div>
-      <div class="rounded-3xl bg-paper p-6 text-ink [--foreground:#171717] [--muted-foreground:#5c5f66] [--muted:#f4f4f5]">
-        <p class="text-sm font-medium text-muted-foreground">
-          {footer.newsletterLabel}
-        </p>
-        <h2 class="mt-2 text-2xl font-semibold tracking-tight">
-          {footer.newsletterHeading}
-        </h2>
-        <div class="mt-5">
-          <NewsletterForm client:visible />
-        </div>
       </div>
     </div>
     <div class="grid grid-cols-2 gap-x-8 gap-y-12 text-sm sm:grid-cols-3">

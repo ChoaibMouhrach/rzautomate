@@ -1,8 +1,6 @@
 import { entitySentence } from "@/lib/site";
 
 export const footer = {
-  newsletterLabel: "Stay in the loop",
-  newsletterHeading: "One practical automation idea a week. No spam.",
   tagline: entitySentence,
   columns: [
     {
@@ -27,7 +25,6 @@ export const footer = {
     {
       title: "Company",
       links: [
-        { label: "Case studies", href: "/case-studies" },
         { label: "Blog", href: "/blog" },
         { label: "FAQ", href: "/faq" },
         { label: "Contact", href: "/contact" },

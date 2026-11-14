@@ -57,7 +57,7 @@ export const pageMetadata = {
   },
   privacy: {
     title: "Privacy Policy",
-    description: "What we collect when you visit, book a call or subscribe, how we use it, who we share it with and the choices you have.",
+    description: "What we collect when you visit, book a call or write to us, how we use it, who we share it with and the choices you have.",
   },
   terms: {
     title: "Terms and Services",

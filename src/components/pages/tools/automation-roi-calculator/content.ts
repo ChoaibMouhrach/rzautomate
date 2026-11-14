@@ -99,14 +99,9 @@ export const related = {
   heading: "More free tools",
   tiles: [
     {
-      title: "What to automate first",
-      line: "Get a ranked list of tasks to hand off.",
-      href: "/tools/what-to-automate-first",
-    },
-    {
-      title: "AI readiness check",
-      line: "See what to fix before you build.",
-      href: "/tools/ai-readiness-check",
+      title: "Automation tools",
+      line: "Compare what n8n, Zapier, Make and others cost.",
+      href: "/automation-tools",
     },
     {
       title: "AI model prices",

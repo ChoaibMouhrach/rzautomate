@@ -1,27 +1,41 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { FableDetails } from "@/components/pages/models/[slug]/fable-details";
-import { ModelDetails } from "@/components/pages/models/[slug]/model-details";
+import { ModelCalculator } from "@/components/pages/models/[slug]/calculator";
+import { ModelCta } from "@/components/pages/models/[slug]/cta";
+import { getModelPage, modelPages } from "@/components/pages/models/[slug]";
+import { ModelJsonLd } from "@/components/pages/models/[slug]/json-ld";
+import { AccessSection, CalculatorSection, CompareSection, FitSection, FreeSection, ModelFaq, ModelHero, PricingSection, RelatedSection, VersionsSection } from "@/components/pages/models/[slug]/sections";
+import { SpecsSection } from "@/components/pages/models/[slug]/specs";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
-import { models } from "@/lib/models";
+import { getModel } from "@/lib/models";
 
 export const getStaticPaths = (() =>
-  models.map((model) => ({
-    params: { slug: model.slug },
-    props: { model },
+  modelPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { slug: page.slug },
   }))) satisfies GetStaticPaths;
 
-const { model } = Astro.props;
-const isFable = model.slug === "claude-fable-5-1";
-const seo = pageSocial({
-  title: isFable
-    ? "Claude Fable 5.1 API Pricing, Context Window & Specs"
-    : model.name,
-  description: model.description,
-});
+const { slug } = Astro.props;
+const page = getModelPage(slug)!;
+const { name, provider } = getModel(slug)!;
+const seo = pageSocial({ title: page.title, description: page.description });
 ---
 
 <SiteLayout {...seo}>
-  {isFable ? <FableDetails client:load /> : <ModelDetails model={model} />}
+  <ModelJsonLd page={page} name={name} provider={provider} />
+  <ModelHero page={page} provider={provider} />
+  <PricingSection page={page} name={name} />
+  <CalculatorSection name={name} intro={page.calc.intro}>
+    <ModelCalculator client:visible slug={slug} calc={page.calc} />
+  </CalculatorSection>
+  <SpecsSection client:visible name={name} rows={page.specs} />
+  <AccessSection page={page} name={name} />
+  <FreeSection page={page} name={name} />
+  <CompareSection page={page} name={name} />
+  <FitSection page={page} name={name} />
+  <VersionsSection page={page} />
+  <ModelFaq page={page} name={name} />
+  <ModelCta client:visible slug={slug} cta={page.cta} />
+  <RelatedSection page={page} />
 </SiteLayout>

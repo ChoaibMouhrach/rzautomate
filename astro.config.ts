@@ -28,6 +28,8 @@ export default defineConfig({
   integrations: [react(), mdx(), markdownPages()],
   markdown: { processor: satteri({ hastPlugins: [headingAnchors] }) },
   redirects: {
+    "/models/claude-fable-5-1": permanent("/models/claude-fable-5-2"),
+    "/models/deepseek-v4-flash": permanent("/models/deepseek-v4-1-flash"),
     "/services/business-process-automation": permanent("/services"),
     "/services/business-process-automation-services": permanent("/services"),
     "/services/data-and-document-processing": permanent(

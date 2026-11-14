@@ -7,12 +7,14 @@ export const pagePaths = (postSlugs: readonly string[]) => [
     "/",
     "/tools/automation-roi-calculator",
     "/models",
+    "/automation-tools",
     ...toolPages.map((page) => `/automation-tools/${page.slug}`),
     ...models.map((model) => `/models/${model.slug}`),
     ...nav.map((item) => item.href),
     ...services.map((service) => `/services/${service.slug}`),
     ...postSlugs.map((slug) => `/blog/${slug}`),
     ...legalNav.map((item) => item.href),
+    "/privacy",
   ];
 
 export const pageMetadata = {
@@ -43,12 +45,22 @@ export const pageMetadata = {
     description:
       "Free automation ROI calculator. Enter five numbers about one task and see the hours, money and hires automation could save you each year. No email needed.",
   },
+  models: {
+    title: "AI Model Comparison by API Price and Context Window",
+    description:
+      "Compare AI models from OpenAI, Anthropic, Google, DeepSeek and more. API price per 1M tokens, context window, features and what a real job costs.",
+  },
+  automationTools: {
+    title: "Workflow Automation Tools Compared by Price",
+    description:
+      "Compare the pricing of n8n, Zapier, Make and other workflow automation tools. See what each costs, what you're charged for and which have a free plan.",
+  },
   privacy: {
     title: "Privacy Policy",
-    description: "How we collect, use and protect your information.",
+    description: "What we collect when you visit, book a call or subscribe, how we use it, who we share it with and the choices you have.",
   },
   terms: {
-    title: "Terms of Service",
-    description: "The terms that apply when you use our website and services.",
+    title: "Terms and Services",
+    description: "The terms that apply to every engagement with Rizon LLC, including payment, code ownership and liability.",
   },
 } as const;

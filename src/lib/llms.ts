@@ -1,6 +1,8 @@
+import { modelPages } from "@/components/pages/models/[slug]";
 import { postPath, type Post } from "@/lib/blog";
 import { pageMetadata } from "@/lib/pages";
 import { services } from "@/lib/services";
+import { toolPages } from "@/lib/tool-pages";
 import { absoluteUrl, company, site } from "@/lib/site";
 
 const markdownUrl = (path: string) =>
@@ -12,6 +14,8 @@ const link = (title: string, path: string, description: string) =>
 const pages = [
   { title: "Home", path: "/", description: site.description },
   { path: "/services", ...pageMetadata.services },
+  { path: "/models", ...pageMetadata.models },
+  { path: "/automation-tools", ...pageMetadata.automationTools },
   { path: "/blog", ...pageMetadata.blog },
   { path: "/faq", ...pageMetadata.faq },
   { path: "/tools/automation-roi-calculator", ...pageMetadata.roiCalculator },
@@ -43,6 +47,20 @@ export const buildLlmsTxt = (posts: readonly Post[]) => {
         services.map((service) =>
           link(service.title, `/services/${service.slug}`, service.description),
         ),
+      ),
+      section(
+        "AI models",
+        modelPages.map((page) =>
+          link(page.title, `/models/${page.slug}`, page.description),
+        ),
+      ),
+      section(
+        "Automation tools",
+        toolPages
+          .filter((page) => page.status === "active")
+          .map((page) =>
+            link(page.seo.title, `/automation-tools/${page.slug}`, page.seo.description),
+          ),
       ),
       section(
         "Blog",

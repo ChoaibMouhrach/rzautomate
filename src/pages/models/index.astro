@@ -11,12 +11,9 @@ import { QuickPicks } from "@/components/pages/models/quick-picks";
 import { Tiers } from "@/components/pages/models/tiers";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
 
-const seo = pageSocial({
-  title: "AI Model Comparison by API Price and Context Window",
-  description:
-    "Compare AI models from OpenAI, Anthropic, Google, DeepSeek and more. API price per 1M tokens, context window, features and what a real job costs.",
-});
+const seo = pageSocial(pageMetadata.models);
 ---
 
 <SiteLayout {...seo}>

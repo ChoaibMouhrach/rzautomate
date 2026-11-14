@@ -10,12 +10,9 @@ import { ToolsSection } from "@/components/pages/automation-tools/tools-section"
 import { Types } from "@/components/pages/automation-tools/types";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/pages";
 
-const seo = pageSocial({
-  title: "Workflow Automation Tools Compared by Price",
-  description:
-    "Compare the pricing of n8n, Zapier, Make and other workflow automation tools. See what each costs, what you're charged for and which have a free plan.",
-});
+const seo = pageSocial(pageMetadata.automationTools);
 ---
 
 <SiteLayout {...seo}>

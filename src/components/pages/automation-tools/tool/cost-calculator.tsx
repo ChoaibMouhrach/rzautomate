@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { FilterChip } from "@/components/site/directory";
 import { Section } from "../section";
+import { CountInput } from "@/components/ui/count-input";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import { countValue } from "@/lib/number-input";
 import { getToolPage, toolPages } from "@/lib/tool-pages";
 
 const fieldClass = "mt-2 h-12 w-full rounded-2xl bg-background px-5 text-base tabular-nums focus-visible:outline-2 focus-visible:outline-ring";
+const MAX_COUNT = 999_999_999_999;
 const compareSlugs = ["zapier", "make"];
 
 export const CostCalculator = ({ slug }: { slug: string }) => {
@@ -14,8 +17,7 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
   const [steps, setSteps] = useState(String(calculator.defaults.steps));
   const [yearly, setYearly] = useState(calculator.defaults.yearly);
   const [extra, setExtra] = useState<Record<string, string>>(Object.fromEntries((calculator.extraInputs ?? []).map((input) => [input.id, String(input.default)])));
-  const toNumber = (value: string) => Math.max(0, Number(value) || 0);
-  const input = { runs: toNumber(runs), steps: Math.max(1, toNumber(steps)), yearly, extra: Object.fromEntries(Object.entries(extra).map(([key, value]) => [key, toNumber(value)])) };
+  const input = { runs: countValue(runs), steps: Math.max(1, countValue(steps)), yearly, extra: Object.fromEntries(Object.entries(extra).map(([key, value]) => [key, countValue(value)])) };
   const result = calculator.calculate(input);
   const compare = toolPages.filter((tool) => compareSlugs.includes(tool.slug) && tool.slug !== slug);
 
@@ -24,14 +26,14 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-5 rounded-3xl bg-muted p-8 md:p-10">
           <label className="block text-sm font-medium">Runs per month
-            <input type="number" min={0} inputMode="numeric" value={runs} onChange={(event) => setRuns(event.target.value)} className={fieldClass} />
+            <CountInput value={runs} onValueChange={setRuns} max={MAX_COUNT} className={fieldClass} />
           </label>
           <label className="block text-sm font-medium">Steps per run
-            <input type="number" min={1} inputMode="numeric" value={steps} onChange={(event) => setSteps(event.target.value)} className={fieldClass} />
+            <CountInput value={steps} onValueChange={setSteps} max={MAX_COUNT} className={fieldClass} />
           </label>
           {(calculator.extraInputs ?? []).map((extraInput) => (
             <label key={extraInput.id} className="block text-sm font-medium">{extraInput.label}
-              <input type="number" min={0} inputMode="numeric" value={extra[extraInput.id]} onChange={(event) => setExtra({ ...extra, [extraInput.id]: event.target.value })} className={fieldClass} />
+              <CountInput value={extra[extraInput.id]} onValueChange={(next) => setExtra({ ...extra, [extraInput.id]: next })} max={MAX_COUNT} className={fieldClass} />
             </label>
           ))}
           {page.pricing.hasBillingToggle && (

@@ -28,9 +28,13 @@ const readIsDark = () => document.documentElement.classList.contains("dark");
 export const BookCallCalendar = ({
   tone = "light",
   service,
+  source,
+  model,
 }: {
   tone?: "light" | "dark";
   service?: string;
+  source?: string;
+  model?: string;
 }) => {
   const [isReady, setIsReady] = useState(false);
   const isDark = useSyncExternalStore(subscribeToTheme, readIsDark, () => false);
@@ -193,6 +197,8 @@ export const BookCallCalendar = ({
               layout: "month_view",
               theme: calTheme,
               ...(service && { "metadata[service]": service }),
+              ...(source && { "metadata[source]": source }),
+              ...(model && { "metadata[model]": model }),
             }}
             className={`w-full max-w-full [&_cal-inline]:block [&_cal-inline]:w-full [&_cal-inline]:max-w-full transition-opacity duration-300 ${isReady ? "opacity-100" : "opacity-0"}`}
           />

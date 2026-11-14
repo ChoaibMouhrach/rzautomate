@@ -26,6 +26,8 @@ export interface BookCallProps {
   headingAs?: "h1" | "h2";
   id?: string;
   service?: string;
+  source?: string;
+  model?: string;
   animated?: boolean;
   tone?: "light" | "dark";
   className?: string;
@@ -37,6 +39,8 @@ export const BookCall = ({
   headingAs: Heading = "h2",
   id,
   service,
+  source,
+  model,
   animated = false,
   tone = "light",
   className,
@@ -142,7 +146,7 @@ export const BookCall = ({
             className={twMerge("relative h-160 lg:h-auto", third.className)}
             style={third.style}
           >
-            <BookCallCalendar tone={tone} service={service} />
+            <BookCallCalendar tone={tone} service={service} source={source} model={model} />
           </div>
         </div>
       </div>

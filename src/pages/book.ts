@@ -6,12 +6,14 @@ export const prerender = false;
 export const GET: APIRoute = ({ url }) => {
   const source = url.searchParams;
   const target = new URL(site.bookingUrl);
-  for (const key of ["name", "email", "service"]) {
+  for (const key of ["name", "email", "service", "source", "model"]) {
     const value = source.get(key);
     if (value) target.searchParams.set(key, value);
   }
   const notes = [
     ["Service", source.get("service")],
+    ["Source", source.get("source")],
+    ["Model", source.get("model")],
     ["Company website", source.get("website")],
     ["Monthly new leads", source.get("volume")],
     ["CRM", source.get("crm")],

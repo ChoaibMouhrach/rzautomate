@@ -231,3 +231,27 @@ export const fromSearchParams = (params: URLSearchParams) => {
   }
   return { parsed, provided };
 };
+
+const presetFields = ["volume", "minutes", "automationShare"] as const;
+
+export const withPreset = (
+  inputs: RoiInputs,
+  task: TaskId,
+  skip: ReadonlySet<NumericField>,
+): RoiInputs => {
+  const preset = taskPresets[task];
+  const next = { ...inputs, task };
+  for (const field of presetFields) {
+    if (!skip.has(field)) next[field] = preset[field];
+  }
+  return next;
+};
+
+export const applyField = (
+  inputs: RoiInputs,
+  field: NumericField,
+  value: number,
+): RoiInputs => ({
+  ...inputs,
+  [field]: field === "buildCost" && Number.isNaN(value) ? null : value,
+});

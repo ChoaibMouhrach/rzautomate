@@ -1,28 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  applyField,
   defaultInputs,
   fromSearchParams,
-  taskPresets,
   toSearchParams,
+  withPreset,
   type NumericField,
-  type RoiInputs,
   type TaskId,
 } from "@/lib/roi";
-
-const presetFields = ["volume", "minutes", "automationShare"] as const;
-
-const withPreset = (
-  inputs: RoiInputs,
-  task: TaskId,
-  skip: ReadonlySet<NumericField>,
-): RoiInputs => {
-  const preset = taskPresets[task];
-  const next = { ...inputs, task };
-  for (const field of presetFields) {
-    if (!skip.has(field)) next[field] = preset[field];
-  }
-  return next;
-};
 
 export const useRoiState = () => {
   const [inputs, setInputs] = useState(defaultInputs);
@@ -58,10 +43,7 @@ export const useRoiState = () => {
 
   const setField = (field: NumericField, value: number) => {
     touched.current.add(field);
-    setInputs((current) => ({
-      ...current,
-      [field]: field === "buildCost" && Number.isNaN(value) ? null : value,
-    }));
+    setInputs((current) => applyField(current, field, value));
   };
 
   const setTask = (task: TaskId) =>

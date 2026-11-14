@@ -4,6 +4,7 @@ import { ModelCalculator } from "@/components/pages/models/[slug]/calculator";
 import { ModelCta } from "@/components/pages/models/[slug]/cta";
 import { getModelPage, modelPages } from "@/components/pages/models/[slug]";
 import { ModelJsonLd } from "@/components/pages/models/[slug]/json-ld";
+import { ModelBreadcrumbs } from "@/components/pages/models/[slug]/model-breadcrumbs";
 import { AccessSection, CalculatorSection, CompareSection, FitSection, FreeSection, ModelFaq, ModelHero, PricingSection, RelatedSection, VersionsSection } from "@/components/pages/models/[slug]/sections";
 import { SpecsSection } from "@/components/pages/models/[slug]/specs";
 import SiteLayout from "@/layouts/SiteLayout.astro";
@@ -38,4 +39,5 @@ const seo = pageSocial({ title: page.title, description: page.description });
   <ModelFaq page={page} name={name} />
   <ModelCta client:visible slug={slug} cta={page.cta} />
   <RelatedSection page={page} />
+  <ModelBreadcrumbs name={name} provider={provider} />
 </SiteLayout>

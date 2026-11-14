@@ -124,17 +124,19 @@ export const DirectoryCta = ({
 export const FilterChip = ({
   pressed,
   onPress,
+  inset = false,
   children,
 }: {
   pressed: boolean;
   onPress: () => void;
+  inset?: boolean;
   children: ReactNode;
 }) => (
   <button
     type="button"
     aria-pressed={pressed}
     onClick={onPress}
-    className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-muted px-4 py-2 text-sm font-medium transition-colors hover:bg-muted/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring aria-pressed:bg-primary aria-pressed:text-primary-foreground"
+    className={`inline-flex cursor-pointer items-center gap-2 rounded-full ${inset ? "bg-background hover:bg-background/70" : "bg-muted hover:bg-muted/70"} px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring aria-pressed:bg-primary aria-pressed:text-primary-foreground`}
   >
     {children}
   </button>

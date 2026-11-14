@@ -36,8 +36,8 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
           ))}
           {page.pricing.hasBillingToggle && (
             <div role="group" aria-label="Billing" className="flex gap-2">
-              <FilterChip pressed={yearly} onPress={() => setYearly(true)}>Yearly</FilterChip>
-              <FilterChip pressed={!yearly} onPress={() => setYearly(false)}>Monthly</FilterChip>
+              <FilterChip inset pressed={yearly} onPress={() => setYearly(true)}>Yearly</FilterChip>
+              <FilterChip inset pressed={!yearly} onPress={() => setYearly(false)}>Monthly</FilterChip>
             </div>
           )}
         </div>

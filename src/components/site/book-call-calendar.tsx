@@ -11,6 +11,7 @@ const fallbackMs = 10000;
 const holdMs = 900;
 const interactionMs = 1500;
 const settleMs = 300;
+const guardMs = 1500;
 const holdActions = ["__dimensionChanged", "__routeChanged"] as const;
 
 const subscribeToTheme = (callback: () => void) => {
@@ -35,6 +36,65 @@ export const BookCallCalendar = ({
   const isDark = useSyncExternalStore(subscribeToTheme, readIsDark, () => false);
   const calTheme = isDark ? "dark" : "light";
   const container = useRef<HTMLDivElement>(null);
+  const isGuarding = useRef(true);
+
+  useEffect(() => {
+    if (!isReady) return;
+    const timeout = setTimeout(() => {
+      isGuarding.current = false;
+    }, guardMs);
+    return () => clearTimeout(timeout);
+  }, [isReady]);
+
+  useEffect(() => {
+    let guardY = window.scrollY;
+    let userUntil = 0;
+    let isPointerDown = false;
+    const allow = (ms: number) => {
+      userUntil = Date.now() + ms;
+    };
+    const guard = () => {
+      if (!isGuarding.current) return;
+      if (isPointerDown || Date.now() < userUntil) {
+        guardY = window.scrollY;
+        return;
+      }
+      if (Math.abs(window.scrollY - guardY) > 2) {
+        window.scrollTo({ top: guardY, behavior: "instant" });
+      }
+    };
+    const onWheel = () => allow(250);
+    const onKey = () => allow(800);
+    const onClick = () => allow(1500);
+    const onTouchEnd = () => allow(1500);
+    const onPointerDown = () => {
+      isPointerDown = true;
+    };
+    const onPointerUp = () => {
+      isPointerDown = false;
+      allow(500);
+    };
+    window.addEventListener("scroll", guard, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("click", onClick);
+    window.addEventListener("touchmove", onTouchEnd, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    window.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+    return () => {
+      window.removeEventListener("scroll", guard);
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("click", onClick);
+      window.removeEventListener("touchmove", onTouchEnd);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+    };
+  }, []);
 
   useEffect(() => {
     getCalApi({ namespace }).then((cal) => {

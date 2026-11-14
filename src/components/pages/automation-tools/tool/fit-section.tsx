@@ -1,26 +1,23 @@
-import { Check, X } from "lucide-react";
+import { ChecklistCard } from "./checklist-card";
 import { LineParts } from "./line-parts";
 import { fitLineFor } from "./service-links";
-import { DirectorySection } from "@/components/site/directory";
+import { Section } from "../section";
 import type { ToolPage } from "@/lib/tool-pages/types";
 
 export const FitSection = ({ page }: { page: ToolPage }) => {
   const { fit } = page;
   const fitLine = fitLineFor(page.slug, page.name);
   return (
-    <DirectorySection title={fit.heading}>
-      <div className="grid gap-3 md:grid-cols-2">
-        <div className="rounded-3xl bg-muted p-8">
-          <h3 className="font-semibold">{fit.goodTitle}</h3>
-          <ul className="mt-5 space-y-4">{fit.good.map((item) => <li key={item} className="flex gap-3"><Check aria-hidden className="mt-1 size-5 shrink-0 text-primary" />{item}</li>)}</ul>
-        </div>
-        <div className="rounded-3xl bg-muted p-8">
-          <h3 className="font-semibold">{fit.notTitle}</h3>
-          <ul className="mt-5 space-y-4">{fit.not.map((item) => <li key={item} className="flex gap-3 text-muted-foreground"><X aria-hidden className="mt-1 size-5 shrink-0" />{item}</li>)}</ul>
-        </div>
+    <Section label="Is it right for you?" title={fit.heading}>
+      <div className="grid gap-4 md:grid-cols-2">
+        <ChecklistCard title={fit.goodTitle} items={fit.good} positive badge={`${fit.good.length} signs`} />
+        <ChecklistCard title={fit.notTitle} items={fit.not} positive={false} badge={`${fit.not.length} signs`} />
       </div>
-      <p className="max-w-3xl text-lg"><span className="font-semibold">Our take. </span><span className="text-muted-foreground">{fit.ourTake}</span></p>
-      {fitLine && <p className="max-w-3xl text-lg text-muted-foreground"><LineParts parts={fitLine} /></p>}
-    </DirectorySection>
+      <div className="rounded-3xl bg-primary p-8 text-primary-foreground md:p-12">
+        <p className="text-sm font-medium text-primary-foreground/85">Our take</p>
+        <p className="mt-4 max-w-3xl text-balance text-2xl leading-snug tracking-tight md:text-3xl">{fit.ourTake}</p>
+        {fitLine && <p className="mt-6 max-w-3xl text-primary-foreground/85 [&_a]:text-primary-foreground"><LineParts parts={fitLine} /></p>}
+      </div>
+    </Section>
   );
 };

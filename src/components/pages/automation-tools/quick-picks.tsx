@@ -1,5 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
+import { LogoChip, Section } from "./section";
 import { ToolLogo } from "./tool-logo";
-import { DirectorySection } from "@/components/site/directory";
 import { bestFree, bestSelfHosted, cheapestPaid, mostIntegrations, toolHref, type AutomationTool } from "@/lib/automation-tools";
 
 const picks: { label: string; tool: AutomationTool; line: string }[] = [
@@ -9,17 +10,27 @@ const picks: { label: string; tool: AutomationTool; line: string }[] = [
   { label: "Most integrations", tool: mostIntegrations, line: `${mostIntegrations.integrations!.toLocaleString("en-US")} apps` },
 ];
 
+const tones = ["bg-ink text-paper", "bg-muted", "bg-tint", "bg-primary text-primary-foreground"];
+const mutedTones = ["text-paper/70", "text-muted-foreground", "text-muted-foreground", "text-primary-foreground/85"];
+
 export const QuickPicks = () => (
-  <DirectorySection title="Quick picks">
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {picks.map((pick) => (
-        <a key={pick.label} href={toolHref(pick.tool)} className="flex min-w-0 flex-col rounded-3xl bg-muted p-6 transition-colors hover:bg-muted/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-7">
-          <span className="text-sm font-medium text-muted-foreground">{pick.label}</span>
-          <span className="mt-4 flex min-w-0 items-center gap-3 text-xl font-semibold tracking-tight sm:text-2xl"><ToolLogo tool={pick.tool} className="size-8" /><span className="min-w-0 [overflow-wrap:anywhere]">{pick.tool.name}</span></span>
-          <span className="mt-3 text-sm text-muted-foreground">{pick.line}</span>
-        </a>
+  <Section label="Short on time?" title="Quick picks" intro="Picked automatically from the table.">
+    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {picks.map((pick, index) => (
+        <li key={pick.label} className="flex">
+          <a href={toolHref(pick.tool)} className={`group flex min-h-72 w-full min-w-0 flex-col justify-between gap-10 rounded-3xl p-8 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${tones[index]}`}>
+            <div className="flex items-start justify-between gap-4">
+              <LogoChip><ToolLogo tool={pick.tool} className="size-7" /></LogoChip>
+              <ArrowUpRight aria-hidden className="size-6 opacity-60 transition-opacity group-hover:opacity-100" />
+            </div>
+            <div>
+              <p className={`text-sm font-medium ${mutedTones[index]}`}>{pick.label}</p>
+              <p className="mt-2 text-3xl font-semibold leading-tight tracking-tighter [overflow-wrap:anywhere]">{pick.tool.name}</p>
+              <p className={`mt-2 ${mutedTones[index]}`}>{pick.line}</p>
+            </div>
+          </a>
+        </li>
       ))}
-    </div>
-    <p className="text-sm text-muted-foreground">Picked automatically from the table.</p>
-  </DirectorySection>
+    </ul>
+  </Section>
 );

@@ -8,7 +8,6 @@ import { Hero } from "@/components/pages/automation-tools/hero";
 import { QuickPicks } from "@/components/pages/automation-tools/quick-picks";
 import { ToolsSection } from "@/components/pages/automation-tools/tools-section";
 import { Types } from "@/components/pages/automation-tools/types";
-import { PageContent } from "@/components/site/page";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
 
@@ -22,13 +21,11 @@ const seo = pageSocial({
 <SiteLayout {...seo}>
   <AutomationToolsJsonLd />
   <Hero />
-  <PageContent>
-    <ToolsSection client:load />
-    <Billing client:visible />
-    <QuickPicks />
-    <Choose />
-    <Types />
-    <Faq />
-    <Cta />
-  </PageContent>
+  <ToolsSection client:load />
+  <Billing client:visible />
+  <QuickPicks />
+  <Choose />
+  <Types />
+  <Faq />
+  <Cta />
 </SiteLayout>

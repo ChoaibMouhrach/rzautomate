@@ -1,12 +1,15 @@
-import { directoryHeadingClass, directorySectionClass } from "@/components/site/directory";
+import { LandingHeading, LandingSection, SectionLabel } from "@/components/site/landing-section";
 import { Accordion } from "@/components/ui/accordion";
 import type { ToolPage } from "@/lib/tool-pages/types";
 
 export const FaqSection = ({ page }: { page: ToolPage }) => (
-  <section className={directorySectionClass}>
+  <LandingSection>
     <div className="grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-16">
-      <h2 className={directoryHeadingClass}>{page.faq.heading}</h2>
+      <div>
+        <SectionLabel>Questions</SectionLabel>
+        <LandingHeading className="mt-4">{page.faq.heading}</LandingHeading>
+      </div>
       <Accordion items={page.faq.items} name={`${page.slug}-faq`} />
     </div>
-  </section>
+  </LandingSection>
 );

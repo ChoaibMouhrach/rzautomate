@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { DirectorySection, DirectoryTableShell, FilterChip, rowClass, tableHeadClass } from "@/components/site/directory";
+import { Section } from "../section";
+import { DirectoryTableShell, FilterChip, rowClass, tableHeadClass } from "@/components/site/directory";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getToolPage } from "@/lib/tool-pages";
 
@@ -9,7 +10,7 @@ export const PricingSection = ({ slug }: { slug: string }) => {
   const price = (row: (typeof pricing.rows)[number]) => (yearly ? row.yearly : row.monthly);
 
   return (
-    <DirectorySection id="pricing" title={pricing.heading} intro={pricing.intro}>
+    <Section id="pricing" label="Plans" title={pricing.heading} intro={pricing.intro}>
       {pricing.hasBillingToggle && (
         <div className="flex gap-2" role="group" aria-label="Billing period">
           <FilterChip pressed={!yearly} onPress={() => setYearly(false)}>Monthly</FilterChip>
@@ -50,6 +51,6 @@ export const PricingSection = ({ slug }: { slug: string }) => {
       </DirectoryTableShell>
       {pricing.overLimitLine && <p className="max-w-3xl text-muted-foreground">{pricing.overLimitLine}</p>}
       <p className="text-sm text-muted-foreground">{pricing.sourceLine}</p>
-    </DirectorySection>
+    </Section>
   );
 };

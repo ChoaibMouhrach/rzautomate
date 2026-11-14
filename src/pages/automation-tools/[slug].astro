@@ -14,7 +14,6 @@ import { ToolMidCta } from "@/components/pages/automation-tools/tool/tool-mid-ct
 import { ToolHero } from "@/components/pages/automation-tools/tool/tool-hero";
 import { ToolJsonLd } from "@/components/pages/automation-tools/tool/tool-json-ld";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { PageContent } from "@/components/site/page";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
 import { toolPages } from "@/lib/tool-pages";
@@ -32,20 +31,18 @@ const seo = pageSocial({ title: page.seo.title, description: page.seo.descriptio
 <SiteLayout {...seo}>
   <ToolJsonLd page={page} />
   <ToolHero page={page} />
-  <PageContent>
-    <PricingSection slug={page.slug} client:load />
-    <BillingSection page={page} />
-    <CostCalculator slug={page.slug} client:visible />
-    <ToolMidCta page={page} />
-    <FreePlanSection page={page} />
-    <FeaturesSection page={page} />
-    <FitSection page={page} />
-    <AlternativesSection page={page} />
-    <FaqSection page={page} />
-    <ToolCta page={page} />
-    <RelatedSection page={page} />
-    <div class="mt-16">
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Automation Tools", href: "/automation-tools" }, { label: page.name }]} />
-    </div>
-  </PageContent>
+  <PricingSection slug={page.slug} client:load />
+  <BillingSection page={page} />
+  <CostCalculator slug={page.slug} client:visible />
+  <ToolMidCta page={page} />
+  <FreePlanSection page={page} />
+  <FeaturesSection page={page} />
+  <FitSection page={page} />
+  <AlternativesSection page={page} />
+  <FaqSection page={page} />
+  <ToolCta page={page} />
+  <RelatedSection page={page} />
+  <div class="page-container pb-24">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Automation Tools", href: "/automation-tools" }, { label: page.name }]} />
+  </div>
 </SiteLayout>

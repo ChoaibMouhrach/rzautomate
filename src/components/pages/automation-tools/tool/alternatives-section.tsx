@@ -1,4 +1,5 @@
-import { DirectorySection, DirectoryTableShell, rowClass, stickyCellClass, tableHeadClass } from "@/components/site/directory";
+import { Section } from "../section";
+import { DirectoryTableShell, rowClass, stickyCellClass, tableHeadClass } from "@/components/site/directory";
 import { Link, LinkButton } from "@/components/ui/link";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { publishedComparePages } from "@/lib/compare-pages";
@@ -11,7 +12,7 @@ const cellLinkClass = "flex h-full items-center gap-3 px-5 py-5 focus-visible:ou
 const columns = ["Tool", "Starts at", "You pay for", "Free plan", "Self-hosting", "Why switch"];
 
 export const AlternativesSection = ({ page }: { page: ToolPage }) => (
-  <DirectorySection id="alternatives" title={page.alternatives.heading} intro={page.alternatives.intro}>
+  <Section id="alternatives" label="Alternatives" title={page.alternatives.heading} intro={page.alternatives.intro}>
     <DirectoryTableShell>
       <ScrollArea orientation="horizontal" contentClassName="pb-3">
         <table className="w-full text-left text-sm">
@@ -38,5 +39,5 @@ export const AlternativesSection = ({ page }: { page: ToolPage }) => (
       </ul>
     )}
     <div><LinkButton href="/automation-tools" variant="ghost">See all automation tools →</LinkButton></div>
-  </DirectorySection>
+  </Section>
 );

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { DirectorySection, FilterChip } from "@/components/site/directory";
+import { FilterChip } from "@/components/site/directory";
+import { Section } from "../section";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { getToolPage, toolPages } from "@/lib/tool-pages";
 
@@ -19,9 +20,9 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
   const compare = toolPages.filter((tool) => compareSlugs.includes(tool.slug) && tool.slug !== slug);
 
   return (
-    <DirectorySection id="calculator" title={calculator.heading} intro={calculator.intro}>
-      <div className="grid gap-3 lg:grid-cols-2">
-        <div className="space-y-5 rounded-3xl bg-muted p-8">
+    <Section id="calculator" label="Estimate your bill" title={calculator.heading} intro={calculator.intro}>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <div className="space-y-5 rounded-3xl bg-muted p-8 md:p-10">
           <label className="block text-sm font-medium">Runs per month
             <input type="number" min={0} inputMode="numeric" value={runs} onChange={(event) => setRuns(event.target.value)} className={fieldClass} />
           </label>
@@ -40,15 +41,15 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col rounded-3xl bg-muted p-8" aria-live="polite">
+        <div className="flex flex-col rounded-3xl bg-ink p-8 text-paper md:p-10" aria-live="polite">
           <dl className="grid grid-cols-2 gap-6">
-            <div><dt className="text-sm text-muted-foreground">Units used</dt><dd className="mt-2 text-2xl font-semibold tracking-tight tabular-nums">{result.units}</dd></div>
-            <div><dt className="text-sm text-muted-foreground">Cheapest plan</dt><dd className="mt-2 text-2xl font-semibold tracking-tight">{result.plan}</dd></div>
+            <div><dt className="text-sm text-paper/60">Units used</dt><dd className="mt-2 text-2xl font-semibold tracking-tight tabular-nums">{result.units}</dd></div>
+            <div><dt className="text-sm text-paper/60">Cheapest plan</dt><dd className="mt-2 text-2xl font-semibold tracking-tight">{result.plan}</dd></div>
           </dl>
-          <p className="mt-8 text-sm text-muted-foreground">Monthly cost</p>
-          <p className="mt-1 text-5xl font-semibold tracking-tighter text-primary"><NumberTicker key={result.cost} value={result.cost} /></p>
-          {result.costNote && <p className="mt-2 text-sm text-muted-foreground">{result.costNote}</p>}
-          {result.selfHostLine && <p className="mt-4 text-sm text-muted-foreground">{result.selfHostLine}</p>}
+          <p className="mt-10 text-sm text-paper/60">Monthly cost</p>
+          <p className="mt-1 text-7xl font-semibold leading-none tracking-tighter"><NumberTicker key={result.cost} value={result.cost} /></p>
+          {result.costNote && <p className="mt-3 text-sm text-paper/70">{result.costNote}</p>}
+          {result.selfHostLine && <p className="mt-4 text-sm text-paper/70">{result.selfHostLine}</p>}
           {compare.length > 0 && (
             <div className="mt-auto pt-8">
               <p className="text-sm font-medium">Same workload on other tools</p>
@@ -56,7 +57,7 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
                 {compare.map((tool) => {
                   const effectiveSteps = input.steps + (input.extra.loopItems ?? 0) * (input.extra.loopSteps ?? 0);
                   const other = tool.calculator.calculate({ ...input, steps: effectiveSteps, extra: {} });
-                  return <li key={tool.slug}><a href={`/automation-tools/${tool.slug}`} className="flex justify-between gap-4 rounded-2xl bg-background px-5 py-3 text-sm transition-colors hover:bg-background/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"><span className="font-medium">{tool.name}</span><span className="tabular-nums text-muted-foreground">{other.cost}</span></a></li>;
+                  return <li key={tool.slug}><a href={`/automation-tools/${tool.slug}`} className="flex justify-between gap-4 rounded-2xl bg-white/10 px-5 py-3 text-sm transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"><span className="font-medium">{tool.name}</span><span className="tabular-nums text-paper/70">{other.cost}</span></a></li>;
                 })}
               </ul>
             </div>
@@ -64,6 +65,6 @@ export const CostCalculator = ({ slug }: { slug: string }) => {
         </div>
       </div>
       <p className="text-sm text-muted-foreground">{calculator.note}</p>
-    </DirectorySection>
+    </Section>
   );
 };

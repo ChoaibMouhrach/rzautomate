@@ -13,7 +13,7 @@ const mutedTones = [
   "text-muted-foreground",
   "text-muted-foreground",
   "text-paper/70",
-  "text-primary-foreground/80",
+  "text-primary-foreground",
 ];
 
 export const Process = () => (

@@ -19,7 +19,7 @@ export const MidCta = () => (
         {midCta.plain}
         <span className="font-serif font-normal italic">{midCta.italic}</span>
       </h2>
-      <p className="mx-auto mt-6 max-w-md text-lg text-primary-foreground/85">
+      <p className="mx-auto mt-6 max-w-md text-lg text-primary-foreground">
         {midCta.body}
       </p>
       <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
@@ -65,7 +65,7 @@ export const MidCta = () => (
               );
             })}
         </ul>
-        <p className="text-sm text-primary-foreground/85">{midCta.proof}</p>
+        <p className="text-sm text-primary-foreground">{midCta.proof}</p>
       </div>
     </div>
   </LandingSection>

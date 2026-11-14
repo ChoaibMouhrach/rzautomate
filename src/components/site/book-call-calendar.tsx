@@ -184,7 +184,7 @@ export const BookCallCalendar = ({
             Loading the calendar…
           </span>
         )}
-        <ScrollArea className="h-full max-h-full">
+        <ScrollArea className="h-full max-h-full [&>div]:overflow-x-hidden!">
           <Cal
             namespace={namespace}
             calOrigin={origin}
@@ -194,7 +194,7 @@ export const BookCallCalendar = ({
               theme: calTheme,
               ...(service && { "metadata[service]": service }),
             }}
-            className={`w-[calc(100%+1rem)] max-w-none [&_cal-inline]:block [&_cal-inline]:w-full transition-opacity duration-300 ${isReady ? "opacity-100" : "opacity-0"}`}
+            className={`w-full max-w-full [&_cal-inline]:block [&_cal-inline]:w-full [&_cal-inline]:max-w-full transition-opacity duration-300 ${isReady ? "opacity-100" : "opacity-0"}`}
           />
         </ScrollArea>
       </div>

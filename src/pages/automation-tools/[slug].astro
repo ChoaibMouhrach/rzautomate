@@ -1,0 +1,51 @@
+---
+import type { GetStaticPaths } from "astro";
+import { AlternativesSection } from "@/components/pages/automation-tools/tool/alternatives-section";
+import { BillingSection } from "@/components/pages/automation-tools/tool/billing-section";
+import { CostCalculator } from "@/components/pages/automation-tools/tool/cost-calculator";
+import { FaqSection } from "@/components/pages/automation-tools/tool/faq-section";
+import { FeaturesSection } from "@/components/pages/automation-tools/tool/features-section";
+import { FitSection } from "@/components/pages/automation-tools/tool/fit-section";
+import { FreePlanSection } from "@/components/pages/automation-tools/tool/free-plan-section";
+import { PricingSection } from "@/components/pages/automation-tools/tool/pricing-section";
+import { RelatedSection } from "@/components/pages/automation-tools/tool/related-section";
+import { ToolCta } from "@/components/pages/automation-tools/tool/tool-cta";
+import { ToolMidCta } from "@/components/pages/automation-tools/tool/tool-mid-cta";
+import { ToolHero } from "@/components/pages/automation-tools/tool/tool-hero";
+import { ToolJsonLd } from "@/components/pages/automation-tools/tool/tool-json-ld";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { PageContent } from "@/components/site/page";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+import { toolPages } from "@/lib/tool-pages";
+
+export const getStaticPaths = (() =>
+  toolPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }))) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const seo = pageSocial({ title: page.seo.title, description: page.seo.description });
+---
+
+<SiteLayout {...seo}>
+  <ToolJsonLd page={page} />
+  <ToolHero page={page} />
+  <PageContent>
+    <PricingSection slug={page.slug} client:load />
+    <BillingSection page={page} />
+    <CostCalculator slug={page.slug} client:visible />
+    <ToolMidCta page={page} />
+    <FreePlanSection page={page} />
+    <FeaturesSection page={page} />
+    <FitSection page={page} />
+    <AlternativesSection page={page} />
+    <FaqSection page={page} />
+    <ToolCta page={page} />
+    <RelatedSection page={page} />
+    <div class="mt-16">
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Automation Tools", href: "/automation-tools" }, { label: page.name }]} />
+    </div>
+  </PageContent>
+</SiteLayout>

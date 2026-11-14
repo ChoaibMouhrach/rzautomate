@@ -39,6 +39,7 @@ export const absoluteUrl = (path: string) => new URL(path, site.url).toString();
 
 export const nav = [
   { href: "/services", label: "Services" },
+  { href: "/automation-tools", label: "Automation tools" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },

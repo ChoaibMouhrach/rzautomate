@@ -46,7 +46,7 @@ export const Header = () => {
             : "h-20 max-w-6xl rounded-none bg-transparent px-6"
         }`}
       >
-          <Link href="/" className="font-semibold tracking-tight no-underline hover:no-underline">
+          <Link href="/" className="justify-self-start font-semibold tracking-tight no-underline hover:no-underline">
             <Logo />
           </Link>
           <div className="hidden text-sm sm:block">

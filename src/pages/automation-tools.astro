@@ -1,0 +1,34 @@
+---
+import { AutomationToolsJsonLd } from "@/components/pages/automation-tools/json-ld";
+import { Billing } from "@/components/pages/automation-tools/billing";
+import { Choose } from "@/components/pages/automation-tools/choose";
+import { Cta } from "@/components/pages/automation-tools/cta";
+import { Faq } from "@/components/pages/automation-tools/faq";
+import { Hero } from "@/components/pages/automation-tools/hero";
+import { QuickPicks } from "@/components/pages/automation-tools/quick-picks";
+import { ToolsSection } from "@/components/pages/automation-tools/tools-section";
+import { Types } from "@/components/pages/automation-tools/types";
+import { PageContent } from "@/components/site/page";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { pageSocial } from "@/lib/metadata";
+
+const seo = pageSocial({
+  title: "Workflow Automation Tools Compared by Price",
+  description:
+    "Compare the pricing of n8n, Zapier, Make and other workflow automation tools. See what each costs, what you're charged for and which have a free plan.",
+});
+---
+
+<SiteLayout {...seo}>
+  <AutomationToolsJsonLd />
+  <Hero />
+  <PageContent>
+    <ToolsSection client:load />
+    <Billing client:visible />
+    <QuickPicks />
+    <Choose />
+    <Types />
+    <Faq />
+    <Cta />
+  </PageContent>
+</SiteLayout>

@@ -23,6 +23,7 @@ export const footer = {
         { label: "What to automate first", href: "/tools/what-to-automate-first" },
         { label: "AI readiness check", href: "/tools/ai-readiness-check" },
         { label: "Compare AI model prices", href: "/models" },
+        { label: "Compare automation tools", href: "/automation-tools" },
       ],
     },
     {

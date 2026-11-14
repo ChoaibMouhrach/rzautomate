@@ -1,3 +1,4 @@
+import { Link } from "@/components/ui/link";
 import { LandingHeading, LandingSection } from "@/components/site/landing-section";
 import type { ToolsContent } from "./types";
 
@@ -18,15 +19,28 @@ export const Tools = ({ tools }: { tools: ToolsContent }) => (
           key={tool.name}
           className="flex aspect-square items-center justify-center rounded-2xl bg-background dark:bg-white"
         >
-          <img
-            src={tool.src}
-            alt={tool.name}
-            title={tool.name}
-            loading="lazy"
-            className="size-[45%] object-contain"
-          />
+          {tool.href ? (
+            <a href={tool.href} aria-label={tool.ariaLabel} className="flex size-full items-center justify-center rounded-2xl focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring">
+              <img src={tool.src} alt="" title={tool.name} loading="lazy" className="size-[45%] object-contain" />
+            </a>
+          ) : (
+            <img
+              src={tool.src}
+              alt={tool.name}
+              title={tool.name}
+              loading="lazy"
+              className="size-[45%] object-contain"
+            />
+          )}
         </li>
       ))}
     </ul>
+    {tools.footnote && (
+      <p className="mx-auto mt-8 max-w-5xl text-center text-muted-foreground">
+        {tools.footnote.map((part, index) =>
+          typeof part === "string" ? part : <Link key={index} href={part.href}>{part.label}</Link>,
+        )}
+      </p>
+    )}
   </LandingSection>
 );

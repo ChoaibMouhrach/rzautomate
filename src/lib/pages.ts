@@ -1,3 +1,4 @@
+import { toolPages } from "@/lib/tool-pages";
 import { models } from "@/lib/models";
 import { services } from "@/lib/services";
 import { legalNav, nav } from "@/lib/site";
@@ -6,6 +7,7 @@ export const pagePaths = (postSlugs: readonly string[]) => [
     "/",
     "/tools/automation-roi-calculator",
     "/models",
+    ...toolPages.map((page) => `/automation-tools/${page.slug}`),
     ...models.map((model) => `/models/${model.slug}`),
     ...nav.map((item) => item.href),
     ...services.map((service) => `/services/${service.slug}`),

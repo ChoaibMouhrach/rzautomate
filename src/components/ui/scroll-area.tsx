@@ -9,7 +9,7 @@ const scrollbar = tv({
   variants: {
     orientation: {
       vertical: "w-2.5 justify-center",
-      horizontal: "h-2.5 items-center",
+      horizontal: "h-2.5 items-center opacity-100",
     },
   },
   defaultVariants: { orientation: "vertical" },
@@ -35,6 +35,6 @@ export const ScrollArea = ({
         orientation={orientation}
         className={scrollbar({ orientation })}
       >
-        <BaseScrollArea.Thumb className="w-full flex-1 rounded-full bg-muted-foreground/40 hover:bg-muted-foreground/70" />
+        <BaseScrollArea.Thumb className={`rounded-full bg-muted-foreground/50 hover:bg-muted-foreground/70 ${orientation === "horizontal" ? "h-full" : "w-full flex-1"}`} />
       </BaseScrollArea.Scrollbar>
     </BaseScrollArea.Root>;

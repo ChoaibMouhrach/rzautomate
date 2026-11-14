@@ -1,4 +1,5 @@
 import { getPosts, lastModified, postPath } from "@/lib/blog";
+import { toolsCheckedAt } from "@/lib/automation-tools";
 import { modelsCheckedAt } from "@/lib/models";
 import { pagePaths } from "@/lib/pages";
 import { absoluteUrl } from "@/lib/site";
@@ -12,7 +13,9 @@ export const GET = async () => {
   const entries = pagePaths(posts.map((post) => post.id))
     .map((path) => {
       const lastModified =
-        path === "/models" || path.startsWith("/models/")
+        path === "/automation-tools" || path.startsWith("/automation-tools/")
+          ? toolsCheckedAt
+          : path === "/models" || path.startsWith("/models/")
           ? modelsCheckedAt
           : postDates.get(path);
       return `<url><loc>${absoluteUrl(path)}</loc>${lastModified ? `<lastmod>${lastModified}</lastmod>` : ""}</url>`;

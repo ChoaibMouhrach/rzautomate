@@ -8,7 +8,7 @@ type Props = PageSeo;
 ---
 
 <BaseLayout {...Astro.props}>
-  <Header client:load transition:persist="header" />
+  <Header client:idle transition:persist="header" />
   <main class="flex-1"><slot /></main>
   <Footer />
 </BaseLayout>

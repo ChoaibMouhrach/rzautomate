@@ -19,7 +19,7 @@ const permanent = (destination: string) => ({ status: 301 as const, destination 
 export default defineConfig({
   site: PUBLIC_SITE_URL,
   trailingSlash: "never",
-  build: { format: "file" },
+  build: { format: "file", inlineStylesheets: "always" },
   adapter: cloudflare({
     imageService: "passthrough",
     prerenderEnvironment: "node",

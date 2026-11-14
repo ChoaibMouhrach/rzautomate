@@ -68,7 +68,7 @@ export const FlowHero = ({
         style={delay(0.45)}
       >
         <img
-          src="/hero-bg.jpg"
+          src="/hero-bg.webp" width={1600} height={900}
           alt=""
           fetchPriority="high"
           className="absolute inset-0 -z-10 size-full object-cover"

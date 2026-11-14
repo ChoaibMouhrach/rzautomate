@@ -1,4 +1,8 @@
 import { useSyncExternalStore } from "react";
+import { toolTypes } from "@/lib/automation-tools";
+
+export const sortKeys = ["startsAt", "name", "youPayFor", "freePlan", "bestFor"] as const;
+export type SortKey = (typeof sortKeys)[number];
 
 const changeEvent = "tools-table-url-change";
 
@@ -11,10 +15,11 @@ const subscribe = (onChange: () => void) => {
   };
 };
 
-export const useToolsTableState = (filterKeys: readonly string[]) => {
+export const useToolsTableState = () => {
   const search = useSyncExternalStore(subscribe, () => window.location.search, () => "");
   const params = new URLSearchParams(search);
-  const requested = params.get("filter") ?? "";
+  const requestedType = params.get("type") ?? "";
+  const requestedSort = params.get("sort");
   const updateParams = (updates: Record<string, string>) => {
     const url = new URL(window.location.href);
     for (const [key, value] of Object.entries(updates)) {
@@ -26,7 +31,11 @@ export const useToolsTableState = (filterKeys: readonly string[]) => {
   };
   return {
     query: params.get("q") ?? "",
-    filter: filterKeys.includes(requested) ? requested : filterKeys[0],
+    type: toolTypes.find((type) => type === requestedType) ?? "",
+    free: params.get("free") === "1",
+    selfHosted: params.get("selfhosted") === "1",
+    openSource: params.get("opensource") === "1",
+    sort: { key: sortKeys.find((key) => key === requestedSort) ?? "startsAt", ascending: params.get("order") !== "desc" },
     updateParams,
   };
 };

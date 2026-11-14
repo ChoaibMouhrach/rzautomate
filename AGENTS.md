@@ -40,4 +40,4 @@ Use the default sans font everywhere, including headings and accent words. Do no
 
 ## Breadcrumbs
 
-Do not add visible breadcrumbs to tool pages or service pages.
+Do not add visible breadcrumbs to tool pages. Service pages may have visible breadcrumbs, but only at the very end of the page, after all other content.

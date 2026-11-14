@@ -2,6 +2,7 @@
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { ContactCta } from "@/components/site/contact-cta";
 import { Page, PageContent } from "@/components/site/page";
+import { ServiceBreadcrumbs } from "@/components/site/service-page/service-breadcrumbs";
 import { ServiceList } from "@/components/pages/services/service-list";
 import { ServicesHeader } from "@/components/pages/services/services-header";
 import { ServicesJsonLd } from "@/components/pages/services/services-json-ld";
@@ -13,9 +14,10 @@ import { pageMetadata } from "@/lib/pages";
   <Page>
     <ServicesJsonLd />
     <ServicesHeader />
-    <PageContent>
+    <PageContent className="pb-0">
       <ServiceList />
       <ContactCta className="mt-16" />
     </PageContent>
+    <ServiceBreadcrumbs className="pt-16" />
   </Page>
 </SiteLayout>

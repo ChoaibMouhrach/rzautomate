@@ -36,6 +36,7 @@ import { Related } from "@/components/site/service-page/related";
 import { Results } from "@/components/site/service-page/results";
 import { Testimonials } from "@/components/site/service-page/testimonials";
 import { Tools } from "@/components/site/service-page/tools";
+import { ServiceBreadcrumbs } from "@/components/site/service-page/service-breadcrumbs";
 import { ServicePosts } from "@/components/site/service-posts";
 import { getPostsForService } from "@/lib/blog";
 import SiteLayout from "@/layouts/SiteLayout.astro";
@@ -71,4 +72,5 @@ const posts = await getPostsForService("ai-document-processing");
   <BookCall {...book} id="book" tone="dark" client:visible />
   <Related related={related} />
   <ServicePosts posts={posts} />
+  <ServiceBreadcrumbs name={seo.serviceName} />
 </SiteLayout>

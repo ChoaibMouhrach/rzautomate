@@ -15,8 +15,8 @@ export const services: readonly Service[] = [
     title: "AI customer support agents",
     description:
       "AI agents that answer routine customer questions, triage support requests and hand off to your team when needed.",
-    image: "/services/ai-agents.svg",
-    imageAlt: "A central AI agent connected to chat messages and tools",
+    image: "/services/ai-customer-support-agents.webp",
+    imageAlt: "A full inbox of chat messages beside a short queue where a person picks up one reply",
     overview:
       "We build AI agents that take on whole tasks, not just single steps: answering support requests, researching prospects, triaging inboxes or preparing reports. Each agent is designed around your tools and your rules, with clear hand-offs to your team when a person should decide.",
     features: [
@@ -36,8 +36,8 @@ export const services: readonly Service[] = [
     title: "AI lead generation & CRM automation",
     description:
       "Research, score and add new leads to your CRM, with first follow-ups drafted for your team to review.",
-    image: "/services/lead-and-sales-automation.svg",
-    imageAlt: "Leads flowing down a sales funnel",
+    image: "/services/ai-lead-generation.webp",
+    imageAlt: "An envelope of new leads being booked into the open slots of a calendar",
     overview:
       "Good leads go cold when follow-up is slow or inconsistent. We automate the path from first contact to a booked conversation so every lead is handled quickly and the right ones reach your sales team.",
     features: [
@@ -57,8 +57,8 @@ export const services: readonly Service[] = [
     title: "AI document processing",
     description:
       "Read invoices, receipts, POs and forms, validate the extracted data and send it to your accounting tools, CRM or sheets. Unclear fields go to review.",
-    image: "/services/data-and-document-processing.svg",
-    imageAlt: "A document being turned into a structured table",
+    image: "/services/ai-document-processing.webp",
+    imageAlt: "A stack of invoices beside a closed ledger book",
     overview:
       "Invoices, contracts, forms and emails hold information your systems cannot use until someone types it in. We build pipelines that read, classify and extract that information, then send it where it belongs.",
     features: [
@@ -78,8 +78,8 @@ export const services: readonly Service[] = [
     title: "AI agent development",
     description:
       "Custom agents that answer from your docs, research, take approved actions and connect Claude or ChatGPT to your systems through MCP.",
-    image: "/services/ai-agents.svg",
-    imageAlt: "An AI agent connected to messages and business tools",
+    image: "/services/ai-agent-development.webp",
+    imageAlt: "A checklist with three items ticked and a person about to tick the last one",
     overview:
       "I build custom AI agents for jobs that need reading, judgment and several steps across your tools. Each agent is tested on your real examples before launch, asks for approval before risky actions and logs every run.",
     features: [
@@ -99,8 +99,8 @@ export const services: readonly Service[] = [
     title: "Automation maintenance",
     description:
       "Monitoring, fixes and updates for your n8n, Make, Zapier and AI automations, so they keep running as your business grows.",
-    image: "/services/workflow-automation.svg",
-    imageAlt: "A workflow with every step checked and running",
+    image: "/services/automation-maintenance.webp",
+    imageAlt: "A pipe patched with orange tape so water keeps flowing",
     overview:
       "Automations stop quietly when an app changes or a process moves on. We monitor your workflows and AI agents, fix what breaks and update them as your business grows, whether we built them or someone else did.",
     features: [

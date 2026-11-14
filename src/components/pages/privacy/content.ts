@@ -1,35 +1,98 @@
-import { site } from "@/lib/site";
+import type { LegalSection } from "@/components/site/legal-page";
+import { company, site } from "@/lib/site";
 
-// DRAFT: placeholder text. Have a lawyer review before launch.
-const sections = [
+// DRAFT: written from what this site does today. Update it when the newsletter provider or analytics change, and have a lawyer review before launch.
+const sections: LegalSection[] = [
+  {
+    heading: "Who we are",
+    blocks: [
+      { paragraph: `${site.name} is operated by ${company.legalName}, a Wyoming limited liability company at ${company.address.streetAddress}, ${company.address.addressLocality}, ${company.address.addressRegion} ${company.address.postalCode}. This policy explains what personal information we collect through ${site.url.replace("https://", "")} and what we do with it.` },
+    ],
+  },
   {
     heading: "Information we collect",
-    body: "We collect the information you give us, such as your name, email address, company and message when you contact us, along with basic usage data about how you use this website.",
+    blocks: [
+      { paragraph: "We collect only what you choose to give us or what your browser sends when you visit:" },
+      {
+        list: [
+          "Booking details. When you book a call, the scheduling tool collects your name, email address, the time you choose, and any notes or answers you add, such as your company website, your CRM or your monthly lead volume.",
+          "Newsletter. If you subscribe, we collect your email address.",
+          "Email. If you write to us, we keep your message and your email address.",
+          "Technical data. Like most websites, our hosting provider processes your IP address and basic request details such as the page requested, browser type and time, to deliver the site and keep it secure.",
+          "Your theme choice. If you pick a light or dark theme, your browser stores that choice on your device. It is not sent to us.",
+        ],
+      },
+    ],
   },
   {
     heading: "How we use it",
-    body: "We use your information to respond to enquiries, provide and improve our services, and keep this website secure. We do not sell your personal information.",
+    blocks: [
+      { paragraph: "We use your information to:" },
+      {
+        list: [
+          "Respond to enquiries and run the calls you book",
+          "Send the newsletter, if you subscribed. You can unsubscribe at any time",
+          "Provide and improve our services",
+          "Keep this website secure and working",
+        ],
+      },
+      { paragraph: "We do not sell your personal information, and we do not use it for advertising." },
+    ],
   },
   {
-    heading: "Sharing",
-    body: "We share information only with service providers who help us run our business, such as hosting and email tools, and when required by law.",
+    heading: "Service providers",
+    blocks: [
+      { paragraph: "We share information only with providers who help us run the site and our business, and when the law requires it. These include:" },
+      {
+        list: [
+          "Cal.com, which runs our booking calendar and receives the details you enter when you book",
+          "Cloudflare, which hosts this website and delivers it to your browser",
+          "Our email and newsletter tools, which receive the addresses used to contact you",
+        ],
+      },
+      { paragraph: "These providers handle your information under their own privacy policies." },
+    ],
   },
   {
-    heading: "Retention",
-    body: "We keep personal information only as long as needed for the purposes described here or as required by law.",
+    heading: "Cookies and tracking",
+    blocks: [
+      { paragraph: "This site does not use advertising or analytics trackers. The booking calendar is provided by Cal.com and may set its own cookies when it loads. If we add analytics later, we will update this policy." },
+    ],
+  },
+  {
+    heading: "How long we keep it",
+    blocks: [
+      { paragraph: "We keep booking and email records for as long as we need them to run the relationship and meet our legal and accounting duties. We keep newsletter addresses until you unsubscribe. You can ask us to delete your information at any time." },
+    ],
   },
   {
     heading: "Your rights",
-    body: "Depending on where you live, you may have the right to access, correct or delete your personal information. Contact us to make a request.",
+    blocks: [
+      { paragraph: "Depending on where you live, you may have the right to access, correct, delete or export the personal information we hold about you, and to object to how we use it. To make a request, email us at the address below. We will respond within a reasonable time." },
+    ],
+  },
+  {
+    heading: "Children",
+    blocks: [
+      { paragraph: "This website is for businesses and is not directed at children. We do not knowingly collect information from anyone under 16." },
+    ],
+  },
+  {
+    heading: "Changes to this policy",
+    blocks: [
+      { paragraph: "We may update this policy. The date at the top shows when it last changed." },
+    ],
   },
   {
     heading: "Contact",
-    body: `Questions about this policy can be sent to ${site.email}.`,
+    blocks: [
+      { paragraph: `Questions about this policy can be sent to ${site.email}.` },
+    ],
   },
 ];
 
 export const privacyPolicy = {
   title: "Privacy Policy",
-  updated: "October 2026",
+  updated: "November 14, 2026",
   sections,
 };

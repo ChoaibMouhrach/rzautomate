@@ -44,10 +44,7 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const legalNav = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
-] as const;
+export const legalNav = [{ href: "/terms", label: "Terms and Services" }] as const;
 
 export const entitySentence =
   "RZ Automate is an AI automation agency that builds AI agents and automated workflows so businesses can scale without hiring for every repetitive task.";

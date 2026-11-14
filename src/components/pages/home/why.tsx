@@ -15,7 +15,7 @@ const bodyStyles = [
   "text-paper/70",
   "text-muted-foreground",
   "text-muted-foreground",
-  "text-primary-foreground",
+  "text-primary-foreground/85",
 ];
 
 const iconStyles = [

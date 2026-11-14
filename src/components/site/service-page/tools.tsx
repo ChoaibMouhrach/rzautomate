@@ -12,7 +12,7 @@ export const Tools = ({ tools }: { tools: ToolsContent }) => (
         <p className="text-2xl font-semibold tracking-tighter md:text-3xl">
           {tools.centerTitle}
         </p>
-        <p className="text-primary-foreground">{tools.centerLine}</p>
+        <p className="text-primary-foreground/80">{tools.centerLine}</p>
       </li>
       {tools.logos.map((tool) => (
         <li

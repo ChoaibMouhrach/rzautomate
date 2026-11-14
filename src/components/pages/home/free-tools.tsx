@@ -59,7 +59,7 @@ export const FreeTools = () => (
                 </span>
               </div>
               <div>
-                <p className={`text-sm font-medium ${isDark ? "text-paper/60 [&_span]:text-[#ff6b5e]" : "text-muted-foreground"}`}>
+                <p className={`text-sm font-medium ${isDark ? "text-paper/60" : "text-muted-foreground"}`}>
                   <FreeText>{tile.tag}</FreeText>
                 </p>
                 <h3 className="mt-2 text-3xl font-semibold leading-tight tracking-tighter">

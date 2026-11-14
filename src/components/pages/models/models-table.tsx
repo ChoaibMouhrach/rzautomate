@@ -1,78 +1,209 @@
 "use client";
 
-import { Button, Link } from "react-aria-components";
-import { DirectoryTableShell, FilterChip, Yes, rowClass, rowLinkClass, searchFieldClass, stickyCellClass, tableHeadClass } from "@/components/site/directory";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { ModelsTooltip } from "./models-tooltip";
+import { ArrowRight, Brain, Eye, LockOpen, Wrench } from "lucide-react";
+import { FilterChip } from "@/components/site/directory";
+import { EmptyBanner, FilterSelect, SearchField, SelectItem, SortButton } from "@/components/site/directory-controls";
+import { formatPrice, models, tiers, type AiModel } from "@/lib/models";
+import { tierLabels } from "./content";
 import { useModelsTableState, type SortKey } from "./models-table-state";
-import { Brain, Eye, Braces, Wrench } from "lucide-react";
-import { formatPrice, formatTokens, models, type AiModel } from "@/lib/models";
+import { ProviderChip, ProviderLogo } from "./provider-logo";
 
-const columns: { key: SortKey; label: string; tip: string }[] = [
-  { key: "name", label: "Model", tip: "Links to the full spec and pricing page." },
-  { key: "provider", label: "Provider", tip: "The company that makes the model." },
-  { key: "inputPrice", label: "Input $/1M", tip: "Price for 1 million tokens you send: prompts, documents and chat history." },
-  { key: "outputPrice", label: "Output $/1M", tip: "Price for 1 million tokens the model writes back." },
-  { key: "cachedInputPrice", label: "Cached input $/1M", tip: "Rate for cached input. A dash means not offered or not published." },
-  { key: "context", label: "Context", tip: "Maximum context budget per request, in tokens." },
-  { key: "output", label: "Max output", tip: "Maximum generated tokens in a single answer." },
-  { key: "features", label: "Features", tip: "Tool calling, vision, reasoning and structured output; sorted by supported feature count." },
-  { key: "openWeights", label: "Open weights", tip: "Whether downloadable model weights are available." },
-  { key: "released", label: "Released", tip: "First public release date." },
-];
-const features = [
+const featureList = [
   { key: "tools", label: "Tool calling", Icon: Wrench },
-  { key: "vision", label: "Vision (image input)", Icon: Eye },
+  { key: "vision", label: "Vision", Icon: Eye },
   { key: "reasoning", label: "Reasoning", Icon: Brain },
-  { key: "structured", label: "Structured output", Icon: Braces },
 ] as const;
-const sortValue = (model: AiModel, key: SortKey) => key === "features" ? features.filter(({ key }) => model[key]).length : typeof model[key] === "boolean" ? Number(model[key]) : model[key];
+
+const columns: { key: SortKey; label: string }[] = [
+  { key: "name", label: "Model" },
+  { key: "outputPrice", label: "Output / 1M" },
+  { key: "inputPrice", label: "Input / 1M" },
+  { key: "context", label: "Context" },
+  { key: "features", label: "Features" },
+];
+
+const providers = [...new Set(models.map((model) => model.provider))];
+const maxContext = Math.max(...models.map((model) => model.context));
+
+const compact = (tokens: number) => (tokens >= 1_000_000 ? `${Number((tokens / 1_000_000).toFixed(2))}M` : `${Math.round(tokens / 1000)}K`);
+
+const cellClass = "h-px bg-background p-0 transition-colors group-hover:bg-ink group-hover:text-paper";
+const linkClass = "flex h-full items-center gap-3 px-5 py-4 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring";
+
+const Features = ({ model }: { model: AiModel }) => (
+  <>
+    {featureList.map(({ key, label, Icon }) =>
+      model[key] ? (
+        <span key={key} className="flex size-8 items-center justify-center rounded-full bg-muted text-primary group-hover:bg-paper/10">
+          <Icon size={16} role="img" aria-label={label} />
+        </span>
+      ) : null,
+    )}
+    {model.openWeights && (
+      <span className="flex h-8 items-center gap-1 rounded-full bg-primary px-2.5 text-xs font-medium text-primary-foreground">
+        <LockOpen size={14} aria-hidden="true" />
+        Open
+      </span>
+    )}
+  </>
+);
+
+const sortValue = (model: AiModel, key: SortKey) => {
+  if (key === "features") return [model.tools, model.vision, model.reasoning, model.structured].filter(Boolean).length;
+  const value = model[key];
+  return typeof value === "boolean" ? Number(value) : value;
+};
 
 export const ModelsTable = () => {
-  const { query, provider, weights, selected, sort, updateParams } = useModelsTableState();
-  const rows = models.filter((model) => `${model.name} ${model.provider} ${model.modelId}`.toLowerCase().includes(query.trim().toLowerCase()) && (!provider || model.provider === provider) && (!weights || model.openWeights === (weights === "open")) && selected.every((feature) => model[feature])).sort((a, b) => {
-    const left = sortValue(a, sort.key);
-    const right = sortValue(b, sort.key);
-    const comparison = typeof left === "number" && typeof right === "number" ? left - right : String(left).localeCompare(String(right));
-    return (sort.ascending ? comparison : -comparison) || a.name.localeCompare(b.name);
-  });
+  const { query, provider, tier, weights, selected, sort, updateParams } = useModelsTableState();
+  const needle = query.trim().toLowerCase();
+  const rows = models
+    .filter((model) => `${model.name} ${model.provider} ${model.modelId}`.toLowerCase().includes(needle) && (!provider || model.provider === provider) && (!tier || model.tier === tier) && (!weights || model.openWeights === (weights === "open")) && selected.every((feature) => model[feature]))
+    .sort((a, b) => {
+      const left = sortValue(a, sort.key);
+      const right = sortValue(b, sort.key);
+      const comparison = typeof left === "number" && typeof right === "number" ? left - right : String(left).localeCompare(String(right));
+      return (sort.ascending ? comparison : -comparison) || a.name.localeCompare(b.name);
+    });
 
-  const providers = [...new Set(models.map((model) => model.provider))];
+  const hasFilters = Boolean(query || provider || tier || weights || selected.length);
+  const clearFilters = () => updateParams({ q: "", provider: "", tier: "", weights: "", features: "" });
+  const toggleFeature = (key: string) => updateParams({ features: (selected.some((item) => item === key) ? selected.filter((item) => item !== key) : [...selected, key]).join(",") });
+  const sortBy = (key: SortKey) => updateParams({ sort: key === "outputPrice" ? "" : key, order: sort.key === key && sort.ascending ? "desc" : "" });
 
   return (
-    <>
-      <label className="block">
-        <span className="sr-only">Search models</span>
-        <input type="search" value={query} onChange={(event) => updateParams({ q: event.target.value })} placeholder="Search a model, e.g. Claude or GPT" className={searchFieldClass} />
-      </label>
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter models">
-        <FilterChip pressed={!provider} onPress={() => updateParams({ provider: "" })}>All providers</FilterChip>
-        {providers.map((name) => <FilterChip key={name} pressed={provider === name} onPress={() => updateParams({ provider: provider === name ? "" : name })}>{name}</FilterChip>)}
-        <span className="mx-1 hidden h-6 w-px bg-border sm:block" aria-hidden="true" />
-        <FilterChip pressed={weights === "open"} onPress={() => updateParams({ weights: weights === "open" ? "" : "open" })}>Open weights</FilterChip>
-        {features.map(({ key, label, Icon }) => <FilterChip key={key} pressed={selected.includes(key)} onPress={() => updateParams({ features: (selected.includes(key) ? selected.filter((item) => item !== key) : [...selected, key]).join(",") })}><Icon size={16} aria-hidden="true" />{label}</FilterChip>)}
+    <div className="space-y-4">
+      <div className="space-y-4 rounded-3xl bg-muted p-3 sm:p-4">
+        <div className="flex flex-col gap-3 lg:flex-row">
+          <SearchField value={query} onChange={(value) => updateParams({ q: value })} placeholder="Search a model, like Claude or Gemini" />
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <FilterSelect label="Provider" selectedKey={provider || "all"} onChange={(key) => updateParams({ provider: key === "all" ? "" : key })}>
+              <SelectItem id="all" textValue="All providers"><span aria-hidden className="size-4" />All providers</SelectItem>
+              {providers.map((name) => (
+                <SelectItem key={name} id={name} textValue={name}>
+                  <ProviderLogo provider={name} className="size-4" />
+                  {name}
+                </SelectItem>
+              ))}
+            </FilterSelect>
+            <FilterSelect label="Tier" selectedKey={tier || "all"} onChange={(key) => updateParams({ tier: key === "all" ? "" : key })}>
+              <SelectItem id="all" textValue="All tiers">All tiers</SelectItem>
+              {tiers.map((name) => <SelectItem key={name} id={name} textValue={tierLabels[name]}>{tierLabels[name]}</SelectItem>)}
+            </FilterSelect>
+          </div>
+        </div>
+        <div role="group" aria-label="Filter by feature" className="flex flex-wrap items-center gap-2">
+          {featureList.map(({ key, label, Icon }) => (
+            <FilterChip inset key={key} pressed={selected.some((item) => item === key)} onPress={() => toggleFeature(key)}>
+              <Icon size={16} aria-hidden="true" />
+              {label}
+            </FilterChip>
+          ))}
+          <FilterChip inset pressed={weights === "open"} onPress={() => updateParams({ weights: weights === "open" ? "" : "open" })}>
+            <LockOpen size={16} aria-hidden="true" />
+            Open weights
+          </FilterChip>
+          {hasFilters && (
+            <button type="button" onClick={clearFilters} className="ml-auto cursor-pointer rounded-sm px-2 text-sm font-medium underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring">
+              Clear filters
+            </button>
+          )}
+        </div>
       </div>
-      <p className="text-sm text-muted-foreground" aria-live="polite">{rows.length} of {models.length} models</p>
-      <DirectoryTableShell>
-        <ScrollArea orientation="horizontal" contentClassName="pb-3">
-          <table className="w-full text-left text-sm">
-            <caption className="sr-only">API pricing in US dollars per million tokens. Select a row for pricing and specs. Use column buttons to sort.</caption>
-            <thead><tr>{columns.map(({ key, label, tip }) => <th key={key} scope="col" aria-sort={sort.key === key ? sort.ascending ? "ascending" : "descending" : "none"} className={`${tableHeadClass} ${key === "name" ? "sticky left-0 z-10 bg-muted" : ""}`}><ModelsTooltip content={tip}><Button onPress={() => updateParams({ sort: key === "outputPrice" ? "" : key, order: sort.key === key && sort.ascending ? "desc" : "" })} className="cursor-pointer text-left uppercase tracking-wide">{label}{sort.key === key && <span aria-hidden="true">{sort.ascending ? " ↑" : " ↓"}</span>}</Button></ModelsTooltip></th>)}</tr></thead>
-            <tbody className="divide-y divide-border/60">
-              {rows.map((model) => <tr key={model.slug} className={rowClass}>
-                <th scope="row" className={`${stickyCellClass} whitespace-nowrap px-5 py-5 text-base font-semibold`}><a href={`/models/${model.slug}`} className={rowLinkClass}><span className="sr-only">See </span>{model.name}<span className="sr-only"> pricing and specs</span></a></th>
-                <td className="px-5 py-5 text-muted-foreground">{model.provider}</td>
-                <td className="px-5 py-5 tabular-nums">{formatPrice(model.inputPrice)}</td><td className="px-5 py-5 font-semibold tabular-nums">{formatPrice(model.outputPrice)}</td><td className="px-5 py-5 tabular-nums text-muted-foreground">{formatPrice(model.cachedInputPrice)}</td>
-                <td className="px-5 py-5 tabular-nums">{formatTokens(model.context)}</td><td className="px-5 py-5 tabular-nums text-muted-foreground">{formatTokens(model.output)}</td>
-                <td className="px-5 py-5"><span className="flex gap-3">{features.map(({ key, label, Icon }) => model[key] ? <ModelsTooltip key={key} content={label}><Link href={`/models/${model.slug}`} aria-label={`${model.name}: ${label}`} className="relative z-10 -m-1 rounded-sm p-1 text-primary outline-offset-4 data-[focus-visible]:outline-2 data-[focus-visible]:outline-ring"><Icon size={16} aria-hidden="true" /></Link></ModelsTooltip> : null)}</span></td>
-                <td className="px-5 py-5"><Yes value={model.openWeights} label="Open weights" /></td><td className="whitespace-nowrap px-5 py-5 text-muted-foreground"><time dateTime={model.released}>{model.released}</time></td>
-              </tr>)}
-              {!rows.length && <tr><td colSpan={columns.length} className="px-6 py-12 text-center text-muted-foreground">No model matches those filters. Clear one and try again.</td></tr>}
-            </tbody>
-          </table>
-        </ScrollArea>
-      </DirectoryTableShell>
-      <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground" aria-label="Feature legend">{features.map(({ key, label, Icon }) => <span key={key} className="flex items-center gap-2"><Icon size={14} aria-hidden="true" />{label}</span>)}</div>
-    </>
+
+      <p className="sr-only" aria-live="polite">{rows.length ? "Results updated" : "No models match"}</p>
+
+      {rows.length > 0 && (
+        <>
+          <div className="rounded-3xl bg-muted p-2 md:hidden">
+            <div className="flex flex-wrap gap-x-5 gap-y-1 px-3 pb-3 pt-2">
+              {columns.filter(({ key }) => key !== "name").map(({ key, label }) => <SortButton key={key} label={label} active={sort.key === key} ascending={sort.ascending} onPress={() => sortBy(key)} />)}
+            </div>
+            <ul className="space-y-2">
+              {rows.map((model) => (
+                <li key={model.slug}>
+                  <a href={`/models/${model.slug}`} className="block rounded-2xl bg-background p-4 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring">
+                    <span className="flex items-center gap-3">
+                      <ProviderChip provider={model.provider} className="size-11 bg-muted" logoClassName="size-6" />
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate font-semibold"><span className="sr-only">See </span>{model.name}<span className="sr-only"> pricing and specs</span></span>
+                        <span className="block truncate text-sm text-muted-foreground">{model.provider} · {tierLabels[model.tier]}</span>
+                      </span>
+                      <ArrowRight aria-hidden className="size-5 shrink-0 text-muted-foreground" />
+                    </span>
+                    <span className="mt-4 grid grid-cols-3 items-end gap-3">
+                      <span className="block"><span className="block text-xs text-muted-foreground">Output / 1M</span><span className="block text-2xl font-semibold tracking-tight tabular-nums">{formatPrice(model.outputPrice)}</span></span>
+                      <span className="block"><span className="block text-xs text-muted-foreground">Input / 1M</span><span className="block text-base text-muted-foreground tabular-nums">{formatPrice(model.inputPrice)}</span></span>
+                      <span className="block"><span className="block text-xs text-muted-foreground">Context</span><span className="block text-base font-medium tabular-nums">{compact(model.context)}</span></span>
+                    </span>
+                    <span className="mt-4 flex items-center gap-1.5">
+                      <Features model={model} />
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hidden rounded-3xl bg-muted px-2 md:block">
+            <table className="w-full table-fixed border-separate border-spacing-x-0 border-spacing-y-2 text-left">
+              <caption className="sr-only">AI model API pricing in US dollars per 1 million tokens. Use the column buttons to sort.</caption>
+              <colgroup>
+                <col className="w-[27%]" />
+                <col className="w-[13%]" />
+                <col className="w-[13%]" />
+                <col className="w-[15%]" />
+                <col className="w-[26%]" />
+                <col className="w-14" />
+              </colgroup>
+              <thead>
+                <tr>
+                  {columns.map(({ key, label }) => (
+                    <th key={key} scope="col" aria-sort={sort.key === key ? (sort.ascending ? "ascending" : "descending") : "none"} className="px-5 pb-1 pt-3 text-left font-normal">
+                      <SortButton label={label} active={sort.key === key} ascending={sort.ascending} onPress={() => sortBy(key)} />
+                    </th>
+                  ))}
+                  <th scope="col"><span className="sr-only">Open</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((model) => {
+                  const href = `/models/${model.slug}`;
+                  return (
+                    <tr key={model.slug} className="group">
+                      <th scope="row" className={`${cellClass} rounded-l-2xl font-normal`}>
+                        <a href={href} className={linkClass}>
+                          <ProviderChip provider={model.provider} className="size-11 bg-muted" logoClassName="size-6" />
+                          <span className="min-w-0 flex-1">
+                            <span className="block truncate font-semibold"><span className="sr-only">See </span>{model.name}<span className="sr-only"> pricing and specs</span></span>
+                            <span className="block truncate text-sm font-normal text-muted-foreground group-hover:text-paper/70">{model.provider} · {tierLabels[model.tier]}</span>
+                          </span>
+                        </a>
+                      </th>
+                      <td className={cellClass}><a href={href} tabIndex={-1} className={linkClass}><span className="text-2xl font-semibold tracking-tight tabular-nums">{formatPrice(model.outputPrice)}</span></a></td>
+                      <td className={cellClass}><a href={href} tabIndex={-1} className={linkClass}><span className="text-muted-foreground tabular-nums group-hover:text-paper/80">{formatPrice(model.inputPrice)}</span></a></td>
+                      <td className={cellClass}>
+                        <a href={href} tabIndex={-1} className={linkClass}>
+                          <span className="block w-full">
+                            <span className="block font-medium tabular-nums">{compact(model.context)}</span>
+                            <span aria-hidden className="mt-1.5 block h-1 w-full max-w-24 rounded-full bg-muted group-hover:bg-paper/20">
+                              <span className="block h-full rounded-full bg-primary" style={{ width: `${Math.max(8, (model.context / maxContext) * 100)}%` }} />
+                            </span>
+                          </span>
+                        </a>
+                      </td>
+                      <td className={cellClass}><a href={href} tabIndex={-1} className={`${linkClass} gap-1.5`}><Features model={model} /></a></td>
+                      <td className={`${cellClass} rounded-r-2xl`}><a href={href} tabIndex={-1} aria-hidden className={`${linkClass} justify-center px-0`}><ArrowRight className="size-5 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-paper" /></a></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
+      {rows.length === 0 && <EmptyBanner title="No model matches those filters." hint="Clear one and try again." onClear={clearFilters} />}
+    </div>
   );
 };

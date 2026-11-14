@@ -1,12 +1,13 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { models } from "@/lib/models";
+import { models, tiers } from "@/lib/models";
 
 export const sortKeys = ["name", "provider", "inputPrice", "outputPrice", "cachedInputPrice", "context", "output", "features", "openWeights", "released"] as const;
 export type SortKey = (typeof sortKeys)[number];
 export type Feature = "tools" | "vision" | "reasoning" | "structured";
 const providers = new Set<string>(models.map((model) => model.provider));
+const tierKeys: readonly string[] = tiers;
 const featureKeys: Feature[] = ["tools", "vision", "reasoning", "structured"];
 const changeEvent = "models-table-url-change";
 
@@ -27,6 +28,7 @@ export const readTableState = (search: string) => {
   return {
     query: params.get("q") ?? "",
     provider: providers.has(params.get("provider") ?? "") ? params.get("provider")! : "",
+    tier: tierKeys.includes(params.get("tier") ?? "") ? params.get("tier")! : "",
     weights: ["open", "closed"].includes(params.get("weights") ?? "") ? params.get("weights")! : "",
     selected: featureKeys.filter((key) => requestedFeatures.includes(key)),
     sort: { key: sortKey, ascending: params.get("order") !== "desc" },

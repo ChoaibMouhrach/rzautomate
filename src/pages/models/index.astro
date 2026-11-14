@@ -1,15 +1,33 @@
 ---
-import { ModelsDirectory } from "@/components/pages/models/models-directory";
+import { Choose } from "@/components/pages/models/choose";
+import { Cta } from "@/components/pages/models/cta";
+import { Faq } from "@/components/pages/models/faq";
+import { Hero } from "@/components/pages/models/hero";
+import { JobCosts } from "@/components/pages/models/job-costs";
+import { Method } from "@/components/pages/models/method";
+import { ModelsJsonLd } from "@/components/pages/models/models-json-ld";
+import { ModelsSection } from "@/components/pages/models/models-section";
+import { QuickPicks } from "@/components/pages/models/quick-picks";
+import { Tiers } from "@/components/pages/models/tiers";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import { pageSocial } from "@/lib/metadata";
-import { models } from "@/lib/models";
 
 const seo = pageSocial({
-  title: "Compare AI Models: API Pricing & Context Windows",
-  description: `Compare ${models.length} AI models from OpenAI and Anthropic. API prices per 1M tokens, context windows and features. Manually checked; last updated Nov 1, 2026.`,
+  title: "AI Model Comparison by API Price and Context Window",
+  description:
+    "Compare AI models from OpenAI, Anthropic, Google, DeepSeek and more. API price per 1M tokens, context window, features and what a real job costs.",
 });
 ---
 
 <SiteLayout {...seo}>
-  <ModelsDirectory client:load />
+  <ModelsJsonLd />
+  <Hero />
+  <ModelsSection client:load />
+  <JobCosts client:visible />
+  <QuickPicks />
+  <Tiers />
+  <Choose />
+  <Method />
+  <Faq />
+  <Cta client:visible />
 </SiteLayout>

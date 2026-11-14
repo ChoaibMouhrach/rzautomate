@@ -24,8 +24,8 @@ export const hero = {
   title: "Scale your business without scaling your headcount",
   description: `${entitySentence} Take on more leads, clients and orders while the follow-ups, data entry, support replies and reports run on their own.`,
   secondary: {
-    label: "Not ready to talk? Find what to automate first",
-    href: "/tools/what-to-automate-first",
+    label: "Not ready to talk? Calculate what you'd save",
+    href: "/tools/automation-roi-calculator",
   },
   trust: "Free · 30 min · No commitment",
 };
@@ -204,7 +204,6 @@ export const results = {
     figure: "45 → 5",
     figureLabel: "minutes per client onboarding",
     text: "A training company cut client onboarding from about 45 minutes to 5 by automating the folder, board and welcome email. Measured over 8 weeks.",
-    link: { label: "Read the case study", href: "/case-studies" },
   },
 };
 
@@ -355,7 +354,7 @@ export const midCta = {
 };
 
 export const freeTools = {
-  heading: "Free tools to find what to automate first",
+  heading: "Free tools to plan your automation",
   subhead: "Your result shows on screen. You don't need an email to see it.",
   tiles: [
     {
@@ -366,20 +365,6 @@ export const freeTools = {
       href: "/tools/automation-roi-calculator",
     },
     {
-      icon: "list-ordered",
-      name: "What to automate first",
-      line: "Answer 8 questions about your week and get a ranked list of tasks to hand off.",
-      tag: "Free · 4 min",
-      href: "/tools/what-to-automate-first",
-    },
-    {
-      icon: "gauge",
-      name: "AI readiness check",
-      line: "See whether your data, tools and processes are ready for AI, and what to fix first.",
-      tag: "Free · 5 min",
-      href: "/tools/ai-readiness-check",
-    },
-    {
       icon: "scale",
       name: "Compare AI model prices",
       line: "See what each AI model costs per task before you build.",
@@ -387,7 +372,7 @@ export const freeTools = {
       href: "/models",
     },
   ] as const,
-  footerLink: { label: "See all free tools", href: "/tools" },
+  footerLink: { label: "Compare automation tools", href: "/automation-tools" },
 };
 
 export const faq = {

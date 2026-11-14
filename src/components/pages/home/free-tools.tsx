@@ -1,4 +1,4 @@
-import { ArrowUpRight, Calculator, Gauge, ListOrdered, Scale } from "lucide-react";
+import { ArrowUpRight, Calculator, Scale } from "lucide-react";
 import { FreeText } from "@/components/ui/free-text";
 import { TextLink } from "@/components/ui/text-link";
 import { freeTools } from "./content";
@@ -6,24 +6,12 @@ import { LandingSection, LandingHeading } from "@/components/site/landing-sectio
 
 const icons = {
   calculator: Calculator,
-  "list-ordered": ListOrdered,
-  gauge: Gauge,
   scale: Scale,
 };
 
-const cardStyles = [
-  "bg-ink text-paper",
-  "bg-muted",
-  "bg-tint",
-  "bg-muted",
-];
+const cardStyles = ["bg-ink text-paper", "bg-muted"];
 
-const bodyStyles = [
-  "text-paper/70",
-  "text-muted-foreground",
-  "text-muted-foreground",
-  "text-muted-foreground",
-];
+const bodyStyles = ["text-paper/70", "text-muted-foreground"];
 
 export const FreeTools = () => (
   <LandingSection id="free-tools">
@@ -36,12 +24,12 @@ export const FreeTools = () => (
         {freeTools.footerLink.label} →
       </TextLink>
     </div>
-    <ul className="mt-14 grid gap-4 lg:grid-cols-3">
+    <ul className="mt-14 grid gap-4 md:grid-cols-2">
       {freeTools.tiles.map((tile, index) => {
         const Icon = icons[tile.icon];
         const isDark = index === 0;
         return (
-          <li key={tile.href} className={`flex ${index === 0 ? "lg:row-span-2" : ""} ${index === 3 ? "lg:col-span-2" : ""}`}>
+          <li key={tile.href} className="flex">
             <a
               href={tile.href}
               className={`group flex min-h-72 w-full flex-col justify-between gap-12 rounded-3xl p-8 transition-colors md:p-10 ${cardStyles[index]}`}

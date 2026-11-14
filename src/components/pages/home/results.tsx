@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { BookCallButton } from "./book-call-button";
 import { button } from "@/components/ui/button";
 import { results } from "./content";
@@ -44,10 +43,7 @@ export const Results = () => (
         </li>
       ))}
     </ul>
-    <a
-      href={results.summary.link.href}
-      className="group mt-4 grid items-center gap-8 rounded-3xl bg-ink p-8 text-paper md:p-12 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-14"
-    >
+    <div className="mt-4 grid items-center gap-8 rounded-3xl bg-ink p-8 text-paper md:p-12 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-14">
       <div>
         <p className="text-7xl font-semibold leading-none tracking-tighter md:text-8xl">
           {results.summary.figure}
@@ -55,10 +51,6 @@ export const Results = () => (
         <p className="mt-3 text-paper/60">{results.summary.figureLabel}</p>
       </div>
       <p className="max-w-xl text-lg text-paper/80">{results.summary.text}</p>
-      <span className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-medium text-primary-foreground transition-opacity group-hover:opacity-90">
-        {results.summary.link.label}
-        <ArrowUpRight aria-hidden className="size-5" />
-      </span>
-    </a>
+    </div>
   </LandingSection>
 );

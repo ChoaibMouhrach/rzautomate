@@ -5,7 +5,7 @@ export { entitySentence };
 export const homeMeta = {
   title: "AI Automation Agency",
   description:
-    "RZ Automate builds AI agents and automated workflows that let your business take on more leads, clients and orders without hiring for every new task. Book a free 30-min call.",
+    "RZ Automate builds AI agents and automated workflows so your business can take on more leads, clients and orders without hiring. Book a free 30-min call.",
 };
 
 export const ctaLabel = "Book a free 30-min call";

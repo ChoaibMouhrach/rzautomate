@@ -5,7 +5,7 @@ export const bookHref = "/book?service=support-agents";
 export const calculatorHref = "/tools/automation-roi-calculator";
 
 export const seo = {
-  title: "AI Chatbot Development Services for Customer Support",
+  title: "AI Chatbot Development for Customer Support",
   description:
     "AI chatbot development services for customer support. Custom chatbots that answer from your docs, look up orders and hand hard cases to your team. Book a free call.",
   openGraphDescription:

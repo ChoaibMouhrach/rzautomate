@@ -7,7 +7,7 @@ const peakNote = "Peak hours run 1 to 4 am and 6 to 10 am UTC, Monday to Friday.
 export const openWeightsPages: ModelPageContent[] = [
   {
     slug: "deepseek-v4-pro",
-    title: "DeepSeek V4 Pro API Pricing, Context Window & Specs",
+    title: "DeepSeek V4 Pro API Pricing & Context Window",
     description: "DeepSeek V4 Pro costs $1.32 per 1M input and $3.96 per 1M output tokens at peak, half that off-peak. 1M context, MIT open weights.",
     h1: "DeepSeek V4 Pro API pricing and specs",
     summary: "DeepSeek V4 Pro costs $1.32 per million input tokens and $3.96 per million output tokens at peak hours. Off-peak, the price drops by half. DeepSeek V4 Pro reads up to 1 million tokens, writes up to 384K, and ships as open weights under the MIT license.",
@@ -85,7 +85,7 @@ export const openWeightsPages: ModelPageContent[] = [
   },
   {
     slug: "deepseek-v4-1-flash",
-    title: "DeepSeek V4.1 Flash API Pricing, Context Window & Specs",
+    title: "DeepSeek V4.1 Flash API Pricing & Context Window",
     description: "DeepSeek V4.1 Flash costs $0.30 per 1M input and $1.20 per 1M output tokens at peak, half off-peak. It replaced V4 Flash. 1M context.",
     h1: "DeepSeek V4.1 Flash API pricing and specs",
     summary: "DeepSeek V4.1 Flash costs $0.30 per million input tokens and $1.20 per million output tokens at peak, and half that off-peak. It replaced DeepSeek V4 Flash in September 2026. DeepSeek V4.1 Flash reads text and images, holds 1 million tokens, and ships open weights under MIT.",
@@ -163,7 +163,7 @@ export const openWeightsPages: ModelPageContent[] = [
   },
   {
     slug: "kimi-k3",
-    title: "Kimi K3 API Pricing, Context Window & Specs",
+    title: "Kimi K3 API Pricing & Context Window",
     description: "Kimi K3 costs $3 per 1M input and $15 per 1M output tokens on Moonshot's API. 1M context, open weights, and how it compares to K3.1 Pro.",
     h1: "Kimi K3 API pricing and specs",
     summary: "Kimi K3 costs $3 per million input tokens and $15 per million output tokens on Moonshot's API. Cached input drops to $0.30. Kimi K3 holds 1 million tokens, reads text, images and video, and its weights are open under Moonshot's own license. Kimi K3.1 Pro is the newer, cheaper version.",
@@ -239,7 +239,7 @@ export const openWeightsPages: ModelPageContent[] = [
   },
   {
     slug: "qwen-3-8-max",
-    title: "Qwen3.8-Max API Pricing, Context Window & Specs",
+    title: "Qwen3.8-Max API Pricing & Context Window",
     description: "Qwen3.8-Max costs $2 per 1M input and $6 per 1M output tokens on Alibaba Model Studio. 1M context, text, image and video input.",
     h1: "Qwen3.8-Max API pricing and specs",
     summary: "Qwen3.8-Max costs $2 per million input tokens and $6 per million output tokens on Alibaba Model Studio's international endpoint. Global deployment is a little cheaper. Qwen3.8-Max reads text, images and video, holds 1 million tokens, and writes up to 65K tokens per reply.",
@@ -313,7 +313,7 @@ export const openWeightsPages: ModelPageContent[] = [
   },
   {
     slug: "muse-spark",
-    title: "Muse Spark API Pricing, Context Window & Specs",
+    title: "Muse Spark API Pricing & Context Window",
     description: "Muse Spark 1.3 costs $1.25 per 1M input and $4.25 per 1M output tokens on Meta's API. 1M context, $20 free credit, and Muse Spark Open weights.",
     h1: "Muse Spark API pricing and specs",
     summary: "Muse Spark 1.3 costs $1.25 per million input tokens and $4.25 per million output tokens on Meta's API. Cached input is $0.15. Muse Spark reads text, images, video and PDFs across a 1 million token window. Meta also offers a cheaper Contributor tier and open weights called Muse Spark Open.",

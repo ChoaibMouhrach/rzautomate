@@ -13,7 +13,7 @@ const longRows = (input: string, output: string) => [["Input over 272K tokens", 
 export const openaiPages: ModelPageContent[] = [
   {
     slug: "gpt-6-astra",
-    title: "GPT-6 Astra API Pricing, Context Window & Specs",
+    title: "GPT-6 Astra API Pricing & Context Window",
     description: "GPT-6 Astra costs $10 per 1M input and $50 per 1M output tokens. See the 1.05M context window, long-context rates, a cost calculator and cheaper options.",
     h1: "GPT-6 Astra API pricing and specs",
     summary: "GPT-6 Astra is OpenAI's most capable model for hard reasoning, coding and agent work. GPT-6 Astra costs $10 per million input tokens and $50 per million output tokens. It reads up to 1.05 million tokens and writes up to 128,000. Prompts over 272K tokens are billed at higher rates.",
@@ -82,7 +82,7 @@ export const openaiPages: ModelPageContent[] = [
   },
   {
     slug: "gpt-6-1-sol",
-    title: "GPT-6.1 Sol API Pricing, Context Window & Specs",
+    title: "GPT-6.1 Sol API Pricing & Context Window",
     description: "GPT-6.1 Sol costs $2 per 1M input and $10 per 1M output tokens. See the 1.05M context window, long-context rates, a cost calculator and alternatives.",
     h1: "GPT-6.1 Sol API pricing and specs",
     summary: "GPT-6.1 Sol is OpenAI's balanced model for complex work, with results close to GPT-6 Astra. GPT-6.1 Sol costs $2 per million input tokens and $10 per million output tokens. It reads up to 1.05 million tokens and writes up to 128,000. Prompts over 272K tokens cost more.",
@@ -151,7 +151,7 @@ export const openaiPages: ModelPageContent[] = [
   },
   {
     slug: "gpt-6-1-terra",
-    title: "GPT-6.1 Terra API Pricing, Context Window & Specs",
+    title: "GPT-6.1 Terra API Pricing & Context Window",
     description: "GPT-6.1 Terra costs $1 per 1M input and $5 per 1M output tokens. See the 1.05M context window, long-context rates, a cost calculator and alternatives.",
     h1: "GPT-6.1 Terra API pricing and specs",
     summary: "GPT-6.1 Terra is OpenAI's fast mid-size model for visual reasoning, computer use and clear writing. GPT-6.1 Terra costs $1 per million input tokens and $5 per million output tokens, half the price of GPT-6.1 Sol. It reads up to 1.05 million tokens and writes up to 128,000.",
@@ -219,7 +219,7 @@ export const openaiPages: ModelPageContent[] = [
   },
   {
     slug: "gpt-6-luna",
-    title: "GPT-6 Luna API Pricing, Context Window & Specs",
+    title: "GPT-6 Luna API Pricing & Context Window",
     description: "GPT-6 Luna costs $0.10 per 1M input and $0.50 per 1M output tokens. See the 1.05M context window, long-context rates, a cost calculator and alternatives.",
     h1: "GPT-6 Luna API pricing and specs",
     summary: "GPT-6 Luna is OpenAI's cheapest and fastest GPT-6 model, built for focused, high-volume tasks. GPT-6 Luna costs $0.10 per million input tokens and $0.50 per million output tokens. It reads up to 1.05 million tokens, writes up to 128,000, and can skip reasoning for instant replies.",

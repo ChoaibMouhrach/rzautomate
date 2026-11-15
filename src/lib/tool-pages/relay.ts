@@ -6,7 +6,7 @@ export const relay: ToolPage = {
   kind: "AI agent builders",
   status: "shut-down",
   seo: {
-    title: "Relay.app Pricing, Shutdown & Alternatives (2026)",
+    title: "Relay.app Pricing, Shutdown & Alternatives",
     description: "Relay.app shut down in September 2026. See what it cost, how steps and AI credits worked, and the best Relay.app alternatives to move to.",
   },
   checkedAt: "2026-11-14",

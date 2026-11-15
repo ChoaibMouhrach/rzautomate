@@ -10,7 +10,7 @@ export const calculatorHref = "/tools/automation-roi-calculator";
 export const seo = {
   title: "AI Agent Development Company | Custom AI Agents",
   description:
-    "AI agent development for work no off-the-shelf tool covers. Custom AI agents that use your systems, complete multi-step tasks and ask before anything risky. Book a free call.",
+    "AI agent development for work no off-the-shelf tool covers. Custom agents that use your systems and ask before risky actions. Book a free call.",
   socialTitle: "AI Agent Development Company | Custom AI Agents",
   openGraphDescription:
     "Custom AI agents that use your systems, complete multi-step tasks and ask before anything risky.",

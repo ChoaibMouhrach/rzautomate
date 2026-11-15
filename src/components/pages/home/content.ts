@@ -207,44 +207,6 @@ export const results = {
   },
 };
 
-export const testimonials = {
-  heading: "What clients say",
-  subhead: "What clients say after the first build goes live.",
-  // TODO: placeholder testimonials. Replace with real, named client quotes before launch.
-  quotes: [
-    {
-      quote: "We used to lose leads over the weekend. Now every form gets a reply in under two minutes, and our reps only touch the ones that are scored as a good fit.",
-      name: "Sarah M.",
-      role: "Operations Manager, B2B services firm",
-    },
-    {
-      quote: "Invoice entry took our bookkeeper about 20 hours a week. It now runs on its own and she only checks the few that get flagged.",
-      name: "David R.",
-      role: "Owner, accounting practice",
-    },
-    {
-      quote: "Support volume doubled after our spring launch and we didn't hire anyone. Most questions are answered from our docs before a person sees them.",
-      name: "Amira K.",
-      role: "Head of Support, e-commerce store",
-    },
-    {
-      quote: "Onboarding a new client went from 45 minutes of copy-paste to a few clicks. Nothing gets missed in week one anymore.",
-      name: "Tom L.",
-      role: "Founder, training company",
-    },
-    {
-      quote: "The Monday report used to eat someone's morning. It now lands in Slack at 8:00 with numbers from four tools, and we just read it.",
-      name: "Priya S.",
-      role: "COO, marketing agency",
-    },
-    {
-      quote: "We talked to the engineer who built it from the first call to launch. Fixed price, written plan, and it was live within a few weeks.",
-      name: "Marc D.",
-      role: "Managing Director, logistics company",
-    },
-  ],
-};
-
 export const process = {
   label: "How it works",
   heading: "How our AI automation process works",

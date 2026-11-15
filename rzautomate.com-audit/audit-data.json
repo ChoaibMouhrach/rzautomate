@@ -1,0 +1,107 @@
+{
+  "summary": {
+    "health_score": 84,
+    "business_type": "B2B service agency (AI automation) with programmatic comparison content and a free calculator",
+    "top_findings": [
+      "www and http hostnames return 200 with no redirect to https://rzautomate.com",
+      "Homepage stats, results and testimonials are placeholders",
+      "White text on the coral brand colour is 3.47:1, below WCAG AA",
+      "Model and tool pages have a crawlability bug (anchor without href) and an invalid definition list",
+      "No About page or case studies; Organization sameAs is empty; blog is mostly off-topic LMS content"
+    ],
+    "quick_wins": [
+      "301 www to apex and http to https in Cloudflare",
+      "Render the last breadcrumb as a span, not an anchor",
+      "Fix the model hero dl/dt/dd structure",
+      "Darken primary coral to about #E03227",
+      "Add LinkedIn and GitHub to Organization sameAs"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 86,
+      "what_works": ["robots.txt and sitemap correct (50 URLs, lastmod)", "Self-referencing canonicals on all pages", "HSTS and security headers", "Real 404 status", "Brotli compression", "No broken internal links"],
+      "findings": [
+        { "title": "www host not redirected", "severity": "High", "description": "https://www.rzautomate.com returns 200.", "recommendation": "301 to the apex domain." },
+        { "title": "http not redirected to https", "severity": "High", "description": "http://rzautomate.com returns 200.", "recommendation": "Enable Always Use HTTPS or a redirect rule." },
+        { "title": "No Content-Security-Policy", "severity": "Low", "description": "Other security headers are present.", "recommendation": "Add report-only CSP, then enforce." },
+        { "title": "/design deployed publicly", "severity": "Low", "description": "Noindexed and disallowed, but reachable.", "recommendation": "Exclude from production builds." }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 68,
+      "what_works": ["Median 1,200 words per page", "Original calculators, tables and comparisons", "Strong hub-and-spoke structure"],
+      "findings": [
+        { "title": "Placeholder homepage proof", "severity": "High", "description": "Stats, results and testimonials are placeholders per code comments.", "recommendation": "Replace with measured results or remove." },
+        { "title": "No About page or case studies", "severity": "Medium", "description": "Weak E-E-A-T trust signals.", "recommendation": "Publish an About page and real case studies." },
+        { "title": "Off-topic blog", "severity": "Medium", "description": "Three of four posts cover LMS and e-learning.", "recommendation": "Add AI automation posts; review the others." },
+        { "title": "Unverified model prices", "severity": "Medium", "description": "Pages state prices were checked on November 14, 2026.", "recommendation": "Verify against providers and publish an update schedule." },
+        { "title": "Thin listing pages", "severity": "Low", "description": "/services 206 words, /blog 239, /contact 291.", "recommendation": "Add short intros." }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 90,
+      "what_works": ["One H1 and unique title and description on every page", "lang, viewport, Open Graph and Twitter tags everywhere"],
+      "findings": [
+        { "title": "Long titles and descriptions", "severity": "Low", "description": "16 titles at 66 to 70 characters; two descriptions at 174.", "recommendation": "Trim to about 60 and about 155." },
+        { "title": "Single default share image", "severity": "Low", "description": "All pages share one Open Graph image.", "recommendation": "Add per-page images for models and tools." }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 88,
+      "what_works": ["Valid JSON-LD on all 52 pages", "Organization, Person, WebSite, BreadcrumbList, FAQPage, Service, BlogPosting, Dataset, WebApplication"],
+      "findings": [
+        { "title": "Organization sameAs empty", "severity": "Medium", "description": "No profile links on the organization entity.", "recommendation": "Add LinkedIn and GitHub." },
+        { "title": "FAQPage rich results unlikely", "severity": "Info", "description": "Google restricts FAQ rich results; markup is still harmless.", "recommendation": "No action." }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 98,
+      "what_works": ["Lighthouse performance 99 to 100 on five page types", "LCP 1.1 to 2.0 s, CLS 0, TBT 0 to 60 ms", "328 KiB homepage weight"],
+      "findings": [
+        { "title": "Unused JavaScript", "severity": "Low", "description": "About 57 KiB on the homepage.", "recommendation": "Split or defer unused client code." },
+        { "title": "No field data", "severity": "Info", "description": "CrUX unavailable; PageSpeed API quota exceeded.", "recommendation": "Re-check after traffic builds." }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 88,
+      "what_works": ["llms.txt and llms-full.txt", "Markdown mirror for every page and content negotiation", "AI crawlers allowed", "Structured, dated, quotable tables"],
+      "findings": [
+        { "title": "Weak third-party authority signals", "severity": "Medium", "description": "Empty sameAs, no case studies or About page.", "recommendation": "Build brand profiles and published results." }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 82,
+      "what_works": ["Alt text on every image", "WebP and SVG formats", "CLS 0"],
+      "findings": [
+        { "title": "Oversized service thumbnails", "severity": "Low", "description": "94 to 136 KB at 1672 px wide, shown at about 360 px.", "recommendation": "Serve responsive variants with srcset." }
+      ]
+    },
+    {
+      "name": "Accessibility",
+      "score": 94,
+      "what_works": ["Lighthouse accessibility 91 to 97"],
+      "findings": [
+        { "title": "Insufficient contrast on coral", "severity": "Medium", "description": "White on #ff4133 is 3.47:1; translucent white on coral is 2.66 to 2.84:1.", "recommendation": "Darken coral to about #E03227 or use dark text." },
+        { "title": "Anchor without href", "severity": "Medium", "description": "Last breadcrumb item on model and tool pages is not crawlable.", "recommendation": "Use a span with aria-current." },
+        { "title": "Invalid definition list", "severity": "Medium", "description": "Model hero dl has a wrapper div around dd.", "recommendation": "Place dt and dd directly in dl groups." }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      { "name": "Phase 1: Critical Fixes", "timeframe": "Week 1", "items": ["301 www to apex", "Redirect http to https", "Replace placeholder homepage proof", "Legal review of terms and privacy"] },
+      { "name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 2-3", "items": ["Breadcrumb last crumb as span", "Fix model hero dl", "Darken coral", "Add Organization sameAs", "Verify model prices", "Trim long titles and descriptions"] },
+      { "name": "Phase 3: Content & Authority", "timeframe": "Month 2", "items": ["About page", "Real case studies", "AI automation blog posts", "Services intro", "Per-page share images", "Responsive service thumbnails"] },
+      { "name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": ["Search Console and analytics", "Lighthouse after each deploy", "Report-only CSP", "Keep price dates and llms.txt current"] }
+    ]
+  },
+  "artifacts": { "findings_dir": "findings/", "screenshots_dir": "screenshots/" }
+}

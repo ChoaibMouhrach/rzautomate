@@ -28,7 +28,7 @@ export const MidCta = () => (
           className={button({
             size: "lg",
             className:
-              "bg-primary-foreground text-foreground hover:bg-primary-foreground hover:opacity-90",
+              "bg-primary-foreground text-neutral-900 hover:bg-primary-foreground hover:opacity-90",
           })}
         >
           <FreeText>{bookingLabel}</FreeText>

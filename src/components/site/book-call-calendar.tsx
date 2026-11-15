@@ -6,7 +6,7 @@ const brand = "#ff4133";
 
 const cssVarsPerTheme = {
   light: {
-    "cal-bg": "#ffffff",
+    "cal-bg": "#f4f4f5",
     "cal-bg-muted": "#f4f4f5",
     "cal-bg-subtle": "#f4f4f5",
     "cal-bg-emphasis": "#e4e2da",
@@ -21,7 +21,7 @@ const cssVarsPerTheme = {
     "cal-brand-text": "#ffffff",
   },
   dark: {
-    "cal-bg": "#0a0a0a",
+    "cal-bg": "#18181b",
     "cal-bg-muted": "#18181b",
     "cal-bg-subtle": "#18181b",
     "cal-bg-emphasis": "#27272a",
@@ -70,28 +70,18 @@ export const BookCallCalendar = ({
 
   return (
     <div
-      className={`flex flex-1 flex-col rounded-3xl p-2 sm:p-3 ${isDark ? "bg-white/5" : "bg-muted"}`}
+      className={`flex flex-1 flex-col rounded-3xl p-2 sm:p-3 ${isDark ? "bg-[#18181b]" : "bg-muted"}`}
     >
-      <div className="relative min-h-152 flex-1 lg:min-h-0">
-        <div
-          className={`absolute inset-0 flex items-center overflow-hidden rounded-2xl ${isDark ? "bg-[#0a0a0a]" : "bg-white"}`}
-        >
-          <Cal
-            namespace="30min"
-            calLink="rzautomate/30min"
-            style={{
-              width: "100%",
-              maxHeight: "100%",
-              overflow: "auto",
-            }}
-            config={{
-              layout: "column_view",
-              useSlotsViewOnSmallScreen: "true",
-              theme,
-            }}
-          />
-        </div>
-      </div>
+      <Cal
+        namespace="30min"
+        calLink="rzautomate/30min"
+        style={{ width: "100%", overflow: "auto" }}
+        config={{
+          layout: "column_view",
+          useSlotsViewOnSmallScreen: "true",
+          theme,
+        }}
+      />
       <p
         className={`mt-3 px-2 text-center text-sm ${isDark ? "text-paper/60" : "text-muted-foreground"}`}
       >

@@ -59,12 +59,6 @@ export interface ResultsContent {
   summary: { text: string; link: { label: string; href: string } };
 }
 
-export interface TestimonialsContent {
-  heading: string;
-  subhead: string;
-  quotes: readonly { name: string; role: string; quote: string }[];
-}
-
 export interface ToolsContent {
   heading: string;
   centerTitle: string;

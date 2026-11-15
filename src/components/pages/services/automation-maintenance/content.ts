@@ -162,23 +162,6 @@ export const results = {
 export const testimonials = {
   heading: "Teams that stopped worrying about broken workflows",
   subhead: "What clients say about having their automations looked after.",
-  quotes: [
-    {
-      name: "Nadia Hassan",
-      role: "Operations Manager, online school",
-      quote: "We used to find out about failures from students. Now we hear about it from RZ first, and it's already fixed.",
-    },
-    {
-      name: "Ben Whitaker",
-      role: "Founder, e-commerce brand",
-      quote: "Shopify changed something and our order flow broke overnight. It was fixed before our morning started.",
-    },
-    {
-      name: "Léa Martin",
-      role: "Head of Growth, SaaS company",
-      quote: "They took over workflows nobody understood, documented all of it and now it just runs. The monthly report is clear.",
-    },
-  ],
 };
 
 export const tools = {

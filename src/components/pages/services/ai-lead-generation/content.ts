@@ -159,23 +159,6 @@ export const results = {
 export const testimonials = {
   heading: "Teams that turned more leads into calls",
   subhead: "What clients say once their lead system is live.",
-  quotes: [
-    {
-      name: "Tom Hargreaves",
-      role: "Managing Director, B2B consultancy",
-      quote: "Leads used to wait until the next morning. Now they get a real reply in minutes and our calendar fills itself.",
-    },
-    {
-      name: "Priya Nair",
-      role: "Head of Sales, training provider",
-      quote: "Our CRM is finally accurate without anyone typing notes, and we know exactly who to call first.",
-    },
-    {
-      name: "Marc Lefèvre",
-      role: "Founder, software agency",
-      quote: "Same team, three times the calls. The follow-ups sound like us, and we approve them in one click.",
-    },
-  ],
 };
 
 export const tools = {

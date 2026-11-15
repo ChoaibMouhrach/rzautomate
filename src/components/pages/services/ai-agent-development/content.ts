@@ -166,23 +166,6 @@ export const results = {
 export const testimonials = {
   heading: "Teams that handed the hard work to an agent",
   subhead: "What clients say once their agent is live.",
-  quotes: [
-    {
-      name: "Vikram Rao",
-      role: "Operations Director, freight forwarder",
-      quote: "Quotes used to take a coordinator an hour. The agent drafts them in a minute and we approve in one click.",
-    },
-    {
-      name: "Elena Fischer",
-      role: "COO, insurance brokerage",
-      quote: "We took on a third more clients without hiring. Every step is logged, so nothing happens that we can't see.",
-    },
-    {
-      name: "James O'Connell",
-      role: "Founder, SaaS company",
-      quote: "It works across our CRM, docs and Slack like a new team member who never forgets the process.",
-    },
-  ],
 };
 
 export const tools = {

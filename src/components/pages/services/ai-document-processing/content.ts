@@ -158,23 +158,6 @@ export const results = {
 export const testimonials = {
   heading: "Teams that stopped typing in their paperwork",
   subhead: "What clients say once their document processing is live.",
-  quotes: [
-    {
-      name: "Helen Marsh",
-      role: "Finance Manager, distribution company",
-      quote: "Invoices used to pile up until Friday. Now they're in the books the day they arrive, and we only look at the exceptions.",
-    },
-    {
-      name: "Rafael Moreno",
-      role: "Partner, accounting firm",
-      quote: "Volume doubled across our clients and nobody on the team is typing. Accuracy has been better than when we did it by hand.",
-    },
-    {
-      name: "Sana Qureshi",
-      role: "Operations Lead, logistics company",
-      quote: "Month-end used to drag. Now it closes days earlier, and every flagged document tells us exactly what to check.",
-    },
-  ],
 };
 
 export const tools = {

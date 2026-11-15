@@ -158,23 +158,6 @@ export const results = {
 export const testimonials = {
   heading: "Teams that stopped hiring for every ticket",
   subhead: "What clients say once their chatbot is live.",
-  quotes: [
-    {
-      name: "Amira Benali",
-      role: "Head of Support, online course platform",
-      quote: "Ticket volume doubled and we didn't hire anyone. The chatbot takes the repeats and hands us the rest with the whole thread.",
-    },
-    {
-      name: "Daniel Okafor",
-      role: "Operations Lead, subscription store",
-      quote: "First replies dropped from hours to seconds, and the answers match what we would have written.",
-    },
-    {
-      name: "Claire Dubois",
-      role: "Founder, training company",
-      quote: "Review mode let us trust it slowly. Now it handles most questions and our team handles the people.",
-    },
-  ],
 };
 
 export const tools = {

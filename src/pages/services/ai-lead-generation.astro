@@ -34,7 +34,7 @@ import { Process } from "@/components/site/service-page/process";
 import { Proof } from "@/components/site/service-page/proof";
 import { Related } from "@/components/site/service-page/related";
 import { Results } from "@/components/site/service-page/results";
-import { Testimonials } from "@/components/site/service-page/testimonials";
+import { Testimonials } from "@/components/site/testimonials";
 import { Tools } from "@/components/site/service-page/tools";
 import { ServiceBreadcrumbs } from "@/components/site/service-page/service-breadcrumbs";
 import { ServicePosts } from "@/components/site/service-posts";
@@ -64,7 +64,7 @@ const posts = await getPostsForService("ai-lead-generation");
   <Build client:visible build={build} bookHref={bookHref} />
   <Flow flow={flow} />
   <Results client:visible results={results} bookHref={bookHref} />
-  <Testimonials testimonials={testimonials} />
+  <Testimonials {...testimonials} />
   <Tools tools={tools} />
   <Process process={process} />
   <Fit fit={fit} auditHref={bookHref} />

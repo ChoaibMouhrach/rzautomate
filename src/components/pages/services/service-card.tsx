@@ -13,6 +13,8 @@ export const ServiceCard = ({
     <div className="relative aspect-[1200/630] overflow-hidden rounded-3xl bg-muted">
       <img
         src={service.image}
+        srcSet={`${service.image.replace(".webp", "-640.webp")} 640w, ${service.image} 1672w`}
+        sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
         alt={service.imageAlt}
         decoding="async"
         loading="lazy"

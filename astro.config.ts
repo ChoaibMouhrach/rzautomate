@@ -7,6 +7,7 @@ import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 import { headingAnchors } from "./src/hast/heading-anchors";
 import { markdownPages } from "./src/integrations/markdown-pages";
+import { devOnlyPages } from "./src/integrations/dev-only-pages";
 
 const { PUBLIC_SITE_URL = "https://rzautomate.com" } = loadEnv(
   process.env.NODE_ENV ?? "production",
@@ -25,7 +26,7 @@ export default defineConfig({
     prerenderEnvironment: "node",
   }),
   session: false,
-  integrations: [react(), mdx(), markdownPages()],
+  integrations: [react(), mdx(), devOnlyPages(["design"]), markdownPages()],
   markdown: { processor: satteri({ hastPlugins: [headingAnchors] }) },
   redirects: {
     "/models/claude-fable-5-1": permanent("/models/claude-fable-5-2"),

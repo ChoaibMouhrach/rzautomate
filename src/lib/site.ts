@@ -14,7 +14,7 @@ export const company = {
   foundingDate: "2026-05",
   email: "choaib@rzautomate.com",
   logo: "/logo.png",
-  sameAs: [] as readonly string[],
+  sameAs: ["https://www.linkedin.com/company/rzautomate"] as readonly string[],
   areaServed: "Worldwide",
   address: {
     streetAddress: "30 N Gould St Ste N",

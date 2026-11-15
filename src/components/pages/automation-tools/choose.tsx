@@ -33,7 +33,7 @@ export const Choose = () => (
         <span className="inline-flex w-fit rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">{choose.take.title}</span>
         <div>
           <p className="text-balance text-2xl leading-snug tracking-tight md:text-3xl">{choose.take.body}</p>
-          <p className="mt-6 text-paper/70">We also look after n8n, Make and Zapier workflows. See <Link href="/services/automation-maintenance" className="text-paper">Automation maintenance</Link>.</p>
+          <p className="mt-6 text-paper/70">We also look after n8n, Make and Zapier workflows. See <Link href="/services/automation-maintenance" className="text-paper underline">Automation maintenance</Link>.</p>
         </div>
       </div>
       <a href={choose.take.href} className="group flex flex-col justify-between gap-10 rounded-3xl bg-primary p-8 text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring md:p-10">

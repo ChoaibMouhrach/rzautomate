@@ -17,9 +17,9 @@ export const Breadcrumbs = ({ items }: { items: readonly BreadcrumbItem[] }) => 
         return (
           <Breadcrumb key={item.label} className="flex min-w-0 items-center gap-2 last:flex-1">
             {isLast ? (
-              <Link className="cursor-default truncate text-foreground hover:no-underline">
+              <span aria-current="page" className="truncate text-foreground">
                 {item.label}
-              </Link>
+              </span>
             ) : (
               <Link href={item.href} variant="muted">
                 {item.label}

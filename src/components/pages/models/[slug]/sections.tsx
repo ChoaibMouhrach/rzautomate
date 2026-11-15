@@ -58,10 +58,8 @@ export const ModelHero = ({ page, provider }: { page: ModelPageContent; provider
           {page.tiles.map((tile, index) => (
             <div key={tile.label} className={`flex min-h-48 flex-col justify-between gap-8 rounded-3xl p-6 md:p-8 ${heroTones[index % heroTones.length]}`}>
               <dt className={`text-sm font-medium ${heroMuted[index % heroTones.length]}`}>{tile.label}</dt>
-              <div>
-                <dd className="text-3xl font-semibold leading-tight tracking-tighter md:text-4xl">{tile.value}</dd>
-                {tile.sub && <dd className={`mt-1 text-sm ${heroMuted[index % heroTones.length]}`}>{tile.sub}</dd>}
-              </div>
+              <dd className="mt-auto text-3xl font-semibold leading-tight tracking-tighter md:text-4xl">{tile.value}</dd>
+              {tile.sub && <dd className={`-mt-6 text-sm ${heroMuted[index % heroTones.length]}`}>{tile.sub}</dd>}
             </div>
           ))}
         </dl>

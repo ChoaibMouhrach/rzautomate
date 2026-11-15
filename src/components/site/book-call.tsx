@@ -1,7 +1,6 @@
 import { Clock, Mail } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import { BookCallStats } from "@/components/site/book-call-stats";
-import { BookCallCalendar } from "@/components/site/book-call-calendar";
 import { CopyButton } from "@/components/ui/copy-button";
 import { FreeText } from "@/components/ui/free-text";
 import { site } from "@/lib/site";
@@ -25,9 +24,6 @@ export interface BookCallProps {
   description?: string;
   headingAs?: "h1" | "h2";
   id?: string;
-  service?: string;
-  source?: string;
-  model?: string;
   animated?: boolean;
   tone?: "light" | "dark";
   className?: string;
@@ -38,9 +34,6 @@ export const BookCall = ({
   description = bookCallCopy.description,
   headingAs: Heading = "h2",
   id,
-  service,
-  source,
-  model,
   animated = false,
   tone = "light",
   className,
@@ -65,11 +58,11 @@ export const BookCall = ({
       <div className="page-container">
         <div
           className={twMerge(
-            "grid gap-12 lg:grid-cols-[5fr_6fr] lg:gap-16",
+            "grid gap-12",
             isDark && "rounded-[2rem] bg-ink p-6 text-paper sm:p-10 md:p-14",
           )}
         >
-          <div className="flex flex-col">
+          <div className="flex max-w-2xl flex-col">
             <Heading
               className={twMerge(
                 "text-balance font-semibold tracking-tighter",
@@ -141,12 +134,6 @@ export const BookCall = ({
               </li>
               <BookCallStats tone={tone} />
             </ul>
-          </div>
-          <div
-            className={twMerge("relative h-160 lg:h-auto", third.className)}
-            style={third.style}
-          >
-            <BookCallCalendar tone={tone} service={service} source={source} model={model} />
           </div>
         </div>
       </div>

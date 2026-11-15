@@ -37,7 +37,7 @@ const seo = pageSocial({ title: page.title, description: page.description });
   <FitSection page={page} name={name} />
   <VersionsSection page={page} />
   <ModelFaq page={page} name={name} />
-  <ModelCta client:visible slug={slug} cta={page.cta} />
+  <ModelCta client:visible cta={page.cta} />
   <RelatedSection page={page} />
   <ModelBreadcrumbs name={name} provider={provider} />
 </SiteLayout>

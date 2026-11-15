@@ -1,5 +1,6 @@
 import { Clock, Mail } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import { BookCallCalendar } from "@/components/site/book-call-calendar";
 import { BookCallStats } from "@/components/site/book-call-stats";
 import { CopyButton } from "@/components/ui/copy-button";
 import { FreeText } from "@/components/ui/free-text";
@@ -58,11 +59,11 @@ export const BookCall = ({
       <div className="page-container">
         <div
           className={twMerge(
-            "grid gap-12",
+            "grid gap-12 lg:grid-cols-[5fr_6fr] lg:gap-16",
             isDark && "rounded-[2rem] bg-ink p-6 text-paper sm:p-10 md:p-14",
           )}
         >
-          <div className="flex max-w-2xl flex-col">
+          <div className="flex flex-col">
             <Heading
               className={twMerge(
                 "text-balance font-semibold tracking-tighter",
@@ -134,6 +135,9 @@ export const BookCall = ({
               </li>
               <BookCallStats tone={tone} />
             </ul>
+          </div>
+          <div className={twMerge("flex flex-col", third.className)} style={third.style}>
+            <BookCallCalendar tone={tone} />
           </div>
         </div>
       </div>

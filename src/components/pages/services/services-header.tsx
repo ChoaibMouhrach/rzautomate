@@ -15,9 +15,9 @@ export const ServicesHeader = () => (
       style={{ animationDelay: "0.15s" }}
     >
       <PageDescription>
-        Customer support, lead generation, document processing, business
-        processes and custom AI agents. Pick the job you need help with and see
-        what I build, how it works and what&apos;s included.
+        Customer support, lead generation, document processing, automation
+        maintenance and custom AI agents. Pick the job you need help with and
+        see what we build, how it works and what&apos;s included.
       </PageDescription>
       <PageActions>
         <PagePrimaryAction href="/contact">Book a free call</PagePrimaryAction>

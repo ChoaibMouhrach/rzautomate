@@ -81,7 +81,7 @@ export const services: readonly Service[] = [
     image: "/services/ai-agent-development.webp",
     imageAlt: "A checklist with three items ticked and a person about to tick the last one",
     overview:
-      "I build custom AI agents for jobs that need reading, judgment and several steps across your tools. Each agent is tested on your real examples before launch, asks for approval before risky actions and logs every run.",
+      "We build custom AI agents for jobs that need reading, judgment and several steps across your tools. Each agent is tested on your real examples before launch, asks for approval before risky actions and logs every run.",
     features: [
       "Internal knowledge assistants that answer with source links",
       "Research and operations agents connected to your tools",

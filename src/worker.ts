@@ -3,7 +3,22 @@ import { handle } from "@astrojs/cloudflare/handler";
 const aiAgentPattern =
   /GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-User|Claude-SearchBot|anthropic-ai|PerplexityBot|Perplexity-User|CCBot|Amazonbot|Bytespider|cohere-ai|Meta-ExternalAgent|MistralAI-User|DuckAssistBot|YouBot|Applebot-Extended/i;
 
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://app.cal.com https://cal.com",
+  "style-src 'self' 'unsafe-inline' https://app.cal.com",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://app.cal.com https://cal.com https://api.cal.com",
+  "frame-src https://app.cal.com https://cal.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+].join("; ");
+
 const securityHeaders = {
+  "Content-Security-Policy": contentSecurityPolicy,
   "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "SAMEORIGIN",

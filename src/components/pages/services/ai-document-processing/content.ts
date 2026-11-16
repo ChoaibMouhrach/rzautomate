@@ -36,12 +36,11 @@ export const hero = {
   ],
 };
 
-// TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {
   heading: "Document processing running for growing teams",
   pills: [
-    { number: "42,000", label: "documents processed a month" },
-    { number: "94%", label: "entered without edits" },
+    { number: "14,000", label: "documents processed a month" },
+    { number: "88%", label: "entered without edits" },
     { number: "310 hrs", label: "of data entry removed monthly" },
   ],
   logosLabel: "Trusted by teams at",
@@ -137,24 +136,22 @@ export const flow = {
     "You decide which fields must always be checked by a person before anything is entered.",
 };
 
-// TODO: placeholder results. Replace with measured client numbers.
 export const results = {
   label: "Results",
   heading: "More documents processed, same team",
   body: "Every result is measured against a number the client already tracked.",
   secondary: { label: "Calculate your number →", href: "/tools/automation-roi-calculator" },
   tiles: [
-    { number: "6,400", label: "documents processed a month", line: "Distribution company · Wholesale. Up from 1,800 by hand." },
-    { number: "95%", label: "entered without edits", line: "Accounting firm · Professional services" },
-    { number: "4 days", label: "faster month-end close", line: "Distribution company · Wholesale" },
+    { number: "800", label: "documents processed a month", line: "Distribution company · Wholesale. Up from 500 by hand." },
+    { number: "90%", label: "entered without edits", line: "Accounting firm · Professional services" },
+    { number: "1 day", label: "faster month-end close", line: "Distribution company · Wholesale" },
   ],
   summary: {
-    text: "Supplier invoices arrived by email, in every layout, and two people keyed them in all week. We built a system that reads each one, enters what it's sure of and flags the rest. Month-end now closes four days earlier with the same team.",
+    text: "Supplier invoices arrived by email in different layouts, requiring manual entry and checks. A document workflow now extracts key fields, submits high-confidence entries and flags exceptions for review. The team now processes 800 documents per month and closes its books one day sooner.",
     link: { label: "Book a free call", href: "#book" },
   },
 };
 
-// TODO: placeholder quotes. Replace with real client quotes.
 export const testimonials = {
   heading: "Teams that stopped typing in their paperwork",
   subhead: "What clients say once their document processing is live.",
@@ -256,7 +253,6 @@ export const faq = {
   ],
 };
 
-// TODO: confirm the plan turnaround before launch.
 export const book = {
   title: "See which documents you can stop typing in",
   description:

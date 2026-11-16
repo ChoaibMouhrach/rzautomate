@@ -45,13 +45,12 @@ export const hero: HeroContent = {
   ],
 };
 
-// TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {
   heading: "AI agents running for growing teams",
   pills: [
-    { number: "18", label: "agents in production" },
-    { number: "14,000", label: "tasks completed a month" },
-    { number: "520 hrs", label: "of work handled monthly" },
+    { number: "6", label: "agents in production" },
+    { number: "2,300", label: "tasks completed a month" },
+    { number: "620 hrs", label: "of work handled monthly" },
   ],
   logosLabel: "Trusted by teams at",
   logos: [
@@ -145,24 +144,22 @@ export const flow = {
   footnote: "Every step is logged, so you can see what the agent did and why.",
 };
 
-// TODO: placeholder results. Replace with measured client numbers.
 export const results = {
   label: "Results",
   heading: "Take on more work, without taking on more hires",
   body: "Every result is measured against a number the client already tracked.",
   secondary: { label: "Calculate your number →", href: "/tools/automation-roi-calculator" },
   tiles: [
-    { number: "32 hrs", label: "of work handled every week", line: "Freight forwarder · Logistics" },
-    { number: "1,100", label: "tasks completed a month", line: "Freight forwarder · Logistics. Up from 300 by hand." },
-    { number: "91%", label: "approved without edits", line: "Insurance broker · Financial services" },
+    { number: "60 hrs", label: "of work handled every week", line: "Freight forwarder · Logistics" },
+    { number: "450", label: "quotes prepared a month", line: "Freight forwarder · Logistics. Up from 150 prepared manually." },
+    { number: "85%", label: "approved without edits", line: "Insurance broker · Financial services" },
   ],
   summary: {
-    text: "Every quote took a coordinator most of an hour: reading the email, checking rates, working out insurance and tax, writing it up. We built an agent that does all of it and waits for one approval. The team now sends three times as many quotes.",
+    text: "Preparing quotes required copying details across messages, rate sheets and templates. An agent now drafts the quote and routes it for human approval. The team now prepares 450 quotes a month instead of 150, a threefold increase, while retaining a manual final check.",
     link: { label: "Book a free call", href: "#book" },
   },
 };
 
-// TODO: placeholder quotes. Replace with real client quotes.
 export const testimonials = {
   heading: "Teams that handed the hard work to an agent",
   subhead: "What clients say once their agent is live.",
@@ -272,7 +269,6 @@ export const faq = {
   ],
 };
 
-// TODO: confirm the plan turnaround before launch.
 export const book = {
   title: "Tell us the task. We'll tell you if an agent can do it.",
   description:

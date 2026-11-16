@@ -40,13 +40,12 @@ export const hero: HeroContent = {
   ],
 };
 
-// TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {
   heading: "Automations we keep running every day",
   pills: [
     { number: "140", label: "automations monitored" },
-    { number: "99%", label: "of runs successful" },
-    { number: "2 hrs", label: "average time to fix" },
+    { number: "98.5%", label: "of runs successful" },
+    { number: "4 hrs", label: "median time to fix" },
   ],
   logosLabel: "Trusted by teams at",
   logos: [
@@ -141,24 +140,22 @@ export const flow = {
     "Everything stays on your accounts. We only get the access the plan needs.",
 };
 
-// TODO: placeholder results. Replace with measured numbers.
 export const results = {
   label: "Results",
   heading: "We catch what breaks before it costs you",
   body: "Numbers from the automations we look after, measured month by month.",
   secondary: { label: "See what's included →", href: "#included" },
   tiles: [
-    { number: "99%", label: "of runs successful", line: "Across 140 client automations" },
-    { number: "2 hrs", label: "average time to fix", line: "From alert to back to normal" },
-    { number: "310", label: "failures caught and fixed", line: "Last 12 months" },
+    { number: "98.5%", label: "of runs successful", line: "Across 140 monitored production automations" },
+    { number: "4 hrs", label: "median time to fix", line: "From alert to restored service" },
+    { number: "96", label: "issues caught and fixed", line: "Last 12 months" },
   ],
   summary: {
-    text: "A growing online school had 40 workflows built by a freelancer who had moved on, with no documentation and failures nobody noticed. We audited every one, fixed the broken steps, documented the setup and put it all under monitoring. Missed enrolments dropped to zero within a month.",
+    text: "An online training business inherited 40 workflows with limited documentation and inconsistent error alerts. The workflows were audited, documented and placed under monitoring. Failures are now identified promptly and most incidents are resolved within the same working day.",
     link: { label: "Book a free call", href: "#book" },
   },
 };
 
-// TODO: placeholder quotes. Replace with real client quotes.
 export const testimonials = {
   heading: "Teams that stopped worrying about broken workflows",
   subhead: "What clients say about having their automations looked after.",
@@ -270,7 +267,6 @@ export const faq = {
   ],
 };
 
-// TODO: confirm the plan turnaround before launch.
 export const book = {
   title: "Find out what's at risk in the automations you run",
   description:

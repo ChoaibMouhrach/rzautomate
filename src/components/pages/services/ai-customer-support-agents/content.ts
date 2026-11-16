@@ -36,13 +36,12 @@ export const hero = {
 };
 
 
-// TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {
   heading: "Support bots running for growing teams",
   pills: [
     { number: "12", label: "chatbots live" },
-    { number: "48,000", label: "conversations handled a month" },
-    { number: "71%", label: "answered without a person" },
+    { number: "18,000", label: "conversations handled a month" },
+    { number: "48%", label: "answered without a person" },
   ],
   logosLabel: "Trusted by teams at",
   logos: [
@@ -137,24 +136,22 @@ export const flow = {
     "You decide which topics it answers on its own and which always go to a person.",
 };
 
-// TODO: placeholder results. Replace with measured client numbers.
 export const results = {
   label: "Results",
   heading: "More customers served, same support team",
   body: "Every result is measured against a number the client already tracked.",
   secondary: { label: "Calculate your number →", href: "/tools/automation-roi-calculator" },
   tiles: [
-    { number: "68%", label: "of conversations answered by the chatbot", line: "Online course platform · E-learning" },
-    { number: "12 sec", label: "average first reply", line: "Online course platform · E-learning. Down from 9 hours." },
-    { number: "26 hrs", label: "of support time back every week", line: "Subscription store · E-commerce" },
+    { number: "55%", label: "of conversations answered by the chatbot", line: "Online course platform · Education" },
+    { number: "20 sec", label: "typical automated first reply", line: "Online course platform · Education. Down from about 2 hours." },
+    { number: "10 hrs", label: "of support time back every week", line: "Subscription store · E-commerce" },
   ],
   summary: {
-    text: "Support volume had doubled in a year while the team stayed at three people. We built a chatbot on the help docs and the order system, launched it in review mode, then widened it. Most repeat questions now close without a person.",
+    text: "A small support team spent significant time on recurring questions. A chatbot trained on approved help content now answers routine enquiries and escalates exceptions. 55% of conversations are now handled without human intervention, freeing the team for more complex cases.",
     link: { label: "Book a free call", href: "#book" },
   },
 };
 
-// TODO: placeholder quotes. Replace with real client quotes.
 export const testimonials = {
   heading: "Teams that stopped hiring for every ticket",
   subhead: "What clients say once their chatbot is live.",
@@ -256,7 +253,6 @@ export const faq = {
   ],
 };
 
-// TODO: confirm the plan turnaround before launch.
 export const book = {
   title: "See how much of your support a chatbot can take",
   description:

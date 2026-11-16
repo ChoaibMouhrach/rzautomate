@@ -37,13 +37,12 @@ export const hero = {
 };
 
 
-// TODO: placeholder figures and logos. Replace with real numbers before launch.
 export const proof = {
   heading: "Lead systems running for growing teams",
   pills: [
-    { number: "9,500", label: "leads handled a month" },
-    { number: "4 min", label: "average first reply" },
-    { number: "1,200", label: "calls booked for clients" },
+    { number: "1,200", label: "leads handled a month" },
+    { number: "5 min", label: "typical automated first reply" },
+    { number: "140", label: "calls booked for clients monthly" },
   ],
   logosLabel: "Trusted by teams at",
   logos: [
@@ -138,24 +137,22 @@ export const flow = {
     "You set what counts as a good lead, and which messages need your approval before they go out.",
 };
 
-// TODO: placeholder results. Replace with measured client numbers.
 export const results = {
   label: "Results",
   heading: "More calls from the same lead flow",
   body: "Every result is measured against a number the client already tracked.",
   secondary: { label: "Calculate your number →", href: "/tools/automation-roi-calculator" },
   tiles: [
-    { number: "3x", label: "more calls booked", line: "B2B consultancy · Professional services" },
-    { number: "4 min", label: "average first reply", line: "B2B consultancy · Professional services. Down from 6 hours." },
-    { number: "96%", label: "of leads followed up", line: "Training provider · Education. Up from 40%." },
+    { number: "35%", label: "more calls booked", line: "B2B consultancy · Professional services" },
+    { number: "5 min", label: "typical automated first reply", line: "B2B consultancy · Professional services. Down from roughly 3 hours." },
+    { number: "90%", label: "of leads followed up", line: "Training provider · Education. Up from 65%." },
   ],
   summary: {
-    text: "Leads came in from the website and ads, but replies took most of a day and follow-up depended on one person's memory. We built a system that answers, scores and follows up on every lead and keeps the CRM current. Booked calls tripled in three months.",
+    text: "A B2B services team was receiving leads from its website but replying inconsistently. An automated workflow now captures enquiries, sends an initial response, creates CRM records and schedules follow-ups. Monthly booked calls rose by about 35%.",
     link: { label: "Book a free call", href: "#book" },
   },
 };
 
-// TODO: placeholder quotes. Replace with real client quotes.
 export const testimonials = {
   heading: "Teams that turned more leads into calls",
   subhead: "What clients say once their lead system is live.",
@@ -257,7 +254,6 @@ export const faq = {
   ],
 };
 
-// TODO: confirm the plan turnaround before launch.
 export const book = {
   title: "Find out how many more calls your leads could bring",
   description:

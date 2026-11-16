@@ -207,7 +207,7 @@ export const process = {
     { title: "Fix and set up monitoring", line: "Urgent issues fixed first, then every workflow watched." },
     { title: "Ongoing care", line: "Fixes, updates and a monthly report, for as long as you need it." },
   ],
-  note: "Built with us? Support after launch is included, and this plan picks up from there.",
+  note: "Built with us? The first 30 days of support after launch are included, and this plan picks up from there.",
 };
 
 export const fit = {

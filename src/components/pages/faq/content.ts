@@ -90,7 +90,7 @@ export const faqGroups = [
       },
       {
         "question": "How much will this cost us?",
-        "answer": "You get one fixed price in writing before we start. It doesn't go up if the build takes us longer."
+        "answer": "You get one fixed price in writing before we start. It doesn't go up if the build takes us longer. It only changes if you ask for something new, and you approve that in writing first."
       },
       {
         "question": "What will we pay every month after it's built?",
@@ -104,11 +104,11 @@ export const faqGroups = [
     "items": [
       {
         "question": "What happens if something breaks?",
-        "answer": "We're alerted the moment something fails, and we fix it. Support after launch is included."
+        "answer": "We're alerted the moment something fails, and we fix it. The first 30 days after launch are included. After that, ongoing support is optional."
       },
       {
         "question": "Do we own what you build?",
-        "answer": "Yes. It's built on your accounts and belongs to you from day one."
+        "answer": "Yes. It's built on your accounts, and once the project is paid in full, everything we built is yours."
       },
       {
         "question": "Are we locked in if we want to stop working with you?",

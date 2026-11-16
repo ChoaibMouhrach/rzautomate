@@ -225,7 +225,7 @@ export const process = {
     },
     {
       title: "Support after launch",
-      line: "We watch the runs, fix errors when an app changes, and tune the AI as your volume grows. Support after launch is included. After that, you can keep us on a monthly plan.",
+      line: "We watch the runs, fix errors when an app changes, and tune the AI as your volume grows. The first 30 days of support after launch are included. After that, you can keep us on a monthly plan.",
     },
   ],
 };
@@ -343,7 +343,7 @@ export const faq = {
     {
       question: "How much will this cost us?",
       answer:
-        "You get one fixed price in writing before we start. It doesn't go up if the build takes us longer.",
+        "You get one fixed price in writing before we start. It doesn't go up if the build takes us longer. It only changes if you ask for something new, and you approve that in writing first.",
     },
     {
       question: "How long until something is actually running?",
@@ -363,12 +363,12 @@ export const faq = {
     {
       question: "What happens if something breaks?",
       answer:
-        "We're alerted the moment something fails, and we fix it. Support after launch is included.",
+        "We're alerted the moment something fails, and we fix it. The first 30 days after launch are included. After that, ongoing support is optional.",
     },
     {
       question: "Do we own what you build?",
       answer:
-        "Yes. It's built on your accounts and belongs to you from day one.",
+        "Yes. It's built on your accounts, and once the project is paid in full, everything we built is yours.",
     },
   ],
 };

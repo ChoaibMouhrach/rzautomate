@@ -32,6 +32,7 @@ const sections: LegalSection[] = [
     blocks: [
       { paragraph: "Each project begins with a written proposal or SOW outlining scope, deliverables, timeline, and payment terms. The SOW takes precedence over these Terms in the event of a conflict specific to the project." },
       { paragraph: "Any changes to scope must be agreed upon in writing and may result in revised timelines and additional fees." },
+      { paragraph: "The fixed fee in the SOW will not increase because the work takes longer than estimated." },
     ],
   },
   {
@@ -95,7 +96,7 @@ const sections: LegalSection[] = [
           `${site.name} has the right to enter into this agreement and is not bound by any conflicting obligations`,
         ],
       },
-      { paragraph: `${site.name} does not warrant that deliverables will be entirely free of bugs or defects at delivery, or that the output of an AI model will always be accurate, complete or suitable for a particular purpose. A post-delivery support period (if included in the SOW) will be used to resolve reported issues at no additional charge.` },
+      { paragraph: `${site.name} does not warrant that deliverables will be entirely free of bugs or defects at delivery, or that the output of an AI model will always be accurate, complete or suitable for a particular purpose. Every project includes a 30-day post-launch support period, during which reported issues are fixed at no additional charge. Support after that period is billed as set out in the SOW.` },
     ],
   },
   {
@@ -157,10 +158,10 @@ const sections: LegalSection[] = [
 
 export const termsOfService = {
   title: "Terms and Services",
-  updated: "November 14, 2026",
+  updated: "November 16, 2026",
   facts: [
     ["Entity", `${company.legalName} (${site.name})`],
-    ["Effective", "November 14, 2026"],
+    ["Effective", "November 16, 2026"],
     ["Jurisdiction", "Wyoming, USA"],
   ] as const,
   sections,

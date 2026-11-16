@@ -7,7 +7,7 @@ export const calculatorHref = "/tools/automation-roi-calculator";
 export const seo = {
   title: "AI Chatbot Development for Customer Support",
   description:
-    "AI chatbot development services for customer support. Custom chatbots that answer from your docs, look up orders and hand hard cases to your team. Book a free call.",
+    "AI chatbot development for customer support. Custom chatbots that answer from your docs, look up orders and hand hard cases to your team. Book a free call.",
   openGraphDescription:
     "Custom AI chatbots that answer your customers from your own docs, look up their orders and hand the hard cases to your team.",
   twitterDescription:
@@ -192,7 +192,7 @@ export const process = {
     { title: "Free call", line: "We look at your real tickets and find what a chatbot can answer." },
     { title: "Fixed-price plan", line: "What it answers, what it hands off, the price and launch date, in writing." },
     { title: "Launch in review mode", line: "It drafts replies, your team approves, until the answers hold up." },
-    { title: "Grow with you", line: "Support after launch is included, then an optional monthly plan." },
+    { title: "Grow with you", line: "The first 30 days of support after launch are included, then an optional monthly plan." },
   ],
 };
 

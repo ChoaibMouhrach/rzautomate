@@ -207,7 +207,7 @@ export const process = {
     { title: "Free call", line: "Walk us through the task. We tell you honestly if an agent is the right fit." },
     { title: "Fixed-price plan", line: "What it does, what it asks before doing, the price and launch date, in writing." },
     { title: "Test on real cases", line: "It runs on your real examples, with your team reviewing every result first." },
-    { title: "Grow with you", line: "Support after launch is included, then an optional monthly plan as models and needs change." },
+    { title: "Grow with you", line: "The first 30 days of support after launch are included, then an optional monthly plan as models and needs change." },
   ],
 };
 
@@ -264,7 +264,7 @@ export const faq = {
     {
       question: "What happens when AI models change?",
       answer:
-        "We keep your agent working as models update. Support after launch is included, then an optional monthly plan.",
+        "We keep your agent working as models update. The first 30 days of support after launch are included, then an optional monthly plan.",
     },
   ],
 };

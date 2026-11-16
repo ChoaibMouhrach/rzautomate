@@ -192,7 +192,7 @@ export const process = {
     { title: "Free call", line: "Bring a few real documents. We show you what can be read and entered." },
     { title: "Fixed-price plan", line: "Which documents, which fields, what gets checked, the price and launch date, in writing." },
     { title: "Launch in review mode", line: "Your team checks every entry until the accuracy holds up." },
-    { title: "Grow with you", line: "Support after launch is included, then an optional monthly plan." },
+    { title: "Grow with you", line: "The first 30 days of support after launch are included, then an optional monthly plan." },
   ],
 };
 

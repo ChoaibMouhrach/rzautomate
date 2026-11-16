@@ -193,7 +193,7 @@ export const process = {
     { title: "Free call", line: "We map where your leads come from and where they stall." },
     { title: "Fixed-price plan", line: "What it does, what needs your approval, the price and launch date, in writing." },
     { title: "Launch in review mode", line: "Your team approves messages until you trust them to send." },
-    { title: "Grow with you", line: "Support after launch is included, then an optional monthly plan." },
+    { title: "Grow with you", line: "The first 30 days of support after launch are included, then an optional monthly plan." },
   ],
 };
 

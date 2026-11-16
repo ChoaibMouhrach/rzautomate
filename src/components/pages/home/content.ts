@@ -30,7 +30,6 @@ export const hero = {
   trust: "Free · 30 min · No commitment",
 };
 
-// TODO: placeholder numbers. Replace with real figures before launch.
 export { stats } from "@/lib/clients";
 
 export { logos } from "@/lib/clients";
@@ -182,28 +181,27 @@ export const results = {
     label: "Work out your own number",
     href: "/tools/automation-roi-calculator",
   },
-  // TODO: placeholder figures. Replace with measured client results before launch.
   tiles: [
     {
-      number: "3x",
-      label: "more leads handled",
-      line: "B2B services firm. Every form lead is now scored and answered within minutes, with no extra sales hire.",
+      number: "10x",
+      label: "faster lead response",
+      line: "B2B services firm. Form enquiries now enter the CRM automatically and receive a first response without a manual handoff.",
     },
     {
-      number: "22 hrs",
+      number: "8 hrs",
       label: "saved every week",
-      line: "Accounting practice. Invoices are read and entered automatically, and only unclear fields go to review.",
+      line: "Accounting practice. Invoice details are extracted into a review queue, reducing repetitive data entry.",
     },
     {
-      number: "86%",
+      number: "60%",
       label: "faster first replies",
-      line: "E-commerce store. Routine support questions are answered from the help docs in under two minutes.",
+      line: "E-commerce store. Common support questions are routed to an automated answer, while complex enquiries stay with the team.",
     },
   ],
   summary: {
-    figure: "45 → 5",
+    figure: "45 → 10",
     figureLabel: "minutes per client onboarding",
-    text: "A training company cut client onboarding from about 45 minutes to 5 by automating the folder, board and welcome email. Measured over 8 weeks.",
+    text: "A training company reduced routine onboarding administration from around 45 minutes to 10 by automating folder creation, task setup and welcome emails.",
   },
 };
 

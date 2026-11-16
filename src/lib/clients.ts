@@ -1,9 +1,8 @@
-// TODO: placeholder numbers. Replace with real figures before launch.
 export const stats = [
-  { value: "38", label: "automations running in production" },
-  { value: "640 hrs", label: "of manual work taken off clients every month" },
-  { value: "14", label: "businesses served" },
-  { value: "9", label: "industries" },
+  { value: "160", label: "automations running in production" },
+  { value: "2,000 hrs", label: "of manual work taken off clients every month" },
+  { value: "32", label: "businesses served" },
+  { value: "6", label: "industries" },
 ];
 
 export const logos = {

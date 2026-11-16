@@ -25,8 +25,9 @@ export const pageMetadata = {
   },
   blog: {
     title: "Blog",
+    seoTitle: "Blog: AI Automation Guides and Case Studies",
     description:
-      "Practical guides and case studies on AI automation for businesses.",
+      "Practical guides and real builds on AI automation for businesses: customer support, lead qualification, course automation and the tools behind them.",
   },
   faq: {
     title: "FAQ",

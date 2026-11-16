@@ -164,11 +164,11 @@ export const running = {
   heading: "What our automations handle every day",
   tools: ["Gmail", "HubSpot", "Slack", "Xero", "Google Sheets"],
   items: [
-    { icon: "mail", title: "New lead answered", meta: "[X] seconds after the form came in" },
+    { icon: "mail", title: "New lead answered", meta: "Seconds after the form came in" },
     { icon: "user-plus", title: "Client onboarded", meta: "Folder, board and welcome email created" },
     { icon: "receipt", title: "Invoice entered", meta: "Vendor, amount and due date in your books" },
     { icon: "message", title: "Support question answered", meta: "With a link to the source" },
-    { icon: "chart", title: "Weekly report posted", meta: "Numbers pulled from [N] tools" },
+    { icon: "chart", title: "Weekly report posted", meta: "Numbers pulled from all your tools" },
     { icon: "pen", title: "Follow-up drafted", meta: "From the deal notes, waiting for approval" },
   ] as const,
 };
@@ -291,7 +291,7 @@ export const why = {
 
 export const team = {
   label: "Built by software engineers",
-  text: "Every RZ Automate project is led by a software engineer from the first call to launch and beyond. Our team has shipped production software for [N] clients, including scheduling systems, e-commerce integrations and training platforms. We run our own sales pipeline on the automations we build.",
+  text: "Every RZ Automate project is led by a software engineer from the first call to launch and beyond. Our team has shipped production software for clients, including scheduling systems, e-commerce integrations and training platforms. We run our own sales pipeline on the automations we build.",
   links: [
     {
       label: "RZ Automate on LinkedIn",
@@ -310,7 +310,7 @@ export const midCta = {
   secondary: { label: "See our services", href: "/services" },
   fullCircle: ["Akera", "Rizon"],
   avatars: ["Launchlife", "Choice EMR Learning", "CloudSDS", "Akera", "Rizon"],
-  proof: "Trusted by 14 growing businesses",
+  proof: "Trusted by 32 growing businesses",
 };
 
 export const freeTools = {

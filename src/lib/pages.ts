@@ -14,7 +14,6 @@ export const pagePaths = (postSlugs: readonly string[]) => [
     ...services.map((service) => `/services/${service.slug}`),
     ...postSlugs.map((slug) => `/blog/${slug}`),
     ...legalNav.map((item) => item.href),
-    "/privacy",
   ];
 
 export const pageMetadata = {

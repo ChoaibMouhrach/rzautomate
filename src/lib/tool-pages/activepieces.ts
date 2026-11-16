@@ -8,7 +8,7 @@ export const activepieces: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "Activepieces Pricing, Plans & Features (2026)",
+    title: "Activepieces Pricing & Features (2026)",
     description: "Activepieces pricing for 2026. Free plan, Plus at $20 a month, Team at $200, how credits work, and the free open-source self-hosted edition.",
   },
   checkedAt: "2026-11-14",

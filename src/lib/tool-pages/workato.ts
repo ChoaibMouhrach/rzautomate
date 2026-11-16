@@ -6,7 +6,7 @@ export const workato: ToolPage = {
   kind: "Enterprise",
   status: "active",
   seo: {
-    title: "Workato Pricing, Plans & Features (2026)",
+    title: "Workato Pricing & Features (2026)",
     description: "See Workato pricing for 2026. Free plan, Pro from $75 a month, enterprise quotes, what counts as a task, a cost calculator and alternatives.",
   },
   checkedAt: "2026-11-14",

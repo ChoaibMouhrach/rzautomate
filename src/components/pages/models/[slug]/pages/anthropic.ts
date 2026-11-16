@@ -16,7 +16,7 @@ const accessColumns = ["Platform", "Model ID", "Input $/1M", "Output $/1M"];
 export const anthropicPages: ModelPageContent[] = [
   {
     slug: "claude-fable-5-2",
-    title: "Claude Fable 5.2 API Pricing & Context Window",
+    title: "Claude Fable 5.2 API Pricing & Context",
     description: "Claude Fable 5.2 costs $8 per 1M input and $40 per 1M output tokens. See the 1M context window, specs, cost calculator and how it compares.",
     h1: "Claude Fable 5.2 API pricing and specs",
     summary: "Claude Fable 5.2 is Anthropic's top-tier public model. Claude Fable 5.2 costs $8 per million input tokens and $40 per million output tokens, 20% less than Fable 5.1. It has a 1M token context window, 128K max output and always-on adaptive thinking. It suits long agent runs and deep research.",
@@ -90,7 +90,7 @@ export const anthropicPages: ModelPageContent[] = [
   },
   {
     slug: "claude-opus-5-5",
-    title: "Claude Opus 5.5 API Pricing & Context Window",
+    title: "Claude Opus 5.5 API Pricing & Context",
     description: "Claude Opus 5.5 costs $4 per 1M input and $20 per 1M output tokens. See the 1M context window, specs, cost calculator and how it compares.",
     h1: "Claude Opus 5.5 API pricing and specs",
     summary: "Claude Opus 5.5 is Anthropic's recommended default model for most work. Claude Opus 5.5 costs $4 per million input tokens and $20 per million output tokens, 20% less than Opus 5. It has a 1M token context window, 128K max output and always-on adaptive thinking for long agent and coding tasks.",
@@ -164,7 +164,7 @@ export const anthropicPages: ModelPageContent[] = [
   },
   {
     slug: "claude-sonnet-5-5",
-    title: "Claude Sonnet 5.5 API Pricing & Context Window",
+    title: "Claude Sonnet 5.5 API Pricing & Context",
     description: "Claude Sonnet 5.5 costs $2 per 1M input and $10 per 1M output tokens. See the 1M context window, specs, cost calculator and how it compares.",
     h1: "Claude Sonnet 5.5 API pricing and specs",
     summary: "Claude Sonnet 5.5 is Anthropic's fast, mid-priced model for everyday coding, agents and business work. Claude Sonnet 5.5 costs $2 per million input tokens and $10 per million output tokens. It has a 1M token context window, 128K max output and adaptive thinking you can dial down for speed.",
@@ -239,7 +239,7 @@ export const anthropicPages: ModelPageContent[] = [
   },
   {
     slug: "claude-haiku-5-5",
-    title: "Claude Haiku 5.5 API Pricing & Context Window",
+    title: "Claude Haiku 5.5 API Pricing & Context",
     description: "Claude Haiku 5.5 costs $0.10 per 1M input and $0.50 per 1M output tokens up to 100K. See the 1M context window, specs and cost calculator.",
     h1: "Claude Haiku 5.5 API pricing and specs",
     summary: "Claude Haiku 5.5 is Anthropic's fastest and cheapest model, built for high-volume work. Claude Haiku 5.5 costs $0.10 per million input tokens and $0.50 per million output tokens for prompts up to 100K tokens. Longer prompts cost five times more. It has a 1M token context window and 128K max output.",

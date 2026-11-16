@@ -6,7 +6,7 @@ export const gumloop: ToolPage = {
   kind: "AI agent builders",
   status: "active",
   seo: {
-    title: "Gumloop Pricing, Plans & Features (2026)",
+    title: "Gumloop Pricing & Features (2026)",
     description: "Gumloop costs $37 a month for 20,000 credits. No free plan, just a 14-day trial. See how credits work and what your workflows will really cost.",
   },
   checkedAt: "2026-11-14",

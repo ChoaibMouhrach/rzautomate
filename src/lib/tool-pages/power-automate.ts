@@ -11,7 +11,7 @@ export const powerAutomate: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "Power Automate Pricing, Plans & Features (2026)",
+    title: "Power Automate Pricing & Features (2026)",
     description: "Power Automate pricing for 2026. Premium is $15 per user a month, Process is $150 per bot, and basic flows come free with Microsoft 365.",
   },
   checkedAt: "2026-11-14",

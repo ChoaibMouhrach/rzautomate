@@ -8,7 +8,7 @@ export const n8n: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "n8n Pricing, Plans & Features (2026)",
+    title: "n8n Pricing & Features (2026)",
     description: "See n8n pricing for 2026. Cloud plans from €20 a month, the free self-hosted Community Edition, Business and Startup prices, and a cost calculator.",
   },
   checkedAt: "2026-11-14",

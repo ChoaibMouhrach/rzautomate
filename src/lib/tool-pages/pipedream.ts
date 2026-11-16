@@ -8,7 +8,7 @@ export const pipedream: ToolPage = {
   kind: "Enterprise",
   status: "active",
   seo: {
-    title: "Pipedream Pricing, Plans & Features (2026)",
+    title: "Pipedream Pricing & Features (2026)",
     description: "Pipedream pricing for 2026. Free to build, $99/mo yearly to go live with 10,000 credits. What a credit costs, a calculator and the Workflows shutdown.",
   },
   checkedAt: "2026-11-14",

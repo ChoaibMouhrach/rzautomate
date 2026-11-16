@@ -8,10 +8,10 @@ export const bookHref = "/book?service=agent-development";
 export const calculatorHref = "/tools/automation-roi-calculator";
 
 export const seo = {
-  title: "AI Agent Development Company | Custom AI Agents",
+  title: "AI Agent Development Company",
   description:
     "AI agent development for work no off-the-shelf tool covers. Custom agents that use your systems and ask before risky actions. Book a free call.",
-  socialTitle: "AI Agent Development Company | Custom AI Agents",
+  socialTitle: "AI Agent Development Company",
   openGraphDescription:
     "Custom AI agents that use your systems, complete multi-step tasks and ask before anything risky.",
   twitterDescription:

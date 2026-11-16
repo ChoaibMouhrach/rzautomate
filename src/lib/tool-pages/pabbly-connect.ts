@@ -6,7 +6,7 @@ export const pabblyConnect: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "Pabbly Connect Pricing, Plans & Features (2026)",
+    title: "Pabbly Connect Pricing & Features (2026)",
     description: "See what Pabbly Connect costs in 2026. Monthly, yearly and lifetime plans, the free plan, and which steps count as tasks. Try our cost calculator.",
   },
   checkedAt: "2026-11-14",

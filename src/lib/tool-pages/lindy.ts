@@ -19,7 +19,7 @@ export const lindy: ToolPage = {
   kind: "AI agent builders",
   status: "active",
   seo: {
-    title: "Lindy Pricing, Plans & Features (2026)",
+    title: "Lindy Pricing & Features (2026)",
     description: "Lindy AI pricing in plain words. See what each seat costs, how credits work, whether Lindy is free, and what you'd pay with our cost calculator.",
   },
   checkedAt: "2026-11-14",

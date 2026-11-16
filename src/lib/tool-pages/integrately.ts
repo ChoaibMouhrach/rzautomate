@@ -16,7 +16,7 @@ export const integrately: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "Integrately Pricing, Plans & Features (2026)",
+    title: "Integrately Pricing & Features (2026)",
     description: "Integrately pricing for 2026. See every plan from free to $239 a month, how tasks are counted, what the free plan includes, and a cost calculator.",
   },
   checkedAt: "2026-11-14",

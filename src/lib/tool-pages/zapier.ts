@@ -48,7 +48,7 @@ export const zapier: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "Zapier Pricing, Plans & Features (2026)",
+    title: "Zapier Pricing & Features (2026)",
     description: "Zapier pricing for 2026. Free plan, Professional from $19.99/mo, Team from $69/mo, the full task price ladder, what counts as a task and a cost calculator.",
   },
   checkedAt: "2026-11-14",

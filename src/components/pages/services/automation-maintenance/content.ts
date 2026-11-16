@@ -8,10 +8,10 @@ export const bookHref = "/book?service=maintenance";
 export const includedHref = "#included";
 
 export const seo = {
-  title: "Automation Maintenance for n8n, Make & Zapier",
+  title: "n8n, Make & Zapier Maintenance",
   description:
     "Automation maintenance for n8n, Make, Zapier and AI agents. We monitor your workflows, fix what breaks and keep them up to date as you grow. Book a free call.",
-  socialTitle: "Automation Maintenance for n8n, Make & Zapier",
+  socialTitle: "n8n, Make & Zapier Maintenance",
   openGraphDescription:
     "We monitor your n8n, Make, Zapier and AI automations, fix what breaks when apps change, and update them as your business grows.",
   twitterDescription:

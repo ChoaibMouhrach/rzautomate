@@ -5,10 +5,10 @@ export const bookHref = "/book?service=document-processing";
 export const calculatorHref = "/tools/automation-roi-calculator";
 
 export const seo = {
-  title: "AI Document Processing & Invoice Automation",
+  title: "AI Document & Invoice Processing",
   description:
     "AI document processing that reads invoices, forms and PDFs, enters the data into your systems and flags anything unclear. Book a free 30-min call.",
-  socialTitle: "AI Document Processing & Invoice Automation",
+  socialTitle: "AI Document & Invoice Processing",
   openGraphDescription:
     "AI document processing that reads invoices, forms and PDFs, enters the data into your systems and flags anything unclear for a person.",
   twitterDescription:

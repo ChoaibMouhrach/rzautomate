@@ -29,7 +29,7 @@ const geminiSpecs = (reasoning: string, release: string, id: string): [string, s
 export const googleXaiPages: ModelPageContent[] = [
   {
     slug: "gemini-4-argon",
-    title: "Gemini 4 Argon API Pricing & Context Window",
+    title: "Gemini 4 Argon API Pricing & Context",
     description: "Gemini 4 Argon costs $2 per 1M input and $10 per 1M output tokens until Nov 30, then $4 and $20. See context window, specs and a cost calculator.",
     h1: "Gemini 4 Argon API pricing and specs",
     summary: "Gemini 4 Argon is Google's flagship Gemini 4 model. Gemini 4 Argon costs $2 per 1M input tokens and $10 per 1M output tokens until November 30, 2026, then $4 and $20 from December 1. It reads text, images, audio and video, with a 1M token context window.",
@@ -86,7 +86,7 @@ export const googleXaiPages: ModelPageContent[] = [
   },
   {
     slug: "gemini-4-carbon",
-    title: "Gemini 4 Carbon API Pricing & Context Window",
+    title: "Gemini 4 Carbon API Pricing & Context",
     description: "Gemini 4 Carbon costs $2 per 1M input and $10 per 1M output tokens until Nov 30, then $4 and $20. See context window, specs and a cost calculator.",
     h1: "Gemini 4 Carbon API pricing and specs",
     summary: "Gemini 4 Carbon is Google's deepest-thinking Gemini 4 model, built on Gemini 4 Argon. Gemini 4 Carbon costs $2 per 1M input tokens and $10 per 1M output tokens until November 30, 2026, then $4 and $20. It has a 1M token context window.",
@@ -143,7 +143,7 @@ export const googleXaiPages: ModelPageContent[] = [
   },
   {
     slug: "gemini-3-8-flash",
-    title: "Gemini 3.8 Flash API Pricing & Context Window",
+    title: "Gemini 3.8 Flash API Pricing & Context",
     description: "Gemini 3.8 Flash costs $0.75 per 1M input and $3.75 per 1M output tokens, rising to $1.50 and $7.50 on Jan 1, 2027. Specs, free tier and calculator.",
     h1: "Gemini 3.8 Flash API pricing and specs",
     summary: "Gemini 3.8 Flash is Google's fast, low-cost Gemini model. Gemini 3.8 Flash costs $0.75 per 1M input tokens and $3.75 per 1M output tokens until December 31, 2026. On January 1, 2027 the price doubles to $1.50 and $7.50. It has a 1M token context window and a free tier.",
@@ -219,7 +219,7 @@ export const googleXaiPages: ModelPageContent[] = [
   },
   {
     slug: "grok-4-7",
-    title: "Grok 4.7 API Pricing & Context Window",
+    title: "Grok 4.7 API Pricing & Context",
     description: "Grok 4.7 costs $2 per 1M input and $6 per 1M output tokens, doubling above 200K prompt tokens. See its 500K context window, specs and a cost calculator.",
     h1: "Grok 4.7 API pricing and specs",
     summary: "Grok 4.7 is xAI's current flagship model. Grok 4.7 costs $2 per 1M input tokens and $6 per 1M output tokens for prompts under 200K tokens. Larger prompts bill at $4 and $12. It has a 500K token context window and reads text and images.",

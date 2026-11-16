@@ -13,7 +13,7 @@ export const ifttt: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "IFTTT Pricing, Plans & Features (2026)",
+    title: "IFTTT Pricing & Features (2026)",
     description: "IFTTT pricing for 2026. Free, Starter, Pro and Pro+ plans, how credits work, what happens when they run out, and a free cost calculator.",
   },
   checkedAt: "2026-11-14",

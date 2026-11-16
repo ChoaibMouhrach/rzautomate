@@ -6,7 +6,7 @@ export const tray: ToolPage = {
   kind: "Enterprise",
   status: "active",
   seo: {
-    title: "Tray.io Pricing, Plans & Features (2026)",
+    title: "Tray.io Pricing & Features (2026)",
     description: "Tray.io (now Tray.ai) pricing is quote-based. See reported costs, what counts as a task, the 30-day free trial and cheaper alternatives.",
   },
   checkedAt: "2026-11-14",

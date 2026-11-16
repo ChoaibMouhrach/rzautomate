@@ -42,12 +42,12 @@ export const pageMetadata = {
       "Talk to RZ Automate about AI automation for your business. Book a free 30-minute call or email us, and we'll reply within two hours.",
   },
   roiCalculator: {
-    title: "Automation ROI Calculator: Hours and Money Saved",
+    title: "Automation ROI Calculator: Hours and Money",
     description:
       "Free automation ROI calculator. Enter five numbers about one task and see the hours, money and hires automation could save you each year. No email needed.",
   },
   models: {
-    title: "AI Model Comparison by API Price and Context Window",
+    title: "AI Model Comparison: API Price and Context",
     description:
       "Compare AI models from OpenAI, Anthropic, Google, DeepSeek and more. API price per 1M tokens, context window, features and what a real job costs.",
   },

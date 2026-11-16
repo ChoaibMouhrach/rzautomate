@@ -29,7 +29,7 @@ export const make: ToolPage = {
   kind: "Workflow platforms",
   status: "active",
   seo: {
-    title: "Make Pricing, Plans & Features (2026)",
+    title: "Make Pricing & Features (2026)",
     description: "Make pricing in 2026. Free plan with 1,000 credits, paid plans from $9 a month billed yearly, how credits are counted, and a cost calculator.",
   },
   checkedAt: "2026-11-14",
